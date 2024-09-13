@@ -55,6 +55,14 @@
         since \(Z\) is not a finite union of irreducibles, the same must apply to one of \(Z_1 \tor ZZ_2\), but this contradicts the minimality of \(Z \in \mathcal{I}\). It follows that
         \(\mathcal{I} = \emptyset\), so that \(X\) is a finite union of irreducible elements.
 
-        
+        let \(\set{Y_i}_{i = 1}^m \neq \set{Z_i}_{i = 1}^n\) be two collections
+        of irreducible sets, such that no set is contained in the union of the rest of the collection, and
+        \begin{align*}
+            \bigcup_i Y_i = X = \bigcup_i Z_i
+        \end{align*}
+        Then there must exist some \(Y_i, Z_j\), such that \(Y_i \cap Z_j \neq \emptyset \tand Y_i \neq Z_j\)
+        (explicitly choose some \(Y_i \not \in \set{Z_j}_j\), but \(\emptyset \neq Y_i = Y_i \cap \cup_j Z_j = \cup_j Y_i \cap Z_j\)
+         cannot all be empty). We may assume WLOG \(Y_i \not \subset Z_j\), but this contradicts the Zarisky condition, since 
+        \(Y_i = (Y_i \cap Z_j) \cup (Y_i \cap \cup_{i \neq j}Z_i)\) is a union of closed proper subsets of \(Y_i\).
     \end{pb}
 \end{document}
