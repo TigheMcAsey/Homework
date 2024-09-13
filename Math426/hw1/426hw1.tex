@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage{amsmath, amsfonts, amssymb,amsthm}
 \usepackage{centernot}
 \usepackage[includeheadfoot,margin=0.5in]{geometry} % For page dimensions
@@ -11,7 +11,7 @@
 \pagestyle{fancy}
 
 % Page dimensions
-\geometry{a4paper, margin=1in}
+\geometry{a4paper}
 
 \theoremstyle{definition}
 \newtheorem{pb}{}
@@ -26,6 +26,35 @@
 
 \begin{document}
     \begin{pb}
+        \textbf{(a)} Let \(x \in \set{a\in X \vert \exists U \text{ open, such that } a \in U \subset A}\), then \(U \cup A^\circ\) is an open subset of \(A\) containing \(A^\circ\),
+        hence by maximality \(x \in U \cup A^\circ = A^\circ\). If \(a \in A^o\), then \(a\) is in a open subset contained in \(A\) proving the other set inclusion.
+
+        let \(x \in \set{x \in X \vert \forall U \text{ open with } x \in U \tand UU \cap A \neq \emptyset}^c\), then there exists some open \(U \subset A^c\) containing \(x\),
+        so that \(A \subset U^c\) is closed this implies \(\overline{A} \subset U^c\) and hence \(x \not \in \overline{A}\). Conversely, if \(x \in \overline{A}^c\), then
+        \(\overline{A}^c\) is an open set disjoint from \(A\) containing \(x\), so that \(x \in \set{x \in X \vert \forall U \text{ open with } x \in U \tand UU \cap A \neq \emptyset}^c\).
+
+        \textbf{(b)} \(U^\circ\) is open by definition, so \(U^\circ = U\) implies \(U\) open. If \(U\) is open, then \(U\) is an open set contained in \(U\), so that \(U \subset U^\circ\) 
+        and hence \(U = U^\circ\).
+
+        \(\overline{A}\) is closed, hence \(A = \overline{A}\) implies \(A\) is closed. Now suppose that \(A\) is closed, then \(A\) is a closed set containing \(A\), hence
+        \(A \supset \overline{A}\), which implies \(A = \overline{A}\).
+
+        \textbf{(c)} The compliment of \(A^\circ\) is closed, and \(A^\circ \subset A\) implies that \(\left(A^\circ\right)^c \supset A^c\), implying that
+        \(\overline{A^c} \supset \left(A^\circ\right)^c\). Conversely, if \(x \in \overline{A^c}\), then by part (a), any open set containing \(x\) has non-empty
+        intersection with \(A^c\), hence there does not exist an open set \(U\) containing \(x\), such that \(U \subset A\), applying (a) again ,this means that
+        \(x \not \in A^\circ\)
+
+        \(\overline{A}^c\) is an open set contained in \(A^c\), hence \(\overline{A}^c \subset (A^c)^\circ\). Conversely, if \(x \in \overline{A}\), then from (a), any open set containing
+        \(x\) has non-trivial intersection with \(A\), hence applying part (a) again we get that \(x \not \in (A^c)^\circ\), hence \(\overline{A} \subset \left((A^c)^\circ\right)^c\),
+        contraposing this gives the desired equality.
+    \end{pb}
+    \begin{pb}
+        Consider the collection \(\mathcal{I}\) of closed sets in \(X\), which are not finite unions of irreducibles. Every descending chain being eventually constant is equivalent to every descending chain having a lower bound
+        (i.e. If \(\cap_i F_i = F_j\), then \(F_j\) is a lower bound on the chain).
+        Thus we can apply Zorn's lemma which furnishes a minimal element \(Z\) in \(\mathcal{I}\), if \(Z\) were not irreducible, then it would need to be a union of closed subsets \(Z_1\cup Z_2\),
+        since \(Z\) is not a finite union of irreducibles, the same must apply to one of \(Z_1 \tor ZZ_2\), but this contradicts the minimality of \(Z \in \mathcal{I}\). It follows that
+        \(\mathcal{I} = \emptyset\), so that \(X\) is a finite union of irreducible elements.
+
         
     \end{pb}
 \end{document}
