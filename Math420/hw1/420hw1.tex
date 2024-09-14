@@ -5,7 +5,7 @@
 \usepackage{enumerate} % For custom lists
 
 \fancyhf{}
-\lhead{Math 426hw1}
+\lhead{Math 420hw1}
 \rhead{Tighe McAsey - 37499480}
 \pagestyle{fancy}
 
@@ -26,7 +26,71 @@
 
 
 \begin{document}
-    \begin{pb}
-        
-    \end{pb}
+	\begin{pb}
+		Let \((a,b)\) be an arbitrary open interval, then \((-\infty,b) \in \mathcal{B}\), furthermore
+		\begin{align*}
+			\set{(-\infty, a - 1/n)}_{n \in \mathbb{N}} \subset \mathcal{B} &\implies \set{[a - 1/n, \infty)}_{n \in \mathbb{N}} \subset \mathcal{B} \\
+			&\implies (a,\infty) = \bigcup_{\mathbb{N}} [a-1/n,\infty) \in \mathcal{B} \\
+			&\implies (a,b) = (a,\infty) \cap (-\infty, b) \in \mathcal{B}
+		\end{align*}
+
+		Now since each open interval is an open set we have that \(\mathcal{B} \subset \mathcal{B}_\mathbb{R}\). But since each open set is a countable union
+		of open intervals it follows that each open set is in \(\mathcal{B}\), and hence by closure properties we have that
+		the sigma algebra they generate must also be contained in \(\mathcal{B}\), so that \(\mathcal{B}_\mathbb{R} \subset \mathcal{B}\).
+	\end{pb}
+
+	\begin{pb}
+		Countable sets. As proof, assume \(X\) is countable, then \(\set{\set{x}: x \in X} \subset \mathcal{P}(X)\), and each \(\set{x}\) has counting measure \(1\).
+		It follows by assumption that \(\bigcup_{x\in X}\set{x} = X\) is a countable union of sets of finite measure, i.e. \(\sigma\)-finite.
+		Conversely, if \(X\) is uncountable then it is not a countable union of countable sets, hence any countable collection of sets
+		\(\set{X_i}_{i \in I}\), such that \(\bigcup_I X_i = X\) must have atleast one uncountable \(X_i\) (so that \(X_i\) has infinite counting measure).
+	\end{pb}
+
+	\begin{pb}
+		\textbf{(a)} Suppose that \(E \in f_* \mathcal{M}\), then since \(f^{-1}(A^c) = f^{-1}(A)^c\),
+		\begin{align*}
+			f^{-1}(E) \in \mathcal{M} \implies (f^{-1}(E))^c = f^{-1}(E^c) \in \mathcal{M} \implies E^c \in f_* \mathcal{M}
+		\end{align*}
+		Now suppose that \(\set{E_i}_{i \in \mathbb{N}} \subset f_* \mathcal{M}\), then since \(\bigcup_\mathbb{N} f^{-1}(E_i) = f^{-1}(\bigcup_\mathbb{N} E_i)\),
+		\begin{align*}
+			\bigcup_\mathbb{N} f^{-1}(E_i) \in \mathcal{M} \implies f^{-1}(\bigcup_\mathbb{N} E_i) \in \mathcal{M} \implies \bigcup_\mathbb{N} E_i \in \mathcal{M}
+		\end{align*}
+
+		\textbf{(b)} We need only check that \(f_*\mu\) is a measure. Since the image of \(f_*\mu\) is a subset of the image of \(\mu\) it is clear 
+		that for each \(E\), \(0 \leq f_*(\mu) \leq \infty\). It is also immediate that \(f_*\mu(\emptyset) = \mu(f^{-1}(\emptyset)) = \mu(\emptyset) = 0\).
+        To check additivity, consider \(\set{E_i}_\mathbb{N}\subset f_*\mathcal{M}\), where the \(E_i\) 
+		are disjoint (note this implies that each \(f^{-1}(E_i)\) is disjoint). It follows that
+		\begin{align*}
+			f_*\mu(\bigcup_\mathbb{N} E_i) = \mu(f^{-1}(\bigcup_\mathbb{N} E_i)) = \mu(\bigcup_\mathbb{N} f^{-1}(E_i)) = \sum_\mathbb{N} \mu(f^{-1}(E_i)) = \sum_\mathbb{N} f_*\mu(E_i)
+		\end{align*}
+
+		\textbf{(c)} The point mass at \(y_0\) let \(E \in f_*\mathcal{M}\), then
+		\begin{align*}
+			f_*\mu(E) = \begin{cases}
+				\mu(\emptyset) = 0 & y_0 \not \in E \\
+				\mu(f^{-1}(y_0)) = \mu(X) & y_0 \in E
+			\end{cases}
+		\end{align*}
+
+		\textbf{(d)} This measure counts the number of perfect squares in a set \(E\). If \(E \subset \mathbb{N}\), then
+		\(f_*\mu(E) = \# f^{-1}(E) = \# \set{n \in \mathbb{N}: n^2 \in E}\)
+	\end{pb}
+	\begin{pb}
+		\(\mu\) is a measure for \(j \geq 0\).
+
+		Suppose that \(j \leq -1\), then consider the sets \(E_n := \set{n^2}\).
+        \begin{align*}\sum_\mathbb{N} \mu(E_n) = \sum_\mathbb{N} n^2 < \infty = \mu\left(\bigcup_\mathbb{N} E_n\right)\end{align*}
+
+        Conversely, suppose that \(j \geq 0\), \(\mu(\emptyset) = 0\) by definition. If \(\set{E_i}_\mathbb{N}\) is a countable disjoint family,
+        then we are done immediately if any \(E_i\) is infinite, since then \(\mu\left(\bigcup_\mathbb{N}E_i\right) = \infty = \mu(E_i) \leq \sum_\mathbb{N} \mu(E_i)\).
+        Similarly, if infinitely many \(E_i\) are non-empty, then
+        \begin{align*}
+           \mu\left(\bigcup_\mathbb{N}E_i\right) = \infty = \sum_\mathbb{N} 1 = \sum_{\mathbb{N}} \sum_{n \in E_i} n^0 \leq \sum_{\mathbb{N}} \sum_{n \in E_i} n^j
+        \end{align*}
+        Finally, in the case where each \(E_i \) is finite, and only finitely many \(E_i \neq \emptyset\), we have for some \(N\), \(\set{E_i}_\mathbb{N} = \set{E_i}_{i=1}^N\), then
+        \begin{align*}
+            \mu\left(\bigcup_1^N E_i\right) = \sum_{n \in \bigcup_1^N E_i} n^j = \sum_{i =1}^N \sum_{n\in E_i} n^j = \sum_{i=1}^N \mu(E_i)
+        \end{align*}
+        where the second equality follows from the \(\set{E_i}_1^n\) being disjoint.
+	\end{pb}
 \end{document}
