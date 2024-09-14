@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10.5pt]{article}
 \usepackage{amsmath, amsfonts, amssymb,amsthm}
 \usepackage{centernot}
 \usepackage[includeheadfoot,margin=0.5in]{geometry} % For page dimensions
@@ -56,13 +56,47 @@
         \(\mathcal{I} = \emptyset\), so that \(X\) is a finite union of irreducible elements.
 
         let \(\set{Y_i}_{i = 1}^m \neq \set{Z_i}_{i = 1}^n\) be two collections
-        of irreducible sets, such that no set is contained in the union of the rest of the collection, and
-        \begin{align*}
-            \bigcup_i Y_i = X = \bigcup_i Z_i
-        \end{align*}
-        Then there must exist some \(Y_i, Z_j\), such that \(Y_i \cap Z_j \neq \emptyset \tand Y_i \neq Z_j\)
+        of irreducible sets, such that no set is contained in the union of the rest of the collection, and \(\bigcup_i Y_i = X = \bigcup_i Z_i\).
+        Then there must exist some \(Y_i, Z_j\), such that \(Y_i \cap Z_j \neq \emptyset \tand YY_i \neq Z_j\)
         (explicitly choose some \(Y_i \not \in \set{Z_j}_j\), but \(\emptyset \neq Y_i = Y_i \cap \cup_j Z_j = \cup_j Y_i \cap Z_j\)
          cannot all be empty). We may assume WLOG \(Y_i \not \subset Z_j\), but this contradicts the Zarisky condition, since 
         \(Y_i = (Y_i \cap Z_j) \cup (Y_i \cap \cup_{i \neq j}Z_i)\) is a union of closed proper subsets of \(Y_i\).
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Suppose \(X\) is not connected, then there exists some \(X \neq A \neq \emptyset\) which is clopen, it follows that
+        \(A^c\) is also clopen. Let \(\pi: \begin{cases} x \mapsto 1 & x \in A \\ x \mapsto 0 &x\in A^c\end{cases}\) map \(X\) to \(\set{0,1}\) with the discrete topology.
+        This is clearly a map, since the preimage of every set is open. Conversely, suppose there exists a surjective map \(\pi:X \to \set{0,1}\),
+        we have that \(\pi^{-1}(1), \pi^{-1}(0) = (\pi^{-1}(1))^c\) are open, disjoint and non-empty. Since compliments of open sets are open, these sets are also closed.
+        Hence \(\pi^{-1}(1)\) is a clopen set not equal to \(X\) or \(\emptyset\), since it is non-empty with non-empty compliment.
+
+        \textbf{(b)} Let \(\pi:X\to \set{0,1}\) be a map, suppose WLOG \((0,1)\overset{\pi}{\mapsto}1\), it follows that \(\pi(\set{0}\times[-1,1]) = 1\), since
+        assuming not we let \(\alpha = \sup\set{y \in [0,1]\vert \pi(y) = 0}\), implying that \(\pi\) is not continuous at \(\alpha\), since any open set
+        \(U\) containing \(\alpha\) must contain some point \(\alpha > \beta, (0,\beta)\overset{\pi}{\mapsto}0\), and some point \(\alpha < \gamma, (0,\gamma)\overset{\pi}{\mapsto}1\) 
+        by the supremum property. Let \(\beta = \inf \set{x\vert \pi(x,\sin\frac{1}{x}) = 0}\), if \(\beta=\infty\) we are done, and if \(\beta>0\), then the argument is
+        identical to the case of the line, so assume \(\beta=0\). This implies that \(\pi(x,\sin \frac{1}{x}) = 0\) for all \(x > 0\), once again by the same argument
+        as for the line. Now consider any open set \(U\) containing the point \((0,0)\) and take some neighbourhood \(N_\epsilon(0,0) \subset U\), taking
+        \(N\) so large that \(\frac{1}{N\pi} < \epsilon\), we can see that \((\frac{1}{N\pi},\sin N\pi) = (\frac{1}{N\pi},0) \in U\). 
+        \(\pi(\frac{1}{N\pi},0) = 0\) implies no open set containing \((0,0)\) is a subset of \(\pi^{-1}(1)\), contradicting \(\pi\) being a map implying that \(\beta = \infty\).
+        This argument results in \(\pi(X) = 1\), so that \(X\) is connected by (a).
+
+        
+        Assume for contradiction there exists a path \(\gamma\) between \((0,0)\) and \((\frac{1}{\pi},0)\), assume \((0,y) \in \set{0}\times[0,1]\) is in \(\gamma([0,1])\),
+        and let \(a \in \gamma^{-1}(y)\). By continuity, we may pick some \(\delta>0\), such that
+        \(\abs{a - x}<\delta\) implies \(d(\gamma(a), \gamma(x)) < \frac{1}{2}\). Let \(x \in N_{\delta}(a)\) with \(\gamma(x) = (x_1,x_2)\) 
+        and assume for the sake of contradiction \(x_1 \neq 0\).
+        The projection map \(\pi:(t,s)\mapsto t\) is continuous since \(d(\pi(x),\pi(y))\leq d(x,y)\) and it is clear that the composition of continuous functions is continuous.
+        We can choose \(N\) so large that \(\frac{2}{(2N + 1)\pi} < \frac{1}{N \pi} < x_1\), IVT guaruntees existence of some \(x',x''\) in between \(a\) and \(x\), 
+        such that \(\pi \gamma:x' \mapsto  \frac{1}{N\pi}, x'' \mapsto \frac{2}{(2N + 1)\pi}\).
+        \begin{align*}
+            \abs{a - x''} \tand '\abs{a - x'}<\delta \tand dd(\gamma(a),\gamma(x'')) + d(\gamma(a),\gamma(x')) \geq d(\gamma(x'),\gamma(x'')) = \sqrt{\left(\frac{1}{N \pi}-\frac{2}{(2N + 1)\pi}\right)^2 + 1} \geq 1
+        \end{align*}
+        contradicting \(d(\gamma(a),\gamma(x'')), d(\gamma(a),\gamma(x'))\) both being less than \(\frac{1}{2}\).
+        Hence \(x_1 = 0\), so that \(S = \set{x \in [0,1] \vert \pi \gamma(x) = 0}\) is open. Now suppose that \(\pi\gamma(y) > 0\), then there exists some
+        \(\delta > 0\), so that \(\abs{y-x} < \delta\) implies \(\abs{\pi\gamma(x) - \pi\gamma(y)} < \pi\gamma(y)\), so for any \(x \in N_{\delta}(y)\)
+        \begin{align*}
+            \pi \gamma(x) \geq \pi \gamma(y) - \abs{\pi\gamma(x) - \pi\gamma(y)} > \pi \gamma(y) - \pi \gamma(y) = 0
+        \end{align*}
+        Hence \(\pi\gamma(x) > 0\), so that \(S^c\) is open, hence \(S \subset [0,1]\) is clopen. Since \(0 \in S\), and \(1 \not \in S\), \(\emptyset \neq S \neq [0,1]\),
+        but \(S\) is connected by the same argument that \(\set{0}\times[-1,1]\) is connected, so this is a contradiction and \(X\) is not path connected.
     \end{pb}
 \end{document}
