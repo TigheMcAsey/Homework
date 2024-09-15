@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10.5pt]{article}
 \usepackage{amsmath, amsfonts, amssymb,amsthm}
 \usepackage[includeheadfoot]{geometry} % For page dimensions
 \usepackage{fancyhdr}
@@ -20,12 +20,99 @@
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
-\newcommand{\tand}[1]{\text{ and }}
-\newcommand{\tor}[1]{\text{ or }}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
 
 
 \begin{document}
-    \begin{pb}
-        
-    \end{pb}
+\begin{pb}
+    We can consider the parameterized line defined by \(N \tand \begin{pmatrix}
+        x&y&z
+    \end{pmatrix}\), \( \; l(t) = \begin{pmatrix}
+        tx&ty&1 + t(z-1)
+    \end{pmatrix}\) Then \(t(z-1) = -1\) when \(t = \frac{1}{1-z}\). Plugging in this value for \(t\) defines \(\varphi\).
+    \[\varphi: \begin{pmatrix}
+        x&y&z
+    \end{pmatrix} \mapsto \begin{pmatrix}
+        \frac{x}{1-z}& \frac{y}{1-z}
+    \end{pmatrix}\]
+
+    We define \(\tilde{\varphi}\) similarly. In this case we get
+    \[\tilde{\varphi} \begin{pmatrix}
+        x&y&z
+    \end{pmatrix} \mapsto \begin{pmatrix}
+        \frac{x}{1+z}& \frac{y}{1+z}
+    \end{pmatrix}\]
+
+    Similar to before, we find \(\varphi^{-1}\) by parameterizing the line through \(\begin{pmatrix}
+        u,v,0
+    \end{pmatrix}\) and \(N\), and setting \((l(t)_1)^2 + (l(t)_2)^2 + (l(t)_3)^2 = 1\), this gives us the \(t\) at which \(l(t)\) intersects the sphere.
+    Here is the coordinate change:
+    \[\tilde{\varphi}\circ \varphi^{-1}\begin{pmatrix}
+        u&v
+    \end{pmatrix} = \tilde{\varphi}\begin{pmatrix}
+        \frac{2u}{u^2+v^2+1}&\frac{2v}{u^2+v^2+1}&\frac{u^2+v^2-1}{u^2+v^2+1}
+    \end{pmatrix} = \begin{pmatrix}
+       \frac{u}{u^2+v^2}&\frac{v}{u^2+v^2}
+    \end{pmatrix}\]
+\end{pb}
+\begin{pb}
+    \begin{align*}
+        \varphi_1\circ\varphi_0^{-1}: (x_i)_{i=1}^n \mapsto (x_1^{-1},x_2/x_1, x_3/x_1, \hdots, x_n/x_1)
+    \end{align*}
+\end{pb}
+\begin{pb}
+    \textbf{(a)}
+    Suppose for the sake of contradiction \(R_1\), \(R_2\) are products of elementary row operations such that
+    \begin{align*}
+        R_1 A = \begin{bmatrix}
+            1& 0& x_1& x_3 \\
+            0& 1& x_2& x_4
+        \end{bmatrix} = \begin{bmatrix} \mathbf{v}_1 \\ \mathbf{v}_2 \end{bmatrix} \tand R_2 A = \begin{bmatrix}
+            1& 0& y_1& y_3 \\
+            0& 1& y_2& y_4
+        \end{bmatrix} = \begin{bmatrix} \mathbf{u}_1 \\ \mathbf{u}_2 \end{bmatrix}
+    \end{align*}
+    Where \((x_1,x_2,x_3,x_4) \neq (y_1,y_2,y_3,y_4)\) (Note that these two row spaces are subsets of \(\text{rowsp} A\), but since they have rank 2 they are equal to eachother and \(\text{rowsp} A\)). 
+    It follows that one of \(\mathbf{v}_1 - \mathbf{u}_1 \tor \mathbf{v}_2 - \mathbf{u}_2\) 
+    is non-zero (WLOG \(\mathbf{w} := \mathbf{v}_1 - \mathbf{u}_1\)). But then since \(\mathbb{R}\mathbf{v}_1 + \mathbb{R}\mathbf{v}_2 = \mathbb{R}\mathbf{u}_1 + \mathbb{R}\mathbf{u}_2\) 
+    it follows that \(\mathbf{w} = a\mathbf{v}_1 + b\mathbf{v}_2, \; a,b \in \mathbb{R}\). Since \(\mathbf{w}_i = 0, \; i \in \set{1,2}\), and 
+    \((a\mathbf{v}_1 + b\mathbf{v}_2)_1 = a \tand (a\mathbf{v}_1 + b\mathbf{v}_2)_2 = b\) it follows that \(a = b = 0\) and hence \(\mathbf{w} = \mathbf{0}\), a contradiction. \newline
+    
+    \textbf{(b)} 
+    I will denote \(A = (a_{i,j})\) for \(i \leq 2, j \leq 4\). Note that the determinant is a continuous function on \((a_{i,j}), \; i,j \leq 2\) 
+    (it is a polynomial in these 4 variables and the sum and product of continuous functions is continuous).
+    Furthermore, row operations on \(A\) are just row operations on \((a_{i,j}), \; i,j \leq 2\). It follows that if \(\det (a_{i,j}), \; i,j \leq 2\) is non-zero, continuity furnishes some \(\delta > 0\), such that
+    if \(\abs{b_i - a_i} < \delta\) for each \(i\), then \(\abs{\det (b_{i,j}) - \det (a_{i,j})} < \abs{\det (a_{i,j})}\) for \(i,j \leq 2\), we are done once we apply the reverse triangle inequality
+    \[\abs{\det (a_{i,j})} - \abs{\det (b_{i,j})} \leq \abs{\det (b_{i,j}) - \det (a_{i,j})} < \abs{\det (a_{i,j})} \implies 0 < \abs{\det (b_{i,j})}\]
+    Now let \(B = \begin{bmatrix}
+        \mathbf{b}_1 \\
+        \mathbf{b}_2
+    \end{bmatrix}\) be a matrix who's entries are within \(\delta\) of \(A\)'s entries. It follows that since \((b_{i,j}), \; i,j \leq 2\) is full rank
+    we get that \(\begin{pmatrix}
+        1 & 0
+    \end{pmatrix} \tand \begin{pmatrix}
+        0 & 1
+    \end{pmatrix}\) are in the span of \(\mathbb{R} \mathbf{b}_1' + \mathbb{R} \mathbf{b}_2'\) where \(\mathbf{b}_i'\) is \(\mathbf{b}_i\) restricted to its first two coordinates.
+    It follows that when we dont restrict to the first two coordinates,
+    \(\begin{pmatrix}
+        1 & 0 &y_1&y_2
+    \end{pmatrix} \tand \begin{pmatrix}
+        0 & 1 &y_1&y_2
+    \end{pmatrix}\) for some \(y_i\) are in the rowspace of \(B\).
+
+    \textbf{(c)} If \(A\) has full rank, then it has a \(2 \times 2\) submatrix of full rank, hence by the same procedure as part (b) can be brought
+    to one of these forms by row operations since all \(2 \times 2\) submatrices are listed.
+
+    \textbf{(d)} We can do the computation by using row operations to convert a matrix of form \(U_2\) to \(U_1\).
+    \begin{align*}
+        \varphi_1 \circ \varphi_2^{-1}:
+            \begin{pmatrix}
+                y_1 & y_2 & y_3 & y_4
+            \end{pmatrix}
+            \mapsto \begin{pmatrix}
+                -y_1/y_2 & 1/y_2 & y_3 - \frac{y_1y_4}{y_2} & y_4/y_2
+            \end{pmatrix}
+    \end{align*}
+\end{pb}
 \end{document}

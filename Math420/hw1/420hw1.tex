@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[10.5pt]{article}
 \usepackage{amsmath, amsfonts, amssymb,amsthm}
 \usepackage[includeheadfoot]{geometry} % For page dimensions
 \usepackage{fancyhdr}
@@ -20,8 +20,8 @@
 \newcommand{\set}[1]{\{#1\}}
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
-\newcommand{\tand}[1]{\text{ and }}
-\newcommand{\tor}[1]{\text{ or }}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
 
 
 
@@ -92,5 +92,58 @@
             \mu\left(\bigcup_1^N E_i\right) = \sum_{n \in \bigcup_1^N E_i} n^j = \sum_{i =1}^N \sum_{n\in E_i} n^j = \sum_{i=1}^N \mu(E_i)
         \end{align*}
         where the second equality follows from the \(\set{E_i}_1^n\) being disjoint.
+	\end{pb}
+	\begin{pb}
+		Note, for notational convenience I will use \(\ell:(a,b) \mapsto b-a\).
+
+		\textbf{(a)} Let \(\epsilon > 0\), and consider the finite collection \(\set{E_i}_{i=1}^n \subset \mathcal{P}(\mathbb{R})\) and intervals \(\set{I_i^j}_{i,j=1}^{n,m}\), so that
+		(note we may pick \(m\) independent of \(n\) by just choosing \(m\) to be the maximum number of intervals associated to any \(i \in \set{1,...,n}\))
+		\begin{align*}
+			\bigcup_{j=1}^m I_i^j \supset E_i, \tand \sum_{j=1}^m \ell(I_i^j) < J^*(E_i) + \frac{\epsilon}{n}, \; \; i \in \set{1,..,n}
+		\end{align*}
+		This gives us the desired result,
+		\begin{align*}
+			J^*(\bigcup_{i=1}^n E_i) \leq \sum_{i,j=1}^{n,m} \ell(I_i^j) = \sum_{i=1}^n\sum_{j=1}^m \ell(I_i^j) < \sum_{i=1}^n J^*(E_i) + \frac{\epsilon}{n} = \left(\sum_{i=1}^n J^*(E_i)\right) + \epsilon
+		\end{align*}
+		And since \(\epsilon\) was arbitrary, this proves finite subadditivity. To show that \(J^*\) is not countably subbadditive, notice that
+		for any rational number \(q, \; J^*(q) = 0\), since \((q-\epsilon/2,q+\epsilon/2)\) covers \(q\) for any \(\epsilon > 0\). We may enumerate
+		\(\mathbb{Q}\cap[0,1] = \set{q_1,q_2,...}\), so that applying part (b),
+		\begin{align*}
+			J^*(\mathbb{Q}\cap[0,1]) = 1 > 0 = \sum_{i=1}^\infty 0 = \sum_{i=1}^\infty J^*(q_i)
+		\end{align*}
+
+		\textbf{(b)} Assume for the sake of contradiction that \(J^*(\mathbb{Q}\cap[0,1]) < 1\), then there exists some collection 
+		\(\set{I_i}_{i=1}^n, \; I_i = (a_i,b_i)\) covering \(\mathbf{Q} := \mathbb{Q}\cap[0,1]\), such that \(\sum_{i=1}^n \ell(I_i) < 1\). We may reindex this collection, so that
+		\(a_i \leq a_{i+1}\) (note that this implies \(a_1 < 0\)), and assume WLOG that \(b_i < b_{i+1}\), otherwise \(\bigcup_{1 \leq j \leq n, \; j \neq i} I_j\) still covers \(\mathbf{Q}\), and
+		\(\sum_{1 \leq j \leq n, \; j \neq i} I_j \leq \sum_{1 \leq j \leq n} I_j\), 
+		we may also assume \(b_1 > 0 \tand a_n < 1\), otherwise \(\mathbf{Q} \subset \bigcup_{i=2}^n I_i \tor \mathbf{Q}\subset\bigcup_{i=1}^{n-1} I_i\).
+		Finally, we have \(a_i \leq b_{i-1}\), otherwise \(\emptyset \neq (b_{i-1},a_i) \subset [0,1]\), and since \(\mathbb{Q}\) is dense in \(\mathbb{R}\),
+		\begin{align*}
+			\emptyset \neq \mathbb{Q}\cap(b_{i-1},a_i) = \mathbf{Q}\cap(b_{i-1},a_i) \subset (\bigcup_{i=1}^n I_i)^c \implies \mathbf{Q} \not \subset \bigcup_{i=1}^n I_i
+		\end{align*}
+		Using the above results, we get
+		\begin{align*}
+			&1 > \sum_{i=1}^n b_i - a_i \geq \sum_{i=1}^n b_i - b_{i-1} = b_n - b_1 \geq b_n - a_1 > b_n
+		\end{align*}
+		And hence \(1 \in (\bigcup_{i=1}^n I_i)^c\), a contradiction. \newline
+		
+		\textbf{(c)} Consider any interval \(I\), if \(I \not \subset [0,1]\), then \(I \not \subset \mathbf{Q} := \mathbb{Q}\cap[0,1]\). If
+		\(I \subset [0,1]\), then since the irrationals are dense in \(\mathbb{R}\), there exists some \(\alpha \in I \cap \mathbb{Q}^c \supset \mathbf{Q}^c\).
+		This proves that there are no non-empty open intervals which are subsets of \(\mathbf{Q}\), hence if \(\set{I_i}_{i=1}^n\) is a collection of open
+		intervals, such that \(\bigcup_1^n I_i \subset \mathbf{Q}\), then each \(I_i\) must be empty, implying that \(\sum_1^n \ell(I_i) = 0\), so that
+		\(J_*(\mathbf{Q}) = 0 \neq 1 = J^*(\mathbf{Q})\), i.e. \(\mathbf{Q}\) is not Jordan measureable.
+	\end{pb}
+	\begin{pb}
+		First note that from monotonicity, \(\mu^*(E) \leq \mu^*(\tilde{E}) = \mu(\tilde{E})\) for any \(\tilde{E}\supset E\). Hence we need only show existence of some \(\tilde{E} \supset E\), such that
+		\(\mu(\tilde{E}) \leq \mu^*(E)\). If \(\mu^*(E) = \infty\) we are done trivially with \(\tilde{E} = X\), so assume not. Define \(I_n := \bigcup_{i=1}^\infty A_i \supset E\), 
+		such that for each \(i, \; A_i \in \mathcal{A}\)
+		and \(\sum_{i=1}^\infty \mu_0(A_i) = \sum_{i=1}^\infty \mu(A_i) < \mu^*(E) + \frac{1}{n}\); existence of such \(A_i\) is guarunteed by the definition of \(\mu^*\).
+		It follows that since \(\mathcal{A} \subset \mathcal{M}\) (Folland 1.13), each \(I_n \in \mathcal{M}\) by the property of \(\mathcal{M}\) being an algebra. Then we have 
+		\begin{align*}
+			&E \subset \tilde{E} := \cap_{n=1}^\infty I_n \in \mathcal{M}\\
+			\implies &\mu^*(E) \leq \mu^*(\tilde{E}) = \mu(\tilde{E}) \leq \mu(I_n), \; \forall n \\
+			\implies &\mu^*(E) \leq \mu(\tilde{E}) \leq \mu^*(E) + \frac{1}{n}, \; \forall n \\
+			\implies &\mu(\tilde{E}) = \mu^*(E)
+		\end{align*}
 	\end{pb}
 \end{document}
