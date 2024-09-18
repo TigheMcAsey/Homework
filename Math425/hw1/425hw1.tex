@@ -46,7 +46,16 @@
 
     Similar to before, we find \(\varphi^{-1}\) by parameterizing the line through \(\begin{pmatrix}
         u,v,0
-    \end{pmatrix}\) and \(N\), and setting \((l(t)_1)^2 + (l(t)_2)^2 + (l(t)_3)^2 = 1\), this gives us the \(t\) at which \(l(t)\) intersects the sphere.
+    \end{pmatrix}\) and \(N\), to compute the inverse we check where \(\ell(t):= \begin{pmatrix} tu, tv, 1 - t\end{pmatrix}\) intersects the sphere.
+    \begin{align*}
+        (tu)^2 + (tv)^2 + (1-t)^2 = 1 \iff t(t(u^2 + v^2 + 1) - 2) = 0 \iff t = 0 \tor t = \frac{2}{u^2 + v^2 + 1}
+    \end{align*}
+    We can ignore the case of \(t=0\), since this corresponds to \(N\), plugging in this \(t\) gives the inverse.
+    \begin{align*}
+        \varphi^{-1}: (u,v) \mapsto \begin{pmatrix}
+            \frac{2u}{u^2+v^2+1}&\frac{2v}{u^2+v^2+1}&\frac{u^2+v^2-1}{u^2+v^2+1}
+        \end{pmatrix}
+    \end{align*}
     Here is the coordinate change:
     \[\tilde{\varphi}\circ \varphi^{-1}\begin{pmatrix}
         u&v
@@ -57,6 +66,16 @@
     \end{pmatrix}\]
 \end{pb}
 \begin{pb}
+    \begin{align*}
+        \varphi_0^{-1}:(x_1,\hdots,x_n) \mapsto (1,x_1,\hdots,x_n)
+    \end{align*}
+    Then we have:
+    \begin{align*}
+        &\varphi_0 \circ \varphi_0^{-1}:(x_1,\hdots,x_n)\mapsto \varphi_0 (1,x_1,\hdots,x_n) = (x_1,\hdots,x_n) \\
+        &\varphi_0^{-1} \circ \varphi_0:(x_0,x_1,\hdots,x_n) \mapsto \varphi_0^{-1} (\frac{x_1}{x_0},\hdots,\frac{x_n}{x_0}) =
+         (1,\frac{x_1}{x_0},\hdots,\frac{x_n}{x_0}) \sim (x_0,x_1,\hdots,x_n)
+    \end{align*}
+    Here is the change of coordinates:
     \begin{align*}
         \varphi_1\circ\varphi_0^{-1}: (x_i)_{i=1}^n \mapsto (x_1^{-1},x_2/x_1, x_3/x_1, \hdots, x_n/x_1)
     \end{align*}

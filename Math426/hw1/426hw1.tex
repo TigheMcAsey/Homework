@@ -40,16 +40,15 @@
         \(A \supset \overline{A}\), which implies \(A = \overline{A}\).
 
         \textbf{(c)} The compliment of \(A^\circ\) is closed, and \(A^\circ \subset A\) implies that \(\left(A^\circ\right)^c \supset A^c\), implying that
-        \(\overline{A^c} \supset \left(A^\circ\right)^c\). Conversely, if \(x \in \overline{A^c}\), then by part (a), any open set containing \(x\) has non-empty
-        intersection with \(A^c\), hence there does not exist an open set \(U\) containing \(x\), such that \(U \subset A\), applying (a) again ,this means that
-        \(x \not \in A^\circ\)
+        \(\overline{A^c} \subset \left(A^\circ\right)^c\). Conversely, \(\overline{A^c} \supset A^c\) implies that \(\overline{A^c}^c \subset A\), but this
+        is the compliment of a closed set, hence open so that \(\overline{A^c}^c \subset A^\circ\), implying that \(\overline{A}^c \supset \left(A^\circ\right)\)
 
         \(\overline{A}^c\) is an open set contained in \(A^c\), hence \(\overline{A}^c \subset (A^c)^\circ\). Conversely, if \(x \in \overline{A}\), then from (a), any open set containing
         \(x\) has non-trivial intersection with \(A\), hence applying part (a) again we get that \(x \not \in (A^c)^\circ\), hence \(\overline{A} \subset \left((A^c)^\circ\right)^c\),
         contraposing this gives the desired equality.
     \end{pb}
     \begin{pb}
-        Consider the collection \(\mathcal{I}\) of closed sets in \(X\), which are not finite unions of irreducibles. Every descending chain being eventually constant is equivalent to every descending chain having a lower bound
+        Consider the collection \(\mathcal{I}\) of closed sets in \(X\), which are not finite unions of closed irreducibles. Every descending chain being eventually constant is equivalent to every descending chain having a lower bound
         (i.e. If \(\cap_i F_i = F_j\), then \(F_j\) is a lower bound on the chain).
         Thus we can apply Zorn's lemma which furnishes a minimal element \(Z\) in \(\mathcal{I}\), if \(Z\) were not irreducible, then it would need to be a union of closed subsets \(Z_1\cup Z_2\),
         since \(Z\) is not a finite union of irreducibles, the same must apply to one of \(Z_1 \tor ZZ_2\), but this contradicts the minimality of \(Z \in \mathcal{I}\). It follows that
@@ -63,7 +62,7 @@
         \(Y_i = (Y_i \cap Z_j) \cup (Y_i \cap \cup_{i \neq j}Z_i)\) is a union of closed proper subsets of \(Y_i\).
     \end{pb}
     \begin{pb}
-        \textbf{(a)} Suppose \(X\) is not connected, then there exists some \(X \neq A \neq \emptyset\) which is clopen, it follows that
+        \textbf{(a)} Suppose \(X\) is not connected, then there exists some \(X \subsetneq A \neq \emptyset\) which is clopen, it follows that
         \(A^c\) is also clopen. Let \(\pi: \begin{cases} x \mapsto 1 & x \in A \\ x \mapsto 0 &x\in A^c\end{cases}\) map \(X\) to \(\set{0,1}\) with the discrete topology.
         This is clearly a map, since the preimage of every set is open. Conversely, suppose there exists a surjective map \(\pi:X \to \set{0,1}\),
         we have that \(\pi^{-1}(1), \pi^{-1}(0) = (\pi^{-1}(1))^c\) are open, disjoint and non-empty. Since compliments of open sets are open, these sets are also closed.
