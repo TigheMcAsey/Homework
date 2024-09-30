@@ -1,0 +1,93 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{centernot}
+\usepackage[includeheadfoot,margin=0.5in]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 426hw1}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{color}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\ism}{\simeq}
+
+\begin{document}
+    \begin{pb}
+        
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+
+    \textbf{Lemma.} I will use the following lemma to streamline my proofs for problems 3 and 4. \newline
+    If \(\psi: X \to Y\) is a homeomorphism, and \(\sim\) is an equivalence relation on \(X\), and \(\approx\) a equivalence relation on \(Y\), such that
+    \(\psi(a) \approx \psi(b) \iff a \sim b\), then \(X/\sim \ism Y/\approx\) \newline
+    \textbf{proof.} Define \(\overline{\psi}: X/\sim \to Y/\approx\), by \(\overline{\psi}: \overline{x} \mapsto \overline{\psi(x)}\), this is surjective since \(\psi\) is surjective and \(\overline{\psi}\) is
+    well defined/injective by definition of \(\approx\). We can define \(\overline{\psi^{-1}}: Y/\approx \to X/\sim\), in the same way. This is the inverse of \(\overline{\psi}\), since
+    \(\overline{\psi} \tand \overline{\psi^{-1}}\) are just restrictions to equivalence classes of \(\psi \tand \psi^{-1}\). To show \(\overline{\psi}\) is continuous, note that
+    \(\overline{\psi} = \pi_\approx \psi\). Let \(U\) be open in \(Y/\approx\), then the preimage of \(U\) under \(\pi_\approx \) is open by definition, so continuity follows from continuity of \(\psi\).
+    The proof for continuity of \(\overline{\psi^{-1}}\) is the same.
+
+    \begin{pb}
+        
+    \end{pb}
+    \begin{pb}
+        Note that the triangle is homeomorphic to the disc. We can insribe the triangle in a circle with radius \(R\). Then for each point \(p\), let \(q\) be the intersection
+        of the ray through \(p \) and the origin with the boundary of the triangle. For each of these points we can map \(p \mapsto \frac{Rp }{\abs{q }}\) this is a homeomorphism
+        since \(q\) varies smoothly with \(p\) and we have inverse \(p \mapsto \frac{\abs{q}p}{R}\), where \(q\) comes from inscribing the triangle in the circle, which is also continuous.
+        It follows that the equivalence relation induced on \(D^2\) is \(e^{ix} \sim e^{ix}e^{\frac{2\pi}{3}} \sim e^{-ix}\), which can be seen by the picture and lemma. So that
+        the dunce cap can be written as \(D^2/\sim\).
+
+        \textcolor{red}{Include Images HERE}
+
+        Now consider the maps \(\mathbf{1}_{S^1}\) and
+        \begin{align*}
+            &f:S^1 \to S^1 \\
+            &e^{ix} \mapsto \begin{cases}
+                e^{3ix} & 0 \leq x < \frac{4\pi}{3} \\
+                e^{-3ix} & \frac{4\pi}{3} \leq x < 2\pi
+            \end{cases}
+        \end{align*}
+        Take the mapping cone 
+        \begin{align*}
+            C_f = S^1 \times I / (x,0) \sim f(x), (x,1) \sim (y,1)
+        \end{align*}
+        For each \(x\), we have \(f^{-1}(x) = \set{e^{ix/3},e^{i(x + 2\pi)/3},e^{-ix/3}}\). We can then take the map \(C_{\mathbf{1}_{S^1}} \to D^2\), where \((x,t) \mapsto (x,1-t)\), this is a homeomorphism between the
+        cone and disc, with the quotients in \(D^2/\sim\) being the image of quotients of \(C_f\) under this map. Hence by the lemma \(C_f \ism D^2/\sim\) the dunce cap.
+
+        We have that \(C_{\mathbf{1}_{S^1}}\) is contractible, using the homotopy \(H((x,t),s) = (x,t(1-s))\), so it will suffice to show that \(C_{f} \ism C_{\mathbf{1}_{S^1}}\), and we 
+        have proven in class that homotopic maps have homotopic cones. I will show \(f \sim \rho \sim \mathbf{1}_{S^1}\), where \[\rho: e^{ix} \mapsto 
+        \begin{cases} 
+        e^{3ix} & 0 < x < 2\pi/3 \\ 
+        1 & 2\pi/3 \leq x < 2\pi
+        \end{cases}\]
+        I will provide \(H_1\) for the first equivalence \(f \sim \rho\) and \(H_2\) for the second \(\rho \sim \mathbf{1}_{S^1}\).
+        \begin{align*}
+            &H_1(x,t):
+            \begin{cases}
+                x \mapsto f(x) & x < \frac{2}{3} - \frac{1}{3}t \tor x > \frac{2}{3} + \frac{1}{3}t \\ 
+                x \mapsto f(\frac{2}{3} - \frac{1}{3}t) & \frac{2}{3} - \frac{1}{3}t \leq x \leq \frac{2}{3} + \frac{1}{3}t
+            \end{cases} \\
+            &H_2(x,t):
+            \begin{cases}
+                x \mapsto f(\frac{x}{1 + 2t})
+            \end{cases}
+        \end{align*}
+
+    \end{pb}
+\end{document}

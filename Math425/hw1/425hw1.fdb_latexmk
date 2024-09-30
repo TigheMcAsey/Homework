@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1726551211.8356 "/home/tighemcasey/Math hw/Math425/hw1/425hw1.tex" "425hw1.pdf" "425hw1" 1726551214.13818 0
+["pdflatex"] 1726876075.27263 "/home/tighemcasey/Math hw/Math425/hw1/425hw1.tex" "425hw1.pdf" "425hw1" 1726876076.12212 0
   "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1726107872.28644 25678 aa7c8fd3909e804e7d85441c21595406 ""
   "/home/tighemcasey/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1726102813.02348 21086786 07df747a8ef29f8e2edc5ba549d24369 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1726102823.09648 1004 54797486969f23fa377b128694d548df ""
@@ -42,9 +42,9 @@
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/graphics/keyval.sty" 1726102832.04348 2671 70891d50dac933918b827d326687c6e8 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/l3backend-dev/l3backend-pdftex.def" 1726102842.43048 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/enumerate.sty" 1726102839.64648 3468 ad69b54642e68f9fdf39ec1a16dd7341 ""
-  "/home/tighemcasey/Math hw/Math425/hw1/425hw1.tex" 1726551210.78355 6616 57599691f5c3021ff0c354e0923a23b3 ""
-  "425hw1.aux" 1726551213.31355 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "425hw1.tex" 1726551210.78355 6616 57599691f5c3021ff0c354e0923a23b3 ""
+  "/home/tighemcasey/Math hw/Math425/hw1/425hw1.tex" 1726876074.30336 6796 dd82f7598301486f3c0c571f00b3918c ""
+  "425hw1.aux" 1726876075.89336 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "425hw1.tex" 1726876074.30336 6796 dd82f7598301486f3c0c571f00b3918c ""
   (generated)
   "425hw1.aux"
   "425hw1.log"
