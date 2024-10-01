@@ -1,4 +1,5 @@
 \documentclass[10.5pt]{article}
+\usepackage{graphicx}
 \usepackage{amsmath, amsfonts, amssymb,amsthm}
 \usepackage{centernot}
 \usepackage[includeheadfoot,margin=0.5in]{geometry} % For page dimensions
@@ -221,10 +222,11 @@
         Note that the triangle is homeomorphic to the disc. We can insribe the triangle in a circle with radius \(R\). Then for each point \(p\), let \(q\) be the intersection
         of the ray through \(p \) and the origin with the boundary of the triangle. For each of these points we can map \(p \mapsto \frac{Rp }{\abs{q }}\) this is a homeomorphism
         since \(q\) varies smoothly with \(p\) and we have inverse \(p \mapsto \frac{\abs{q}p}{R}\), where \(q\) comes from inscribing the triangle in the circle, which is also continuous.
-        It follows that the equivalence relation induced on \(D^2\) is \(e^{ix} \sim e^{ix}e^{\frac{2\pi}{3}} \sim e^{-ix}\), which can be seen by the picture and lemma. So that
+        It follows that the equivalence relation induced on \(D^2\) is \(e^{ix} \sim e^{ix}e^{\frac{2\pi}{3}} \sim e^{-ix}\), which can be seen by the following picture and the lemma. So that
         the dunce cap can be written as \(D^2/_\sim\).
-
-        \textcolor{red}{Include Images HERE}
+        \begin{center}
+            \includegraphics[scale = 0.03]{Dunce cap.png}
+        \end{center}
 
         Now consider the maps \(\mathbf{1}_{S^1}\) and
         \begin{align*}
