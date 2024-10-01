@@ -7,7 +7,7 @@
 \usepackage{tikz-cd}
 
 \fancyhf{}
-\lhead{Math 426hw1}
+\lhead{Math 426hw2}
 \rhead{Tighe McAsey - 37499480}
 \pagestyle{fancy}
 
@@ -70,8 +70,54 @@
         \(\varphi \tand \varphi^{-1} = \tilde{\varphi}\).
 
         Continuity of \(\varphi\): Let \(U\) be open in \(Y\), then \(U\) is of the form \(\pi(V \times \set{0} \sqcup W \times \set{1})\), for \(W,V \subset \mathbb{R}\) open. Hence we can write it in the 
-        form of \(V \setminus \set{0} \cup W\setminus \set{0} \times \set{0} \cup \chi_V \cup \chi_W\)
+        form of \(((V \setminus \set{0} \cup W\setminus \set{0}) \times \set{0}) \cup \chi_V \cup \chi_W\),
+        \begin{align*}
+            &\chi_V = \begin{cases}
+                \set{0,0} & 0 \in V \\
+                \emptyset & 0 \not \in V
+            \end{cases}
+            &\chi_W = \begin{cases}
+                \set{0,1} & 0 \in W \\
+                \emptyset & 0 \not \in W
+            \end{cases}
+        \end{align*}
+        Now since \(\set{(0,0)}^c\) and \(\set{(0,1)}^c\) are open in \(Y\) 
+        (they are images of their compliments in \(\mathbb{R} \times \mathbb{Z}\), where points are closed since T1 follows from hausdorff), it follows that
+        \(V \setminus \set{0} \cup W\setminus \set{0}\) is open. Then \((\pi_X \varphi)^{-1}((V \setminus \set{0} \cup W\setminus \set{0}) \times 0)\) is just \(\set{(x,y) \in \mathbb{R}^2 \setminus \set{0} \vert xy \in V \setminus \set{0} \cup W\setminus \set{0}}\)
+        but this is the preimage of an open set in \(\mathbb{R}\) of the continuous polynomial function \((x,y) \mapsto xy\), this proves continuity of \(\varphi\) by definition
+        of the quotient space in the case of \(\chi_V = \emptyset = \chi_W\). Now in the case where atleast one of \(\chi_V,\chi_W\) is non-empty, assume WLOG \(\chi_V \neq \emptyset\), then since
+        \(V\) is an open set in \(\mathbb{R}\) containing \(0\), it must contain some open set \(J\) containing \(0\).  Then \((\pi_X \varphi)^{-1}((J \setminus 0) \times \set{0})\) is the set
+        \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy \in J \setminus \set{0}}\), this is an open set since \(J \setminus 0\) is open, so for some \(\epsilon\) it contains a set of the form
+        \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert 0 < xy < \epsilon}\). Now we take
+        \begin{align*}
+            &(\pi_X \varphi)^{-1}(0,1) = \set{(x,y) \in \mathbb{R}^2 \setminus \set{0} \vert xy = 0} \setminus \set{(0,y) \vert y \neq 0} 
+            &(\pi_X \varphi)^{-1}(0,0) = \set{(x,y) \in \mathbb{R}^2 \setminus \set{0} \vert xy = 0} \setminus \set{(x,0) \vert x \neq 0}
+        \end{align*}
+       Note that \(\set{(0,y) \vert y \neq 0}, \set{(x,0) \vert x \neq 0}\) are closed in \(\mathbb{R}^2 \setminus \set{0}\) since their complemets are open.
+        Now in the case where \((0,0) \in U\), \((\pi_X \varphi)^{-1}(U)\) contains the open set \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy < \epsilon} \setminus \set{(x,0) \vert x \neq 0}\)
+        containing \((\pi_X \varphi)^{-1}(0,0)\). Similarly if \((0,1) \in U\), then 
+        \((\pi_X \varphi)^{-1}(U)\) contains the open set \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy < \epsilon} \setminus \set{(0,y) \vert y \neq 0}\)
+        containing \((\pi_X \varphi)^{-1}(0,1)\). But since \((\pi_X \varphi)^{-1}(U) \supset (\pi_X \varphi)^{-1}((V \setminus \set{0,0} \cup W \setminus (0,1)) \times \set{0})\) is an open set containing
+        every other point \((\pi_X \varphi)^{-1}(U)\) is open by the local definition of continuity. This proves that \(\varphi\) is continuous by definition of the quotient map.
+
+        Continuity of \(\tilde{\varphi}\): Let \(U\) be an open set in \(X\) now let \(q\) be any point in \(U\), but not \(\overline{(1,0)}\). Then we can write \(q = \overline{(p,1)}\) for some \(p\).
+        Then since \(U\) is open, \(\pi_X^{-1}(U)\) is open containing \((p,1)\), so for some \(\epsilon > 0\) (where if \(p \neq 0\)
+        we can choose \(\epsilon < \abs{p}\)), it contains \((p + t,1)\) for \(t\) such that \(\abs{t} < \epsilon\).
+        Then in the first case where \(p \neq 0\) we have
+        \((\pi_Y\tilde{\varphi})^{-1}\set{(p,1)} = \set{(p,0), (p,1)}\) is contained in the open set \(\set{(p + t,s) \vert t < \epsilon s \in \set{0,1}} \subset (\pi_Y\tilde{\varphi})^{-1}(U)\) 
+        here \(\epsilon < \abs{p}\) guarantees we have \((p+t,0) \tand (p+t,1)\) in the preimage dealing with both points at once. Now in the second case where \(p = 0\), we still have that 
+        \(\set{(p + t,0) \vert t < \epsilon} \subset (\pi_Y\tilde{\varphi})^{-1}(U)\), so the preimage still contains an open set containing \((0,0)\). This proves continuity for any \(U\)
+        not containing \(\overline{(1,0)}\). If \(U\) does contain \(\overline{(1,0)}\), then \(\pi_X^{-1}(U)\) is an open set containing \((1,0)\) hence for some \(\epsilon > 0\) it contains 
+        \((1,t)\) for all \(t\), such that \(\abs{t} < \epsilon\), this means that \(\pi_X(\pi_X^{-1})(U)\) contains each \(\overline{(1,t)} = \overline{(t,tt^{-1})} = \overline{(t,1)}\).
+        This implies that there is some open set containing \(\overline{(1,0)}\) contained in \((\pi_Y\tilde{\varphi})^{-1}(U)\),
+        namely \begin{align*}
+            (\pi_Y\tilde{\varphi})^{-1}(U) \supset (\pi_Y\tilde{\varphi})^{-1}(\set{(1,t) \vert \abs{t} < \epsilon}) \supset \set{(t,1) \vert \abs{t} < \epsilon}
+        \end{align*}
+        This implies by the local definition that \((\pi_Y\tilde{\varphi})^{-1}(U)\) is open, so by definition of the quotient \(\tilde{\varphi}^{-1}(U)\) is open. We conclude that
+        \(\tilde{\varphi} = \varphi^{-1}\) is continuous along with \(\varphi\), making \(\varphi\) a homeomorphism from \(X\) to \(Y\).
     \end{pb}
+    \newpage
+
     \begin{pb}
         Take \(\mathbb{R}^3 \setminus (0,0)\), and \(S^2\) the unit sphere centered at the origin, then \(H(x,t) = \frac{x}{1+t(\abs{x}-1)}\) is a strong deformation retract of
         \(\mathbb{R}^3\) onto \(S^2\), hence \(\mathbb{R}^3 \setminus \set{\text{pt}}\) is homotopic to \(S^2\).
@@ -115,26 +161,29 @@
         \(Y \subset X\), then \(\overline{H} (\frac{X \times I }{\approx}) \subset Y/_\sim\), and \(Y/_\sim\) remains fixed, since \(\overline{H}\) agrees with \(H\pi\). This is equivalent
         to saying there exists \(\overline{H}\) making the following diagram commute:
         
-        % \begin{equation*} 
-        %     \begin{tikzcd}
-        %         X\times I\arrow[r, "H"] \arrow[d]& X\arrow[d]\\
-        %         \frac{X \times I}{\approx}\arrow[r, "\exists \overline{H}"]& X/_\sim
-        %     \end{tikzcd}
-        % \end{equation*}
+        \begin{equation*} 
+            \begin{tikzcd}
+                X\times I\arrow[r, "H"] \arrow[d]& X\arrow[d]\\
+                \frac{X \times I}{\approx}\arrow[r, "\exists \overline{H}"]& X/_\sim
+            \end{tikzcd}
+        \end{equation*}
 
         then we can identify \(\frac{X \times I}{\approx} = X/_\sim \times I\), so that \(\overline{H}\) is in fact our desired homotopy.
     \end{pb}
+    \newpage
 
     \textbf{Lemma.} I will use the following lemma to streamline my proofs for problems 3 and 4. \newline
     If \(\psi: X \to Y\) is a homeomorphism, and \(\sim\) is an equivalence relation on \(X\), and \(\approx\) a equivalence relation on \(Y\), such that
     \(\psi(a) \approx \psi(b) \iff a \sim b\), then \(X/_\sim \ism Y/_\approx\), this says that homeomorphisms from \(X \to Y\) induce homeomorphisms to the quotients when the points in the same equivalence
     classes induced by the quotient on \(Y\) are images of the points in the same equivalence classes induced by the quotient on \(X\), see the diagram.
-    % \begin{equation*} 
-    %     \begin{tikzcd}
-    %         X\arrow[r, "\overset{\psi}{\ism}"] \arrow[d, "\pi_\sim"]& Y\arrow[d, "\pi_\approx"]\\
-    %         X/_\sim\arrow[r, "\overset{\overline{\psi}}{\ism}"]& Y/_\approx
-    %     \end{tikzcd}
-    % \end{equation*}
+
+    \begin{equation*} 
+        \begin{tikzcd}
+            X\arrow[r, "\overset{\psi}{\ism}"] \arrow[d, "\pi_\sim"]& Y\arrow[d, "\pi_\approx"]\\
+            X/_\sim\arrow[r, "\overset{\overline{\psi}}{\ism}"]& Y/_\approx
+        \end{tikzcd}
+    \end{equation*}
+
     \textbf{proof.} Define \(\overline{\psi}: X/_\sim \to Y/_\approx\), by \(\overline{\psi}: \overline{x} \mapsto \overline{\psi(x)}\), this is surjective since \(\psi\) is surjective and \(\overline{\psi}\) is
     well defined/injective by definition of \(\approx\). We can define \(\overline{\psi^{-1}}: Y/_\approx \to X/_\sim\), in the same way. This is the inverse of \(\overline{\psi}\), since
     \(\overline{\psi} \tand \overline{\psi^{-1}}\) are just restrictions to equivalence classes of \(\psi \tand \psi^{-1}\). To show \(\overline{\psi}\) is continuous, note that
@@ -187,9 +236,11 @@
         \end{align*}
         Take the mapping cone 
         \begin{align*}
-            C_f = S^1 \times I / (x,0) \sim (f(x),0), (x,1) \sim (y,1)
+            C_f = \frac{S^1 \times I \sqcup S^1}{(x,0) \sim f(x), (x,1) \sim (y,1)}
         \end{align*}
-        For each \(x\), we have \(f^{-1}(x) = \set{e^{ix/3},e^{i(x + 2\pi)/3},e^{-ix/3}}\). We can then take the map \(C_{\mathbf{1}_{S^1}} \overset{\psi}{\to} D^2\), where \((x,t) \mapsto (x,1-t)\), this is a homeomorphism as explained previously. 
+        For each \(x\), we have \(f^{-1}(x) = \set{e^{ix/3},e^{i(x + 2\pi)/3},e^{-ix/3}}\), so the equivalence relation induced by \((x,0) \sim f\) can be seen to be 
+        \(e^{ix/3}\sim e^{i(x + 2\pi)/3}\sim e^{-ix/3}\). 
+        We can then take the map \(C_{\mathbf{1}_{S^1}} \overset{\psi}{\to} D^2\), where \((x,t) \mapsto (x,1-t)\), this is a homeomorphism as explained previously. 
         Since \(C_f\) is a quotient of \(C_{\mathbf{1}_{S^1}}\) by the image of quotients in \(D^2/_\sim\) via \(\psi^{-1}(D^2)\), the lemma implies that \(C_f \ism D^2/_\sim\) the dunce cap.
 
         We have that \(C_{\mathbf{1}_{S^1}}\) is contractible, using the homotopy \(H((x,t),s) = (x,t(1-s))\), so it will suffice to show that \(C_{f} \ism_H C_{\mathbf{1}_{S^1}}\), and we 
