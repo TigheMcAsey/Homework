@@ -54,7 +54,7 @@
                 (xy,1) & x \neq 0
             \end{cases} \\
             \tilde{\varphi}: Y &\to X \\
-            (s,t) \mapsto \begin{cases}
+            (s,t) &\mapsto \begin{cases}
                 \overline{(s,1)} & s \neq 0 \\
                 \overline{(0,1)} & s = t = 0 \\
                 \overline{(1,0)} & s=0, t=1
@@ -62,19 +62,19 @@
         \end{align*}
         To check that this \(\varphi\) is injective (it is well defined by (a)), we only need check that \(\overline{(1,0)}, \overline{(0,1)}\) map to seperate points in \(Y \), since part (c) guarantees
         the other elements are 1-1, so since these points map to \(0\) in the first coordinate, away from all other points, and map to seperate points in \(Y\) the map is injective.
-        To check surjectivity, \((0,0) \tand (0,1)\) are mapped onto, so we can check the other points. \((x,1) \mapsto (x,0)\) shows surjectivity. Similarly, we check for \(\varphi^{-1}\),
+        To check surjectivity, \((0,0) \tand (0,1)\) are mapped onto, so we can check the other points. \((x,1) \mapsto (x,0)\) shows surjectivity. Similarly, we check for \(\tilde{\varphi}\),
         it is well defined since it just extends to equivalence classes. It is onto since \(\overline{(0,1)}, \overline{(1,0)}\) are in the image, and any
         \((x,y) \sim (xy,1)\) (for \(x,y \neq 0\)) has its equivalence class in the image. Injectivity is also clear since \((x,1) \sim (y,1)\) iff \(x=y\) and \(\overline{(1,0)}\) is only mapped onto by one point.
         To see that these are inverse maps, it is immediate they are inverses in the case of \((0,1),(0,0) \in Y\) and \(\overline{(0,1)},\overline{(1,0)} \in X\).
-        Checking this for \(x,y,s \neq 0\) we have \(\varphi^{-1}\varphi(\overline{(x,y)}) = \overline{(xy,1)} \sim  (x,y) \tand \varphi \varphi^{-1}(s,0) = (s,0)\). It remains to show continuity of
-        \(\varphi \tand \varphi^{-1}\).
+        Checking this for \(x,y,s \neq 0\) we have \(\tilde{\varphi}\varphi(\overline{(x,y)}) = \overline{(xy,1)} \sim  (x,y) \tand \varphi \tilde{\varphi}(s,0) = (s,0)\). It remains to show continuity of
+        \(\varphi \tand \varphi^{-1} = \tilde{\varphi}\).
 
         Continuity of \(\varphi\): Let \(U\) be open in \(Y\), then \(U\) is of the form \(\pi(V \times \set{0} \sqcup W \times \set{1})\), for \(W,V \subset \mathbb{R}\) open. Hence we can write it in the 
         form of \(V \setminus \set{0} \cup W\setminus \set{0} \times \set{0} \cup \chi_V \cup \chi_W\)
     \end{pb}
     \begin{pb}
         Take \(\mathbb{R}^3 \setminus (0,0)\), and \(S^2\) the unit sphere centered at the origin, then \(H(x,t) = \frac{x}{1+t(\abs{x}-1)}\) is a strong deformation retract of
-        \(\mathbb{R}^3\) onto \(S^2\).
+        \(\mathbb{R}^3\) onto \(S^2\), hence \(\mathbb{R}^3 \setminus \set{\text{pt}}\) is homotopic to \(S^2\).
 
         Let \(J \) be the filled Torus (i.e. \(D^2 \times S^1\)), and let \(D_\text{Lat}, D_\text{Long}\) denote the latitudinal and longitudinal discs respectively. 
         Then we may write \(\mathbb{R}^3 \setminus \set{\text{pt}} = T^2 \sqcup (J^\circ \setminus \set{\text{pt}}) \sqcup \left(J^c\right)^\circ\).
@@ -83,19 +83,58 @@
 
         For the first equivalence, we can let \(P\) be the \(x,y\) plane, with \(J \setminus \set{\text{pt}}\) embedded in \(\mathbb{R}^3 \setminus \set{\text{pt}}\) at height zero 
         (wlog the point doesn't have height 0). Then we can strong deformation retract \(\mathbb{R}^3 \setminus \set{\text{pt}}\) by projecting the z-axis onto \(P \cup (J \setminus \set{\text{pt}})\). 
-        Now given a point \((x,y,z)\), let \(\) the homotopy can be written as \(H((x,y,z),t) = (x,y,z)\)
+        Now given a point \(p = (x_p,y_p,z_p)\), let \((x_p,y_p,z_0)\) be the closest point to it in \(P \cup (J \setminus \set{\text{pt}}) \cap \set{(x_p,y_p,z) \vert z \in \mathbb{R}}\).
+        the homotopy can be written as \(H((x,y,z),t) = (x,y,z + t(z_0 - z))\) for \(z_0\) continuously depending on \(z\)(continuous since \(P \cup J\) is smooth). 
+        Now we can deformation retract \(P \cup (J \setminus \set{\text{pt}})\) onto \(J \setminus \set{\text{pt}} \cup D_{\text{Long}}\),
+        the retract \(H\) is defined to be constant on \(J \setminus \set{\text{pt}} \cup D_{\text{Long}}\), then assuming the radius from the origin to the outer edge of the torus is \(R\)
+        we only need to define it on points of \(P \setminus D^2_R\), where \(D^2_R\) denotes the disc of radius \(R\). On such points, define \(H(p,t) = \frac{p}{1 + tR(\abs{p}) - 1/R}\).
+        Transitivity of homotopy equivalence proves that \(\mathbb{R}^3 \setminus \set{\text{pt}} \ism_{H} (J \setminus \set{\text{pt}}) \cup D_\text{Long}\).
+        
+        Now note to show a strong deformation retract of \((J \setminus \set{\text{pt}}) \cup D_\text{Long}\) onto \(T^2 \cup D_\text{Lat} \cup D_\text{Long}\), it will suffice to show one
+        exists from \(J \setminus \set{\text{pt}}\) onto \(T^2 \cup D_\text{Lat}\), since \(\partial D_\text{Long} \subset T^2\) 
+        implies that \(T^2\) remaining fixed in our homotopy allows us to fix
+        \(D_\text{Long}\) in our homotopy. Now we may identify \(J \setminus \set{\text{pt}} = \frac{D^2 \times I \setminus \set{\text{pt}}}{(x,1) \sim (x,0)}\). 
+        Considering the cylinder centered at the origin, with origin removed, i.e. \(D^2 \times I \setminus \set{(0,0)}\), we can write a homotopy to
+        \(\partial(D^2 \times I)\), namely for each point \(p\), let \(q_p\) be the intersection of the ray from the origin through \(p\) with \(\partial(D^2 \times I)\).
+        It is clear that \(q_p\) varies continuously with respect to \(p\), so we write the homotopy \(H(p,t) = \frac{p}{1 + t(\abs{\frac{p}{q}} - 1)}\).
+        Then since a strong deformation retract of the space induces a strong deformation retract of the quotient space, we get that
+        \begin{align*}
+            J \setminus \set{\text{pt}} = \frac{D^2 \times I \setminus \set{\text{pt}}}{(x,1) \sim (x,0)} \ism_H \frac{\partial (D^2 \times I)}{(x,1) \sim (x,0)}
+            = \frac{S^1 \times I \cup D \times \set{0}}{(x,1) \sim (x,0)} = T^2 \cup D_{\text{Lat}}
+        \end{align*}
+        Now as previously mentioned, since this map is a strong deformation retract, it induces one on \(J\setminus\set{\text{pt}}\cup D_\text{Long}\) to
+        \(T^2 \cup D_\text{Long} \cup D_\text{Lat} = X\). Meaning by transitivity we have \(S^2 \ism_H \mathbb{R}^3 - \set{\text{pt}} \ism_H X\).
+
+        \textbf{Proof that strong deformation retract induces strong deformation retract on quotient.}
+        Let \(H\) be a strong deformation retract of the topological space \(X\), we want to show there exists a strong deformation retract
+        \(\overline{H}\) of \(X/\sim\), which is the quotient of \(H \). To do so, define the equivalence relation \(\approx\) on \(H \times I \), where
+        \((x,t) \approx (y,s)\) iff \(x \sim y \tand t = s\). Then we can take \(\pi_\sim\) to be the quotient map \(X \to X_\sim\), we have that
+        \(\pi_\sim H\) is a map from \(H \times I\) to \(X/\sim \), which is level on equivalence classes of \(\approx\), since \(\approx\) induces no relations on
+        \(I\), and we are taking the quotient by \(\sim\) in the map. Hence by the universal property of quotient maps we have some map 
+        \(\overline{H}: \frac{X \times I }{\approx} \to X/_\sim\), which is equal to \(\pi_\sim H\), hence if \(H\) was a deformation retract of \(X\) onto
+        \(Y \subset X\), then \(\overline{H} (\frac{X \times I }{\approx}) \subset Y/_\sim\), and \(Y/_\sim\) remains fixed, since \(\overline{H}\) agrees with \(H\pi\). This is equivalent
+        to saying there exists \(\overline{H}\) making the following diagram commute:
+        
+        % \begin{equation*} 
+        %     \begin{tikzcd}
+        %         X\times I\arrow[r, "H"] \arrow[d]& X\arrow[d]\\
+        %         \frac{X \times I}{\approx}\arrow[r, "\exists \overline{H}"]& X/_\sim
+        %     \end{tikzcd}
+        % \end{equation*}
+
+        then we can identify \(\frac{X \times I}{\approx} = X/_\sim \times I\), so that \(\overline{H}\) is in fact our desired homotopy.
     \end{pb}
 
     \textbf{Lemma.} I will use the following lemma to streamline my proofs for problems 3 and 4. \newline
     If \(\psi: X \to Y\) is a homeomorphism, and \(\sim\) is an equivalence relation on \(X\), and \(\approx\) a equivalence relation on \(Y\), such that
     \(\psi(a) \approx \psi(b) \iff a \sim b\), then \(X/_\sim \ism Y/_\approx\), this says that homeomorphisms from \(X \to Y\) induce homeomorphisms to the quotients when the points in the same equivalence
     classes induced by the quotient on \(Y\) are images of the points in the same equivalence classes induced by the quotient on \(X\), see the diagram.
-    \begin{equation*} 
-        \begin{tikzcd}
-            X\arrow[r, "\overset{\psi}{\ism}"] \arrow[d, "\pi_\sim"]& Y\arrow[d, "\pi_\approx"]\\
-            X/_\sim\arrow[r, "\overset{\overline{\psi}}{\ism}"]& Y/_\approx
-        \end{tikzcd}
-    \end{equation*}
+    % \begin{equation*} 
+    %     \begin{tikzcd}
+    %         X\arrow[r, "\overset{\psi}{\ism}"] \arrow[d, "\pi_\sim"]& Y\arrow[d, "\pi_\approx"]\\
+    %         X/_\sim\arrow[r, "\overset{\overline{\psi}}{\ism}"]& Y/_\approx
+    %     \end{tikzcd}
+    % \end{equation*}
     \textbf{proof.} Define \(\overline{\psi}: X/_\sim \to Y/_\approx\), by \(\overline{\psi}: \overline{x} \mapsto \overline{\psi(x)}\), this is surjective since \(\psi\) is surjective and \(\overline{\psi}\) is
     well defined/injective by definition of \(\approx\). We can define \(\overline{\psi^{-1}}: Y/_\approx \to X/_\sim\), in the same way. This is the inverse of \(\overline{\psi}\), since
     \(\overline{\psi} \tand \overline{\psi^{-1}}\) are just restrictions to equivalence classes of \(\psi \tand \psi^{-1}\). To show \(\overline{\psi}\) is continuous, note that
@@ -148,12 +187,12 @@
         \end{align*}
         Take the mapping cone 
         \begin{align*}
-            C_f = S^1 \times I / (x,0) \sim f(x), (x,1) \sim (y,1)
+            C_f = S^1 \times I / (x,0) \sim (f(x),0), (x,1) \sim (y,1)
         \end{align*}
         For each \(x\), we have \(f^{-1}(x) = \set{e^{ix/3},e^{i(x + 2\pi)/3},e^{-ix/3}}\). We can then take the map \(C_{\mathbf{1}_{S^1}} \overset{\psi}{\to} D^2\), where \((x,t) \mapsto (x,1-t)\), this is a homeomorphism as explained previously. 
         Since \(C_f\) is a quotient of \(C_{\mathbf{1}_{S^1}}\) by the image of quotients in \(D^2/_\sim\) via \(\psi^{-1}(D^2)\), the lemma implies that \(C_f \ism D^2/_\sim\) the dunce cap.
 
-        We have that \(C_{\mathbf{1}_{S^1}}\) is contractible, using the homotopy \(H((x,t),s) = (x,t(1-s))\), so it will suffice to show that \(C_{f} \ism C_{\mathbf{1}_{S^1}}\), and we 
+        We have that \(C_{\mathbf{1}_{S^1}}\) is contractible, using the homotopy \(H((x,t),s) = (x,t(1-s))\), so it will suffice to show that \(C_{f} \ism_H C_{\mathbf{1}_{S^1}}\), and we 
         have proven in class that homotopic maps have homotopic cones. I will show \(f \sim \rho \sim \mathbf{1}_{S^1}\), where \[\rho: e^{ix} \mapsto 
         \begin{cases} 
         e^{3ix} & 0 < x < 2\pi/3 \\ 

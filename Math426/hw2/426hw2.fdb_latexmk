@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1727742200.65404 "/home/tighemcasey/Math hw/Math426/hw2/426hw2.tex" "426hw2.pdf" "426hw2" 1727742205.09771 0
+["pdflatex"] 1727755314.78409 "/home/tighemcasey/Math hw/Math426/hw2/426hw2.tex" "426hw2.pdf" "426hw2" 1727755318.10234 0
   "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1727728013.60042 25678 aa7c8fd3909e804e7d85441c21595406 ""
   "/home/tighemcasey/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1726102813.02348 21086786 07df747a8ef29f8e2edc5ba549d24369 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1726102823.09648 1004 54797486969f23fa377b128694d548df ""
@@ -22,7 +22,6 @@
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1726102823.20648 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1726102823.21348 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1726102823.25348 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1726102823.25648 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1726102823.26148 32716 08e384dc442464e7285e891af9f45947 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1726102823.43448 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii" 1727649670.63279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -125,9 +124,9 @@
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tikz-cd/tikzlibrarycd.code.tex" 1727727998.02642 23059 b4b98da760150611227e2533f15fe352 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/enumerate.sty" 1726102839.64648 3468 ad69b54642e68f9fdf39ec1a16dd7341 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1727727991.28242 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "/home/tighemcasey/Math hw/Math426/hw2/426hw2.tex" 1727742198.72418 13425 7db7a55db595611262858bcd2b36c556 ""
-  "426hw2.aux" 1727742204.18618 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "426hw2.tex" 1727742198.72418 13425 7db7a55db595611262858bcd2b36c556 ""
+  "/home/tighemcasey/Math hw/Math426/hw2/426hw2.tex" 1727755312.16072 17941 c2f00e55c8f1883c7a152556a4e04914 ""
+  "426hw2.aux" 1727755317.29072 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
+  "426hw2.tex" 1727755312.16072 17941 c2f00e55c8f1883c7a152556a4e04914 ""
   (generated)
   "426hw2.aux"
   "426hw2.log"
