@@ -22,20 +22,100 @@
 \newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
 \newcommand{\tand}{\text{ and }}
 \newcommand{\tor}{\text{ or }}
+\newcommand{\vp}{\varphi}
 
 \begin{document}
     \begin{pb}
-        We can use the natural coordinates on \(S^1\) induced by
+        I will start by computing the coordinate changes between \(U\) and \(\tilde{U}\) on \(U \cap \tilde{U} = S^1 \setminus \set{-1,1}\).
+        \begin{align*}
+            &\tilde{\vp}\vp^{-1}: \theta \mapsto \begin{cases}
+                \theta & \theta \in (0,\pi) \\
+                \theta - 2\pi & \theta \in (\pi,2\pi)
+            \end{cases}
+            &\vp \tilde{\vp}^{-1}: \tilde{\theta} \mapsto \begin{cases}
+                \tilde{\theta} & \tilde{\theta} \in (0, \pi) \\
+                \tilde{\theta} + 2\pi & \tilde{\theta} \in (-\pi,0)
+            \end{cases}
+        \end{align*}
+        Then the tangent bundle \(TS^1\) has charts (written in the coordinate form) 
+        \((\pi^{-1}(U),(\theta,v))\) and \((\pi^{-1}(\tilde{U}),(\tilde{\theta},\tilde{v}))\).
+        Where we can call the coordinate maps \(\vp' \tand \tilde{\vp}'\) respectively. Here I will calculate the change of coordinates between \(\pi^{-1}(U) \tand \pi^{-1}(\tilde{U})\),
+        \begin{align*}
+            &\tilde{v} = v\frac{d \tilde{\theta}}{d \theta} = \begin{cases}
+                v\frac{d}{d\theta} \theta & \tilde{\theta} \in (0,\pi)\\
+                v\frac{d}{d\theta} (\theta - 2\pi) & \tilde{\theta} \in (-\pi,0)\\
+            \end{cases} = v \\
+            &v = \tilde{v}\frac{d \tilde{\theta}}{d \tilde{\theta}} = \begin{cases}
+                \tilde{v}\frac{d}{d\tilde{\theta}} \tilde{\theta} & \theta \in (0,\pi) \\
+                \tilde{v}\frac{d}{d\tilde{\theta}} (\tilde{\theta} + 2\pi) & \theta \in (-\pi,0) = \tilde{v}
+            \end{cases}
+        \end{align*}
+        So taken together the change of coordinates are 
+        \begin{align*}
+            &(\theta,v) \mapsto \begin{cases}
+                (\theta,v) & \theta \in (0,\pi) \\
+                (\theta - 2\pi,v) & \theta \in (\pi,2\pi)
+            \end{cases}
+            &(\tilde{\theta}, \tilde{v}) \mapsto \begin{cases}
+                (\tilde{\theta},\tilde{v}) & \tilde{\theta} \in (0, \pi) \\
+                (\tilde{\theta} + 2\pi,\tilde{v}) & \tilde{\theta} \in (-\pi,0)
+            \end{cases}
+        \end{align*}
+        Now define the map
+        \begin{align*}
+            &F: TS^1 \to S^1 \times \mathbb{R} \\
+            &\left(e^{i\theta},\left.v\frac{d}{d\theta}\right\vert_{e^{i\theta}} \right) \mapsto (e^{i\theta},v) \quad e^{i \theta} \in U \\
+            &\left(e^{i\tilde{\theta}},\left.v\frac{d}{d\tilde{\theta}}\right\vert_{e^{i\tilde{\theta}}} \right) \mapsto (e^{i\tilde{\theta}},v) \quad e^{i \tilde{\theta}} \in \tilde{U}
+        \end{align*}
+        The map is well defined on the intersection \(\pi^{-1}(U) \cap \pi^{-1}(\tilde{U})\) since the coordinate change on these points is the identity. Furthermore it is identity so clearly 
+        smooth and bijective on the \(S^1\) component,
+        bijectivity is also clear from the tangent space to \(\mathbb{R}\), smoothness from the tangent space is also immediate since in coordinates this is the identity map from \(\mathbb{R} \to \mathbb{R}\).
+       smoothness of the inverse follows for the same reason.
     \end{pb}
     \begin{pb}
-        
+        We have from last homework that the coordinate change \(U \to \tilde{U}\) is given by \((u_1,u_2) \mapsto (\frac{u_1}{u_1^2 + u_2^2},\frac{u_2}{u_1^2 + u_2^2})\).
+        Then we can use symmetry of the expression to simplify computation of the partials into two computations. For \(j \neq i\) we have
+        \begin{align*}
+            &\frac{\partial}{\partial u_i} \frac{u_i}{u_i^2 + u_j^2} = \frac{u_j^2 - u_i^2}{(u_i^2 + u_j^2)^2} 
+            &\frac{\partial}{\partial u_i} \frac{u_j}{u_i^2 + u_j^2} = \frac{-2u_iu_j}{(u_i^2 + u_j^2)^2}
+        \end{align*}
+        So the coordinate change is
+        \begin{align*}
+            (u_1,u_2,v_1,v_2) \mapsto 
+            \left(\frac{u_1}{u_1^2 + u_2^2},\frac{u_2}{u_1^2 + u_2^2},
+            \frac{u_2^2 - u_1^2}{(u_2^2 + u_1^2)^2}v_1 - \frac{2u_1u_2}{(u_1^2+u_2^2)^2}v_2,
+            \frac{-2u_1u_2}{(u_1^2 + u_2^2)^2}v_1 + \frac{u_1^2 - u_2^2}{(u_2^2 + u_1^2)^2}v_2\right)
+        \end{align*}
     \end{pb}
     \begin{pb}
+
         Cover \(S^2\) by charts \(U_1 = S^2 \setminus \set{N}, U_2 = S^2 \setminus \set{S}\), with stereographic projection coordinates
         \(\varphi_1(x,y,z) = (\frac{x}{1-z},\frac{y}{1-z})\) and \(\varphi_2(x,y,z) = (\frac{x}{1+z},\frac{y}{1+z})\).
         Cover \(\mathbb{CP}^1\) in charts \(V_1 = \set{(z_1,z_2)\vert z_1 \neq 0}, V_2 = \set{(z_1,z_2)\vert z_2 \neq 0}\), with coordinates
         \(\phi_1(z_1,z_2) = \frac{z_2}{z_1}, \phi_2(z_1,z_2) = \frac{z_1}{z_2}\).
 
-        For any point \(p\) other than \(N\), we check that \(F\) maps \(p\) smoothly from !!! to !!!
+        For any point \(p\) other than \(S\), we can check that \(F\) is smooth by looking at the maps in terms of the chart \(U_2\),
+        namely we check that \(\psi_1F\vp_2^{-1}: \mathbb{R}^2 \to \mathbb{R}^2\) is smooth.
+        \begin{align*}
+            (u,v) = (0,0) \implies \psi_1 F\vp_2^{-1}(0,0) &= \psi_1 F(0,0,1) = \psi_1(1,0) = 0 = (u,-v) \\
+            (u,v) \neq (0,0) \implies \psi_1 F\vp_2^{-1}(u,v) &= \psi_1F(\frac{2u}{u^2 + v^2 + 1},\frac{2v}{u^2 + v^2 + 1},\frac{1-u^2-v^2}{u^2 + v^2 + 1}) \\
+            &=\psi_1\left(\frac{2}{u^2+v^2+1}(u + iv, u^2+v^2)\right) = \psi_1(1,u-iv) = (u,-v)
+        \end{align*}
+        Then the map \((u,v) \mapsto (u,-v)\) being smooth implies that \(F\) is smooth with smooth inverse on each point not equal to \(S\).
+        To check for \(S\), we look in terms of the chart \(U_1\), namely we check \(\psi_2F\vp_1^{-1}: \mathbb{R}^2 \to \mathbb{R}^2\) is smooth.
+        We avoid case work here since \(\frac{u^2 + v^2 - 1}{u^2 + v^2 + 1} \neq 1\).
+        \begin{align*}
+            \psi_2F\vp_1^{-1}(u,v) &= \psi_2F\left(\frac{2u}{u^2+v^2+1},\frac{2v}{u^2+v^2+1},\frac{u^2+v^2-1}{u^2+v^2+1}\right) \\
+            &= \psi_2\left(\frac{2}{u^2+v^2+1}(u+iv,1)\right) = \psi_2(u+iv,1) = (u,v)
+        \end{align*}
+        This is the identity map so it is smooth with smooth inverse. To see \(F\) is a bijection, hence a diffeomorphism, notice that
+        \(\vp_i(U_i) = \mathbb{R}^2 = \psi_i(V_i)\), then \(\psi_1F\vp_2^{-1}: \mathbb{R}^2 \to \mathbb{R}^2, \; (u,v) \mapsto (u,-v)\) is a bijection from
+        \(\vp_2(U_2)\) to \(\psi_1(V_1)\), so \(F\) is a bijection between \(U_2\) and \(V_1\). Similarly 
+        \(\psi_2F\vp_1^{-1}: \mathbb{R}^2 \to \mathbb{R}^2, \; (u,v) \mapsto (u,v)\) is a bijection from \(\vp(U_1)\) to \(\psi(V_2)\),
+        so \(F\) is a bijection from \(U_1\) to \(V_2\).
+        Now we can prove \(F\) is surjective, since \(F(S^2) = F(U_1 \cup U_2) = F(U_1) \cup F(U_2) = V_1 \cup V_2 = \mathbb{CP}^1\). To see \(F\) is injective,
+        suppose \(F(a) = F(b)\), if \(a,b\) are both in the same \(U_i\), then this implies \(a = b\) by injectivity on \(U_i\). Now suppose without loss of generality \(a \in U_1\)
+        and \(b \in U_2\), then \(F(a), F(b)\) must be in \(V_1 \cap V_2 \subset V_2\), so \(b \in U_1\) is a contradiction. This implies that \(F\) is bijective, and we have already shown it is smooth
+        so \(F\) is a diffeomorphism.
     \end{pb}
 \end{document}

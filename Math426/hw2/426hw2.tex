@@ -33,17 +33,18 @@
 
     \begin{pb}
         \textbf{(a)} Let \((x,y) \sim (w,z)\), then \(w = \lambda x, z = \lambda^{-1} y\), so that \(wz = \lambda \lambda^{-1}xy = xy\).
-        Let \(\pi: \mathbb{R}^2 \setminus \set{(0,0)}/(\mathbb{R}\setminus \set{0})\) be the quotient. Then \(g(x,y) = f\pi(x,y) = xy\), is a polynomial function hence continuous.
+        Let \(\pi: \frac{\mathbb{R}^2 \setminus \set{(0,0)}}{\mathbb{R}\setminus \set{0}}\) be the quotient map 
+        (at some points in this homework I will use \(\pi\) to denote quotient maps without declaring it). Then \(g(x,y) = f\pi(x,y) = xy\), is a polynomial function hence continuous.
         To show \(f\) is continuous, let \(U \in \mathbb{R}\) be open, then \(f^{-1}(U)\) is open iff \(\pi^{-1}f^{-1}(U)\) by definition of quotient, but this is exactly \(g^{-1}(U)\)
         which is open since \(g \) is continuous.
 
-        \textbf{(b)} \(\# f^{-1}(t) = 1, \; t \neq 0\) and \(\# f^{-1}(0) = 0\). Proof being \(xy = 0 \iff x = 0 \tor y = 0\), so the preimages of \(0\) are \(\overline{(1,0)} \tand \overline{((0,1))}\).
+        \textbf{(b)} \(\# f^{-1}(t) = 1, \; t \neq 0\) and \(\# f^{-1}(0) = 2\). Proof being \(xy = 0 \iff x = 0 \tor y = 0\), so the preimages of \(0\) are \(\overline{(1,0)} \tand \overline{(0,1)}\).
         If \(t \neq 0\), then \(t = xy = zw\), we may write \(z = \lambda x\), where \(\lambda = \frac{z }{x } \neq 0 \), then \(xy = \lambda x w\), so that \(w = \lambda^{-1}y\), proving that
         \(\overline{(x,y)} = \overline{(z,w )}\).
 
         \textbf{(c)} Let \(\overline{(1,0)} \in U, \overline{(0,1)} \in V\), for open sets \(U, V \). Then by definition of the quotient \(\pi^{-1}(U)\) is open, hence by the local definition of open sets (from homework 1)
         we have some neighborhood of \((1,0)\) contained in \(\pi^{-1}(U)\). This implies that for some \(\epsilon_x > 0\), \(\set{(1,r ) \vert r < \epsilon} \subset \pi^{-1}(U)\). Similarly, there exists some
-        \(\epsilon_y > 0\), such that \(\set{(r,1) \vert r , \epsilon} \subset \pi^{-1}(V)\). Now choose \(r = \frac{\min{(\epsilon_x,\epsilon_y )}}{2}\), so that
+        \(\epsilon_y > 0\), such that \(\set{(r,1) \vert r < \epsilon} \subset \pi^{-1}(V)\). Now choose \(r = \frac{\min{(\epsilon_x,\epsilon_y )}}{2}\), so that
         \(\overline{(1,r)} \in \pi\pi^{-1}(U) = U, \tand \overline{(r,1)} \in \pi\pi^{-1}(V) = V\). Then \((r,1) \sim (r1, r^{-1}r) = (1,r)\) implies that \(\overline{(r,1)} \in U \cap V \). This proves that
         \(X \) is not hausdorff, since \(\overline{(1,0)} \tand \overline{(0,1)}\) do not satisfy the Hausdorff condition.
 
@@ -64,9 +65,9 @@
         To check that this \(\varphi\) is injective (it is well defined by (a)), we only need check that \(\overline{(1,0)}, \overline{(0,1)}\) map to seperate points in \(Y \), since part (c) guarantees
         the other elements are 1-1, so since these points map to \(0\) in the first coordinate, away from all other points, and map to seperate points in \(Y\) the map is injective.
         To check surjectivity, \((0,0) \tand (0,1)\) are mapped onto, so we can check the other points. \((x,1) \mapsto (x,0)\) shows surjectivity. Similarly, we check for \(\tilde{\varphi}\),
-        it is well defined since it just extends to equivalence classes. It is onto since \(\overline{(0,1)}, \overline{(1,0)}\) are in the image, and any
-        \((x,y) \sim (xy,1)\) (for \(x,y \neq 0\)) has its equivalence class in the image. Injectivity is also clear since \((x,1) \sim (y,1)\) iff \(x=y\) and \(\overline{(1,0)}\) is only mapped onto by one point.
-        To see that these are inverse maps, it is immediate they are inverses in the case of \((0,1),(0,0) \in Y\) and \(\overline{(0,1)},\overline{(1,0)} \in X\).
+        which is onto since \(\overline{(0,1)}, \overline{(1,0)}\) are in the image, and any
+        \((x,y) \sim (xy,1)\) (for \(x,y \neq 0\)) has its equivalence class in the image of \((xy,0)\). Injectivity is also clear since \((x,1) \sim (y,1)\) in \(X\) iff \(x=y\) and \(\overline{(1,0)}\) is only mapped onto by one point.
+        To see that these are inverse maps, it is immediate they are inverses on the elements \((0,1),(0,0) \in Y\) and \(\overline{(0,1)},\overline{(1,0)} \in X\).
         Checking this for \(x,y,s \neq 0\) we have \(\tilde{\varphi}\varphi(\overline{(x,y)}) = \overline{(xy,1)} \sim  (x,y) \tand \varphi \tilde{\varphi}(s,0) = (s,0)\). It remains to show continuity of
         \(\varphi \tand \varphi^{-1} = \tilde{\varphi}\).
 
@@ -88,14 +89,15 @@
         but this is the preimage of an open set in \(\mathbb{R}\) of the continuous polynomial function \((x,y) \mapsto xy\), this proves continuity of \(\varphi\) by definition
         of the quotient space in the case of \(\chi_V = \emptyset = \chi_W\). Now in the case where atleast one of \(\chi_V,\chi_W\) is non-empty, assume WLOG \(\chi_V \neq \emptyset\), then since
         \(V\) is an open set in \(\mathbb{R}\) containing \(0\), it must contain some open set \(J\) containing \(0\).  Then \((\pi_X \varphi)^{-1}((J \setminus 0) \times \set{0})\) is the set
-        \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy \in J \setminus \set{0}}\), this is an open set since \(J \setminus 0\) is open, so for some \(\epsilon\) it contains a set of the form
+        \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy \in J \setminus \set{0}}\), this is an open set since \(J \setminus 0\) is open, so by the local definition of continuity, for some \(\epsilon\) it contains a set of the form
         \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert 0 < xy < \epsilon}\). Now we take
         \begin{align*}
             &(\pi_X \varphi)^{-1}(0,1) = \set{(x,y) \in \mathbb{R}^2 \setminus \set{0} \vert xy = 0} \setminus \set{(0,y) \vert y \neq 0} 
             &(\pi_X \varphi)^{-1}(0,0) = \set{(x,y) \in \mathbb{R}^2 \setminus \set{0} \vert xy = 0} \setminus \set{(x,0) \vert x \neq 0}
         \end{align*}
        Note that \(\set{(0,y) \vert y \neq 0}, \set{(x,0) \vert x \neq 0}\) are closed in \(\mathbb{R}^2 \setminus \set{0}\) since their complemets are open.
-        Now in the case where \((0,0) \in U\), \((\pi_X \varphi)^{-1}(U)\) contains the open set \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy < \epsilon} \setminus \set{(x,0) \vert x \neq 0}\)
+        Now in the case where \((0,0) \in U\), \((\pi_X \varphi)^{-1}(U)\) contains the open set 
+        \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy < \epsilon} \setminus \set{(x,0) \vert x \neq 0} \subset J\)
         containing \((\pi_X \varphi)^{-1}(0,0)\). Similarly if \((0,1) \in U\), then 
         \((\pi_X \varphi)^{-1}(U)\) contains the open set \(\set{(x,y) \in \mathbb{R}^2\setminus \set{0}\vert xy < \epsilon} \setminus \set{(0,y) \vert y \neq 0}\)
         containing \((\pi_X \varphi)^{-1}(0,1)\). But since \((\pi_X \varphi)^{-1}(U) \supset (\pi_X \varphi)^{-1}((V \setminus \set{0,0} \cup W \setminus (0,1)) \times \set{0})\) is an open set containing
@@ -105,36 +107,41 @@
         Then since \(U\) is open, \(\pi_X^{-1}(U)\) is open containing \((p,1)\), so for some \(\epsilon > 0\) (where if \(p \neq 0\)
         we can choose \(\epsilon < \abs{p}\)), it contains \((p + t,1)\) for \(t\) such that \(\abs{t} < \epsilon\).
         Then in the first case where \(p \neq 0\) we have
-        \((\pi_Y\tilde{\varphi})^{-1}\set{(p,1)} = \set{(p,0), (p,1)}\) is contained in the open set \(\set{(p + t,s) \vert t < \epsilon s \in \set{0,1}} \subset (\pi_Y\tilde{\varphi})^{-1}(U)\) 
-        here \(\epsilon < \abs{p}\) guarantees we have \((p+t,0) \tand (p+t,1)\) in the preimage dealing with both points at once. Now in the second case where \(p = 0\), we still have that 
+        \((\pi_Y\tilde{\varphi})^{-1}\set{(p,1)} = \set{(p,0), (p,1)}\) is contained in the open set \(\set{(p + t,s) \vert t < \epsilon, \; s \in \set{0,1}} \subset (\pi_Y\tilde{\varphi})^{-1}(U)\) 
+        here \(\epsilon < \abs{p}\) guarantees we have for each \(t\), both of \((p+t,0) \tand (p+t,1)\) in the preimage dealing with both points at once. Now in the second case where \(p = 0\), we still have that 
         \(\set{(p + t,0) \vert t < \epsilon} \subset (\pi_Y\tilde{\varphi})^{-1}(U)\), so the preimage still contains an open set containing \((0,0)\). This proves continuity for any \(U\)
         not containing \(\overline{(1,0)}\). If \(U\) does contain \(\overline{(1,0)}\), then \(\pi_X^{-1}(U)\) is an open set containing \((1,0)\) hence for some \(\epsilon > 0\) it contains 
-        \((1,t)\) for all \(t\), such that \(\abs{t} < \epsilon\), this means that \(\pi_X(\pi_X^{-1})(U)\) contains each \(\overline{(1,t)} = \overline{(t,tt^{-1})} = \overline{(t,1)}\).
-        This implies that there is some open set containing \(\overline{(1,0)}\) contained in \((\pi_Y\tilde{\varphi})^{-1}(U)\),
+        \((1,t)\) for all \(t\), such that \(\abs{t} < \epsilon\), this means that \(\pi_X(\pi_X^{-1}(U))\) contains each \(\overline{(1,t)} = \overline{(t,tt^{-1})} = \overline{(t,1)}\).
+        This implies that there is some open set containing the preimage of \(\overline{(1,0)}\) contained in \((\pi_Y\tilde{\varphi})^{-1}(U)\),
         namely \begin{align*}
             (\pi_Y\tilde{\varphi})^{-1}(U) \supset (\pi_Y\tilde{\varphi})^{-1}(\set{(1,t) \vert \abs{t} < \epsilon}) \supset \set{(t,1) \vert \abs{t} < \epsilon}
         \end{align*}
-        This implies by the local definition that \((\pi_Y\tilde{\varphi})^{-1}(U)\) is open, so by definition of the quotient \(\tilde{\varphi}^{-1}(U)\) is open. We conclude that
+        This implies by the local definition that \((\pi_Y\tilde{\varphi})^{-1}(U)\) is open since containment in an open set is already shown for all other points, so by definition of the quotient 
+        \(\tilde{\varphi}^{-1}(U)\) is open. We conclude that
         \(\tilde{\varphi} = \varphi^{-1}\) is continuous along with \(\varphi\), making \(\varphi\) a homeomorphism from \(X\) to \(Y\).
     \end{pb}
     \newpage
 
     \begin{pb}
         Take \(\mathbb{R}^3 \setminus (0,0)\), and \(S^2\) the unit sphere centered at the origin, then \(H(x,t) = \frac{x}{1+t(\abs{x}-1)}\) is a strong deformation retract of
-        \(\mathbb{R}^3\) onto \(S^2\), hence \(\mathbb{R}^3 \setminus \set{\text{pt}}\) is homotopic to \(S^2\).
+        \(\mathbb{R}^3\) onto \(S^2\) since it is continuous in \(t\) for each \(x\), and \(\abs{x}\) varies continuously with \(x\).
+        Hence \(\mathbb{R}^3 \setminus \set{\text{pt}}\) is homotopic to \(S^2\).
 
         Let \(J \) be the filled Torus (i.e. \(D^2 \times S^1\)), and let \(D_\text{Lat}, D_\text{Long}\) denote the latitudinal and longitudinal discs respectively. 
         Then we may write \(\mathbb{R}^3 \setminus \set{\text{pt}} = T^2 \sqcup (J^\circ \setminus \set{\text{pt}}) \sqcup \left(J^c\right)^\circ\).
         I will show that \(\mathbb{R}^3 \setminus \set{\text{pt}}\) strong deformation retracts onto \((J \setminus \set{\text{pt}}) \cup D_\text{Long}\), then show that
         \((J \setminus \set{\text{pt}}) \cup D_\text{Long}\) strong deformation retracts onto \(T \cup D_\text{Lat} \cup D_\text{Long}\), the proof follows by transitivity of homotopy equivalence.
 
-        For the first equivalence, we can let \(P\) be the \(x,y\) plane, with \(J \setminus \set{\text{pt}}\) embedded in \(\mathbb{R}^3 \setminus \set{\text{pt}}\) at height zero 
+        For the first equivalence, we can let \(P\) be the \(x-y\) plane, with \(J \setminus \set{\text{pt}}\) embedded in \(\mathbb{R}^3 \setminus \set{\text{pt}}\) at height zero 
         (wlog the point doesn't have height 0). Then we can strong deformation retract \(\mathbb{R}^3 \setminus \set{\text{pt}}\) by projecting the z-axis onto \(P \cup (J \setminus \set{\text{pt}})\). 
-        Now given a point \(p = (x_p,y_p,z_p)\), let \((x_p,y_p,z_0)\) be the closest point to it in \(P \cup (J \setminus \set{\text{pt}}) \cap \set{(x_p,y_p,z) \vert z \in \mathbb{R}}\).
-        the homotopy can be written as \(H((x,y,z),t) = (x,y,z + t(z_0 - z))\) for \(z_0\) continuously depending on \(z\)(continuous since \(P \cup J\) is smooth). 
+        Explicitly, given a point \(p = (x_p,y_p,z_p)\), let \((x_p,y_p,z_0)\) be the closest point to it in \(P \cup (J \setminus \set{\text{pt}}) \cap \set{(x_p,y_p,z) \vert z \in \mathbb{R}}\).
+        the homotopy can be written as \(H((x,y,z),t) = (x,y,z + t(z_0 - z))\) for \(H\) continuous in \(t\) for each fixed \(z\), and \(z_0\) 
+        continuously depending on \(z\) (because \(P \cup \partial J\) can be parameterized continuously, and \(J\) is fixed). 
         Now we can deformation retract \(P \cup (J \setminus \set{\text{pt}})\) onto \(J \setminus \set{\text{pt}} \cup D_{\text{Long}}\),
         the retract \(H\) is defined to be constant on \(J \setminus \set{\text{pt}} \cup D_{\text{Long}}\), then assuming the radius from the origin to the outer edge of the torus is \(R\)
-        we only need to define it on points of \(P \setminus D^2_R\), where \(D^2_R\) denotes the disc of radius \(R\). On such points, define \(H(p,t) = \frac{p}{1 + tR(\abs{p}) - 1/R}\).
+        we only need to define it on points of \(P \setminus (D^2_R)^\circ\), where \(D^2_R\) denotes the disc of radius \(R\). On such points, define \(H(p,t) = \frac{p}{1 + tR(\abs{p} - 1/R)}\)
+        again this can be seen to be a homotopy, since it is continuous in \(t\) for each fixed \(p\), and \(\abs{p}\) varies continuously with \(p\), this extends to a strong deformation retract of 
+        \(P \cup (J \setminus \set{\text{pt}})\) by the gluing lemma, since \(J \setminus \set{\text{pt}}\) is fixed, agreeing with \(H\) which fixes \(\partial D^2_R\).
         Transitivity of homotopy equivalence proves that \(\mathbb{R}^3 \setminus \set{\text{pt}} \ism_{H} (J \setminus \set{\text{pt}}) \cup D_\text{Long}\).
         
         Now note to show a strong deformation retract of \((J \setminus \set{\text{pt}}) \cup D_\text{Long}\) onto \(T^2 \cup D_\text{Lat} \cup D_\text{Long}\), it will suffice to show one
@@ -157,8 +164,8 @@
         \(\overline{H}\) of \(X/\sim\), which is the quotient of \(H \). To do so, define the equivalence relation \(\approx\) on \(H \times I \), where
         \((x,t) \approx (y,s)\) iff \(x \sim y \tand t = s\). Then we can take \(\pi_\sim\) to be the quotient map \(X \to X_\sim\), we have that
         \(\pi_\sim H\) is a map from \(H \times I\) to \(X/\sim \), which is level on equivalence classes of \(\approx\), since \(\approx\) induces no relations on
-        \(I\), and we are taking the quotient by \(\sim\) in the map. Hence by the universal property of quotient maps we have some map 
-        \(\overline{H}: \frac{X \times I }{\approx} \to X/_\sim\), which is equal to \(\pi_\sim H\), hence if \(H\) was a deformation retract of \(X\) onto
+        \(I\), and we are taking the quotient by \(\sim\) which agrees with \(\approx\) on \(X\) in the map. Hence by the universal property of quotient maps we have some map 
+        \(\overline{H}: \frac{X \times I }{\approx} \to X/_\sim\), which is equal to \(\pi_\sim H\), if \(H\) was a deformation retract of \(X\) onto
         \(Y \subset X\), then \(\overline{H} (\frac{X \times I }{\approx}) \subset Y/_\sim\), and \(Y/_\sim\) remains fixed, since \(\overline{H}\) agrees with \(H\pi\). This is equivalent
         to saying there exists \(\overline{H}\) making the following diagram commute:
         
@@ -201,7 +208,7 @@
     and \(D^2\) is Hausdorff. To see that the map is continuous, let \(U \subset D^2\) open.
     If \(U\) does not contain \((0,0)\), then we can just regard \(\psi\) as a continuous map between \(S^1 \times I\) and \(D^2\) since it is unaffected by the quotient. 
     Now examining the case where \(U\) contains \((0,0)\), by the local definition of open it must contain some neighborhood around \((0,0)\), and hence \(\pi^{-1}\psi^{-1}(U)\) contains
-    \(S^1 \times \set{t}\) for \(t\) sufficiently close to \(1\), so that by definition of the quotient \(\overline{(x,1)}\) is contained in an open set in \(\psi^{-1}(U)\). Then since \(D^2\) is Hausdorff,
+    \(S^1 \times \set{t}\) for \(t\) sufficiently close to \(1\), so that by definition of the quotient \((0,0\)) is contained in an open set in \(\psi^{-1}(U)\). Then since \(D^2\) is Hausdorff,
     each other point is contained in a neighborhood in \(U\) not containing \((0,0)\), so its preimage is contained in some neighborhood of \(\pi^{-1}\psi^{-1}(U)\) as explained previously, this shows that
     \(\psi^{-1}(U)\) is open by the local definition of open so we are done.
 
@@ -214,15 +221,16 @@
         Now consider \(x, y \in [0,2\pi)\) we can notice \((e^{ix},0) \approx (e^{iy},0) \iff e^{2ix} = e^{2iy}\). WLOG we can assume \(x < y\), so that \(y = x + r, \; 0 < r < 2\pi\).
         Then with these restrictions \(e^{2ix} = e^{2i(x + r)} \iff r = \pi\), so that the equivalence relation identifies \(e^{ix} \approx e^{ix + \pi} = e^{-ix}\).
 
-        Now define consider the map \(C_{\mathbf{1}_{S^1}} \overset{\psi}{\to} D^2, \; (\theta,t) \mapsto (\theta,1-t)\), this map is a homeomorphism as explained previously.
-        Additionally, the antipodal points on the boundaries of 
+        Now consider the map \(C_{\mathbf{1}_{S^1}} \overset{\psi}{\to} D^2, \; (\theta,t) \mapsto (\theta,1-t)\), this map is a homeomorphism as explained previously.
+        Additionally, the antipodal points on the boundaries 
         \(S^1 \times \set{0} \tand \partial D^2\) remain antipodal under this map. So the lemma gives us \(D^2/_\sim \ism C_{\mathbf{1}_{S^1}}/_\approx = C_f\)
     \end{pb}
     \begin{pb}
         Note that the triangle is homeomorphic to the disc. We can insribe the triangle in a circle with radius \(R\). Then for each point \(p\), let \(q\) be the intersection
         of the ray through \(p \) and the origin with the boundary of the triangle. For each of these points we can map \(p \mapsto \frac{Rp }{\abs{q }}\) this is a homeomorphism
-        since \(q\) varies smoothly with \(p\) and we have inverse \(p \mapsto \frac{\abs{q}p}{R}\), where \(q\) comes from inscribing the triangle in the circle, which is also continuous.
-        It follows that the equivalence relation induced on \(D^2\) is \(e^{ix} \sim e^{ix}e^{\frac{2\pi}{3}} \sim e^{-ix}\), which can be seen by the following picture and the lemma. So that
+        since \(q\) varies smoothly with \(p\) and we have inverse \(p \mapsto \frac{\abs{q}p}{R}\), where \(q\) comes from inscribing the triangle in the circle and again taking the intersection of
+        the ray through the origin and \(p\), which is also continuous.
+        It follows that the equivalence relation induced on \(D^2\) is \(e^{ix} \sim e^{ix + \frac{2\pi}{3}} \sim e^{-ix}\), which can be seen by the following picture and the lemma. So that
         the dunce cap can be written as \(D^2/_\sim\).
         \begin{center}
             \includegraphics[scale = 0.03]{Dunce cap.png}
@@ -240,8 +248,8 @@
         \begin{align*}
             C_f = \frac{S^1 \times I \sqcup S^1}{(x,0) \sim f(x), (x,1) \sim (y,1)}
         \end{align*}
-        For each \(x\), we have \(f^{-1}(x) = \set{e^{ix/3},e^{i(x + 2\pi)/3},e^{-ix/3}}\), so the equivalence relation induced by \((x,0) \sim f\) can be seen to be 
-        \(e^{ix/3}\sim e^{i(x + 2\pi)/3}\sim e^{-ix/3}\). 
+        For each \(x\), we have \(f^{-1}(x) = \set{e^{ix/3},e^{i(x + 2\pi)/3},e^{-ix/3}}\), so the equivalence relation induced by \((x,0) \sim f\) on \(\frac{S^1 \times I}{(x,1) \sim (y,1)}\) can be seen to be 
+        \((e^{ix/3},0)\sim (e^{i(x + 2\pi)/3},0)\sim (e^{-ix/3},0)\). 
         We can then take the map \(C_{\mathbf{1}_{S^1}} \overset{\psi}{\to} D^2\), where \((x,t) \mapsto (x,1-t)\), this is a homeomorphism as explained previously. 
         Since \(C_f\) is a quotient of \(C_{\mathbf{1}_{S^1}}\) by the image of quotients in \(D^2/_\sim\) via \(\psi^{-1}(D^2)\), the lemma implies that \(C_f \ism D^2/_\sim\) the dunce cap.
 
@@ -263,5 +271,6 @@
                 x \mapsto f(\frac{x}{1 + 2t})
             \end{cases}
         \end{align*}
+        Transitivity implies \(f \sim \mathbf{1}_{S^1}\), so that \(\text{Dunce Cap} \ism_H C_f \ism_H C_{\mathbf{1}_{S^1}} \ism_H \text{pt}\) are contractible by transitivity of homotopy equivalence.
     \end{pb}
 \end{document}

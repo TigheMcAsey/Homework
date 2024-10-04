@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1727768697.25343 "c:/Users/Tighe/Homework/Math426/hw2/426hw2.tex" "426hw2.pdf" "426hw2" 1727768700.51177 0
-  "426hw2.aux" 1727768700 32 2d1df76398b3c48c6419a45a7331db2d "pdflatex"
-  "426hw2.tex" 1727768696 23598 4b720ca3b9d6b4d881da0ed11e2ab8f8 ""
+["pdflatex"] 1727828218.09996 "c:/Users/Tighe/Homework/Math426/hw2/426hw2.tex" "426hw2.pdf" "426hw2" 1727828221.47849 0
+  "426hw2.aux" 1727828221 32 2d1df76398b3c48c6419a45a7331db2d "pdflatex"
+  "426hw2.tex" 1727828217 24811 cab9d65388d498c9f65927db85125a61 ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1727757936 83612 69670e67469cfaca8927b121b745dcf0 ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1712006200 24236005 6d56eca885e541cfa5825b8ee25492da ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -27,6 +27,7 @@
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1247596666 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1247596666 32716 08e384dc442464e7285e891af9f45947 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
+  "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1247596673 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty" 1643997108 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty" 1643997108 1057 525c2192b5febbd8c1f662c9468335bb ""
@@ -128,7 +129,7 @@
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "Dunce cap.png" 1727768277 8768864 7304e1de446aba4d9366d7166298a3e6 ""
-  "c:/Users/Tighe/Homework/Math426/hw2/426hw2.tex" 1727768696 23598 4b720ca3b9d6b4d881da0ed11e2ab8f8 ""
+  "c:/Users/Tighe/Homework/Math426/hw2/426hw2.tex" 1727828217 24811 cab9d65388d498c9f65927db85125a61 ""
   (generated)
   "426hw2.aux"
   "426hw2.log"
