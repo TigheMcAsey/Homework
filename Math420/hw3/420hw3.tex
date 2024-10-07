@@ -24,6 +24,17 @@
 
 \begin{document}
 \begin{pb}
-    \textbf{(a)} Since \(g \geq 0\),
+    \textbf{(a)} Since \(g \geq 0\), \(0\) is a simple function less than \(g\), hence for any set \(E \in \mathcal{M}\),
+    \[\mu_g(E) = \int_E g d\mu \geq int_E 0 d\mu = 0\]
+    Proving nonnegativity. Furthermore, we have \[\mu_g(\emptyset) = \int \chi_\emptyset g d\mu = \int 0 d\mu = 0\]
+    So it will suffice to sheck for countable additivity. Consider the disjoint collection \(\set{E_i}_1^\infty\), and denote \(E := \bigcup_1^\infty E_i\).
+    Then \(\chi_E = \sum_1^\infty \chi_{E_i}\), so that
+    \begin{align*}
+        \mu_g(E) &= \int_E gd\mu = \int g\chi_E d\mu = \int \sum_1^\infty g \chi_{E_i} d\mu = \int \lim_{n\to\infty} \sum_1^n g \chi_{E_i} d\mu \\
+    &\overset{\text{MCT}}{=} \lim_{n\to\infty}\int \sum_1^n g\chi_{E_i}d\mu = \lim_{n\to\infty} \sum_1^n \int g\chi_{E_i}d\mu = \sum_1^\infty \int g\chi_{E_i}d\mu
+\end{align*}
+    The second last equality follows from linearity.
+
+    \textbf{(b)}
 \end{pb}
 \end{document}
