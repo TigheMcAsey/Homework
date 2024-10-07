@@ -6,7 +6,6 @@
 
 \fancyhf{}
 \lhead{Math 420hw2}
-\rhead{Tighe McAsey - 37499480}
 \pagestyle{fancy}
 
 % Page dimensions
@@ -40,7 +39,7 @@
         \(\lim_{i \to \infty}\mu(0,x_i] = \mu(0,x_0] = F(x_0)\) which follows from continuity from above, so the right sided limit exists and is equal to \(F(x_0)\).
 
         Now let \(x_0 < 0\), then \(\lim_{x\searrow x_0}F(x) = -\lim_{x\searrow x_0}\mu(x,0]\). It suffices to show for an arbitrary decreasing sequence \(\set{x_i}_1^\infty\), we have
-        \(\lim_{i \to \infty}-\mu(x_i,0) = -\mu(x_0,0] = F(x_0)\), which follows from continuity from below, so the right hand sided limit exists and is equal to \(F(x_0)\).
+        \(\lim_{i \to \infty}-\mu(x_i,0] = -\mu(x_0,0] = F(x_0)\), which follows from continuity from below, so the right hand sided limit exists and is equal to \(F(x_0)\).
     \end{pb}
     \begin{pb}
         \textbf{(a)} \(F\) bounded. Proof being, assume \(\abs{F} < M\), define sets \(\set{E_i}_1^\infty\), where \(E_i = (-i,-i+1] \cup (i-1,i]\)
@@ -100,7 +99,7 @@
         \begin{align*}
             m^F(E) = m^F\left(E \cap \mathbb{Z}\right) + m^F\left(E \cap \mathbb{Z}^c\right) = m^F\left(\bigcup_{i=1}^n \set{z_i}\right) + 0 = \sum_1^n m^F(\set{z_i}) = n
         \end{align*}
-        We can once again cite Theorem 1.16 of Folland which says this is the unique measure induced by \(F\),  so we need not show the reverse direction.
+        We can once again cite Theorem 1.16 of Folland which says this is the unique measure induced by \(F\).
     \end{pb}
     \begin{pb}
         \textbf{(a)} First notice for any \(d\) and any \(\delta > 0\), given \(\set{l_j}_j\) with \(0 \leq l_j \leq \delta\) we have \(l_j^d \geq 0\), and hence
@@ -125,20 +124,20 @@
         \textbf{(b)} \(H_0(E)\) is the counting measure. Proof being, first assume \(E\) is a finite collection of points, i.e. \(E = \set{z_i}_1^n \), then for any \(\delta > 0\), 
         we have \(E \subset \bigcup_1^n (z_i - \delta/2, (z_i - \delta/2) + \delta)\), so that \(H_0(E) \leq n\). To show the reverse inequality, let \(\delta = \frac12 \min_{i \neq j}\set{\abs{z_i - z_j}}\).
         Then we need atleast \(n\) intervals of length smaller or equal to \(\delta\) to cover \(E\), since no two points may lie in the same interval. 
-        Hence if \(\set{(a_j, a_j + l_j)}_{j \in J}\) is a cover of \(E\), with each \(l_j \leq \delta\), we have \(\sum_{J} l_j^0  \geq sum_1^n l_j^0 = n\), hence
-        \[n \geq H_0 \geq H_{0,\delta} = n\]
+        Hence if \(\set{(a_j, a_j + l_j)}_{j \in J}\) is a cover of \(E\), with each \(l_j \leq \delta\), we have \(\sum_{J} l_j^0  \geq \sum_1^n l_j^0 = n\), hence
+        \[n \geq H_0 \geq H_{0,\delta} \geq n\]
 
         Now suppose \(E\)  is infinite, then \(E\) has a countable subset \(\set{z_i}_1^\infty\). I will show that for any natural number \(H_0(E) > N\), and hence \(H_0(E) = \infty\).
         Let \(N \in \mathbb{N}\), then similar to before, let \newline \(\delta_N = \frac12 \min_{i \neq j \tand 1 \leq i,j \leq N}\abs{z_i - z_j}\)
         then none of \(\set{z_i}_1^N\) are in the same interval having length less than or equal to \(\delta_N\), hence if \(\set{z_i}_1^N \subset E \subset \bigcup_{i \in I}(a_i,a_i + l_i)\)
-        we must have \(\# I \geq N\), so that \(\sum_{i \in I} l_i^d \geq \sum_1^n l_i^d = n\), which suffices to show \(H_{0,\delta_N}(E) \geq N\). 
+        we must have \(\# I \geq N\), so that \(\sum_{i \in I} l_i^d \geq \sum_1^N l_i^d = N\), which suffices to show \(H_{0,\delta_N}(E) \geq N\). 
         Now since \(H_0 (E)\geq H_{0,\delta_N}(E) \geq N\) for all \(N \in \mathbb{N}\) we get \(H_0(E) = \infty\) as desired. 
 
         \textbf{(c)} Let \(d > \frac{\log2}{\log3}\), then \(3^d > 3^{\frac{\log2}{\log3}} = 3^{\log_32} = 2\), hence we have \(23^{-d} = r < 1\). With this book-keeping out of the way we can
         move on to solving the problem. Let \(\delta > 0\), then for some \(N \in \mathbb{N}\) we have for all \(n \geq N\), \(3^{-n} < \delta\). Then let \(K_j\) denote the \(j\)-th iteration in the construction of the cantor set, and
         \(\partial_L K_j\) by the left endpoints of the intervals in \(K_j\). Then 
-        \[\mathcal{C} \subset K_{n+1} \subset \bigcup_{x \in \partial_L K_j}(x - 3^{-(n+1)}, x + 2\cdot3^{-(n+1)})\]
-        Where \(\# \partial_L K_j = 2^{n+1}\) since \(K_j\) contains \(j\) intervals, note the subset relation follows by the length of the intervals being \(3^{-(n+1)}\).
+        \[\mathcal{C} \subset K_{n+1} \subset \bigcup_{x \in \partial_L K_{n+1}}(x - 3^{-(n+1)}, x + 2\cdot3^{-(n+1)})\]
+        Where \(\# \partial_L K_{n+1} = 2^{n+1}\) since \(K_j\) contains \(j\) intervals, note the subset relation follows by the length of the intervals being \(3^{-(n+1)}\).
         It follows that 
         \[H_{d,\delta}(\mathcal{C}) \leq \sum_1^{2^{n+1}}3^{-nd} = 2^{n+1}3^{-nd} = 2r^n\]
         and since this holds for all \(n\) sufficiently large it holds in the limit, proving that
@@ -148,7 +147,7 @@
         \textbf{(a)} It is immediate that \(\mathcal{C}_{\overrightarrow{\alpha}}\) is closed since it is the intersection of closed sets. Hence it will suffice to show that \(\mathcal{C}_{\overrightarrow{\alpha}}\)
         contains no open sets, and since each open set contains an open interval we can show this for open intervals. Suppose \(I\) is an open interval, then it has some length
         \(\ell > 0\), so choose \(n\) large enough that \(\ell > 2^{-n}\). Let \(\ell_j\) denote the length of the closed intervals making up \(K_j\), then \(\ell_{0} = 1\) and
-        \(\ell_{j+1} = \frac12\ell_j(1- - \alpha_{j+1})\), so by induction \(\ell_j \leq 2^{-j}\) (this is also the maximum length of an open interval contained in the set),
+        \(\ell_{j+1} = \frac12\ell_j(1- \alpha_{j+1})\), so by induction \(\ell_j \leq 2^{-j}\) (this is also the maximum length of an open interval contained in the set),
         hence \(I \not \subset K_n\), and since \(\mathcal{C}_{\overrightarrow{\alpha}}\subset K_n\) this implies that
         \(I \not \subset \mathcal{C}_{\overrightarrow{\alpha}}\). And since \(I\) was arbitrary it follows that \(\mathcal{C}_{\overrightarrow{\alpha}}\) contains no intervals.
 
@@ -171,7 +170,22 @@
         \[1 = m([0,1]) \geq m(I^c \cap [0,1]) \geq 1-m(I) \geq 1 - \sum_1^\infty m(I_i) = 1 - \sum_1^\infty 2^{-n}\epsilon = 1 - \epsilon\]
     \end{pb}
     \begin{pb}
-        \textbf{(a)} \(E \subset [0,1]\) implies that \(m^*(E) \leq 1\) by monotonicity. \(m^*(E) > 0\), since any set of outer measure \(0\) is measurable.
-        Proof being, suppose \(A\) has outer measure \(0\), then for any set \(B\), we have \(m(B) = m(B \cap A)\)
+        \textbf{(a)} \(E \subset [0,1]\) implies that \(m^*(E) \leq 1\) by monotonicity. \(m^*(E) > 0\), since any set of outer measure \(0\) is measurable, by the Caratheodory
+        theorem which says that the induced measure by \(m^*(E)\) is complete on its measurable sets.
+
+        \textbf{(b)} Suppose for contradiction \(m(A) > 0\). Then by the Steinhaus theorem \(A - A\) contains an interval, but the only rational member of \(A - A\)
+        is zero, since either elements are equal or in different rational translate cosets. This proves that \(A - A\) cannot contain an interval
+        (since any interval contains countably many rationals), a contradiction.
+
+        \textbf{(c)} Consider any countable collection of intervals \(\set{I_i}_1^\infty\), such that \([0,1]\setminus E \subset \bigcup_1^\infty I_i\), then
+        \([0,1]\cap(\bigcup_1^\infty I_i)^c \subset E\), and is a borel set hence measurable, so it must have measure (by caratheodory theorem this is equal to outer measure) \(0\) by the previous subpart.
+        \begin{align*}
+            m^*\left([0,1]\cap(\bigcup_1^\infty I_i)^c\right) + m^*\left([0,1]\cap(\bigcup_1^\infty I_i)\right) &= m\left([0,1]\cap(\bigcup_1^\infty I_i)^c\right) + m\left([0,1]\cap(\bigcup_1^\infty I_i)\right) \\
+            &= m[0,1] = 1
+        \end{align*}
+        Implying that \(m^*\left(\bigcup_1^\infty I_i\right) \geq m^*\left([0,1]\cap(\bigcup_1^\infty I_i)\right) = 1\), hence by definition \(m^*([0,1] \setminus E) \geq 1\). To show equality, let \(\epsilon > 0\), then
+        \([0,1] \setminus E \subset (-\frac{\epsilon}{2},1+\frac{\epsilon}{2})\) implies that \(m^*([0,1] \setminus E) \leq 1 + \epsilon\), and since \(\epsilon\) was arbitrary,
+        \[1 \leq m^*([0,1] \setminus E) \leq 1\]
+        as desired.
     \end{pb}
 \end{document}

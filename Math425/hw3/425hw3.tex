@@ -1,0 +1,102 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 425hw3}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\vp}{\varphi}
+
+\begin{document}
+    \begin{pb}
+        We first show that \(F\) is bijective. For surjectivity, note that \(\tan: (-\frac{\pi}{2},\frac{\pi}{2}) \to \mathbb{R}\) is surjective, so that
+        \(\tan \frac{x}{2}: (-\pi,\pi) \to \mathbb{R}\) is onto. This is equivalent to \(F: e^{i\theta} \mapsto [\cos \frac{\theta}{2}, \sin \frac{\theta}{2}] = [1,\tan \frac{\theta}{2}]\)
+        maps \(S^1 \setminus \set{-1} \to \mathbb{RP}^1 \setminus [0,1]\), then \(F(-1) = F(e^{i\pi}) = [0,1]\), so \(F\) is onto. To see injectivity, it is clear that
+        \(F^{-1}([0,1]) = -1\), since \(e^{i\pi}\) is the only point on \(S^1\) where \(cos(\frac{\theta}{2}) = 0\). Then any other point \(-1 \neq e^{i\theta}\) maps to the coset of the form
+        \([1,\tan \frac{\theta}{2}]\), so injectivity follows from \(\tan\) being strictly increasing on \((-\frac{\pi}{2}, \frac{\pi}{2})\).
+
+        To show that \(F\) is smooth, consider charts \((U,\vp), (\tilde{U},\tilde{vp})\) on \(S^1\), where \(\vp: e^{i\theta} \to \theta\) on \(U = (0,2\pi)\) and 
+        \(\tilde{\vp}: e^{i\theta} \to \theta\) on
+        \(\tilde{U} = (-\pi,\pi)\). Also consider charts \((V,\eta), (\tilde{V},\tilde{\eta})\) on \(\mathbb{RP}^1\), where 
+        \[V = \mathbb{RP}^1 \setminus [0,1], \eta: [x,y] \mapsto y/x \tand \tilde{V} = \mathbb{RP}^1 \setminus [1,0], \tilde{\eta}: [x,y] \mapsto x/y\]
+        We check that the maps between \(\tilde{\vp}\tilde{U} \tand \eta(V)\), as well as \(\vp(U) \tand \tilde{\eta}(\tilde{V})\) are smooth in coordinates to conclude \(F\) is smooth.
+        \begin{align*}
+            \eta F \tilde{vp}^{-1} (\theta) = \eta [\cos \frac{\theta}{2}, \sin \frac{\theta}{2}] \overset{\theta \in (-\pi,\pi)}{=} \eta [1, \tan \frac{\theta}{2}] = \tan \frac{\theta}{2} \\
+            \tilde{\eta} F \vp^{-1} (\theta) = \tilde{\eta} [\cos \frac{\theta}{2}, \sin \frac{\theta}{2}] \overset{\theta \in (0,2\pi)}{=} \tilde{\eta} [\cot \frac{\theta}{2},1] = \cot \frac{\theta}{2}
+        \end{align*}
+        Where \(\tan \frac{\theta}{2}\) is smooth on \((-\pi,\pi)\) and \(\cot \frac{\theta}{2}\) is smooth on \((0,2\pi)\).
+    \end{pb}
+    \begin{pb}
+        Equip \(S^1 \times S^1\) with the following charts:
+        \begin{align*}
+            &(U \times U, \vp_1) &(U \times \tilde{U}, \vp_2) \\
+            &(\tilde{U} \times U, \vp_3) &(\tilde{U} \times \tilde{U}, \vp_4)
+        \end{align*}
+        Where \(U, \tilde{U}\) are defined in the previous question, and \(\vp_j: e^{i\theta_1} \times e^{i\theta_2} \mapsto (\theta_1,2\theta_1 - \theta_2)\).
+        Then the coordinates on each chart \(C_j\) are \(S \cap C_j\) having coordinates \(e^{i\theta_1} \times e^{i2\theta_2} \overset{\vp_j}{\mapsto} (\theta_1,0)\).
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)}
+        Let \(p \in \mathcal{Z}\), then since \(\alpha\) is a regular value of \(f\), \(f\) has constant rank \(1\) on \(\mathcal{Y} \supset \mathcal{Z}\).
+        This means we can apply the rank theorem, which gives us a charts \(U,V\), such that \(p \in U, \; F(p) \in V\) so that \(f(x^1,\hdots,x^n) \overset{\text{loc.}}{=} x^1\),
+        this lets us write \(F(p) = (p^1,g(p))\).
+        Since \((\alpha,\beta)\) is a regular value of \(F\), \(p \in \mathcal{Z}\) is a regular point of \(F\), i.e. \(dF_p\) has full rank.
+        \begin{align*}
+            dF_p = 
+            \begin{bmatrix} 1 & 0 & \cdots & 0 \\
+                            \left.\frac{\partial g}{\partial x^1}\right\vert_p & \left.\frac{\partial g}{\partial x^2}\right\vert_p
+                            & \cdots & \left.\frac{\partial g}{\partial x^n}\right\vert_p
+            \end{bmatrix}
+        \end{align*}
+        In order for this matrix to have rank \(2\), the second row must have rank \(1\). Now define \(G: Y \to \mathbb{R}\), where \(G := g\vert_y\), if \(p\) is a regular
+        point of \(G\), then since \(p \in \mathcal{Z}\) was arbitrary, \(\beta\) is a regular value of \(G\), implying that \(G^{-1}(\beta) = \mathcal{Z}\) is a submanifold of
+        \(\mathcal{Y}\) by the regular level set theorem. It remains to show that \(p \) is in fact a regular point. But this is straightforward, since
+        \begin{align*}
+            dG_p = \begin{bmatrix} \left.\frac{\partial g}{\partial x^1}\right\vert_p & \left.\frac{\partial g}{\partial x^2}\right\vert_p
+                & \cdots & \left.\frac{\partial g}{\partial x^n}\right\vert_p \end{bmatrix}
+        \end{align*}
+        Which has rank one since \(dF_p\) has full rank.
+
+        \textbf{(b)} Let \(\alpha \in (0,1)\) and define \(f: \mathbb{R}^4 \to \mathbb{R} \; (x,y,z,w) \mapsto x^2 + y^2 + z^2 + w^2\), and \(g: \mathbb{R}^4 \to \mathbb{R} \; (x,y,z,w) \mapsto x^2 + y^2\).
+        We first show that \((1,\alpha)\) is a regular value of \(F := (f,g): \mathbb{R}^2 \to \mathbb{R}\), note all of these functions are smooth since they are polynomials. 
+        To see \((1,\alpha)\) is regular, let \(p = (x,y,z,w) \in F^{-1}(1,\alpha)\), then
+        \begin{align*}
+            dF_p = \begin{bmatrix} 2x & 2y & 2z & 2w \\ 2x & 2y & 0 & 0 \end{bmatrix}
+        \end{align*}
+        where one of \(x,y \neq 0\) since \(x^2 + y^2 = \alpha \neq 0\) and one of \(z,w \neq 0\), since \(z^2 + w^2 = 1-\alpha \neq 0\). Then
+        \begin{align*}
+            \text{rk}(dF_p) = \dim\text{Rowsp}(dF_p) = \dim\text{Rowsp} \begin{bmatrix} 0 & 0 & 2z & 2w \\ 2x & 2y & 0 & 0\end{bmatrix} = 2
+        \end{align*}
+        so \(p\) is a regular point. Note that \(1\) is a regular value of \(x^2 + y^2 + z^2 + w^2\), since for \(p \in S^3\), \(df_p\) is of the same form as the first row of \(dF_p\)
+        with not all of \(x,y,z,w = 0\).
+        Together with part (a), this tells us that \((f,g)^{-1}(1,\alpha)\) is a submanifold of \(f^{-1}(1) = S^3\), i.e.
+        \[\set{(x,y) \vert x^2 + y^2 = \alpha} \cap S^3 = \set{(x,y,z,w) \vert x^2 + y^2 = \alpha, \; z^2 + w^2 = 1 - \alpha} = h^{-1}(\alpha,1-\alpha)\]
+        is a submanifold of \(S^3\). It remains to show that \(h^{-1}(\alpha,1-\alpha)\) has rank 2, consider \(p = (x,y,z,w) \in h^{-1}(\alpha,1-\alpha)\), then
+        \begin{align*}
+            dh_p = \begin{bmatrix} 2x & 2y & 0 & 0 \\ 0 & 0 & 2z & 2w \end{bmatrix}
+        \end{align*}
+        this has rank 2, since \(x^2 + y^2 = \alpha \neq 0\) implies \((x,y) \neq (0,0)\) and \(z^2 + w^2 = 1-\alpha \neq 0\) implies \((z,w) \neq (0,0)\) implying that \((\alpha,1-\alpha)\) is regular.
+        So by the constant rank level set theorem, \(h^{-1}(\alpha,1-\alpha)\) is a submanifold of \(\mathbb{R}^4\) having rank \(2\), since rank is a property of the manifold, \(h^{-1}(\alpha,1-\alpha) \subset S^3\)
+        has equal rank 2.
+
+        \textbf{(c)} The submanifold approaches the unit circle.
+
+    \end{pb}
+\end{document}
