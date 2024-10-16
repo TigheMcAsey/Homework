@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1728268402.63654 "/home/tighemcasey/Math hw/Math420/hw3/420hw3.tex" "420hw3.pdf" "420hw3" 1728268403.39748 0
+["pdflatex"] 1728374829.72246 "/home/tighemcasey/Math hw/Math420/hw3/420hw3.tex" "420hw3.pdf" "420hw3" 1728374830.66003 0
   "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1727728013.60042 25678 aa7c8fd3909e804e7d85441c21595406 ""
   "/home/tighemcasey/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1726102813.02348 21086786 07df747a8ef29f8e2edc5ba549d24369 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1726102823.09648 1004 54797486969f23fa377b128694d548df ""
@@ -16,9 +16,13 @@
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1726102823.18548 37912 77d683123f92148345f3fc36a38d9ab1 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1726102823.18948 36281 c355509802a035cadc5f15869451dcee ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1726102823.19948 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1726102823.20648 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1726102823.21348 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1726102823.25348 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1726102823.25648 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1726102823.26148 32716 08e384dc442464e7285e891af9f45947 ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1726102823.43448 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1726102823.44348 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/generic/iftex/iftex.sty" 1726102834.34648 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/generic/iftex/ifvtex.sty" 1726102834.34748 1057 525c2192b5febbd8c1f662c9468335bb ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/amscls/amsthm.sty" 1726102826.09748 12594 0d51ac3a545aaaa555021326ff22a6cc ""
@@ -39,9 +43,9 @@
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/graphics/keyval.sty" 1726102832.04348 2671 70891d50dac933918b827d326687c6e8 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/l3backend-dev/l3backend-pdftex.def" 1726102842.43048 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/enumerate.sty" 1726102839.64648 3468 ad69b54642e68f9fdf39ec1a16dd7341 ""
-  "/home/tighemcasey/Math hw/Math420/hw3/420hw3.tex" 1728268401.79455 1514 8231d6a9aaa56a7451f5b3e2df392a71 ""
-  "420hw3.aux" 1728268403.20155 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "420hw3.tex" 1728268401.79455 1514 8231d6a9aaa56a7451f5b3e2df392a71 ""
+  "/home/tighemcasey/Math hw/Math420/hw3/420hw3.tex" 1728374827.91684 14488 49e38d5d2ee30b95ac526ed3994c389e ""
+  "420hw3.aux" 1728374830.41284 32 c81c40425fbb5e93b90fba65da0b5e61 "pdflatex"
+  "420hw3.tex" 1728374827.91684 14488 49e38d5d2ee30b95ac526ed3994c389e ""
   (generated)
   "420hw3.aux"
   "420hw3.log"

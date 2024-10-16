@@ -5,7 +5,7 @@
 \usepackage{enumerate} % For custom lists
 
 \fancyhf{}
-\lhead{Math 420hw2}
+\lhead{Math 420hw3}
 \pagestyle{fancy}
 
 % Page dimensions
@@ -36,5 +36,171 @@
     The second last equality follows from linearity.
 
     \textbf{(b)}
+    \textbf{Lemma.} For any interval \(I = (a,b)\) \(m_{F'}(I) = m^F(I)\). Proof being, we have \(F'\) continuous on \(\overline{I}\), hence we can apply theorem 2.28 of Folland (equivalence to Riemann integral)
+    \[m_{F'}(I) = m_{F'}(\overline{I}) = \int_{\overline{I}} F' dm = \int_a^b F' dx \overset{\text{FTC}}{=} F(b) - F(a) = m^F(I)\]
+    Now let \(E \in \mathcal{B}_\mathbb{R}\). We can define sets \(E_N := E \cap \set{x \vert N - 1 \leq \abs{F'(x)} < N}\), so that \(E\) is the disjoint union \(\bigcup_1^\infty E_N\). For each \(N\),
+    \(\set{x \vert N - 1 \leq \abs{F'(x)} < N}\) is borel, since by the continuity of \(\abs{F'}\) this is the union of the closed level set \(\set{x \vert \abs{F'(x)} = N-1}\) and the open set 
+    \(\set{x \vert N-1 < \abs{F'(x)} < N}\).
+    
+    By monotonicity it is apparent that \(m_{F'}(E) \leq \inf \set{\sum_1^\infty m_{F'}(I_i) \vert E \subset \bigcup_1^\infty I_i, \; I_i \text{ open Intervals}}\), note the reverse inequality is trivial when \(m_{F'}(E) = \infty\),
+    so it will suffice to show the finite case.
+    Let \(\epsilon > 0\), then since \(m^* = m\), on the borel sets. Then we can choose for each \(E_N\), some collection of open intervals \(\set{I^N_j}_{j=1}^\infty\) covering \(E_N\), such that
+    \(\sum_{j=1}^\infty m(I^N_j) \leq m(E_N) + \epsilon\frac{1}{N2^N}\) and define \(J := \bigcup_{i,j=1}^\infty I_j^i\). It follows that
+    \begin{align*}
+        m_{F'}(J) - m_{F'}(E) &= \sum_{N=1}^\infty \left(\sum_{j=1}^\infty m_{F'}(I_j^N) - m_{F'}(E_N) \right) = 
+        \sum_{N=1}^\infty\left(\sum_{j=1}^\infty \int F' \chi_{I_j^N} dm - \int F' \chi_{E_N} dm \right) \\
+        &\overset{\text{MCT}}{=} \sum_{N=1}^\infty\left(\int F' \sum_{j=1}^\infty \chi_{I_j^N} dm - \int F' \chi_{E_N} dm \right)
+        = \sum_{N=1}^\infty \int F' \left( \sum_{j=1}^\infty \chi_{I_N^j} - \chi_{E_N}\right)dm \\
+        &\leq \sum_{N=1}^\infty N \left(\int \sum_{j=1}^\infty \chi_{I_N^j}dm - \int \chi_{E_N}dm\right) 
+        \overset{\text{MCT}}{=} \sum_{N=1}^\infty N \left(\sum_{j=1}^\infty \int \chi_{I_N^j}dm - \int \chi_{E_N}dm\right) \\
+        &= \sum_{N=1}^\infty N \left(\sum_{j=1}^\infty m(I_N^j) - m(E_N)\right) \leq \sum_{N=1}^\infty N(\frac{\epsilon}{N2^{-N}}) = \epsilon \\
+        \implies m_{F'}(E) \geq m_{F'}(J) - &\epsilon
+    \end{align*}
+
+    Now finally, let \(E \in \mathcal{B}_\mathbb{R}\), then for any collection of intervals, \(\set{I_i}_1^\infty\), such that \(E \subset \bigcup_1^\infty I_i\) we have
+    \(\sum_1^\infty m_{F'}(I_i) = \sum_1^\infty m^F(I_i)\)
+    by the lemma, hence
+    \begin{align*}
+        m_{F'}(E) &= \inf \set{\sum_1^\infty m_{F'}(I_i) \vert E \subset \bigcup_1^\infty I_i, \; I_i \text{ open Intervals}} \\
+        &= \inf \set{\sum_1^\infty m^F(I_i) \vert E \subset \bigcup_1^\infty I_i, \; I_i \text{ open Intervals}} = m^{F,*}(E) = m^F(E) 
+    \end{align*}
+\end{pb}
+\begin{pb}
+    \textbf{(a)} We first show that \(\set{x \in \mathbb{R} \vert \frac{x}{2\pi} \in \mathbb{Q}}\) has measure zero. This is straghtforward since 
+    \[\frac{x}{2\pi} \in \mathbb{Q} \iff \exists q \in \mathbb{Q}, \text{ such that } x = 2q\pi \iff x \in \set{\pi q \vert q \in \mathbb{Q}}\]
+    where \(\pi \mathbb{Q}\) has an obvious bijective correspondance with \(q\), namely multiplication by \(\pi\). Hence \(\pi \mathbb{Q}\) is countable
+    and therefore has measure lebesgue \(0\).
+
+    \(f \equiv 0\) on \(\mathbb{R}\setminus[0,\pi]\), so that \(\overline{f} = \underline{f} = 0\) on \(\mathbb{R}\setminus[0,\pi]\).
+
+    Let \(q \in (\pi \mathbb{Q})^c \cap[0,\pi]\), then from the hint we have \(\set{k q\frac{1}{2\pi} (\text{mod}1)\vert k \in \mathbb{N}}\) is dense in \([0,1]\), but this is equivalent to
+    \(\set{kq (\text{mod}2\pi)\vert k \in \mathbb{N}}\) being dense in \([0,2\pi]\). Hence \(\limsup \sin^2 kq = 1 \tand \liminf \sin^2 kq = 0\). This proves that 
+    \(\overline{f} = \chi_{[0,\pi]} \tand \underline{f} = 0\) almost everywhere, since \(\pi \mathbb{Q}\) has lebesgue measure \(0\).
+
+    \textbf{(b)} 
+    Since \(sin^2(kx)\) is continuous on \([0,\pi]\), we can apply Folland Theorem 2.28, to get the following
+    \begin{align*}
+        \int f_k dm = \int sin^2(kx)\chi_[0,\pi]dm = \int_0^\pi \sin^2(kx)dx \overset{\text{FTC}}{=} \left.\frac{x}{2} - \frac{\sin2kx}{4k}\right\vert_0^\pi = \frac{\pi}{2}
+    \end{align*}
+    Where this is a valid application of FTC, since
+    \begin{align*}
+        \frac{d}{dx} \frac{x}{2} - \frac{\sin2kx}{4k} = \frac{1 - cos2kx}{2} = \frac{1 - cos^2(kx) + sin^2(kx)}{2} = \sin^2(kx)
+    \end{align*}
+    And the integral of \(\overline{f}, \underline{f}\) is as follows, since we proved in part (a)  they have equality to \(\chi_[0,\pi] \tand 0\) almost everywhere:
+    \begin{align*}
+        \int \overline{f} dm &= \int \chi_{[0,\pi]} dm = m([0,\pi]) = \pi \\
+        \int \underline{f} dm &= \int 0 dm = m(\emptyset) = 0
+    \end{align*}
+    This is indeed consistent with Fatous lemma, since
+    \begin{align*}
+        \int \liminf f_k dm = 0 \leq \liminf \int f_k dm = \liminf \frac{\pi}{2} = \frac{\pi}{2}
+    \end{align*}
+\end{pb}
+\begin{pb}
+    \textbf{(a)} Sequences which are absolutely convergent as series. As proof, any function \(f: \mathbb{N} \to \mathbb{R}\) defines a real valued sequence \(\set{f(n)}_{n \in \mathbb{N}}\).
+    So any function \(f\) on \(\mathbb{N}\) is a simple function of the form \(\sum_1^\infty f(n)\chi_{\set{n}}\)
+    \begin{align*}
+        \int \abs{f} d\mu &= \int \sum_1^\infty \abs{f(n)}\chi_{\set{n}} d\mu 
+        = \int \lim_{N\to\infty}\sum_1^N \abs{f(n)}\chi_{\set{n}} d\mu \overset{\text{MCT}}{=} \lim_{N\to\infty}\int \sum_1^N \abs{f(n)}\chi_{\set{n}} d\mu \\ 
+        &= \lim_{N\to\infty} \sum_1^N \int \abs{f(n)}\chi_{\set{n}} d\mu = \sum_1^\infty \abs{f(n)}
+    \end{align*}
+    so that \(\int \abs{f} d\mu < \infty\) exactly when \(\sum_1^\infty \abs{f(n)} < \infty\).
+
+    \textbf{(b)} Functions with countable support, which are absolutely convergent as series on their support. As proof, we need only prove the countable support portion of the claim, then 
+    defer to the proof of part (a) for the rest. Suppose for contraposition that \(\set{x \vert f(x) \neq 0}\) is uncountable. Then
+    \begin{align*}
+        \set{x \vert f(x) \neq 0} = \set{x \vert \abs{f(x)} > 0} = \bigcup_{n=1}^\infty \set{x \vert f(x) \geq \frac{1}{n}}
+    \end{align*}
+    So that for some \(n \in \mathbb{N}\), we have \(\set{x \vert f(x) \geq \frac{1}{n}}\) is uncountable, otherwise \(\set{x \vert f(x) \neq 0}\) would be a countable union of countable sets hence countable.
+    This gives the claimed result, namely if \(E \subset \set{x \vert f(x) \geq \frac{1}{n}}\) is countable, then
+    \begin{align*}
+        \int f d\mu \geq \int_{\set{x \vert f(x) \geq \frac{1}{n}}} f d\mu \geq \int_E \frac{1}{n} d\mu = \sum_1^\infty \frac{1}{n} = \infty
+    \end{align*}
+
+    \textbf{(c)} We proved last homework, (2(d)) that \(m^F(E) = \# E \cap \mathbb{Z}\). Given that, we may enumerate the integers as \(\set{z_i}_1^\infty\), then
+    the \(L^1\) functions on \(m^F\) are exactly those whose values as a sequence \(\set{f(z_i)}_1^\infty\) are an absolutely convergent series. Proof being that
+    \(f = f\chi_\mathbb{Z}\) almost everywhere with respect to \(m^F\), then the proof of part (a).
+\end{pb}
+\begin{pb}
+    \textbf{a} If \(p = 0\), then the pointwise limit \(f^{(0)} = \chi_[0,\infty]\), if \(p > 0\), then the pointwise limit \(f^{(p)} = 0\). Proof being, first
+    let \(p = 0\), then for any \(x < 0\), \(f^{(0)}_n(x)\) = 0 for all \(x < 0\). For any \(x > 0\), \(x < N\) for some natural number \(N\), hence
+    \(f^{(0)}_n(x) = 1\) for all \(n \geq N\). If \(p > 0\), then \(\lim_{n\to\infty}n^{-p} = 0\), 
+    hence \[\lim_{n\to\infty}f^{(p)}_n = \lim_{n\to\infty}n^{-p}\chi_{[0,n]} = \lim_{n\to\infty}n^{-p}\lim_{n\to\infty}\chi_{[0,n]} = 0\]
+
+    \textbf{(b)} For \(p = 0\), they agree, proof being:
+    \begin{align*}
+        &\int f^{(0)}dm = \int \chi_{[0,\infty]}dm = m([0,\infty]) = \infty \\
+        &\lim_{n\to\infty}\int f^{(0)}_n dm = \lim_{n\to\infty}\int \chi_[0,n]dm = \lim_{n\to\infty} m([0,n]) = \lim_{n\to\infty} n = \infty
+    \end{align*}
+
+    For \(p > 0\),
+    \begin{align*}
+        &\int f^{(p)}dm = 0 \\
+        &\lim_{n\to\infty}\int f^{(p)}_n dm = \lim_{n\to\infty}\int n^{-p}\chi_[0,n]dm = \lim_{n\to\infty} n^{-p}m([0,n]) = \lim_{n\to\infty} n^{1-p}
+    \end{align*}
+    So that \(\lim_{n\to\infty}\int f^{(p)}_n dm = 0 = \int f^{(p)}dm\) iff \(p > 1\).
+
+    \textbf{(c)} \(g^{(p)} := \sum_{n=1}^\infty n^{-p}\chi_{[n-1,n]}\), this is the smallest function dominating \(f^{(p)}_n\) for all \(n\). 
+    We have convergence in part (b), exactly when both limits are infinite, or the
+    conditions for the dominated convergence theorem are met by \(g\) (equivalently when its possible they be met), since 
+    \[p > 1 \iff \sum_{n=1}^\infty n^{-p} < \infty \iff g^{(p)} \in L^1\]
+    The last if and only if statement can be seen by
+    \begin{align*}
+        \int \abs{g^{(p)}} dm &= \int g^{(p)}dm = \int \sum_{n=1}^\infty n^{-p}\chi_{[n-1,n]} dm = \int \lim_{N\to\infty}\sum_1^N n^{-p}\chi_{[n-1,n]} dm \\
+        &\overset{\text{MCT}}{=} \lim_{N\to\infty} \int \sum_1^N n^{-p}\chi_{[n-1,n]} dm = \lim_{N\to\infty} \sum_1^N \int n^{-p}\chi_{[n-1,n]} dm \\
+        &= \sum_1^\infty n^{-p} m([n-1,n]) = \sum_1^\infty n^{-p}
+    \end{align*}
+\end{pb}
+\begin{pb}
+    \textbf{(a)} Apply DCT with \(g := \abs{\psi}\sup_\mathbb{R}\abs{\phi}\), so that \(\int g dm = \sup_\mathbb{R}\abs{\phi} \int \abs{\psi} dm\) is \(L^1\).
+    This furnishes
+    \begin{align*}
+        \lim_{n\to\infty}\int\phi(x/n)\psi(x)dm = \int \lim_{n\to\infty}\phi(x/n)\psi(x)dm = \lim_{x\to 0}\phi(x) \int\psi(x)dm
+    \end{align*}
+    The last equality as a consequence of continuity of \(\phi\).
+
+    \textbf{(b)} \(\abs{\phi} \vert_{\text{supp}\phi}\) is a continuous function on a compact set, hence bounded. Let \(M\) be an upper bound for
+    \(\abs{\phi}\) on it's support and hence all of \(\mathbb{R}\). So we may apply \(DCT\) with \(g := M\abs{\psi}\), which is a constant multiple of an \(L^1\)
+    function hence \(L^1\). This lets us evaluate
+    \begin{align*}
+        \lim_{n\to\infty} \int \phi(nx)\psi(x)dm = \int \lim_{n\to\infty} \phi(nx)\psi(x)dm = \int 0 dm = 0
+    \end{align*}
+    The second to last equality following since \(\phi\) has compact support, so for every non-zero value \(\phi(nx)\) is eventually outside the support of \(\phi\) for
+    large enough \(n\), giving us \(\phi(nx)\psi(x) = 0\) almost everywhere.
+
+    \textbf{(c)}
+    \begin{align*}
+        \lim_{n\to\infty} n^2 \int \frac{\sin(x^2/n^2)}{x^2(1+x^2)}dm = \lim_{n\to\infty}\int\frac{n^2\sin(x^2/n^2)}{x^2(1+x^2)}dm
+    \end{align*}
+    So define \(\phi(u) = \frac{sin(u^2)}{u^2}\), which has absolute values less than or equal to 1 and continuous, and \(\psi(x) = \frac{1}{1 + x^2} \in L^1\).
+    Then we apply (a), so which gives us
+    \begin{align*}
+        \lim_{n\to\infty} n^2 \int \frac{\sin(x^2/n^2)}{x^2(1+x^2)}dm &= \lim_{x\to 0}\frac{\sin(x^2)}{x^2} \int \frac{1}{1+x^2} dm 
+        = \int \lim_{n \to \infty} \chi([-n,n])\frac{1}{1+x^2}dm \\
+        &\overset{\text{MCT}}{=} \lim_{n \to \infty}\int \chi([-n,n])\frac{1}{1+x^2}dm = \lim_{n\to\infty}\int_{-n}^n \frac{1}{1+x^2} dx \\
+        &= \lim_{n\to \infty} \arctan(n) - \arctan(-n) = \pi
+    \end{align*}
+    Where we use Folland 2.28 to evaluate the integral as a Riemann integral.
+
+    \textbf{(d)} We have \(0 \leq \abs{\cos(x^2)} \leq 1\), with equality to \(1\) on \([0,\sqrt{\pi}]\) if and only if \(x = 0 \tor \sqrt(\pi)\).
+    Hence at all other points the pointwise limit of 
+    \(\lim_{n\to\infty}\abs{\cos^n(x^2)}\chi_{[0,\sqrt{\pi}]} = \lim_{n\to\infty}\alpha^n\) for \(0 \leq \alpha < 1\),
+    this implies that \(\lim_{n\to\infty}cos^n(x^2)\chi_{[0,\sqrt{\pi}]} = 0\) almost everywhere.
+
+    Additionally, \(cos^{n}(x^2)\chi_{[0,\sqrt{\pi}]}\) is dominated by \(\chi_{[0,\sqrt{\pi}]} \in L^1\). Hence we can apply DCT, so that
+    \begin{align*}
+        \lim_{n\to\infty} \int cos^n(x^2)\chi_{[0,\sqrt{\pi}]} dm = \int \lim_{n\to\infty} cos^n(x^2)\chi_{[0,\sqrt{\pi}]} dm
+        = \int 0 dm = 0
+    \end{align*}
+\end{pb}
+\begin{pb}
+    Let \(\epsilon > 0\), then by the definition of \(\int \abs{f}d\mu\), we can choose some simple function \(\varphi \leq \abs{f}\), such that \(\int \abs{f}d\mu - \int \varphi d\mu < \epsilon/2\).
+    Then \(\varphi = \sum_1^N c_i \chi_{E_i}\), so in particular \(\sup(\varphi) = \max_ic_i < \infty\). Now choose \(\delta = \frac{\epsilon}{2\sup(\varphi)}\), so that for any \(E\) with
+    \(\mu(E) < \delta\), we have
+    \begin{align*}
+        &\int_E \abs{f}d\mu - \int_E \varphi d\mu \leq \int \abs{f}d\mu - \int \varphi d\mu < \epsilon/2 \\
+        \implies &\int_E \abs{f}d\mu < \epsilon/2 + \int_E \varphi d\mu \leq \epsilon/2 + \int_E \sup \varphi d\mu 
+        = \epsilon/2 + \mu(E) \sup \varphi < \epsilon
+    \end{align*}
 \end{pb}
 \end{document}

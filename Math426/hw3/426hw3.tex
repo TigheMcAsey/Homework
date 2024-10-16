@@ -1,0 +1,77 @@
+\documentclass[10.5pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{centernot}
+\usepackage[includeheadfoot,margin=0.5in]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+
+\fancyhf{}
+\lhead{Math 426hw3}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+\usepackage{color}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\ism}{\simeq}
+
+\begin{document}
+    \begin{pb}
+        We first check that \(f_*\) is well defined, by definition of being a strong deformation retract we have \(f_*: A \to A\) as the identity map on objects, furthermore if \(\gamma\) is a path, then
+        \(f(\gamma,1)\subset Y\), so that we only need check that \(f_*\) is well defined on equivalence classes of paths to see that \(f_*\) is a map from \(\Pi(X,A)\) to \(\Pi(Y,A)\).
+        Let \(\gamma\) and \(\gamma'\) be homotopic paths (with respect to \(A\)), then since \(f_*\) is a strong deformation retract onto \(Y\), we have
+        \(f_*(\gamma) \sim_A \gamma \tand f_*(\gamma') \sim_A \gamma'\) are homotopic. It follows that by transitivity
+        \begin{align*}
+            f_*(\gamma) \sim_A \gamma \sim_A \gamma' \sim_A f_*(\gamma')
+        \end{align*}
+        are homotopic with respect to \(A\).
+
+        To show \(f_*\) is an isomorphism of groupoids it will suffice to provide an inverse. Define \(g\) as the embedding of \(Y\) into \(X\), it is clear that \(g_*\) is identity on objects and
+        well defined on paths. \(f_*g_* = 1_{\Pi(Y,A)}\) since both are identity on \(A\), and if \(\gamma\) is a path in \(Y\), then both \(g \tand f\) fix \(\gamma\), hence
+        \(f_*g_*([\gamma]) = [\gamma]\). Now considering \(g_*f_*\), we once again have both being identity on \(A\). Now if \(\gamma\) is a path in \(X\), \(f\) being a strong
+        deformation retract implies that \(\gamma\) is homotopic in \(X\) to \(f(\gamma,1)\) with respect to \(A\), but then \(g(f(\gamma,1),1) = f(\gamma,1)\), so that
+        \(g(f(\gamma,1),1) \sim_A \gamma\). This implies that \(g_*f_*([\gamma]) = [\gamma]\).
+    \end{pb}
+    \begin{pb}
+        %% U intersect V is equal to <a> x <b> since we have computed the fundamental group of the circle
+        %% we can use SVK theorem on U and V respectively (they have the same groupoids), cover p and q with a rectangle, then cover the rest U with a rectangle passing over p and not q.
+        %% Then we get the trivial fundamental group and the groupoid for a circle with 2 points by question 1.
+        %% Probably draw some pictures for this one.
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)}
+        Consider \(F = \gen{a,b}\) to be the free group on 2 generators. Then we can take the group homomorphism defined on generators, 
+        \(\varphi: F \to G, \;a \mapsto xy, b \mapsto yxy\). To check that this is onto, we need only check \(x,y \in \varphi(F)\), but this is straightforward, since
+        \begin{align*}
+            &\varphi(ba^{-1}) = \varphi(b)\varphi(a)^{-1} = yxyy^{-1}x^{-1} = y &\varphi(a^2b^{-1}) = \varphi(a)\varphi(ba^{-1})^{-1} = xyy^{-1} = x
+        \end{align*}
+        By definition of \(G\), we have \(\ker \varphi = \set{\alpha \in F \vert \varphi(\alpha) \in \gen{xyxy^{-1}x^{-1}y^{-1}}}\), where
+        \(xyxy^{-1}x^{-1}y^{-1} = \varphi(a^3b^{-2})\), so that \(\varphi(\alpha) \in \gen{\varphi(a^3b^{-2})}\) exactly when \(\alpha \in \gen{a^3b^{-2}}\).
+        Hence we have
+        \(\ker \varphi = \gen{a^3b^{-2}}\), so that by the first isomorphism theorem \[H \ism F/\gen{a^3b^{-2}} = F/\ker \varphi \ism G\]
+
+        \textbf{(b)} We have the relation \(xy^2x^{-1} = y^3\), then writing conjugation by \(x\) as \(\phi\), we have in general \(\phi(y^{2n}) = \phi(y^2)^n = y^{3n}\).
+        Applying two conjugations it is easy to see that \(x^2y^4x^{-2} = xy^6x^{-1} = y^9\). A little harder is
+        \begin{align*}
+            x^3y^4x^{-3} = (x^3y)y^4(x^3y)^{-1} = (yx^2)y^4(yx^2)^{-1} = y(x^2y^4x^{-2})y^{-1} = y(y^9)y^{-1} = y^9 = x^2y^4x^{-2}
+        \end{align*}
+        This implies that \(y^6 = xy^4x^{-1} = y^4\) and hence \(y^2 = 1\). Our original relations then give us \(x = yx\) implying \(y=1\) which implies that \(x^2 = x^3\), so that \(x = 1\) as well.
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+\end{document}

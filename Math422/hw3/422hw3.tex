@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 422hw3}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+
+\begin{document}
+    \begin{pb}
+        From the notes if the roots of \(f\) are \(\set{\theta_i}_{i=1}^n\), then \[\text{Disc}(f) = (-1)^{\binom{n}{2}}\prod_1^n f'(\theta_i)\]
+        In this case, the roots are \(\set{\zeta_n^i}_{i=1}^n\), so that
+        \begin{align*}
+            \text{Disc}(x^n-1) &= (-1)^{\binom{n}{2}}\prod_1^n n\zeta^{-i}_n = (-1)^{\binom{n}{2}}n^n\prod_1^n \zeta^{-i}_n \\
+            &= (-1)^{\binom{n}{2}}n^n \overline{\prod_1^n \zeta^{i}_n} = (-1)^{\binom{n}{2}}n^n \overline{(-1)^n \prod_1^n -\zeta^{i}_n}
+        \end{align*}
+        Then we can recognize \(\prod_1^n -\zeta^{i}_n\) as the constant term of \(x^n -1\), since \(x^n - 1 = \prod_1^n(x-\zeta_n^i)\) implies that
+        \(\prod_1^n -\zeta_n^i = -1\), hence \[(-1)^n\prod_1^n -\zeta^{i}_n = (-1)^n(-1) = (-1)^{n-1} = \overline{(-1)^{n-1}} = \overline{(-1)^n\prod_1^n -\zeta^{i}_n} = (-1)^n(-1)\]
+        Substituting this in to the original expression, we get
+        \begin{align*}
+            \text{Disc}(x^n-1) = (-1)^{\binom{n}{2}}n^n \overline{(-1)^n \prod_1^n -\zeta^{i}_n} = (-1)^{\binom{n}{2} + n - 1}n^n
+        \end{align*}
+        As desired.
+    \end{pb}
+    \begin{pb}
+        Denote \(f(t)\) as the polynomial in the question, then notice \(f(t) = (t+1)^3 - 5\). I claim that the splitting field of \(f(t)\) is equal to the splitting field of \(p(t) = t^3 - 5 = f(t-1)\). 
+        As proof, if \(\alpha\) is a root of \(p(t)\), then \(1 + \alpha\) is a root of \(f(t)\), and if \(\beta\) is a root of \(f(t)\), then \(1-\beta\) is a root of \(p(t)\), hence any field containing the roots of
+        one of the two polynomials contains the roots of the other. So it will suffice to find the splitting field of \(p(t)\), which is 
+        \[\mathbb{Q}(5^{1/3},5^{1/3}\zeta_3,5^{1/3}\zeta_3^{-1}) = \mathbb{Q}(5^{1/3},\zeta_3)\]
+    \end{pb}
+    \begin{pb}
+        We note that by Gauss' lemma, we can check for irreducibility in \(\mathbf{F}_p[X,Y][T]\). Assume \(f = gh\), then \(\deg_{X,Y}g + \deg_{X,Y}h = 1\), so we can assume wlog
+        that \(\deg_{X,Y}g = 1, \tand \deg_{X,Y}h = 0\), then \(g = Xg_1(T) + Yg_2(T) + g_3(T)\), where \(g_i \in \mathbf{F}_p[T]\), then \(hg_2 = 1\) implies that \(h\) is a unit, so \(f\)
+        is irreducible. To see that \([L:k]_s = p\), we write \(f(T) = p(T^p)\), where \(p(T) = T^p + XT + Y\) (seperable, and irreducible by irreducibility of \(f\)), so that each root of \(f\) has
+        multiplicity \(p\), and hence \(p\) conjugates. Taking an algebraically closed field \(K \supset L\), and an embedding \(\sigma: \mathbf{F}_p(X,Y) \to K\), the number of ways to
+        extend \(\sigma\) to \(k(\alpha)\) is the number of conjuates of \(\alpha\), which is equal to \(p\), hence by definition \([L:k]_s = p\).
+
+        Consider the extension \(k(\alpha^p)\), then we have \(k(\alpha)/k(\alpha^p)/k\), then \(\alpha^p\) is a root of \(p(T)\), hence this is a degree \(p\)
+        and therefore proper intermediate extension, since \(\min(\alpha^p,k)\) is seperable, this is also a seperable extension, equal to the seperable closure of \(k\) in \(k(\alpha)\)
+        since it has degree equal to \([k(\alpha):k]_s\).
+        To show this extension is unique, suppose for contradiction there exists some other intermediate extension \(k'\).
+        Note that any proper intermediate extension must be such that \([k(\alpha):k'] = [k':k] = p\),
+        but then \([k':k]\) must be purely inseperable, since if it were seperable then it would have to be equal to \(k_{\text{sep}} = k(\alpha^p)\), and \([k':k]_s \vert p\), implies
+        that \(k'/k\) is purely inseperable. Consequently \(k(\alpha)/k'\) must be a seperable extension, let \(q(T) := \min(\alpha,k')\), then \(\deg(q) = p\) and \(q \vert f\), since
+        \(f(\alpha) = 0\), and \(f(T) \in k'[T]\). Now, since \(f\) has \(p\) unique factors of multiplicity \(p\) and \(q\) has \(p\) distinct linear factors, it must be the case that 
+        \(q^p = f\), from the binomial theorem we can see that \(q\) must be \(T^p + T\sqrt[p]{X} + \sqrt[p]{Y}\). This implies that \(\sqrt[p]{X},\sqrt[p]{Y} \in k'\), so that
+        \(k' = k(\sqrt[p]{X})(\sqrt[p]{Y})/k(\sqrt[p](X))/k\) is a tower of degree \(p\) extensions, so that \([k':k] = p^2\), a contradiction.
+
+        Then if \(L/E/k\) is a tower, such that \(E/k\) is not seperable, it must be the case that \(E = L\), and in this case, the extension \(L/k\) is not purely inseperable.
+    \end{pb}
+    \begin{pb}
+        \begin{enumerate}
+            \item No, although every finite extension is algebraic not every finite extension is seperable. As a counter example consider
+            \(\mathbf{F}_p(t)(\alpha)/\mathbf{F}_p(t)\), where \(\alpha\) is a root of the irreducible polynomial (irreducible by Gauss' Lemma, then Eisensteins criterion)
+            \(X^p - t\) in \(\mathbf{F}_p(t)[X]\). By construction we have \([\mathbf{F}_p(t)(\alpha):\mathbf{F}_p(t)] = p\) so the extension is finite,
+            but \(\min(\alpha,\mathbf{F}_p(t)(\alpha)) =  X^p - t\) has zero derivative so the extension is not seperable.
+
+            \item No, the extension \(\mathbb{Q}(\sqrt[3]{2})\) is a counterexample. As proof, first note that the extension is seperable since \(\mathbb{Q}\) is perfect.
+            However, we have the embedding (fixing \(\mathbb{Q}\)) \(\sigma: \mathbb{Q}(\sqrt[3]{2}) \to \mathbb{C}\), where \(\sigma: \sqrt[3]{2} \mapsto \zeta_3\sqrt[3]{2}\), then by the extension theorem this can be
+            extended to an automorphism \(\overline{\sigma}:\mathbb{C} \to \mathbb{C}\). \(\mathbb{Q}(\sqrt[3]{2})\) is not fixed under this automorphism implying it is not normal.
+
+            \item No, in fact every purely inseperable extension is normal. Existence of purely inseperable extensions is proven in the first counter example 
+            (for a more in depth proof of why this extension is purely inseperable see the lemma in problem 5). To see they are normal, let
+            \(E/F\) be a purely inseperable extension, and \(L\) an algebraically closed field containing \(E\). Then for any \(\alpha \in E\)
+            \(\alpha\) is the only root of its minimum polynomial over \(F\). Hence if \(\sigma\) is an \(F\)-automorphism of \(L\), then
+            we have seen \(\sigma(\alpha)\) is a root of \({}^\sigma f = f\), hence \(\alpha\) is fixed. Since this holds for all elements of \(E\), we have that
+            \(\sigma\vert_E = \mathbf{1}_E \in \text{Aut}(E)\) is an automorphism of \(E\) so that \(E\) is normal.
+        \end{enumerate}
+    \end{pb}
+    \begin{pb}
+        \textbf{Lemma.} A finite extension is purely inseperable if and only if its seperability degree is 1. 
+        
+        As proof let \(L,k\) be fields, with \(L/k\) and \([L:k] < \infty\), and denote \(K\) as an algebraically closed field containing \(L\).
+        First assume that \([L:k]_s = 1\), then for any \(\alpha \in L\), \(\alpha\) has no conjugates, else the embedding \(\sigma: k \to K\) could be extended to
+        multiple maps (one for each conjugate) \(k(\alpha) \to K\), then by the extension theorem each of these could be extended to a map from \(L\)
+        to \(K\), which would contradict \([L:k]_s = 1\). Hence \(\alpha\) must be a purely inseperable element. Now conversely, assume that \(L/k\) is purely inseperable.
+        Then since the extension is finite, we can write it as a tower of simple extensions \(L = k(\alpha_1,\hdots,\alpha_n)/k(\alpha_1,\hdots,\alpha_{n-1})/\cdots/k(\alpha_1)/k\), it is immediate
+        that each extension is purely inseperable, since for \(\beta \in L\), we have \(\min(\beta, k(\alpha_1,\hdots,k_\ell)) \vert \min(\beta,k)\), which only has one distinct root
+        (similarly for any of the extensions in the tower).
+        Then it will suffice to show that a simple extension by a purely inseperable element has seperable degree \(1\), but this is clear, since any extension must send
+        \(\alpha\) to a root of its minimal polynomial, hence itself. This proves the desired result
+        \[[L:k]_s = \prod_{i=1}^n[k(\alpha_1,\hdots,\alpha_i):k(\alpha_1,\hdots,\alpha_{i-1})] = 1\]
+
+        In order to show \(P\) is a subextension, we only need show \(\set{a \in E \vert a \text{ is purely inseperable over }F}\) is a field
+        since each element of \(F\) is purely inseperable by definition. To do so, we will show that if \(\alpha,\beta\) are purely inseperable, then so are
+        \(\alpha^{-1},\alpha + \beta \tand \alpha+\beta\). The case of \(\alpha^{-1}\) is obvious since \(\alpha\) being purely inseperable over \(F\) implies that 
+        \([F(\alpha):F]_s = 1\), since any extension must map \(\alpha\) to another root of its minimal polynnomial, hence only itself. This proves that every element of
+        \(F(\alpha)/F\) is purely inseperable, in particular \(\alpha^{-1}\) is purely inseperable. As per the other two cases, we have
+        \begin{align*}
+            &[F(\alpha,\beta):F]_s = [F(\alpha,\beta):F(\alpha)]_s[F(\alpha):F]_s = 1 \\
+            &1 = [F(\alpha,\beta):F]_s = [F(\alpha,\beta):F(\alpha+\beta)]_s[F(\alpha+\beta):F]_s = 1 \implies [F(\alpha+\beta):F]_s = 1 \\
+            &1 = [F(\alpha,\beta):F]_s = [F(\alpha,\beta):F(\alpha\beta)]_s[F(\alpha\beta):F]_s = 1 \implies [F(\alpha\beta):F]_s = 1
+        \end{align*}
+        so that each extension is purely inseperable implying that \(\alpha+\beta \tand \alpha \beta\) are both purely inseperable.
+
+        Since purely inseperable extensions are normal and \([P:F] \leq [E:F] < \infty\), we have that \(P\) is the splitting field of a polynomial \(f\) over \(F\).
+        Each of the irreducible factors \(\set{f_i}_1^n\) of \(f\) must be purely inseperable, hence over \(P\) we have
+        \begin{align*}
+            f = \prod_1^n (x-\alpha_i)^{p^{k_i}}
+        \end{align*}
+        So we can take the tower of purely inseperable simple extensions (it is easy to see the extensions are purely inseperable since \([P:F]_s = 1\))
+        \begin{align*}
+            P = F(\alpha_1,\hdots,\alpha_n)/\cdots/F(\alpha_1)/F
+        \end{align*}
+        Where each simple extension has \(p\)-power order by inseperability and hence \(P/F\) has \(p\)-power order by multiplicativity of degree.
+    \end{pb}
+\end{document}

@@ -50,6 +50,10 @@
             &(\tilde{U} \times U, \vp_3) &(\tilde{U} \times \tilde{U}, \vp_4)
         \end{align*}
         Where \(U, \tilde{U}\) are defined in the previous question, and \(\vp_j: e^{i\theta_1} \times e^{i\theta_2} \mapsto (\theta_1,2\theta_1 - \theta_2)\).
+        One way to see these are valid coordinates, is given the standard coordinates \(U \times U\) above (the other cases are similar), \((\theta_1,\theta_2) \mapsto (\theta_1,2\theta_1 - \theta_2)\)
+        is a diffeomorphism to its image (which is an open subset of \(\mathbb{R}^2\), since its the image of an open subset under an open map). To see this,
+        the map is polynomial, hence smooth, and it has inverse on its image being \((\phi_1,\phi_2) \mapsto (\phi_1, -\phi_2 + 2\phi_1)\), which is also a polynomial map
+        hence smooth.
         Then the coordinates on each chart \(C_j\) are \(S \cap C_j\) having coordinates \(e^{i\theta_1} \times e^{i2\theta_2} \overset{\vp_j}{\mapsto} (\theta_1,0)\).
     \end{pb}
     \begin{pb}
@@ -96,7 +100,8 @@
         So by the constant rank level set theorem, \(h^{-1}(\alpha,1-\alpha)\) is a submanifold of \(\mathbb{R}^4\) having rank \(2\), since rank is a property of the manifold, \(h^{-1}(\alpha,1-\alpha) \subset S^3\)
         has equal rank 2.
 
-        \textbf{(c)} The submanifold approaches the unit circle.
+        \textbf{(c)} The submanifold approaches the unit circle. Equivelantly, one of the free parameters gets arbitrarily small, crushing the circle in the small parameter
+        arbitrarily close to a point.
 
     \end{pb}
 \end{document}
