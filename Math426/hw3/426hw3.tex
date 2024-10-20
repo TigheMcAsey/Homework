@@ -47,10 +47,37 @@
         \(g(f(\gamma,1),1) \sim_A \gamma\). This implies that \(g_*f_*([\gamma]) = [\gamma]\).
     \end{pb}
     \begin{pb}
-        %% U intersect V is equal to <a> x <b> since we have computed the fundamental group of the circle
-        %% we can use SVK theorem on U and V respectively (they have the same groupoids), cover p and q with a rectangle, then cover the rest U with a rectangle passing over p and not q.
-        %% Then we get the trivial fundamental group and the groupoid for a circle with 2 points by question 1.
-        %% Probably draw some pictures for this one.
+        \textbf{(a)} There is an obvious strong deformation retract from \(U \cap V\) to two disconnected circles, one with base point \(p\), and one with basepoint
+        \(q\), since there are no paths between the two points we know what this groupoid looks like since we know the fundamental group of the circle.
+        Hence by problem 1, we have \(\Pi(U \cap V, \set{p,q}) = \cdots\)
+
+        \textbf{(b)} Here is an explicit strong deformation retract of \(U\) (you can ignore this and look at the picture if you like).
+        We can identify \(U\) as having coordinates \((t,x)\), where \(t\) spans the circular portion of \(U\),
+        and \(x\) the horizontal. Now assume that \(p\) is at \((0,0)\) and \(q\) at \((0,\epsilon)\) where \(x \in (-1,1), t \in [0,1]\), so that \(\epsilon \in (0,1)\), in this case
+        we can see that \(t = 1\) at the identified boundary. Then we cant take the strong deformation retract
+        \begin{align*}
+            &H: U \times I \to U \\
+            &((t,x),s) \mapsto \begin{cases}
+                (t,xe^{t(1-\frac{1}{1-s})}) & s \neq 1\\
+                (t,0) & s = 1 \tand t \neq 0 \\
+                (t,x) & s = 1 \tand t = 0
+            \end{cases}
+        \end{align*}
+        This is clearly continuous, away from \(s = 1\), but it is continuous there as well since \(\lim_{s\to1}e^{1-\frac{1}{1-s}} = 0\). This gives us a strong deformation 
+        retract from \(U\) to a circle union the line through \(p,q\) where clearly we can retract the portion of the line to the left of \(p\) onto \(p\). Alternatively, here is a picture of the
+        retract:
+            
+        \textcolor{red}{Picture of SDR Here}
+
+        From the lemma, this retracted space has the same fundamental groupoid as \(U\). Hence we have that
+        \(\Pi(U,\set{p,q}) = \cdots\)
+
+        \textbf{(c)} We use the same method as in part (b) to conclude that the fundamental groupoid \(\Pi(V, \set{p,q})\).
+        \(\Pi(V, \set{p,q}) = \cdots\)
+
+        \textbf{(d)} We first notice that in \(U\) we have \([b] = [d^{-1}ad]\), and in \(V\) we have \([b] = [cac^{-1}]\). I claim that the category \(X\), with
+        \(\text{Ob}(X) = \set{p,q}\) and
+        \[\text{Mor}_X(p,p) = \gen{a,dc \vert a = (dc)^{-1}a(dc)} \; \text{Mor}_X(q,q) = \gen{cad, cd \vert cad = (cd)^{-1}} \; \text{Mor}_X(p,q) = \gen{d,c^{-1}}\]
     \end{pb}
     \begin{pb}
         \textbf{(a)}
