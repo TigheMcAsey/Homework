@@ -85,30 +85,13 @@
         \end{enumerate}
     \end{pb}
     \begin{pb}
-        \textbf{Lemma.} A finite extension is purely inseperable if and only if its seperability degree is 1. 
-        
-        As proof let \(L,k\) be fields, with \(L/k\) and \([L:k] < \infty\), and denote \(K\) as an algebraically closed field containing \(L\).
-        First assume that \([L:k]_s = 1\), then for any \(\alpha \in L\), \(\alpha\) has no conjugates, else the embedding \(\sigma: k \to K\) could be extended to
-        multiple maps (one for each conjugate) \(k(\alpha) \to K\), then by the extension theorem each of these could be extended to a map from \(L\)
-        to \(K\), which would contradict \([L:k]_s = 1\). Hence \(\alpha\) must be a purely inseperable element. Now conversely, assume that \(L/k\) is purely inseperable.
-        Then since the extension is finite, we can write it as a tower of simple extensions \(L = k(\alpha_1,\hdots,\alpha_n)/k(\alpha_1,\hdots,\alpha_{n-1})/\cdots/k(\alpha_1)/k\), it is immediate
-        that each extension is purely inseperable, since for \(\beta \in L\), we have \(\min(\beta, k(\alpha_1,\hdots,k_\ell)) \vert \min(\beta,k)\), which only has one distinct root
-        (similarly for any of the extensions in the tower).
-        Then it will suffice to show that a simple extension by a purely inseperable element has seperable degree \(1\), but this is clear, since any extension must send
-        \(\alpha\) to a root of its minimal polynomial, hence itself. This proves the desired result
-        \[[L:k]_s = \prod_{i=1}^n[k(\alpha_1,\hdots,\alpha_i):k(\alpha_1,\hdots,\alpha_{i-1})] = 1\]
-
-        In order to show \(P\) is a subextension, we only need show \(\set{a \in E \vert a \text{ is purely inseperable over }F}\) is a field
-        since each element of \(F\) is purely inseperable by definition. To do so, we will show that if \(\alpha,\beta\) are purely inseperable, then so are
-        \(\alpha^{-1},\alpha + \beta \tand \alpha+\beta\). The case of \(\alpha^{-1}\) is obvious since \(\alpha\) being purely inseperable over \(F\) implies that 
-        \([F(\alpha):F]_s = 1\), since any extension must map \(\alpha\) to another root of its minimal polynnomial, hence only itself. This proves that every element of
-        \(F(\alpha)/F\) is purely inseperable, in particular \(\alpha^{-1}\) is purely inseperable. As per the other two cases, we have
+        We have that \(a \in E\) is purely inseperable if and only if \(a^{p^n} \in F\) for some \(n \geq 0\), denote this value of \(n\) for an element \(\alpha\) as \(n_\alpha\).
+        We also have that each element of \(F\) is purely inseperable. Now suppose that \(a,b \in E\) are purely inseperable, we have that
         \begin{align*}
-            &[F(\alpha,\beta):F]_s = [F(\alpha,\beta):F(\alpha)]_s[F(\alpha):F]_s = 1 \\
-            &1 = [F(\alpha,\beta):F]_s = [F(\alpha,\beta):F(\alpha+\beta)]_s[F(\alpha+\beta):F]_s = 1 \implies [F(\alpha+\beta):F]_s = 1 \\
-            &1 = [F(\alpha,\beta):F]_s = [F(\alpha,\beta):F(\alpha\beta)]_s[F(\alpha\beta):F]_s = 1 \implies [F(\alpha\beta):F]_s = 1
+            (a+b)^{p^{\max\set{n_a,n_b}}} = a^{p^{\max\set{n_a,n_b}}} + b^{p^{\max\set{n_a,n_b}}} \in F \\
+            (ab)^{p^{\max\set{n_a,n_b}}} = a^{p^{\max\set{n_a,n_b}}}b^{p^{\max\set{n_a,n_b}}} \in F \\
+            (a^{-1})^{n_a} = (a^{n_a})^{-1} \in F
         \end{align*}
-        so that each extension is purely inseperable implying that \(\alpha+\beta \tand \alpha \beta\) are both purely inseperable.
 
         Since purely inseperable extensions are normal and \([P:F] \leq [E:F] < \infty\), we have that \(P\) is the splitting field of a polynomial \(f\) over \(F\).
         Each of the irreducible factors \(\set{f_i}_1^n\) of \(f\) must be purely inseperable, hence over \(P\) we have
@@ -119,6 +102,6 @@
         \begin{align*}
             P = F(\alpha_1,\hdots,\alpha_n)/\cdots/F(\alpha_1)/F
         \end{align*}
-        Where each simple extension has \(p\)-power order by inseperability and hence \(P/F\) has \(p\)-power order by multiplicativity of degree.
+        Where each simple extension has \(p\)-power order by inseperability of the elements, and hence \(P/F\) has \(p\)-power order by multiplicativity of degree.
     \end{pb}
 \end{document}

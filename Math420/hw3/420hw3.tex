@@ -25,7 +25,7 @@
 \begin{document}
 \begin{pb}
     \textbf{(a)} Since \(g \geq 0\), \(0\) is a simple function less than \(g\), hence for any set \(E \in \mathcal{M}\),
-    \[\mu_g(E) = \int_E g d\mu \geq int_E 0 d\mu = 0\]
+    \[\mu_g(E) = \int_E g d\mu \geq \int_E 0 d\mu = 0\]
     Proving nonnegativity. Furthermore, we have \[\mu_g(\emptyset) = \int \chi_\emptyset g d\mu = \int 0 d\mu = 0\]
     So it will suffice to sheck for countable additivity. Consider the disjoint collection \(\set{E_i}_1^\infty\), and denote \(E := \bigcup_1^\infty E_i\).
     Then \(\chi_E = \sum_1^\infty \chi_{E_i}\), so that
@@ -36,7 +36,8 @@
     The second last equality follows from linearity.
 
     \textbf{(b)}
-    \textbf{Lemma.} For any interval \(I = (a,b)\) \(m_{F'}(I) = m^F(I)\). Proof being, we have \(F'\) continuous on \(\overline{I}\), hence we can apply theorem 2.28 of Folland (equivalence to Riemann integral)
+    \textbf{Lemma.} For any interval \(I = (a,b)\) \(m_{F'}(I) = m^F(I)\). Proof being, we have \(F'\) continuous on \(\overline{I}\), hence we can apply theorem 2.28 of Folland (equivalence to Riemann integral), as well as
+    \(F' \chi_{(a,b)} = F' \chi_{[a,b]}\) almost everywhere to conclude
     \[m_{F'}(I) = m_{F'}(\overline{I}) = \int_{\overline{I}} F' dm = \int_a^b F' dx \overset{\text{FTC}}{=} F(b) - F(a) = m^F(I)\]
     Now let \(E \in \mathcal{B}_\mathbb{R}\). We can define sets \(E_N := E \cap \set{x \vert N - 1 \leq \abs{F'(x)} < N}\), so that \(E\) is the disjoint union \(\bigcup_1^\infty E_N\). For each \(N\),
     \(\set{x \vert N - 1 \leq \abs{F'(x)} < N}\) is borel, since by the continuity of \(\abs{F'}\) this is the union of the closed level set \(\set{x \vert \abs{F'(x)} = N-1}\) and the open set 
@@ -69,7 +70,7 @@
     \textbf{(a)} We first show that \(\set{x \in \mathbb{R} \vert \frac{x}{2\pi} \in \mathbb{Q}}\) has measure zero. This is straghtforward since 
     \[\frac{x}{2\pi} \in \mathbb{Q} \iff \exists q \in \mathbb{Q}, \text{ such that } x = 2q\pi \iff x \in \set{\pi q \vert q \in \mathbb{Q}}\]
     where \(\pi \mathbb{Q}\) has an obvious bijective correspondance with \(q\), namely multiplication by \(\pi\). Hence \(\pi \mathbb{Q}\) is countable
-    and therefore has measure lebesgue \(0\).
+    and therefore has lebesgue measure \(0\).
 
     \(f \equiv 0\) on \(\mathbb{R}\setminus[0,\pi]\), so that \(\overline{f} = \underline{f} = 0\) on \(\mathbb{R}\setminus[0,\pi]\).
 
@@ -80,13 +81,13 @@
     \textbf{(b)} 
     Since \(sin^2(kx)\) is continuous on \([0,\pi]\), we can apply Folland Theorem 2.28, to get the following
     \begin{align*}
-        \int f_k dm = \int sin^2(kx)\chi_[0,\pi]dm = \int_0^\pi \sin^2(kx)dx \overset{\text{FTC}}{=} \left.\frac{x}{2} - \frac{\sin2kx}{4k}\right\vert_0^\pi = \frac{\pi}{2}
+        \int f_k dm = \int sin^2(kx)\chi_{[0,\pi]}dm = \int_0^\pi \sin^2(kx)dx \overset{\text{FTC}}{=} \left.\frac{x}{2} - \frac{\sin2kx}{4k}\right\vert_0^\pi = \frac{\pi}{2}
     \end{align*}
     Where this is a valid application of FTC, since
     \begin{align*}
         \frac{d}{dx} \frac{x}{2} - \frac{\sin2kx}{4k} = \frac{1 - cos2kx}{2} = \frac{1 - cos^2(kx) + sin^2(kx)}{2} = \sin^2(kx)
     \end{align*}
-    And the integral of \(\overline{f}, \underline{f}\) is as follows, since we proved in part (a)  they have equality to \(\chi_[0,\pi] \tand 0\) almost everywhere:
+    And the integral of \(\overline{f}, \underline{f}\) is as follows, since we proved in part (a)  they have equality to \(\chi_{[0,\pi]} \tand 0\) almost everywhere:
     \begin{align*}
         \int \overline{f} dm &= \int \chi_{[0,\pi]} dm = m([0,\pi]) = \pi \\
         \int \underline{f} dm &= \int 0 dm = m(\emptyset) = 0
@@ -98,7 +99,7 @@
 \end{pb}
 \begin{pb}
     \textbf{(a)} Sequences which are absolutely convergent as series. As proof, any function \(f: \mathbb{N} \to \mathbb{R}\) defines a real valued sequence \(\set{f(n)}_{n \in \mathbb{N}}\).
-    So any function \(f\) on \(\mathbb{N}\) is a simple function of the form \(\sum_1^\infty f(n)\chi_{\set{n}}\)
+    So any function \(f\) on \(\mathbb{N}\) is a function of the form \(\sum_1^\infty f(n)\chi_{\set{n}}\)
     \begin{align*}
         \int \abs{f} d\mu &= \int \sum_1^\infty \abs{f(n)}\chi_{\set{n}} d\mu 
         = \int \lim_{N\to\infty}\sum_1^N \abs{f(n)}\chi_{\set{n}} d\mu \overset{\text{MCT}}{=} \lim_{N\to\infty}\int \sum_1^N \abs{f(n)}\chi_{\set{n}} d\mu \\ 
@@ -109,36 +110,36 @@
     \textbf{(b)} Functions with countable support, which are absolutely convergent as series on their support. As proof, we need only prove the countable support portion of the claim, then 
     defer to the proof of part (a) for the rest. Suppose for contraposition that \(\set{x \vert f(x) \neq 0}\) is uncountable. Then
     \begin{align*}
-        \set{x \vert f(x) \neq 0} = \set{x \vert \abs{f(x)} > 0} = \bigcup_{n=1}^\infty \set{x \vert f(x) \geq \frac{1}{n}}
+        \set{x \vert f(x) \neq 0} = \set{x \vert \abs{f(x)} > 0} = \bigcup_{n=1}^\infty \set{x \vert \abs{f(x)} \geq \frac{1}{n}}
     \end{align*}
-    So that for some \(n \in \mathbb{N}\), we have \(\set{x \vert f(x) \geq \frac{1}{n}}\) is uncountable, otherwise \(\set{x \vert f(x) \neq 0}\) would be a countable union of countable sets hence countable.
-    This gives the claimed result, namely if \(E \subset \set{x \vert f(x) \geq \frac{1}{n}}\) is countable, then
+    So that for some \(n \in \mathbb{N}\), we have \(\set{x \vert \abs{f(x)} \geq \frac{1}{n}}\) is uncountable, otherwise \(\set{x \vert f(x) \neq 0}\) would be a countable union of countable sets hence countable.
+    This gives the claimed result, namely if \(E \subset \set{x \vert \abs{f(x)} \geq \frac{1}{n}}\) is countable, then
     \begin{align*}
-        \int f d\mu \geq \int_{\set{x \vert f(x) \geq \frac{1}{n}}} f d\mu \geq \int_E \frac{1}{n} d\mu = \sum_1^\infty \frac{1}{n} = \infty
+        \int f d\mu \geq \int_{\set{x \vert \abs{f(x)} \geq \frac{1}{n}}} f d\mu \geq \int_E \frac{1}{n} d\mu = \frac{1}{n}\mu(E) = \infty
     \end{align*}
 
     \textbf{(c)} We proved last homework, (2(d)) that \(m^F(E) = \# E \cap \mathbb{Z}\). Given that, we may enumerate the integers as \(\set{z_i}_1^\infty\), then
     the \(L^1\) functions on \(m^F\) are exactly those whose values as a sequence \(\set{f(z_i)}_1^\infty\) are an absolutely convergent series. Proof being that
-    \(f = f\chi_\mathbb{Z}\) almost everywhere with respect to \(m^F\), then the proof of part (a).
+    \(f = f\chi_\mathbb{Z}\) almost everywhere with respect to \(m^F\), then the proof of part (a) solves the problem.
 \end{pb}
 \begin{pb}
-    \textbf{a} If \(p = 0\), then the pointwise limit \(f^{(0)} = \chi_[0,\infty]\), if \(p > 0\), then the pointwise limit \(f^{(p)} = 0\). Proof being, first
-    let \(p = 0\), then for any \(x < 0\), \(f^{(0)}_n(x)\) = 0 for all \(x < 0\). For any \(x > 0\), \(x < N\) for some natural number \(N\), hence
+    \textbf{(a)} If \(p = 0\), then the pointwise limit \(f^{(0)} = \chi_{[0,\infty]}\), if \(p > 0\), then the pointwise limit \(f^{(p)} = 0\). Proof being, first
+    let \(p = 0\), then for any \(x < 0\), \(f^{(0)}_n(x)\) = 0 for all \(x < 0\). For any \(x \geq 0\), \(x < N\) for some natural number \(N\), hence
     \(f^{(0)}_n(x) = 1\) for all \(n \geq N\). If \(p > 0\), then \(\lim_{n\to\infty}n^{-p} = 0\), 
     hence \[\lim_{n\to\infty}f^{(p)}_n = \lim_{n\to\infty}n^{-p}\chi_{[0,n]} = \lim_{n\to\infty}n^{-p}\lim_{n\to\infty}\chi_{[0,n]} = 0\]
 
     \textbf{(b)} For \(p = 0\), they agree, proof being:
     \begin{align*}
         &\int f^{(0)}dm = \int \chi_{[0,\infty]}dm = m([0,\infty]) = \infty \\
-        &\lim_{n\to\infty}\int f^{(0)}_n dm = \lim_{n\to\infty}\int \chi_[0,n]dm = \lim_{n\to\infty} m([0,n]) = \lim_{n\to\infty} n = \infty
+        &\lim_{n\to\infty}\int f^{(0)}_n dm = \lim_{n\to\infty}\int \chi_{[0,n]}dm = \lim_{n\to\infty} m([0,n]) = \lim_{n\to\infty} n = \infty
     \end{align*}
 
     For \(p > 0\),
     \begin{align*}
         &\int f^{(p)}dm = 0 \\
-        &\lim_{n\to\infty}\int f^{(p)}_n dm = \lim_{n\to\infty}\int n^{-p}\chi_[0,n]dm = \lim_{n\to\infty} n^{-p}m([0,n]) = \lim_{n\to\infty} n^{1-p}
+        &\lim_{n\to\infty}\int f^{(p)}_n dm = \lim_{n\to\infty}\int n^{-p}\chi_{[0,n]}dm = \lim_{n\to\infty} n^{-p}m([0,n]) = \lim_{n\to\infty} n^{1-p}
     \end{align*}
-    So that \(\lim_{n\to\infty}\int f^{(p)}_n dm = 0 = \int f^{(p)}dm\) iff \(p > 1\).
+    So that \(\lim_{n\to\infty}\int f^{(p)}_n dm = 0 = \int f^{(p)}dm\) iff \(p > 1\). The limit of integrals will be equal to 1 for \(p=1\), and diverges for \(p<1\).
 
     \textbf{(c)} \(g^{(p)} := \sum_{n=1}^\infty n^{-p}\chi_{[n-1,n]}\), this is the smallest function dominating \(f^{(p)}_n\) for all \(n\). 
     We have convergence in part (b), exactly when both limits are infinite, or the
@@ -165,15 +166,15 @@
     \begin{align*}
         \lim_{n\to\infty} \int \phi(nx)\psi(x)dm = \int \lim_{n\to\infty} \phi(nx)\psi(x)dm = \int 0 dm = 0
     \end{align*}
-    The second to last equality following since \(\phi\) has compact support, so for every non-zero value \(\phi(nx)\) is eventually outside the support of \(\phi\) for
+    The second to last equality following since \(\phi\) has compact support, so for every non-zero value \(x\), \(\phi(nx)\) is eventually outside the support of \(\phi\) for
     large enough \(n\), giving us \(\phi(nx)\psi(x) = 0\) almost everywhere.
 
     \textbf{(c)}
     \begin{align*}
         \lim_{n\to\infty} n^2 \int \frac{\sin(x^2/n^2)}{x^2(1+x^2)}dm = \lim_{n\to\infty}\int\frac{n^2\sin(x^2/n^2)}{x^2(1+x^2)}dm
     \end{align*}
-    So define \(\phi(u) = \frac{sin(u^2)}{u^2}\), which has absolute values less than or equal to 1 and continuous, and \(\psi(x) = \frac{1}{1 + x^2} \in L^1\).
-    Then we apply (a), so which gives us
+    So define \(\phi(u) = \frac{sin(u^2)}{u^2}\), which has absolute values less than or equal to 1 and is continuous, furthermore \(\psi(x) = \frac{1}{1 + x^2} \in L^1\).
+    Then we apply (a), which gives us
     \begin{align*}
         \lim_{n\to\infty} n^2 \int \frac{\sin(x^2/n^2)}{x^2(1+x^2)}dm &= \lim_{x\to 0}\frac{\sin(x^2)}{x^2} \int \frac{1}{1+x^2} dm 
         = \int \lim_{n \to \infty} \chi([-n,n])\frac{1}{1+x^2}dm \\
@@ -182,7 +183,7 @@
     \end{align*}
     Where we use Folland 2.28 to evaluate the integral as a Riemann integral.
 
-    \textbf{(d)} We have \(0 \leq \abs{\cos(x^2)} \leq 1\), with equality to \(1\) on \([0,\sqrt{\pi}]\) if and only if \(x = 0 \tor \sqrt(\pi)\).
+    \textbf{(d)} We have \(0 \leq \abs{\cos(x^2)} \leq 1\), with equality to \(1\) on \([0,\sqrt{\pi}]\) if and only if \(x = 0 \tor \sqrt{\pi}\).
     Hence at all other points the pointwise limit of 
     \(\lim_{n\to\infty}\abs{\cos^n(x^2)}\chi_{[0,\sqrt{\pi}]} = \lim_{n\to\infty}\alpha^n\) for \(0 \leq \alpha < 1\),
     this implies that \(\lim_{n\to\infty}cos^n(x^2)\chi_{[0,\sqrt{\pi}]} = 0\) almost everywhere.

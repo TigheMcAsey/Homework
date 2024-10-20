@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  13 OCT 2024 22:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  17 OCT 2024 19:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -225,11 +225,6 @@ Overfull \hbox (21.2534pt too wide) in paragraph at lines 70--74
  []
 
 
-Overfull \hbox (11.05731pt too wide) in paragraph at lines 101--106
-[]\OT1/cmr/m/n/10.95 In order to show $\OML/cmm/m/it/10.95 P$ \OT1/cmr/m/n/10.95 is a subextension, we only need show $\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 a \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 E\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 a[]F\OMS/cmsy/m/n/10.95 g$
- []
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -256,15 +251,15 @@ L3 programming layer <2024-08-16>
 Here is how much of TeX's memory you used:
  2599 strings out of 475834
  38071 string characters out of 5777780
- 1943957 words of memory out of 5000000
+ 1944957 words of memory out of 5000000
  25239 multiletter control sequences out of 15000+600000
  563646 words of font info for 57 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 57i,12n,65p,302b,314s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on 422hw3.pdf (3 pages, 136627 bytes).
+ 57i,11n,65p,302b,297s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on 422hw3.pdf (3 pages, 144390 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
+ 72 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
