@@ -1,0 +1,109 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 425hw4}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\vp}{\varphi}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} We first need to show the homomorphism property, to do so apply the chain rule, where we note that \(C_g(e) = e\) for all \(g\). Then
+        \begin{align*}
+            d (C_{g_1} C_{g_2})_e (x) = d(C_{g_1})_{C_{g_2}(e)} \circ d(C_{g_2})_e (x) = d(C_{g_1})_{e} \circ d(C_{g_2})_e (x) \\
+        \end{align*}
+        This also implies that the pushforward of the identity is the identity (by swapping either of \(g_1 \tor g_2\) for the identity).
+
+        Smoothness follows from lie group multiplication being smooth, and the pushforward of a smooth map is smooth.
+
+        \textbf{(b)} We know that \(e^{tX}\) is a path satisfying \(e^{tX} \vert_{t=0} = \mathbf{1_n} \tand \frac{d}{dt} e^{tX} \vert_{t=0} = X\). Then for \(g \in G\) we have
+        \begin{align*}
+            d(C_g)_e = \frac{d}{dt}\vert_{t=0} C_g(e^{tX}) = \frac{d}{dt}\vert_{t=0} e^{tgXg^{-1}} =  gXg^{-1}
+        \end{align*}
+
+        \textbf{(c)} We take the path \(\gamma(t) = e^{tX}\), which satisfies \(\gamma(0) = \mathbf{1_n}, \; \gamma'(0) = X\), then
+        \begin{align*}
+            d(Ad)_e(x)(y) &= \frac{d}{dt}\vert_{t=0} \text{Ad}_\gamma(t)(y) = \frac{d}{dt}\vert_{t=0} \gamma(t)y\gamma^{-1}(t) \\ &= \frac{d}{dt}\vert_{t=0}e^{tX}ye^{-tX}
+            = \left(\frac{d}{dt}\vert_{t=0} e^{tX}y\right)\mathbf{1_n} + \mathbf{1_n}y \frac{d}{dt}\vert_{t=0} e^{-tX} \\
+            &= Xy - yX = [X,y]
+        \end{align*}
+
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} We can simply compute the product of basis elements, first note that \(\sigma_i^2 = \mathbf{1}\), and that 
+        \begin{align*}
+            \sigma_1\sigma_2 = i\sigma_3 = -\sigma_2\sigma_1 \\
+            \sigma_1\sigma_3 = -i\sigma_2 = -\sigma_3\sigma_1 \\
+            \sigma_2\sigma_3 = i\sigma_1 = -\sigma_3\sigma_2
+        \end{align*}
+        Since each of \(\sigma_i\) are of trace 0, we get for some \(c_i\) which turn out not to matter
+        \begin{align*}
+            \text{Tr}(xy) &= \text{Tr}((x_1\sigma_1 + x_2\sigma_2 + x_3\sigma_3)(y_1\sigma_1 + y_2\sigma_2 + y_3\sigma_3)) \\
+            &= \text{Tr}(\mathbf{1}(x_1y_1 + x_2y_2 + x_3y_3)) + \text{Tr}(\sum_1^3 c_i \sigma_i) \\
+            &= \sum_1^3 2x_iy_i + \sum_1^3 c_i \text{Tr}(\sigma_i) = 2\sum_1^3 x_iy_i
+        \end{align*}
+        So we may conclude that \[\begin{pmatrix} x_1 \\ x_2 \\ x_3\end{pmatrix}\cdot \begin{pmatrix} y_1 \\ y_2 \\ y_3\end{pmatrix} = \frac12 \text{Tr}xy\]
+
+        \textbf{(b)} write \(g := \begin{bmatrix} e^{-i\theta} & 0 \\ 0 & e^{i\theta} \end{bmatrix}\). Then
+        \begin{align*}
+            &g\sigma_1g^{-1} = \begin{bmatrix} e^{-i\theta} & 0 \\ 0 & e^{i\theta} \end{bmatrix}\begin{bmatrix} 0 & e^{-i\theta} \\ e^{i\theta} & 0 \end{bmatrix}
+            = \begin{bmatrix} 0 & e^{-2i\theta} \\  e^{2i\theta} & 0 \end{bmatrix} = \cos2\theta \sigma_1 + \sin2\theta \sigma_2 \\
+            &g\sigma_2g^{-1} = \begin{bmatrix} e^{-i\theta} & 0 \\ 0 & e^{i\theta} \end{bmatrix}\begin{bmatrix} 0 & -ie^{-i\theta} \\ ie^{i\theta} & 0 \end{bmatrix}
+            = \begin{bmatrix} 0 & -ie^{-2i\theta} \\  ie^{2i\theta} & 0 \end{bmatrix} = -\sin2\theta \sigma_1 + \cos 2\theta \sigma_2\\
+            &g\sigma_3g^{-1} = \begin{bmatrix} e^{-i\theta} & 0 \\ 0 & e^{i\theta} \end{bmatrix}\begin{bmatrix} e^{i\theta} & 0 \\ 0 & -e^{-i\theta} \end{bmatrix} = \sigma_3
+        \end{align*}
+        So that \(\varphi(g)\) acts as
+        \begin{align*}
+            \begin{bmatrix} \cos2\theta & -\sin2\theta & 0 \\ \sin2\theta & \cos2\theta & 0 \\ 0 & 0 & 1 \end{bmatrix}
+        \end{align*}
+        on the basis \(\set{\sigma_i}_1^3\)
+
+        \textbf{(c)} First notice that the pushforward of conjugation on a single Pauli matrix is just the bracket as in question 1c. Computing this we get (see my mult table in 2a)
+        \begin{align*}
+            &[\sigma_\alpha/2i,\sigma_j] = 0 &i=j \\
+            &[\sigma_1/2i,\sigma_2] = \frac{1}{2i}(i\sigma_3 - (-i\sigma_3)) = \sigma_3 \\
+            &[\sigma_1/2i,\sigma_3] = \frac{1}{2i}(-i\sigma_2 - i\sigma_2) = -\sigma_2 \\
+            &[\sigma_2/2i,\sigma_1] = \frac{1}{2i}(-i \sigma_3 - \sigma_3) = -\sigma_3 \\
+            &[\sigma_2/2i,\sigma_3] = \frac{1}{2i}(i \sigma_1 - (-i\sigma_1)) = \sigma_1 \\
+            &[\sigma_3/2i,\sigma_1] = \frac{1}{2i}(i\sigma_2 + i\sigma_2) = \sigma_2 \\
+            &[\sigma_3/2i,\sigma_2] = \frac{1}{2i}(-i \sigma_1 - i \sigma_1) = -\sigma_1
+        \end{align*}
+        Using this rule, we can write the matrices.
+        \begin{align*}
+            E_1 = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 \end{bmatrix} \quad E_2 = \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ -1 & 0 & 0 \end{bmatrix} \quad 
+            E_3 = \begin{bmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+        \end{align*}
+
+        \textbf{(d)} Given \(g = \begin{bmatrix} u & -\overline{v} \\ v & \overline{u} \end{bmatrix}\), compute \(g^{-1} = \begin{bmatrix} \overline{u} & \overline{v} \\ -v & u \end{bmatrix}\).
+        Then we compute the action of \(g\) on each \(\sigma_i\),
+        \begin{align*}
+            g \sigma_1 g^{-1} = \begin{bmatrix} u & -\overline{v} \\ v & \overline{u} \end{bmatrix}\begin{bmatrix} -v & u \\ \overline{u} & \overline{v} \end{bmatrix} = 
+            \begin{bmatrix} -2\text{Re}(uv) & u^2 - \overline{v}^2 \\ \overline{u^2 - \overline{v^2}} & 2\text{Re}(uv) \end{bmatrix} = -2\text{Re}(uv) \sigma_3 + c \sigma_1 + d \sigma_3
+        \end{align*}
+        Where \(c = \text{Re}(u)^2 - \text{Re}(v)^2 - \text{Im}(u)^2 + \text{Im}(v)^2 \tand d = -2(\text{Re}(u)\text{Im}(u) + \text{Re}(v)\text{Im}(v))\).
+
+        \begin{align*}
+            g \sigma_3 g^{-1} = \begin{bmatrix} u & -\overline{v} \\ v & \overline{u} \end{bmatrix}\begin{bmatrix} \overline{u} & \overline{v} \\ v & -u \end{bmatrix} = 
+            \begin{bmatrix} \abs{u}^2 - \abs{v^2} & 2u \overline{v} \\ \overline{2u \overline{v}} & \abs{v}^2 - \abs{u}^2 \end{bmatrix} =
+        \end{align*}
+
+    \end{pb}
+\end{document}
