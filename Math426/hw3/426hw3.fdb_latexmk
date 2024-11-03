@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1728965469.15446 "/home/tighemcasey/Math hw/Math426/hw3/426hw3.tex" "426hw3.pdf" "426hw3" 1728965470.36575 0
-  "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1727728013.60042 25678 aa7c8fd3909e804e7d85441c21595406 ""
+["pdflatex"] 1729407719.91083 "/home/tighemcasey/Math hw/Math426/hw3/426hw3.tex" "426hw3.pdf" "426hw3" 1729407721.10092 0
+  "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1729096780.68571 25678 aa7c8fd3909e804e7d85441c21595406 ""
   "/home/tighemcasey/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1726102813.02348 21086786 07df747a8ef29f8e2edc5ba549d24369 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1726102823.09648 1004 54797486969f23fa377b128694d548df ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1726102823.12948 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -11,11 +11,15 @@
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1726102823.13048 940 228d6584342e91276bf566bcf9716b83 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/cm/cmbx10.tfm" 1726102781.20748 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1726102823.13848 34811 78b52f49e893bcba91bd7581cdc144c0 ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1726102823.16748 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1726102823.17948 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1726102823.18548 37912 77d683123f92148345f3fc36a38d9ab1 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1726102823.18948 36281 c355509802a035cadc5f15869451dcee ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1726102823.19948 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1726102823.20648 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1726102823.21348 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1726102823.25348 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1726102823.25648 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1726102823.26148 32716 08e384dc442464e7285e891af9f45947 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii" 1727649670.63279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/generic/iftex/iftex.sty" 1726102834.34648 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
@@ -117,9 +121,9 @@
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tikz-cd/tikzlibrarycd.code.tex" 1727727998.02642 23059 b4b98da760150611227e2533f15fe352 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/enumerate.sty" 1726102839.64648 3468 ad69b54642e68f9fdf39ec1a16dd7341 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1727727991.28242 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "/home/tighemcasey/Math hw/Math426/hw3/426hw3.tex" 1728965468.27424 4614 682911931f956d04242363a560f68cda ""
-  "426hw3.aux" 1728965470.05324 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "426hw3.tex" 1728965468.27424 4614 682911931f956d04242363a560f68cda ""
+  "/home/tighemcasey/Math hw/Math426/hw3/426hw3.tex" 1729407718.65987 6513 939cb1da197730f3e8bf626b2035443b ""
+  "426hw3.aux" 1729407720.85987 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "426hw3.tex" 1729407718.65987 6513 939cb1da197730f3e8bf626b2035443b ""
   (generated)
   "426hw3.aux"
   "426hw3.log"

@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 422hw3}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\falg}{F^{\text{alg}}}
+
+\begin{document}
+    \begin{pb}
+        Let \(\falg\) be an algebraic closure of \(F\) containing both \(K \tand L\). Now let \(\sigma\) an extension of an embedding \(F \to \falg\) to
+        \(KL\). Then for any \(x \in KL, x = \frac{\sum_1^n k_i\ell_i}{\sum_1^m k_j' \ell_j'}\). For \(k_i,k_j' \in K \tand \ell_i,\ell_j' \in L\). Then by the homomorphism property,
+        \[\sigma(x) = \sigma(\frac{\sum_1^n k_i\ell_i}{\sum_1^m k_j' \ell_j'}) = \frac{\sum_1^n \sigma(k_i)\sigma(\ell_i)}{\sum_1^m \sigma(k_j')\sigma(\ell_j')} \in \sigma(K)\sigma(L)\]
+        Furthermore, any \(y \in \sigma(K)\sigma(L)\) is of the form \(\frac{\sum_1^n \sigma(k_i)\sigma(\ell_i)}{\sum_1^m \sigma(k_j')\sigma(\ell_j')}\), so the \(\sigma\) is onto with range \(\sigma(K)\sigma(L)\).
+        In other words we have proven \(\sigma(KL) = \sigma(K)\sigma(L)\). But since \(K,L\) are normal we have \(K = \sigma(K) \tand L = \sigma(L)\).
+
+        The converse is \textbf{not} true, since taking \(F = \mathbb{Q}, K = \mathbb{Q}(\sqrt[3]{2}), L = \mathbb{Q}(\zeta_3)\) we have
+        \(KL = \mathbb{Q}(\sqrt[3]{2}, \zeta)\) is normal over \(\mathbb{Q}\) (it is the splitting field of \(x^3 -2\) as shown in the previosu homework),
+         whereas \(K\) is not normal over \(\mathbb{Q}\) (Take the extension of the identity on 
+        \(\mathbb{Q}\) mapping \(\sqrt[3]{2} \mapsto \zeta_3\sqrt[3]{2}\) which is not in \(\text{Aut} K\)).
+    \end{pb}
+    \begin{pb}
+        Consider the polynomial \(f:= x^k - n\) in \(\mathbf{F_p}\). Since \(k = 2 \tor 3\), \(f\) either has a factor of degree one, hence a root or \(f\) is irreducible over \(\mathbf{F_p}\).
+        If \(f\) has a root we are done, so assume not. Then we can consider the extension \(\mathbf{F_p}(\alpha)\), where \(\alpha\) is a root of \(f\). This extension has degree \(k\), hence
+        \(\mathbf{F_p}(\alpha)\) is a finite field of cardinality \(p^k\). Since all finite fields of equal cardinality \(p^k\) are \(\mathbf{F_p}\) isomorphic, we have an isomorphism
+        \(\sigma: \mathbf{F_p} \to F\), so that \(0 = \sigma(0) = \sigma(f(\alpha)) = f({}^\sigma\alpha)\) so that \(^\sigma \alpha \in F\) is a root of \(x^k - n\), hence 
+        \(^\sigma \alpha\) satisfies the equation \({}^\sigma \alpha^k = n\).
+    \end{pb}
+    \begin{pb}
+        \begin{enumerate}
+            \item \textbf{True} Firstly, \(F\) is finite, hence perfect and since \(K\) is a finite field, \(K/F\) is a finite extension so it is algebraic over a perfect field, hence seperable.
+            Secondly, since \(K,F\) are finite, they must have characteristic \(p\). It follows that \(\# K = p^n, \# F = p^m, n \geq m\). Then we have that \(K\) is the splitting field of
+            \(x^{p^n} - x\), so that \(K/\mathbf{F_p}\) is normal. Then any extension of a map from \(\mathbf{F_p}\) to an algebraic closure extends to an automorphism of \(K\), and since any extension of a map \(\sigma\)
+            from \(F\) into an algebraic closure  to \(K\) is just an extension of \(\sigma\vert_{\mathbf{F_p}}\) to \(K\) this extension must also be in \(\text{Aut} K\), proving that \(K/F\) is normal. This proves the extension is Galois.
+            \item \textbf{True} First let \(u\) denote \(t^4 + t^{-4}\), then \(K\) is the splitting field of the polynomial \(f = X^8 - uX^4 + 1\) in \(F[X]\). This is easily seen, since
+            \(t \in \set{t\zeta_4^n,t^{-1}\zeta_4^n}_{n=1}^4 \subset \mathbb{C}(t)\) are the roots of \(f\).
+            \item \textbf{False} Since \(K/F\) is finite, it is algebraic. \(K/F\) admits a normal closure \(M/K/F\), so that \(M/F\) is normal.
+            \item \textbf{False} Consider \(K = \mathbf{F_3}\), then \(f(K) = \set{0,1} \neq K\)
+            \item \textbf{True} For every element \(x\) of \(K\) not equal to zero, \(p \neq 2 \implies 2x \neq 0 \implies x \neq -x\), so that \(f(x) = f(-x)\). Now we need only show that
+            \(y \not \in \set{x,-x}\) implies that \(f(y) \neq f(x)\). As proof note that the polynomial \(T^2 - x^2 \in K[T]\) can have at most two roots in \(K\) by the factor theorem.
+            Hence \(f\) is 1-1 on 0 and 2-1 on each other element. This implies that \(\# f(K) = 1 + \frac{\# K - 1}{2} = \frac{p^n + 1}{2}\).
+            \item \textbf{True} \(\mathbb{Q}(S)\) is the splitting field of the collection of polynomials \(\set{x^2 - p}_{p \; \text{prime}}\), so \(K/\mathbb{Q}\) is normal.
+            Furthermore, \(\mathbb{Q}\) has characteristic zero, so is perfect hence \(K/\mathbb{Q}\) is seperable making it Galois.
+        \end{enumerate}
+    \end{pb}
+\end{document}
