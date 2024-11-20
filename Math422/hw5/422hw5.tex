@@ -70,18 +70,25 @@
         \end{align*}
     \end{pb}
     \begin{pb}
-        First denote \(M := \text{Gal}(K/N)\). Since \(N\) is the smallest normal field extension of \(F\) containing \(L\), it must be the case that
-        \(M\) is the largest subgroup of \(H\) which is normal in \(G\). As proof, assume there exists some normal subgroup \(R\), such that \(M \subsetneq R \subset H\).
-        Then by the galois correspondence, \(N = K^M \supsetneq K^R \supset K^H = L\), where \(K^R/F\) is normal. But this contradicts \(N\) being the normal closure of
-        \(L/F\). Now all that remains to show is that \(\bigcap_{\sigma \in G} \sigma H \sigma^{-1}\) is the largest subgroup of \(H\) which is normal in \(G\)
-        it is a subgroup since it is the intersection of subgroups.
-        To see that it is normal, for any \(\tau \in G\) 
-        \begin{align*}
-            \tau \left(\bigcap_{\sigma \in G} \sigma H \sigma^{-1}\right) \tau^{-1} = \bigcap_{\sigma \in G} \tau \sigma H \sigma^{-1} \tau^{-1}
-            = \bigcap_{\sigma \in G} (\tau \sigma) H (\tau \sigma)^{-1} = \bigcap_{\sigma \in G} \sigma H \sigma^{-1}
-        \end{align*}
-        The last equality follows from \(\tau\) acting as a permutation on \(G\). To see its the largest, suppose that \(S \subset H\) is normal in \(G\). Then 
-        \[S = \bigcap_{\sigma \in G} \sigma S \sigma^{-1} \subset \bigcap_{\sigma \in G} \sigma H \sigma^{-1}\]
+        First note that
+        \[\bigcap_{\sigma \in G}\sigma H \sigma^{-1} = \cap_{\sigma \in G}\gal{K/\sigma(L)}\]
+        This follows since \(\tau \mapsto \sigma\tau\sigma^{-1}\) is a bijection from \(H\) to \(\gal{K/\sigma(L)}\).
+
+        We first show that \(\gal(K/N) \subset \bigcap_{\sigma \in G}\gal(K/\sigma(L))\). Proof being, since \(N \supset L\) is normal, for any \(\sigma \in G\), we have 
+        \(\sigma(L) \subset \sigma(N) = N\). Thus if \(\tau\vert_N = 1\), then \(\tau\vert_{\sigma(L)} = 1\) for any \(\sigma \in G\). This suffices to show that
+        \(\tau \in \gal(K/N)\) implies \(\tau \in \bigcap_{\sigma \in G}\gal(K/\sigma(L))\).
+
+        Now we show the other inclusion, namely \(\gal(K/N) \supset \bigcap_{\sigma \in G}\gal(K/\sigma(L))\). Since \(N\) is the compositum \(\gen{\sigma(L)}_{\sigma\in G}\)
+        (proven below), we have that \(\tau \in \cap_{\sigma \in G}\gal{K/\sigma(L)}\), then \(\tau\vert_{N} = 1\), since for any \(\alpha\) in \(N\), we can write
+        \(\alpha\) as a finite sum/product/quotient of elements in \(\bigcup_{\sigma\in G} \sigma(L)\), each of which is fixed by \(\tau\), so that \(\tau\) fixes \(\alpha\) by the
+        homomorphism property. It follows that \(\tau \in \gal(K/N)\) proving that indeed \(N = \cap_{\sigma \in G}\gal{K/\sigma(L)} = \bigcap_{\sigma \in G}\sigma H \sigma^{-1}\).
+
+        Proof of \(N = \gen{\sigma(L)}_{\sigma\in G}\): the right to left inclusion is obvious by normality, then by definition of normal closure, it will suffice to show that
+        \(\gen{\sigma(L)}_{\sigma\in G}\) is normal. Let \(\tau \in G\), then we have that 
+        \[\tau(\gen{\sigma(L)}_{\sigma\in G}) = \gen{\tau\sigma(L)}_{\sigma\in G} = \gen{\sigma(L)}_{\sigma\in G}\]
+        The second equality follows since \(\tau: G \to G\) bijectively. The first equality follows from if \(\alpha\) in \(\gen{\sigma(L)}_{\sigma\in G}\), we can write
+        \(\alpha\) as a finite sum/product/quotient of elements in \(\bigcup_{\sigma\in G} \sigma(L)\), by the homomorphism property, we apply \(\tau\) to each element in the
+        sum/product/quotient so that \(\alpha\) is a finite sum/product/quotient of elements in \(\bigcup_{\sigma\in G} \tau\sigma(L)\)
     \end{pb}
     \begin{pb}
         Since \(K/F\) is Galois, and \(K \supset L_0 \supset F\), we have \(K/L_0\) is galois, with galois group \(N(H)\). Then since \(H\) is normal in \(N(H)\), we have

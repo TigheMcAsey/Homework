@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  7 NOV 2024 18:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  16 NOV 2024 22:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/tighemcasey/Math hw/Math422/hw5/422hw5.tex"
-(/home/tighemcasey/Math hw/Math422/hw5/422hw5.tex
+**"/home/tighemcasey/Math hw/Math422/hw6/422hw6.tex"
+(/home/tighemcasey/Math hw/Math422/hw6/422hw6.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
 (/home/tighemcasey/.miktex/texmfs/install/tex/latex/base/article.cls
@@ -149,8 +149,8 @@ Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count284
 \l__pdf_internal_box=\box54
-) (422hw5.aux)
-\openout1 = `422hw5.aux'.
+) (422hw6.aux)
+\openout1 = `422hw6.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
@@ -237,7 +237,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[3] (422hw5.aux)
+[3] (422hw6.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
@@ -246,15 +246,15 @@ L3 programming layer <2024-08-16>
 Here is how much of TeX's memory you used:
  2600 strings out of 475834
  38019 string characters out of 5777780
- 1943957 words of memory out of 5000000
+ 1945957 words of memory out of 5000000
  25240 multiletter control sequences out of 15000+600000
  563646 words of font info for 57 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 57i,12n,65p,302b,302s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on 422hw5.pdf (3 pages, 119563 bytes).
+ 57i,11n,65p,1130b,297s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on 422hw6.pdf (3 pages, 169697 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
