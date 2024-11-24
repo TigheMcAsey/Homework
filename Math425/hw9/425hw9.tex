@@ -1,0 +1,93 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{xcolor}
+
+\fancyhf{}
+\lhead{Math 425hw9}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\vp}{\varphi}
+\newcommand{\R}{\text{Re}}
+\newcommand{\I}{\text{Im}}
+\newcommand{\parx}{\frac{\partial}{\partial x}}
+\newcommand{\pary}{\frac{\partial}{\partial y}}
+\newcommand{\parz}{\frac{\partial}{\partial z}}
+\newcommand{\paru}{\frac{\partial}{\partial u}}
+\newcommand{\parv}{\frac{\partial}{\partial v}}
+\newcommand{\tth}{\tilde{\theta}}
+\newcommand{\z}{\imath}
+\newcommand{\hook}{\lrcorner\;}
+
+\begin{document}
+    \begin{pb}
+        First let \(n\) denote the dimension of \(M\), and let \((U_\alpha,x_\alpha^i)_\alpha\) be a smooth atlas for \(M\), I will denote the coordinate maps as \(\phi_\alpha\) respectively. This induces a smooth atlas \((\pi^{-1}(U_\alpha),(x_\alpha^i,v_\alpha^i))\) for \(TM\), I will denote the coordinate maps as \(\varphi_\alpha\) respectively. Now take charts \((\pi^{-1}(U_\alpha),(x_\alpha^i,v_\alpha^i)), (\pi^{-1}(U_\beta),(x_\beta^i,v_\beta^i))\), (assume that they have non-empty intersection else there is nothing to check) the change of coordinates is given by
+        \begin{align*}
+            (x_\beta^i,v_\beta^i) = \vp_\beta \vp_\alpha^{-1}(x_\alpha^i,v_\alpha^i) = (\phi_\alpha \phi_\beta(x_\alpha^i), \frac{\partial x_\beta^i}{\partial x_\alpha^j} v_\alpha^j)
+        \end{align*}
+        We want to show that the determinant of the following block diagonal matrix (\(A\)) is positive:
+        \begin{align*}
+            A := \begin{bmatrix} 
+                \left(\frac{\partial x_\beta^i}{\partial x_\alpha^j} \right)_{1 \leq i,j \leq n} &
+                \left(\frac{\partial x_\beta^i}{\partial v_\alpha^j} \right)_{1 \leq i,j \leq n} \\
+                \left(\frac{\partial v_\beta^i}{\partial x_\alpha^j} \right)_{1 \leq i,j \leq n} &
+                \left(\frac{\partial v_\beta^i}{\partial v_\alpha^j} \right)_{1 \leq i,j \leq n}
+            \end{bmatrix}
+        \end{align*}
+        By definition of the coordinate change on \(TM\), it is apparent that
+        \[\det \left(\frac{\partial x_\beta^i}{\partial v_\alpha^j} \right)_{1 \leq i,j \leq n} = 0\]
+        since \(\phi_\alpha \phi_\beta(x_\alpha^i)\) is independent of each \(v_\alpha^i\).
+        It follows that
+        \begin{align*}
+            \det A = \det \left(\frac{\partial x_\beta^i}{\partial x_\alpha^j} \right)_{1 \leq i,j \leq n} \det \left(\frac{\partial v_\beta^i}{\partial v_\alpha^j} \right)_{1 \leq i,j \leq n}
+        \end{align*}
+        But then we can read off of the change of coordinates formula for \(TM\) that
+        \(\frac{\partial v_\beta^i}{\partial v_\alpha^j} = \frac{\partial x_\beta^i}{\partial x_\alpha^j}\), so that
+        \begin{align*}
+            \det A = \left(\det \left(\frac{\partial x_\beta^i}{\partial x_\alpha^j} \right)_{1 \leq i,j \leq n}\right)^2 > 0
+        \end{align*}
+        We can say \(> 0\) here, since the change of coordinates is smooth and invertible with smooth inverse the inverse function theorem tells us its Jacobian is invertible.
+    \end{pb}
+    \begin{pb}
+        First we give an orientation on \(M\), consider the coordinate charts
+        \begin{align*}
+            U_1 \times U_2, \quad \tilde{U_1} \times U_2, \quad U_1 \times \tilde U_2, \quad
+            \tilde{U_1} \times \tilde{U_2}
+        \end{align*}
+        Given by the standard \(\theta,\tilde{\theta}\)
+
+        We equip each copy of \(S^1\) with the standard charts, then let \(U\) denote that chart
+        \((0,2\pi)\times(0,2\pi)\), with coordinates \((\theta_1,\theta_2)\). This is an 
+        It follows that in \(U\), we have 
+        \begin{align*}
+            &dw = \frac{\partial w}{\partial \theta_1} d\theta_1 + \frac{\partial w}{\partial \theta_2} d\theta_2 = -\sin\theta_1 d\theta_1\\
+            &dy = \frac{\partial y}{\partial \theta_1}d\theta_1 + \frac{\partial y}{\partial \theta_2}d\theta_2 = -\sin\theta_2 d\theta_2
+        \end{align*}
+        Using this, we compute
+        \(\omega = \sin^2\theta_1\sin^2\theta_2 d\theta_1 \wedge \theta_2\), so that
+        \begin{align*}
+            \int_{T^2} \omega &= \int_{T^2 \setminus S^1 \cup S^1} \omega = \int_U \omega
+            = \int_0^{2\pi}\int_0^{2\pi}\sin^2\theta_1\sin^2\theta_2 d\theta_1d\theta_2 \\
+            &= \int_0^{2\pi}\pi\sin^2\theta_2d\theta_2 = \pi^2
+        \end{align*}
+        
+    \end{pb}
+\end{document}
