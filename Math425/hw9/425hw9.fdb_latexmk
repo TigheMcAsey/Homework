@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1732424273.98957 "/home/tighemcasey/Math hw/Math425/hw9/425hw9.tex" "425hw9.pdf" "425hw9" 1732424275.35187 0
+["pdflatex"] 1732492179.95955 "/home/tighemcasey/Math hw/Math425/hw9/425hw9.tex" "425hw9.pdf" "425hw9" 1732492181.34073 0
   "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1729096780.68571 25678 aa7c8fd3909e804e7d85441c21595406 ""
   "/home/tighemcasey/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1726102813.02348 21086786 07df747a8ef29f8e2edc5ba549d24369 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1726102823.09648 1004 54797486969f23fa377b128694d548df ""
@@ -20,6 +20,7 @@
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1726102823.21348 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1726102823.25348 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1726102823.26148 32716 08e384dc442464e7285e891af9f45947 ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1726102823.43448 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii" 1727649670.63279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/generic/iftex/iftex.sty" 1726102834.34648 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/generic/iftex/ifvtex.sty" 1726102834.34748 1057 525c2192b5febbd8c1f662c9468335bb ""
@@ -51,9 +52,9 @@
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/l3backend-dev/l3backend-pdftex.def" 1726102842.43048 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/enumerate.sty" 1726102839.64648 3468 ad69b54642e68f9fdf39ec1a16dd7341 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1727727991.28242 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "/home/tighemcasey/Math hw/Math425/hw9/425hw9.tex" 1732424272.80337 4927 13b4ae736c6d972a3eee373b599b284a ""
-  "425hw9.aux" 1732424275.16737 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "425hw9.tex" 1732424272.80337 4927 13b4ae736c6d972a3eee373b599b284a ""
+  "/home/tighemcasey/Math hw/Math425/hw9/425hw9.tex" 1732492177.85105 10897 13c2b22ed22d5fb5f14175e7ff8609e9 ""
+  "425hw9.aux" 1732492180.95805 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
+  "425hw9.tex" 1732492177.85105 10897 13c2b22ed22d5fb5f14175e7ff8609e9 ""
   (generated)
   "425hw9.aux"
   "425hw9.log"

@@ -72,10 +72,12 @@
             U_1 \times U_2, \quad \tilde{U_1} \times U_2, \quad U_1 \times \tilde U_2, \quad
             \tilde{U_1} \times \tilde{U_2}
         \end{align*}
-        Given by the standard \(\theta,\tilde{\theta}\)
+        Given by the product of the standard \(\theta,\tilde{\theta}\) coordinates on \(S^1\). Here since \(w^2 + x^2 = 1 = y^2 + z^2\), we can associate to any point
+        \[(w,x,y,z) = (\cos\theta_1,\sin\theta_1,\cos\theta_2\sin\theta_2) \longleftrightarrow (e^{i\theta_1},e^{i\theta_2})\]
+        Allowing us to define the charts in the standard way on \(S^1\). Hence if we can show that the coordinate change between \(U\) and \(\tilde{U}\) on \(S^1\) has jacobian with positive determinant, we will be done since each of the coordinate changes are products of the determinant of the identity and the determinant of this Jacobian. This is straightforward, since \(\tilde{\theta} = \theta - 2\pi\), we have \(\frac{\partial \tilde{\theta}}{\partial \theta} = 1\) (the reverse coordinate change is the same). Thus this is an orientation.
 
-        We equip each copy of \(S^1\) with the standard charts, then let \(U\) denote that chart
-        \((0,2\pi)\times(0,2\pi)\), with coordinates \((\theta_1,\theta_2)\). This is an 
+        Let \(U\) denote that chart
+        \((0,2\pi)\times(0,2\pi)\), with coordinates \((\theta_1,\theta_2)\).
         It follows that in \(U\), we have 
         \begin{align*}
             &dw = \frac{\partial w}{\partial \theta_1} d\theta_1 + \frac{\partial w}{\partial \theta_2} d\theta_2 = -\sin\theta_1 d\theta_1\\
@@ -88,6 +90,81 @@
             = \int_0^{2\pi}\int_0^{2\pi}\sin^2\theta_1\sin^2\theta_2 d\theta_1d\theta_2 \\
             &= \int_0^{2\pi}\pi\sin^2\theta_2d\theta_2 = \pi^2
         \end{align*}
-        
+    \end{pb}
+    \begin{pb}
+        We first compute \(d\text{Vol}_g\). Equip \(S^2\) with the polar coordinate chart given by
+        \begin{align*}
+            U = ((0,2\pi) \times (0,\pi),\theta,\phi)
+        \end{align*}
+        We only need to check for equality of \(g\) and \(\omega\) on this chart, since both are smooth, equality on \(U\) also implies equality on \(\overline{U} = S^2\).
+        On \(U\) we have \((x,y,z) \longleftrightarrow (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)\), and \newline
+        \(\z: (\theta,\phi) \mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)\), so that
+        \begin{align*}
+            g = \z^*g_{\text{EUC}} = AA^T = \begin{bmatrix} \sin^2\phi & 0 \\ 0 & 1 \end{bmatrix}
+        \end{align*}
+        Where in this case we have
+        \begin{align*}
+            A =
+            \begin{bmatrix}  
+                \frac{\partial \z^x}{\partial \theta} & \frac{\partial \z^y}{\partial \theta} & \frac{\partial \z^z}{\partial \theta} \\
+                \frac{\partial \z^x}{\partial \phi} & \frac{\partial \z^y}{\partial \phi} & \frac{\partial \z^z}{\partial \phi}
+            \end{bmatrix}
+            =
+             \begin{bmatrix}
+                -\sin\theta\sin\phi & \cos\theta\sin\phi & 0\\
+                \cos\theta\cos\phi & \sin\theta\cos\phi & -\sin\phi
+            \end{bmatrix}
+        \end{align*}
+        This allows us to compute
+        \begin{align*}
+            d\text{Vol}_g \overset{\text{def.}}{=} \sqrt{\det \begin{bmatrix} \sin^2\phi & 0 \\ 0 & 1 \end{bmatrix}}d\theta \wedge d\phi = \sin\phi d\theta \wedge d\phi
+        \end{align*}
+        Now we compute \(\omega\) on \(U\) to check for equality, to simplify the computations, we first compute
+        \begin{align*}
+            &\z^* dx = d(x \circ \z) = d\cos\theta\sin\phi = -\sin\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi\\
+            &\z^* dy = d(y \circ \z) = d\sin\theta\sin\phi = \cos\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi \\
+            &\z^* dz = d(z \circ \z) = d\cos\phi = -\sin\phi d\phi
+        \end{align*}
+        So that,
+        \begin{align*}
+            \omega &= \z^*(xdy\wedge dz + ydz\wedge dx + zdx \wedge dy)
+            = x\z^*dy\wedge \z^*dz + y\z^*dz\wedge \z^*dx + z\z^*dx \wedge \z^*dy \\
+            &= \cos\theta\sin\phi(\cos\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi) \wedge (-\sin\phi d\phi) \\
+            &+ \sin\theta\sin\phi (-\sin\phi d\phi) \wedge (-\sin\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi) \\
+            &+ \cos\phi (-\sin\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi) \wedge (\cos\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi) \\
+            &= -\cos^2\theta\sin^3\phi d\theta \wedge d\phi
+            - \sin^2\theta\sin^3\phi d\theta \wedge d\phi - \cos^2\phi\sin^2\theta\sin\phi d\theta \wedge d\phi - \cos^2\phi \cos^2\theta \sin\phi d\theta \wedge d\phi \\
+            &= (-\sin^3\phi - \cos^2\phi\sin\phi)d\theta \wedge d\phi = -\sin\phi d\theta \wedge d\phi
+        \end{align*}
+
+        \textcolor{red}{\textbf{ASK ABOUT ORIENTATION}}
+
+        \textbf{(b)} We may take \(\z: B^3 \to \mathbb{R}^3, \; (r,\theta,\phi) \mapsto (r\cos\theta\sin\phi,r\sin\theta\sin\phi,r\cos\phi)\), then on \(U \subset S^2 = \partial B^3\) we have that \(\iota\) restricts to the same map as above.
+        To simplify the computations, we first compute
+        \begin{align*}
+            &d(x \circ \z) = \cos\theta\sin\phi dr - r\sin\theta\sin\phi d\theta + r\cos\theta\cos\phi d\phi\\
+            &d(y \circ \z) = \sin\theta\sin\phi dr + r\cos\theta\sin\phi d\theta + r\sin\theta \cos\phi d\phi\\
+            &d(z \circ \z) = \cos\phi dr - r\sin\phi d\phi\\
+            \implies &d(x \circ \z) \wedge d(y \circ \z) \wedge d(z \circ \z) = 
+            -r^2(\cos^2\theta \sin^3\phi + \sin^2\theta\sin^3\phi + \sin^2\theta\cos^2\phi\sin\phi + \cos^2\theta\cos^2\phi\sin\phi) dr \wedge d\theta \wedge d\phi \\
+            &\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \;\; =
+            -r^2\sin\phi dr \wedge d\theta \wedge d\phi
+        \end{align*}
+
+        \begin{align*}
+            \int_{S^2} \omega &= \int_{\partial B^3} \z^* \tilde{\omega} \overset{\text{Stoke's Thm}}{=} \int_{B^3} d\z^*{\tilde{\omega}} = \int_{B^3} \z^* d \tilde{\omega} = \int_{B^3} \z^*d(x dy \wedge dz + y dz \wedge dx + z dx \wedge dy) \\
+            &= \int_{B^3} \z^* (dx \wedge dy \wedge dz + dy \wedge dz \wedge dx + dz \wedge dx \wedge dy) = \int_{B^3} \z^*(3dx \wedge dy \wedge dz) \\
+            &= \int_{B^3} 3 \z^*dx \wedge \z^*dy \wedge \z^* dz 
+            = \int_{B^3} d(x \circ \z) \wedge d(y \circ \z) \wedge d(z \circ \z) \\
+            &= \int_{B^3} -3r^2\sin\phi dr \wedge d\theta \wedge d\phi = \int_0^{\pi}\int_0^{2\pi}\int_0^1 -3r^2\sin\phi dr d\theta d\phi \\
+            &= \int_0^{\pi}\int_0^{2\pi}-\sin\phi d\theta d\phi = \int_0^\pi-2\pi \sin\phi
+            = -2\pi \left(\cos\pi - \cos0\right) = 4\pi
+        \end{align*}
+
+        \textbf{(c)} Assume that such an \(\alpha\) exists, then
+        \begin{align*}
+            4\pi = \int_{S^2} \omega = \int_{S^2}d \alpha = \int_{\partial B^3}d \alpha \overset{\text{Stoke's Thm}}{=} \int_{B^3} d^2 \alpha = \int_{B^3} 0 = 0
+        \end{align*}
+        Contradiction.
     \end{pb}
 \end{document}
