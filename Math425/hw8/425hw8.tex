@@ -1,0 +1,129 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{xcolor}
+
+\fancyhf{}
+\lhead{Math 425hw8}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\vp}{\varphi}
+\newcommand{\R}{\text{Re}}
+\newcommand{\I}{\text{Im}}
+\newcommand{\parx}{\frac{\partial}{\partial x}}
+\newcommand{\pary}{\frac{\partial}{\partial y}}
+\newcommand{\parz}{\frac{\partial}{\partial z}}
+\newcommand{\paru}{\frac{\partial}{\partial u}}
+\newcommand{\parv}{\frac{\partial}{\partial v}}
+\newcommand{\tth}{\tilde{\theta}}
+\newcommand{\z}{\imath}
+\newcommand{\hook}{\lrcorner\;}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)}
+        \begin{align*}
+            g = \gen{\frac{\partial \varphi^{-1}}{\partial x},\frac{\partial \varphi^{-1}}{\partial x}} = \gen{(1,f'(x)),(1,f'(x))} = 1 + (f'(x))^2
+        \end{align*}
+        Thus the formula for arc length in this context is
+        \begin{align*}
+            \int_a^b \sqrt{1 + (f'(x))^2}dx
+        \end{align*}
+
+        \textbf{(b)}
+        \begin{align*}
+            g = (\varphi^{-1})^*g_{\text{EUC}} &= \begin{bmatrix}
+                \frac{\partial (\varphi^{-1})^x}{\partial x} & \frac{\partial (\varphi^{-1})^y}{\partial x} & \frac{\partial (\varphi^{-1})^z}{\partial x} \\
+                \frac{\partial (\varphi^{-1})^x}{\partial y} & \frac{\partial (\varphi^{-1})^y}{\partial y} & \frac{\partial (\varphi^{-1})^z}{\partial y}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \frac{\partial (\varphi^{-1})^x}{\partial x} & \frac{\partial (\varphi^{-1})^x}{\partial y} \\
+                \frac{\partial (\varphi^{-1})^y}{\partial x} & \frac{\partial (\varphi^{-1})^y}{\partial y} \\
+                \frac{\partial (\varphi^{-1})^z}{\partial x} & \frac{\partial (\varphi^{-1})^z}{\partial y} \\
+            \end{bmatrix} \\
+            &= \begin{bmatrix} 1 & 0 & \frac{\partial f}{\partial x} \\
+                0 & 1 & \frac{\partial f}{\partial y} \end{bmatrix} 
+                \begin{bmatrix} 1 & 0 \\ 0 & 1 \\ \frac{\partial f}{\partial x} & \frac{\partial f}{\partial y} \end{bmatrix} \\
+                &= \begin{bmatrix} \left(\frac{\partial f}{\partial x}\right)^2 + 1 & \frac{\partial f}{\partial x}\frac{\partial f}{\partial y} \\
+                \frac{\partial f}{\partial x} \frac{\partial f}{\partial y} &
+                \left(\frac{\partial f}{\partial y}\right)^2 + 1
+             \end{bmatrix}
+        \end{align*}
+        So that \(\det(g_{ij}) = 1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left( \frac{\partial f}{\partial y}\right)^2\). It follows that the surface area formula in this context simplifies to
+        \begin{align*}
+            \int_U \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left( \frac{\partial f}{\partial y}\right)^2} dxdy
+        \end{align*}
+
+        \textbf{(c)} The solution to this exercise relies on the crucial observation, that on \(S \cap V\), \[F(x,y,z) = 0 = z - f(x,y)\]
+        With this observation, the exercise is routine, first note that
+        \begin{align*}
+            &\frac{\partial F}{\partial x} = \parx (z - f(x,y)) = -\frac{\partial f}{\partial x} \\
+            &\frac{\partial F}{\partial y} = \pary (z - f(x,y)) = -\frac{\partial f}{\partial y} \\
+            &\frac{\partial F}{\partial z} = \parz (z - f(x,y)) = 1
+        \end{align*}
+        Now to verify the formula:
+        \begin{align*}
+            \int_U \frac{\abs{\nabla F}}{\abs{\parz F}}dxdy &= \int_U \frac{\sqrt{\left(\frac{\partial F}{\partial x}\right)^2 + \left(\frac{\partial F}{\partial y}\right)^2 + \left(\frac{\partial F}{\partial z}\right)^2 }}{\abs{\parz F}}dxdy \\
+            &= \int_U \sqrt{1 + \left(\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial z}}\right)^2 + \left(\frac{\frac{\partial F}{\partial y}}{\frac{\partial F}{\partial z}}\right)^2}dxdy \\
+            &= \int_U \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left( \frac{\partial f}{\partial y}\right)^2}dxdy
+        \end{align*}
+        As in part (b). Now checking the formula:
+        \begin{align*}
+            \int_U \frac{\abs{\nabla F}}{\abs{\parz F}}dxdy &= \int_U 2\frac{\sqrt{x^2 + y^2 + z^2}}{2z}dxdy = \int_U \sqrt{1 + \frac{x^2}{z^2} + \frac{y^2}{z^2}}dxdy \\
+            &= \int_U \sqrt{1 + \frac{x^2}{1-x^2-y^2} + \frac{y^2}{1-x^2-y^2}}dxdy \\
+            &= \int_U \sqrt{\frac{1}{1-x^2-y^2}}dxdy \\
+            &= \int_{y=-1}^1 \int_{x=-\sqrt{1-y^2}}^{\sqrt{1-y^2}} \frac{1}{\sqrt{1-x^2-y^2}}dxdy \\
+            &= \int_{y=-1}^1 \arctan \frac{x}{\sqrt{1-x^2-y^2}}\vert_{x \to -\sqrt{1-y^2}}^{x \to \sqrt{1-y^2}} \\
+            &= \int_{y=-1}^1 \lim_{x \to \infty}\arctan(x) - \lim_{x \to -\infty}\arctan(x) \\
+            &= \int_{-1}^1 \pi dy = 2\pi
+        \end{align*}
+        As desired.
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} We compute
+        \begin{align*}
+            A = \begin{bmatrix} \paru f^x & \paru f^y & \paru f^z \\
+                \parv f^x & \parv f^y & \parv f^z  \end{bmatrix}
+            = \begin{bmatrix} -b\sin u\cos v & -b\sin u \sin v &b\cos u\\
+            -(a+b\cos u)\sin v & (a+b\cos u)\cos v & 0 \end{bmatrix}
+        \end{align*}
+        Then in \((u,v)\) coordinates, we have \(g = f^* g_{\text{EUC}}\), i.e.
+        \begin{align*}
+            g = AA^T = \begin{bmatrix} b^2 & 0 \\ 0 & (a+b\cos u)^2 \end{bmatrix}
+        \end{align*}
+
+        \textbf{(b)} Write \(c_1 = f\circ \gamma_1, \; c_2 = f\circ \gamma_2\). Then we have
+        \(\dot{\gamma}_1^1 = 0, \dot{\gamma}_1^2 = 1\), so that \(\abs{\dot{\gamma_1}}^2_g = g_{2,2} = (a+b\cos \pi)^2 = (a-b)^2\). It follows that
+        \begin{align*}
+            L(c_1) = \int_0^{2\pi} a-b dt = 2\pi(a-b)
+        \end{align*}
+        Similarly, \(\dot{\gamma}_2^1 = 1, \dot{\gamma}_2^2 = 0\), so that \(\abs{\dot{\gamma_1}}^2_g = g_{1,1} = b^2\). It follows that
+        \begin{align*}
+            L(c_2) = \int_0^{2\pi}b = 2b\pi
+        \end{align*}
+
+        \textbf{(c)}
+        \(dA = \sqrt{\det g}\;dudv = b(a+b\cos u)dudv\), hence the surface area is given by
+        \begin{align*}
+            SA = \int_0^{2\pi}\int_0^{2\pi}b(a+b\cos u)dudv = \int_0^{2\pi} uab + b^2\sin u\vert_0^{2\pi}dv = \int_0^{2\pi} 2\pi abdv = (2\pi)^2ab
+        \end{align*}
+    \end{pb}
+\end{document}
