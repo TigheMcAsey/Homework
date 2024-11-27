@@ -94,30 +94,30 @@
     \begin{pb}
         We first compute \(d\text{Vol}_g\). Equip \(S^2\) with the polar coordinate chart given by
         \begin{align*}
-            U = ((0,2\pi) \times (0,\pi),\theta,\phi)
+            U = ((0,\pi) \times (0,2\pi),\phi,\theta)
         \end{align*}
         We only need to check for equality of \(g\) and \(\omega\) on this chart, since both are smooth, equality on \(U\) also implies equality on \(\overline{U} = S^2\).
         On \(U\) we have \((x,y,z) \longleftrightarrow (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)\), and \newline
-        \(\z: (\theta,\phi) \mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)\), so that
+        \(\z: (\phi,\theta) \mapsto (\cos\theta\sin\phi,\sin\theta\sin\phi,\cos\phi)\), so that
         \begin{align*}
-            g = \z^*g_{\text{EUC}} = AA^T = \begin{bmatrix} \sin^2\phi & 0 \\ 0 & 1 \end{bmatrix}
+            g = \z^*g_{\text{EUC}} = AA^T = \begin{bmatrix} 1 & 0 \\ 0 & \sin^2\phi \end{bmatrix}
         \end{align*}
         Where in this case we have
         \begin{align*}
             A =
             \begin{bmatrix}  
-                \frac{\partial \z^x}{\partial \theta} & \frac{\partial \z^y}{\partial \theta} & \frac{\partial \z^z}{\partial \theta} \\
-                \frac{\partial \z^x}{\partial \phi} & \frac{\partial \z^y}{\partial \phi} & \frac{\partial \z^z}{\partial \phi}
+                \frac{\partial \z^x}{\partial \phi} & \frac{\partial \z^y}{\partial \phi} & \frac{\partial \z^z}{\partial \phi} \\
+                \frac{\partial \z^x}{\partial \theta} & \frac{\partial \z^y}{\partial \theta} & \frac{\partial \z^z}{\partial \theta}
             \end{bmatrix}
             =
              \begin{bmatrix}
-                -\sin\theta\sin\phi & \cos\theta\sin\phi & 0\\
-                \cos\theta\cos\phi & \sin\theta\cos\phi & -\sin\phi
+                \cos\theta\cos\phi & \sin\theta\cos\phi & -\sin\phi \\
+                -\sin\theta\sin\phi & \cos\theta\sin\phi & 0
             \end{bmatrix}
         \end{align*}
         This allows us to compute
         \begin{align*}
-            d\text{Vol}_g \overset{\text{def.}}{=} \sqrt{\det \begin{bmatrix} \sin^2\phi & 0 \\ 0 & 1 \end{bmatrix}}d\theta \wedge d\phi = \sin\phi d\theta \wedge d\phi
+            d\text{Vol}_g \overset{\text{def.}}{=} \sqrt{\det \begin{bmatrix} 1 & 0 \\ 0 & \sin^2\phi \end{bmatrix}}d\phi \wedge d\theta = \sin\phi d\phi \wedge d\theta
         \end{align*}
         Now we compute \(\omega\) on \(U\) to check for equality, to simplify the computations, we first compute
         \begin{align*}
@@ -134,12 +134,12 @@
             &+ \cos\phi (-\sin\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi) \wedge (\cos\theta\sin\phi d\theta + \cos\theta \cos\phi d\phi) \\
             &= -\cos^2\theta\sin^3\phi d\theta \wedge d\phi
             - \sin^2\theta\sin^3\phi d\theta \wedge d\phi - \cos^2\phi\sin^2\theta\sin\phi d\theta \wedge d\phi - \cos^2\phi \cos^2\theta \sin\phi d\theta \wedge d\phi \\
-            &= (-\sin^3\phi - \cos^2\phi\sin\phi)d\theta \wedge d\phi = -\sin\phi d\theta \wedge d\phi
+            &= (-\sin^3\phi - \cos^2\phi\sin\phi)d\theta \wedge d\phi = -\sin\phi d\theta \wedge d\phi = \sin\phi d\phi \wedge d\theta
         \end{align*}
 
         \textcolor{red}{\textbf{ASK ABOUT ORIENTATION}}
 
-        \textbf{(b)} We may take \(\z: B^3 \to \mathbb{R}^3, \; (r,\theta,\phi) \mapsto (r\cos\theta\sin\phi,r\sin\theta\sin\phi,r\cos\phi)\), then on \(U \subset S^2 = \partial B^3\) we have that \(\iota\) restricts to the same map as above.
+        \textbf{(b)} Consider the chart \(V\) on \(B^3\), given by \((\left((0,1)\times(0,\pi)\times(0,2\pi)\right),(r,\phi,\theta))\)We may take \[\z: V \to \mathbb{R}^3, \; (r,\phi,\theta) \mapsto (r\cos\theta\sin\phi,r\sin\theta\sin\phi,r\cos\phi)\] We remark here that \(V^c\) has measure \(0\), furthermore, \(B^3\) is orientable, and we consider the orientation given by the given coordinate order \((r,\phi,\theta)\).
         To simplify the computations, we first compute
         \begin{align*}
             &d(x \circ \z) = \cos\theta\sin\phi dr - r\sin\theta\sin\phi d\theta + r\cos\theta\cos\phi d\phi\\
@@ -148,17 +148,17 @@
             \implies &d(x \circ \z) \wedge d(y \circ \z) \wedge d(z \circ \z) = 
             -r^2(\cos^2\theta \sin^3\phi + \sin^2\theta\sin^3\phi + \sin^2\theta\cos^2\phi\sin\phi + \cos^2\theta\cos^2\phi\sin\phi) dr \wedge d\theta \wedge d\phi \\
             &\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \;\; =
-            -r^2\sin\phi dr \wedge d\theta \wedge d\phi
+            -r^2\sin\phi dr \wedge d\theta \wedge d\phi = r^2 \sin\phi dr\wedge d\phi \wedge d\theta
         \end{align*}
 
         \begin{align*}
             \int_{S^2} \omega &= \int_{\partial B^3} \z^* \tilde{\omega} \overset{\text{Stoke's Thm}}{=} \int_{B^3} d\z^*{\tilde{\omega}} = \int_{B^3} \z^* d \tilde{\omega} = \int_{B^3} \z^*d(x dy \wedge dz + y dz \wedge dx + z dx \wedge dy) \\
             &= \int_{B^3} \z^* (dx \wedge dy \wedge dz + dy \wedge dz \wedge dx + dz \wedge dx \wedge dy) = \int_{B^3} \z^*(3dx \wedge dy \wedge dz) \\
             &= \int_{B^3} 3 \z^*dx \wedge \z^*dy \wedge \z^* dz 
-            = \int_{B^3} d(x \circ \z) \wedge d(y \circ \z) \wedge d(z \circ \z) \\
-            &= \int_{B^3} -3r^2\sin\phi dr \wedge d\theta \wedge d\phi = \int_0^{\pi}\int_0^{2\pi}\int_0^1 -3r^2\sin\phi dr d\theta d\phi \\
-            &= \int_0^{\pi}\int_0^{2\pi}-\sin\phi d\theta d\phi = \int_0^\pi-2\pi \sin\phi
-            = -2\pi \left(\cos\pi - \cos0\right) = 4\pi
+            = \int_{V} d(x \circ \z) \wedge d(y \circ \z) \wedge d(z \circ \z) \\
+            &= \int_{V} 3r^2\sin\phi dr \wedge d\phi \wedge d\theta = \int_0^{2\pi}\int_0^{\pi}\int_0^1 3r^2\sin\phi dr d\phi d\theta \\
+            &= \int_0^{2\pi}\int_0^{\pi}\sin\phi d\phi d\theta = \int_0^{2\pi} -\cos\phi\vert_0^\pi d\theta
+            = \int_0^{2\pi}2d\theta = 4\pi
         \end{align*}
 
         \textbf{(c)} Assume that such an \(\alpha\) exists, then

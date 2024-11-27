@@ -1,0 +1,246 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 420hw3}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} \(F \in NBV\), so we take \(\mu_F\) to be the complex borel measure associated to \(F\). The Lebesgue Radon Nikodym theorem (since \(m\) is \(\sigma\)-finite) furnishes \(f, \lambda\), such that \(d\mu_F = fdm + d \lambda\), such that \(m \perp \lambda, \tand f \in L^1\). Since \(m \perp \lambda\), we have by definition sets \(E,N\) such that \(E \cup N = \mathbb{R}\), where \(E\) is \(\lambda\) null, and \(N\) is Lebesgue null. Since \(F\) is NBV, its derivative exists a.e. Furthermore, we have that
+        \begin{align*}
+            F'(x) = \lim_{x \to x_0}\frac{F(x) - F(x_0)}{x-x_0} = \lim_{x \to x_0} \frac{\mu_F(x_0,x]}{m(x_0,x]} = f \text{ a.e.}
+        \end{align*}
+        By theorem 3.22 of Folland. Now let \([a,b] \subset N^c = E\), then
+        \begin{align*}
+             F(b) - F(a) = \mu_F (a,b] = \lambda(a,b] + \int_{[a,b]}fdm = \int_{[a,b]}F' dm
+        \end{align*}
+
+        \textbf{(b)}
+        Without loss of generality we may redefine \(F = F\chi_{[a,b]} + F(b)\chi_{(b,\infty)} + F(a)\chi_{(a,\infty)}\). Now take \(G(x) = F(x+) - F(a)\), then by construction we have \(G\) is right continuous, increasing, bounded and \(\lim_{x\to-\infty}G(x) = F(a) - F(a) = 0\). So that \(G\) is NBV. We can compute
+        \begin{align*}
+            F(b) - F(a) = G(b) - G(a) + F(a+) - F(a) \geq G(b) - G(a)
+        \end{align*}
+        Now since \(G\) is NBV, we have \(G'\) exists, furthermore \(G' = F'\) a.e. We can take  \(dm^G = fdm + d\lambda\) as the LRN decomposition of \(m^G\) (both are positive measures since \(G\) is), which is well defined since \(G\) is increasing and right continuous by construction, it is also immediate that \(m^G\) is finite. As above we have \(f = G' = F'\) a.e. It follows that
+        \begin{align*}
+        F(b) - F(a) \geq G(b) - G(a) = m^G(a,b] = \int_{(a,b]}f dm + \lambda(a,b] \geq \int_{[a,b]}F' dm
+        \end{align*}
+
+        \textbf{(c)} \textbf{(i)} The Cantor set has measure \(0\), the intervals in which \(F(b) - F(a) = \int_{[a,b]}F'dm\) are exactly those which lie entirely in the compliment of the Cantor set. This can be seen since we may write the compliment of the Cantor set as a disjoint union of open intervals, each of which is a level set of the Cantor function \(F\), so any \(F\) lying entirely in the compliment must lie entirely in one of these level sets.
+
+        \textbf{(ii)} The existence of such a function is not contradictory to (a), since \(N\) may be dense, and in this case, there exist no (non-empty) intervals such that \([a,b] \cap N = \emptyset\), this implies that for any \(b > a\), we need NOT have \(F(b) - F(a) = \int_{[a,b]}F' dm = 0\). In fact in this case \(N\) must be dense otherwise if we had some interval \([a,b] \subset N^c\), we would have \(F(b) - F(a) = 0\) contradicting increasing.
+    \end{pb}
+    \begin{pb}
+        Reader should note that the proof is a bit weird since we required (by definition of AC) that our open intervals are subsets of \([0,1]\), this meant that we could not actually cover \(\mathcal{C}\). To remedy this we actually cover \(\mathcal{C}\cap (0,\frac12]\) and provide the same argument we would like to provide for \(\mathcal{C}\).
+
+        Take \(\epsilon = \frac14\), and let \(\delta>0\) then since the Cantor set has (Lebesgue) measure \(0\), so does \(\mathcal{C}_{\frac12} := \mathcal{C}\cap (0,\frac12]\) we can take (by definition of outer measure) some countable collection of intervals \(\set{I_i} = \set{(a_i,b_i)}\), such that \(\sum_1^\infty m(I_i) < \delta\), and \(\mathcal{C}_{\frac12} \subset \bigcup_1^\infty (I_i) \subset [0,1]\) (WLOG subset \([0,1]\) by taking \(I_i = (I_i \cap [0,1])^\circ\)). Furthermore, we may assume that \(\set{I_i}\) are disjoint. We may write \(\mathcal{C}^c \cap [0,\frac12]\) as a countable union of disjoint intervals, \(\set{J_i}\) this set is countable since there is an obvious injection of \(\set{J_i}\) to \(\mathbb{Q}\cap[0,1]\) by mapping each \(J_i\) to its left endpoint. So we may take countably many points, (one for each \(J_i\)) \(j_i \in J_i\), then take some h-interval \(K_i = (c_i,d_i]\supset \set{j_i}\), such that \(c_i,d_i \in \bigcup_i I_i \setminus \mathcal{C}\), this is possible since the cantor set is nowhere dense. It follows that \((0,\frac12] \subset \bigcup I_i \bigcup K_i\). Then we have that (note we can define \(m^F\) since \(F\) is increasing and continuous)
+
+        \begin{align*}
+            \frac12 &= F(\frac12) - F(0) = m^F(0,\frac12] \leq m^F\left(\bigcup_i I_i \bigcup_i K_i\right)
+            \leq \sum_1^\infty m^F(I_i) + \sum_1^\infty m^F(K_i) \\
+            &\overset{*}{=} \sum_1^\infty m^F(I_i) \leq \sum_1^\infty m^F(a_i,b_i] = \sum_1^\infty F(b_i) - F(a_i)
+        \end{align*}
+
+        Where \(\overset{*}{=}\) follows since both of \(K_i\)'s endpoints lie in the same level set of the Cantor set for each \(i\) by construction. Since we have shown  \(\sum_1^\infty F(b_i) - F(a_i) \in [\frac12,\infty]\), we may choose \(N\) large enough that \(\sum_1^N F(b_i)-F(a_i) \geq \frac{1}{3}\) by definition of the limit. This suffices to show that \(\set{(a_i,b_i)}_1^N \subset [0,1]\) are sets such that \(\sum_1^N a_i - b_i < \delta\), and \(\sum_1^N F(b_i) - F(a_i) > \frac{1}{4}\). Since \(\delta\) was arbitrary this suffices to show that \(F \not \in AC_{[0,1]}\).
+        
+        
+        % Since the Cantor function \(F\) is constant on \(\mathcal{C}^c\), we have that
+        % \begin{align}
+        %     \sum_1^\infty F(b_i) - F(a_i) \geq 1
+        % \end{align}
+        % To prove the inequality (1) above, assume that \(\sum_1^\infty F(b_i)-F(a_i) < 1\), then we have that (by \(F\) increasing)
+        % \[F(1) - F(0) + \sum_1^\infty F(b_i)-F(a_i) \geq F(1) - F(0) \geq 1\]
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} \textbf{(i)} For \(x \geq 0\), we have \(F_p(x) = x^p\), and \(x \leq 0\), \(F_p(x) = (-x)^p\).
+        Then for any \(x \neq 0\), we have some open neighborhood containing \(x\), such that \(F_p(x)\) is the composition of differentiable functions (namely \(x \mapsto \pm x\) and \(x \mapsto x^p\)), so for any \(x > 0\), we can take \(F_p'(x) = px^{p-1}\), and any \(x < 0\),
+        \(F_p'(x) = -p(-x)^{p-1}\). In order for \(F_p\) to be continuously differentiable, its derivative at \(0\) must then be equal to \(\lim_{x\searrow 0}F_p'(x) = \lim_{x\nearrow 0}F_p'(x)\), for \(p < 1\), we have \(\lim_{x\searrow 0}F_p'(x) = \lim_{x\searrow 0}px^{p-1}\), which diverges for \(p < 1\). We can therefore restrict our attention to \(p \geq 1\), if \(p = 1\), then the left limit is \(-1\) which is not equal to the right limit \(1\). So \(F_p\) may only be continuously differentiable for \(p > 1\). Now assume that \(p > 1\), then
+        it is immediate that \(px^{p-1}\) is continuous on \((0,1]\) and \(-p(-x)^{p-1}\) is continuous on \([-1,p)\) for \(p > 1\), we have the right derivative of \(F\) at \(p = 0\) is equal to \(\lim_{x\searrow 0} \frac{x^p - 0}{x - 0} = \lim_{x\searrow0} x^{p-1} = 0\), which is also equal to the left derivative by virtually the same calculation. Since both derivatives exist and agree as \(0\), we find that \(F_p\) is differentiable at \(0\), in particular we have \(F_p'(0) = 0 = \lim_{x\searrow 0}F_p'(x) = \lim_{x\nearrow 0}F_p'(x)\), so that \(F'_p\) is also continuous at \(0\) by the same calculation, since it is continuous at every other point we have that \(F_p\) is continuously differentiable exactly when \(p > 1\).
+
+        \textbf{(ii)} We may use the previous result, if \(p > 1\), then \(F'_p\) is continuous on a compact set, and hence the derivative is bounded. Let \(M\) be such that \(\abs{F'_p} \leq M\), and let \(x,y \in [-1,1]\), WLOG \(x < y\), then \(\abs{F_p(x) - F_p(y)} = \abs{F_p'(c)}\abs{x-y}\) for some \(c \in (x,y)\) by the mean value theorem. This implies that \(\abs{F_p(x) - F_p(y)} \leq M\abs{x-y}\) for any \(x,y\). \(F_1\) is also Lipschitz, let \(x,y \in [-1,1]\) (wlog \(x < y\)), if \(x,y \in [-1,0] \tor [0,1]\), then \(F_1\) is differentiable on \((x,y)\) with \(\abs{F_1'} = 1\), so we may apply the same MVT argument to find that \(\abs{F_1(y) - F_1(x)} = \abs{x - y}\). In the case where \(x < 0 < y\), we apply the same MVT argument by introducing an \(F_1(0)\) term to find that
+        \begin{align*}
+            \abs{F_1(y) - F_1(x)} &= \abs{F_1(y) - F_1(0) + F_1(0) - F_1(x)} \leq \abs{F_1(y) - F_1(0)}
+        + \abs{F_1(x) - F_1(0)} \leq \abs{x} + \abs{y} = \abs{y - x}
+        \end{align*}
+        So that \(F_1\) is Lipschitz. Now conversely, suppose that \(p < 1\), \(F_p\) is not Lipschitz. To see this, note that \(\lim_{x\to 0}\abs{px^{p-1}} \to \infty\), let \(M \in \mathbb{R}\), then we may take \(x_0 < 1\) small enough, such that for any \(x \in (0,x_0)\) we have \(\abs{px^{p-1}} > M\), it follows that \(F_p\) is differentiable on \((0,x_0)\) with derivative \(px^{p-1}\), so we may apply the mean value theorem
+        \begin{align*}
+            \abs{F_p(x_0) - F_p(0)} &= \abs{F_p'(x)}x_0, \quad x\in (0,x_0) \\
+            &> M(x_0 - 0)
+        \end{align*}
+        Since \(M\) was arbitrary, \(F_p\) is not Lipschitz for \(p<1\)
+
+        \textbf{(iii)} Lipschitz implies absolute continuity (proof being let \(\delta = \epsilon/K\) for Lipschitz constant \(K\)), so we restrict our attention to the \(p < 1\) case.
+        for \(0 < a < b\) we define \[f: [0,a) \mapsto \mathbb{R}, \quad f(t) = F_p(b - t) - F_p(a - t)\]
+        Since \(F_p(x)\) is differentiable for \(x > 0\), we have \(f\) is differentiable, with
+        \begin{align*}
+            f'(t) = -F_p'(b-t) + F_p'(a-t) = p\abs{a-t}^{p-1} - p\abs{b-t}^{p-1} > 0
+        \end{align*}
+        similarly, we can define for \(a < b < 0\),
+        \begin{align*}
+            g: [0,\abs{b}) \to \mathbb{R}, \quad g(t) = F_p(b + t) - F_p(a + t)
+        \end{align*}
+        Once again, \(F_p(x)\) is differentiable for \(x < 0\), so we find that \(g\) is differentiable with
+        \begin{align*}
+            g'(t) = F_p'(b+t) - F_p'(a+t) = p\abs{b + t}^{p-1} - p\abs{a + t}^{p-1} > 0 
+        \end{align*}
+        In particular, both of \(f \tand g\) are increasing. Now let \(\epsilon > 0\), since \(F_p\) is continuous on a compact set it is uniformly continuous on \([-1,1]\). By uniform continuity, there exists some \(\delta > 0\), such that if \(\abs{x - y} < \delta\) we have \(\abs{F_p(x) - F_p(y)} < \epsilon/3\). Now suppose that \(\set{(a_i,b_i)}_1^n\) is a set of disjoint intervals, such that \(\sum_1^n b_i - a_i < \delta\), now partition this into sets
+        \[\set{(a_i,b_i)}_1^{k-1}, \;\; \set{(a_k,b_k)}, \tand \set{(a_i,b_i)}_{k+1}^n\]
+        Such that \(a_k \leq 0 \leq b_k\) (if no such set exists in the collection we may proceed that same way by redefining \(n\) as \(n+1\) and taking the k-th interval as \((0,0)\)). Assume WLOG that \(\set{(a_i,b_i)}_1^{k-1} \tand \set{(a_i,b_i)}_{k+1}^n\) are ordered (i.e. \(b_i \leq a_{i+1}\)). Define \(h_i\) as follows
+        \begin{align*}
+            h_i = \begin{cases}
+                \sum_{j = i}^{k-1} a_{j+1} - b_j & i < k \\
+                \sum_{j=k+1}^i a_j - b_{j-1} & i > k \\
+            \end{cases}
+        \end{align*}
+        By construction \(h_i\) has the following properties:
+        \begin{align*}
+            &b_{k-1} + h_{k-1} = a_k \\
+            &i < k-1 \implies b_{i} + h_i = a_{i + 1} + h_{i + 1} \\
+            &a_1 + h_1 = a_1 - \left(a_1 - a_k + \sum_1^{k-1} b_j - a_j\right) = a_k - \sum_1^{k-1} b_j - a_j \\
+            &a_{k+1} - h_{k+1} = b_k \\
+            &i > k+1 \implies a_i - h_i = b_{i-1} - h_{i-1} \\
+            &b_n - h_n = b_n + b_k - b_n + \sum_{k+1}^n b_j - a_j = b_k + \sum_1^{k-1} b_j - a_j
+        \end{align*}
+        Now apply the increasing property of \(f \tand g\) (to get from the first to second line),
+        \begin{align*}
+            &\sum_1^n \abs{F_p(b_i) - F_p(a_i)} = \sum_1^{k-1} \abs{F_p(b_i) - F_p(a_i)} 
+            + \abs{F_p(b_k) - F_p(a_k)} + \sum_{k+1}^n \abs{F_p(b_i) - F_p(a_i)} \\
+            &\leq \sum_{1}^{k-1} \abs{F_p(b_i + h_i) - F_p(a_i + h_i)} 
+            + \abs{F_p(b_k) - F_p(a_k)} + \sum_{k+1}^n\abs{F_p(b_i - h_i) - F_p(a_i - h_i)} \\
+            &= \sum_1^{k-1} F_p(a + h_i) - F_p(b_i + h_i) + \abs{F_p(b_k) - F_p(a_k)} + \sum_{k+1}^n F_p(b_i - h_i) - F_p(a_i - h_i) 
+        \end{align*}
+        By the properties of \(h_i\) above, this telescopes to
+        \begin{align*}
+            F_p(a_k - \sum_1^{k-1} b_j - a_j) - F_p(a_k) + \abs{F_p(b_k) - F_p(a_k)} + F_p(b_k + \sum_{k+1}^n b_j - a_j) - F_p(b_k)
+        \end{align*}
+        Then it is immediate that
+        \begin{align*}
+            \sum_1^{k-1} b_j - a_j &\leq \sum_1^n b_j - a_j < \delta\\
+            \sum_{k+1}^n b_j - a_j &\leq \sum_1^n b_j - a_j < \delta\\
+            b_k - a_k &\leq \sum_1^n b_j - a_j < \delta
+        \end{align*}
+        so we can apply uniform continuity to conclude
+        \begin{align*}
+            \sum_1^n \abs{F_p(b_i) - F_p(a_i)} & \leq F_p(a_k - \sum_1^{k-1} b_j - a_j) - F_p(a_k) + \abs{F_p(b_k) - F_p(a_k)} + F_p(b_k + \sum_{k+1}^n b_j - a_j) - F_p(b_k) \\
+            &= \abs{F_p(a_k - \sum_1^{k-1} b_j - a_j) - F_p(a_k)} + \abs{F_p(b_k) - F_p(a_k)} + \abs{F_p(b_k + \sum_{k+1}^n b_j - a_j) - F_p(b_k)} \\
+            &< 3\epsilon/3 = \epsilon
+        \end{align*}
+
+        \textbf{(b)}
+        \textbf{Lemma} \(\chi_{[-1,1]}\abs{x}^\ell \in L^1\) for \(\ell \in (-1,0)\). Proof being, we can bound \(\abs{x}^\ell\) above on \([-1,0)\cup(0,1]\) by \(\sum_1^{\infty} (N+1)^{-\ell}\chi_{[-\frac{1}{N},-\frac{1}{N+1}]\cup[\frac{1}{N+1},\frac{1}{N}]}\), using this almost everywhere boundedness and MCT we get,
+        \begin{align*}
+            \int_{[-1,1]} \abs{x}^\ell dm &\leq \int \sum_1^\infty (N+1)^{-\ell}\chi_{[-\frac{1}{N},-\frac{1}{N+1}]\cup[\frac{1}{N+1},\frac{1}{N}]}dm \\
+            &= \lim_{N\to\infty}\int\sum_1^N (N+1)^{-\ell}\chi_{[-\frac{1}{N},-\frac{1}{N+1}]\cup[\frac{1}{N+1},\frac{1}{N}]}dm \\
+            &= \lim_{N\to\infty}\sum_1^N \int (N+1)^{-\ell}\chi_{[-\frac{1}{N},-\frac{1}{N+1}]\cup[\frac{1}{N+1},\frac{1}{N}]}dm \\
+            &= 2\sum_1^\infty (N+1)^{-\ell} \frac{1}{N(N+1)} = 2\sum_1^\infty \frac{1}{N(N+1)^{1+\ell}} \\
+            &\leq 2\sum_1^\infty \frac{1}{N^{2+\ell}} < \infty
+        \end{align*}
+        Which converges since \(2 + \ell > 1\)
+        
+        
+        As stated prior, \(F_p'\) exists at all non-zero points for every \(p\). Since \(F_p'\) is defined a.e. its integral is well defined. By the computation in (a), we may write
+        \begin{align*}
+            F_p'(x) = \text{sgn}(x)p\abs{x}^{p-1}
+        \end{align*}
+        First suppose \(p \geq 1\), in this case \(F_p'\) is defined, continuous, and bounded on all of \([-1,1]\), in this case we may simply appeal to the FTC for riemmann integrals, which gives the desired result. Now suppose that \(p < 1\), then we have by the above lemma that \(\abs{F_p'} \leq \chi_{[-1,1]}\abs{x}^{p-1} \in L^1\), and in particular \[\chi_{[-1,a]\cup[b,1]}F_p' \leq \chi_{[-1,1]}\abs{x}^{p-1} \in L^1, \; \forall -1 \leq a < 0 < b \leq 1\]
+        Let \(x \in [-1,1]\), then for our applications of DCT, we may take our dominating function to be \(\abs{x}^{p-1}\)
+        \begin{align*}
+            &\int_{[-1,x]}F_p'(t)dm = \begin{cases}
+                \int_{[-1,x)}-p(-t)^{1-p}dm & x \leq 0 \\
+                \int_{[-1,0)}-p(-t)^{1-p}dm + \int_{(0,x]}pt^{1-p}dm & x > 0
+            \end{cases} \\
+            &\textbf{Case }\mathbf{x \leq 0}: \\
+            &\int_{[-1,x)}-p(-t)^{1-p}dm = \int \lim_{N \to \infty} \chi_{[-1,-\min\set{x,\frac{1}{N}}]}-p(-t)^{1-p} dm
+            \overset{\text{DCT}}{=} \lim_{N\to\infty} \int \chi_{[-1,\min\set{x,-\frac{1}{N}}]}-p(-t)^{1-p}dm
+        \end{align*}
+        In this case the integral in the limit is the integral of a continuous function, it is equal to the Riemann integral, so we may apply the FTC for Riemann integrals to find that
+        \begin{align*}
+            \int_{-1}^{\min\set{x,-\frac{1}{N}}} -p(-t)^{1-p}dm = (-t)^p \vert_{-1}^{\min\set{x,-\frac{1}{N}}} = F_p(\min\set{x,-\frac{1}{N}}) - F_p(-1)
+        \end{align*}
+        Then since \(x \leq 0\), and \(F_p\)  (necessary only in the case \(x = 0\)) we find that
+        \begin{align*}
+            \lim_{N\to\infty} F_p(\min\set{x,-\frac{1}{N}}) - F_p(-1) = F_p(x) - F_p(-1)
+        \end{align*}
+        \textbf{Case} \(\mathbf{x > 0}\):
+        \begin{align*}
+            \int_{[-1,0)}-p(-t)^{1-p}dm + \int_{(0,x]}pt^{1-p}dm &= \int \lim_{N\to\infty}\chi_{[-1,-\frac{1}{N}]}-p(-t)^{1-p}dm + \int \lim_{N\to\infty} \chi_{[\frac{1}{N},x]}pt^{1-p}dm \\
+            &\overset{\text{DCT}}{=} \lim_{N\to\infty}\int \chi_{[-1,-\frac{1}{N}]}-p(-t)^{1-p}dm + \lim_{N\to\infty} \int \chi_{[\frac{1}{N},x]}pt^{1-p}dm
+        \end{align*}
+        Once again, these are continuous functions on compact sets in the limits, so we can apply FTC for Riemann integrals to find that
+        \begin{align*}
+            \int_{[-1,x]}F_p'(t)dm &= \lim_{N\to\infty}\int \chi_{[-1,-\frac{1}{N}]}-p(-t)^{1-p}dm + \lim_{N\to\infty} \int \chi_{[\frac{1}{N},x]}pt^{1-p}dm \\
+            &= \lim_{N\to\infty}F_p(-\frac{1}{N}) - F_p(-1) + F_p(x) - \lim_{N\to\infty}F_p(\frac{1}{N}) = F_p(x) - F_p(-1) + F_p(0) - F_p(0) \\
+            &= F_p(x) - F_p(-1)
+        \end{align*}
+        As expected.
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} For any \(x \neq 0\) we have that \(F_j'(x)\) exists since \(F_j\) is a composition of differentiable functions away from \(0\). So we only need show that \(F_j'(0)\) exists. Let \(m \in \set{-2,-\frac{4}{3}}\), then since \(-1 \leq \sin(y) \leq 1, \forall y\)
+        \begin{align*}
+            \abs{\frac{x^2\sin(x^n)}{x}} \leq \frac{\abs{x^2}}{\abs{x}} = \abs{x}
+        \end{align*}
+        Which implies that \(\lim_{x \to 0} \abs{\frac{x^2\sin(x^n)}{x}}\) exists and is equal to zero. Further implying that \(\lim_{x \to 0}\frac{x^2\sin(x^n)}{x}\) must exist and be equal to zero. Since this is the definition of the derivative for \(F_j\), we find that for \(j \in \set{1,2}\) \(F'(0)\) exists and is equal to zero, so that \(F_j\) is everywhere differentiable.
+
+        \textbf{(b)} We use the converse of FTC for Lebesgue integrals, we have that
+        \[F_2' = 2x\sin\frac{1}{x^2} - \frac{4}{3}x^{-1/3}\cos x^{-4/3}\]
+        We first bound \(F_2'\) from above,
+        \begin{align*}
+            \chi_{[-1,1]}x^{-1/3}\cos x^{-4/3} \leq \abs{\chi_{[-1,1]}x^{-1/3}\cos x^{-4/3}} = \chi_{[-1,1]}\abs{x}^{-1/3}
+        \end{align*}
+        Which is \(L^1\) by the lemma proven in question 3b. It follows that \(F_2'\) is dominated by \(\chi_{[-1,1]}(2 + \frac{4}{3}\abs{x}^{-1/3}) \in L^1\). We also have by using the same bound that \(F_2'\chi_{[-1,-\frac{1}{N}]\cup[\frac{1}{N},1]} \in L^1\) for all natural \(N\). This allows us to use DCT to compute
+        \begin{align*}
+            \int_{[-1,x]} F_2'(t)dm &= \int \lim_{N\to\infty} \chi_{[-1,x]}\chi_{[-1,-\frac{1}{N}]\cup[\frac{1}{N},1]}F_2'(t) \\
+            &\overset{DCT}{=} \lim_{N\to\infty} \int \chi_{[-1,x]}\chi_{[-1,-\frac{1}{N}]\cup[\frac{1}{N},1]}F_2'(t) \\
+            &= \lim_{N \to \infty} \int \chi_{[-1,x]}\chi_{[-1,-\frac{1}{N}]}F_2'(t) + \int \chi_{[-1,x]}\chi_{[\frac{1}{N},1]}F_2'(t)
+        \end{align*}
+        Both of these integrals are integrals of continuous functions over closed intervals, so we may apply equivalence to Riemann integral, and apply FTC for Riemann integrals, here we use continuity that \(\lim_{N\to\infty}F_2(1/N) = F_2(0)\)
+        \begin{align*}
+            &\int_{[-1,x]} F_2'(t)dm 
+            = \lim_{N\to\infty} F_2(\min\set{x,\frac{-1}{N}}) - F_2(-1) + F_2(\max\set{0,x}) - F_2(\frac{1}{N}) \\
+            x \leq 0 \implies &= F_2(x) - F_2(-1) + F_2(0) - F_2(0) = F_2(x) - F_2(-1) \\
+            x > 0 \implies &= F_2(x) - F_2(0) + F_2(0) - F_2(-1)
+        \end{align*}
+        And hence by the converse of FTC for lebesgue integration we have that \(F_2 \in AC\).
+        
+
+        \textbf{(c)} For brevity denote
+        \begin{align*}
+            &m_N := \sqrt{\frac{2}{(4N+3)\pi}} &p_N := \sqrt{\frac{2}{(4N+1)\pi}}
+        \end{align*}
+        Let \(M \in \mathbb{R}\). Note that \(p_{N+1} < m_N < p_N\), then we we can apply the fact that \(\sin(p_N^2) = 1 = -\sin(m_N^2)\) for all \(N\) to find that
+        \begin{align*}
+            \abs{F_1(p_N) - F_1(m_N)} = \frac{2}{\pi}\left(\frac{1}{4N+1} + \frac{1}{4N+3}\right)
+            \geq \frac{1}{2\pi}\frac{1}{N+1} 
+        \end{align*}
+        It follows that
+        \begin{align*}
+            \sum_1^\infty F_1(p_N) - F_1(m_N) \geq \frac{1}{2\pi}\sum_{2}^\infty\frac{1}{N}
+        \end{align*}
+        diverges, hence we may choose some \(K \in \mathbb{N}\), such that \(\sum_1^K F_1(p_N) - F_1(m_N) > M\), take the \(2K\) points \(\set{m_{K}, p_{K}, \hdots m_2, p_2, m_1, p_1}\), we have that
+        \begin{align*}
+            TV(F_1) \geq \sum_1^{K}  \abs{F_1(m_N) - F_1(p_N)} + \sum_2^K \abs{F_1(p_N) - F_1(m_{N-1})} \geq \sum_1^K F_1(p_N) - F_1(m_N) > M
+        \end{align*}
+        (here we switched the order of summation in the definition of TV, but this actually does not affect it since we are taking an absolute value) and since \(M\) was arbitrary, we have \(TV(F_1) = \infty\). This suffices to show that \(F\) is not BV and hence also not AC.
+    \end{pb}
+\end{document}
