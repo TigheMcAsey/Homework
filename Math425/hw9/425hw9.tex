@@ -64,7 +64,12 @@
         \begin{align*}
             \det A = \left(\det \left(\frac{\partial x_\beta^i}{\partial x_\alpha^j} \right)_{1 \leq i,j \leq n}\right)^2 > 0
         \end{align*}
-        We can say \(> 0\) here, since the change of coordinates is smooth and invertible with smooth inverse the inverse function theorem tells us its Jacobian is invertible.
+        We can say \(> 0\) here, since the change of coordinates is smooth and invertible with smooth inverse the inverse function theorem tells us its Jacobian is invertible. As proof, let \(p \in M\), and let \(f\) denote the change of coordinates with inverse \(f^{-1}\), then
+        \begin{align*}
+            &1_{T_pM} = d(f^{-1}\circ f)\vert_p = (df^{-1}\vert_{f(p)}) (df\vert_p) \\
+            &1_{T_{f(p)}M} = d(f \circ f^{-1})\vert_{f(p)} = (df\vert_{p})(df^{-1}\vert_{f(p)})
+        \end{align*}
+        So that \(df_p\) is invertible for each \(p \in M\).
     \end{pb}
     \begin{pb}
         First we give an orientation on \(M\), consider the coordinate charts
@@ -73,7 +78,7 @@
             \tilde{U_1} \times \tilde{U_2}
         \end{align*}
         Given by the product of the standard \(\theta,\tilde{\theta}\) coordinates on \(S^1\). Here since \(w^2 + x^2 = 1 = y^2 + z^2\), we can associate to any point
-        \[(w,x,y,z) = (\cos\theta_1,\sin\theta_1,\cos\theta_2\sin\theta_2) \longleftrightarrow (e^{i\theta_1},e^{i\theta_2})\]
+        \[(w,x,y,z) = (\cos\theta_1,\sin\theta_1,\cos\theta_2,\sin\theta_2) \longleftrightarrow (e^{i\theta_1},e^{i\theta_2})\]
         Allowing us to define the charts in the standard way on \(S^1\). Hence if we can show that the coordinate change between \(U\) and \(\tilde{U}\) on \(S^1\) has jacobian with positive determinant, we will be done since each of the coordinate changes are products of the determinant of the identity and the determinant of this Jacobian. This is straightforward, since \(\tilde{\theta} = \theta - 2\pi\), we have \(\frac{\partial \tilde{\theta}}{\partial \theta} = 1\) (the reverse coordinate change is the same). Thus this is an orientation.
 
         Let \(U\) denote that chart
