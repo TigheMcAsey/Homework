@@ -64,12 +64,10 @@
         \begin{align*}
             \det A = \left(\det \left(\frac{\partial x_\beta^i}{\partial x_\alpha^j} \right)_{1 \leq i,j \leq n}\right)^2 > 0
         \end{align*}
-        We can say \(> 0\) here, since the change of coordinates is smooth and invertible with smooth inverse the inverse function theorem tells us its Jacobian is invertible. As proof, let \(p \in M\), and let \(f\) denote the change of coordinates with inverse \(f^{-1}\), then
+        We can say \(> 0\) here, since the change of coordinates is smooth and invertible with smooth inverse. As proof, denote\(f = \phi_\alpha \circ \phi_\beta^{-1}\) as the change of coordinates, then by the chain rule we have
         \begin{align*}
-            &1_{T_pM} = d(f^{-1}\circ f)\vert_p = (df^{-1}\vert_{f(p)}) (df\vert_p) \\
-            &1_{T_{f(p)}M} = d(f \circ f^{-1})\vert_{f(p)} = (df\vert_{p})(df^{-1}\vert_{f(p)})
+            d(f^{-1}\circ f) = (df^{-1}\circ f) df = I_n
         \end{align*}
-        So that \(df_p\) is invertible for each \(p \in M\).
     \end{pb}
     \begin{pb}
         First we give an orientation on \(M\), consider the coordinate charts
@@ -142,24 +140,24 @@
             &= (-\sin^3\phi - \cos^2\phi\sin\phi)d\theta \wedge d\phi = -\sin\phi d\theta \wedge d\phi = \sin\phi d\phi \wedge d\theta
         \end{align*}
 
-        \textbf{(b)} Consider the chart \(V\) on \(B^3\), given by \((\left((0,1)\times(0,\pi)\times(0,2\pi)\right),(r,\phi,\theta))\)We may take \[\z: V \to \mathbb{R}^3, \; (r,\phi,\theta) \mapsto (r\cos\theta\sin\phi,r\sin\theta\sin\phi,r\cos\phi)\] We remark here that \(V^c\) has measure \(0\), furthermore, \(B^3\) is orientable, and we consider the orientation given by the given coordinate order \((r,\phi,\theta)\).
+        \textbf{(b)} Consider the chart \(V\) on \(B^3\), given by \((\left((0,1)\times(0,\pi)\times(0,2\pi)\right),(r,\phi,\theta))\) We have the coordinate map \[ V \overset{\varphi}{\to} \mathbb{R}^3, \;(r\cos\theta\sin\phi,r\sin\theta\sin\phi,r\cos\phi) \mapsto (r,\phi,\theta)\] We remark here that \(V^c\) has measure \(0\), furthermore, \(B^3\) is orientable, and we consider the orientation given by the given coordinate order \((r,\phi,\theta)\).
         To simplify the computations, we first compute
         \begin{align*}
-            &d(x \circ \z) = \cos\theta\sin\phi dr - r\sin\theta\sin\phi d\theta + r\cos\theta\cos\phi d\phi\\
-            &d(y \circ \z) = \sin\theta\sin\phi dr + r\cos\theta\sin\phi d\theta + r\sin\theta \cos\phi d\phi\\
-            &d(z \circ \z) = \cos\phi dr - r\sin\phi d\phi\\
-            \implies &d(x \circ \z) \wedge d(y \circ \z) \wedge d(z \circ \z) = 
+            &(\varphi^{-1})^*dx = d(x\circ\varphi^{-1}) = \cos\theta\sin\phi dr - r\sin\theta\sin\phi d\theta + r\cos\theta\cos\phi d\phi\\
+            &(\varphi^{-1})^*dy = d(y\circ \varphi^{-1}) = \sin\theta\sin\phi dr + r\cos\theta\sin\phi d\theta + r\sin\theta \cos\phi d\phi\\
+            &(\varphi^{-1})^*dz = d(z \circ \varphi^{-1}) = \cos\phi dr - r\sin\phi d\phi\\
+            \implies &(\varphi^{-1})^* dx \wedge dy \wedge dz = (\varphi^{-1})^*dx \wedge (\varphi^{-1})^*dy \wedge (\varphi^{-1})^*dz\\
+            &= 
             -r^2(\cos^2\theta \sin^3\phi + \sin^2\theta\sin^3\phi + \sin^2\theta\cos^2\phi\sin\phi + \cos^2\theta\cos^2\phi\sin\phi) dr \wedge d\theta \wedge d\phi \\
-            &\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \;\; =
+            &=
             -r^2\sin\phi dr \wedge d\theta \wedge d\phi = r^2 \sin\phi dr\wedge d\phi \wedge d\theta
         \end{align*}
 
         \begin{align*}
-            \int_{S^2} \omega &= \int_{\partial B^3} \z^* \tilde{\omega} \overset{\text{Stoke's Thm}}{=} \int_{B^3} d\z^*{\tilde{\omega}} = \int_{B^3} \z^* d \tilde{\omega} = \int_{B^3} \z^*d(x dy \wedge dz + y dz \wedge dx + z dx \wedge dy) \\
-            &= \int_{B^3} \z^* (dx \wedge dy \wedge dz + dy \wedge dz \wedge dx + dz \wedge dx \wedge dy) = \int_{B^3} \z^*(3dx \wedge dy \wedge dz) \\
-            &= \int_{B^3} 3 \z^*dx \wedge \z^*dy \wedge \z^* dz 
-            = \int_{V} d(x \circ \z) \wedge d(y \circ \z) \wedge d(z \circ \z) \\
-            &= \int_{V} 3r^2\sin\phi dr \wedge d\phi \wedge d\theta = \int_0^{2\pi}\int_0^{\pi}\int_0^1 3r^2\sin\phi dr d\phi d\theta \\
+            \int_{S^2} \omega &= \int_{\partial B^3} \z^* \tilde{\omega} \overset{\text{Stoke's Thm}}{=} \int_{B^3} d\z^*{\tilde{\omega}} =  \int_{B^3} \z^* d \tilde{\omega} = \int_{B_3} d\tilde{\omega} = \int_{B^3} d(x dy \wedge dz + y dz \wedge dx + z dx \wedge dy) \\
+            &= \int_{B^3} (dx \wedge dy \wedge dz + dy \wedge dz \wedge dx + dz \wedge dx \wedge dy) = \int_{B^3} (3dx \wedge dy \wedge dz) \\
+            &= \int_{B^3} 3 dx \wedge dy \wedge dz = \int_V 3(\varphi^{-1})^*dx\wedge dy \wedge dz
+            = \int_{V} 3r^2\sin\phi dr \wedge d\phi \wedge d\theta = \int_0^{2\pi}\int_0^{\pi}\int_0^1 3r^2\sin\phi dr d\phi d\theta \\
             &= \int_0^{2\pi}\int_0^{\pi}\sin\phi d\phi d\theta = \int_0^{2\pi} -\cos\phi\vert_0^\pi d\theta
             = \int_0^{2\pi}2d\theta = 4\pi
         \end{align*}

@@ -38,6 +38,7 @@
 \newcommand{\hook}{\lrcorner\;}
 
 \begin{document}
+    I worked with Aaron on problem 1.
     \begin{pb}
         \textbf{(a)}
         \begin{align*}
@@ -72,19 +73,37 @@
             \int_U \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left( \frac{\partial f}{\partial y}\right)^2} dxdy
         \end{align*}
 
-        \textbf{(c)} The solution to this exercise relies on the crucial observation, that on \(S \cap V\), \[F(x,y,z) = 0 = z - f(x,y)\]
-        With this observation, the exercise is routine, first note that
+        \textbf{(c)} 
+        Define the map \(g: U \to S \cap V\) by \(g(x,y) = (x,y,f(x,y))\) and define \(G: U \to \mathbb{R}, \; G(x,y) = (F \circ g)(x,y)\). Since \(g\) maps onto a level set of \(F\), we have
         \begin{align*}
-            &\frac{\partial F}{\partial x} = \parx (z - f(x,y)) = -\frac{\partial f}{\partial x} \\
-            &\frac{\partial F}{\partial y} = \pary (z - f(x,y)) = -\frac{\partial f}{\partial y} \\
-            &\frac{\partial F}{\partial z} = \parz (z - f(x,y)) = 1
+            dG = dF \circ d g &= 0 \\
+            0 = dG = dF \circ d g &= \begin{bmatrix} \parx F & \pary F & \parz F \end{bmatrix}\begin{bmatrix} 1 & 0 \\ 0 & 1 \\ \parx f & \pary f \end{bmatrix} \\
+            &= \left( \parx F + \parz F \parx f \right)\parx + \left( \pary F + \parz F \pary f \right)\pary
         \end{align*}
-        Now to verify the formula:
+        Which gives allows us to solve for the \(f\) partials in terms of the \(F\) partials
         \begin{align*}
-            \int_U \frac{\abs{\nabla F}}{\abs{\parz F}}dxdy &= \int_U \frac{\sqrt{\left(\frac{\partial F}{\partial x}\right)^2 + \left(\frac{\partial F}{\partial y}\right)^2 + \left(\frac{\partial F}{\partial z}\right)^2 }}{\abs{\parz F}}dxdy \\
-            &= \int_U \sqrt{1 + \left(\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial z}}\right)^2 + \left(\frac{\frac{\partial F}{\partial y}}{\frac{\partial F}{\partial z}}\right)^2}dxdy \\
-            &= \int_U \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left( \frac{\partial f}{\partial y}\right)^2}dxdy
+            &\parx f = - \left(\parx F\right)\left(\parz F\right)^{-1} &\pary f = - \left(\pary F\right)\left(\parz F\right)^{-1}
         \end{align*}
+        Now we can derive this formula from 
+        \begin{align*}
+            \text{Area}(S\cap V) &= \int_U \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left( \frac{\partial f}{\partial y}\right)^2} dxdy \\
+            &= \int_U \sqrt{\left(\frac{\parz F}{\parz F}\right)^2 + \left(\frac{\parx F}{\parz F}\right)^2 + \left(\frac{\pary F}{\parz F}\right)^2} dxdy \\
+            &= \int_U \frac{\sqrt{\left(\parx F\right)^2 + \left(\pary F\right)^2 + \left(\parz F\right)^2}}{\abs{\parz F}} \\
+            &= \int_U \frac{\abs{\nabla F}}{\abs{\parz F}}dxdy
+        \end{align*}
+        %The solution to this exercise relies on the crucial observation, that on \(S \cap V\), \[F(x,y,z) = 0 = z - f(x,y)\]
+        % With this observation, the exercise is routine, first note that
+        % \begin{align*}
+        %     &\frac{\partial F}{\partial x} = \parx (z - f(x,y)) = -\frac{\partial f}{\partial x} \\
+        %     &\frac{\partial F}{\partial y} = \pary (z - f(x,y)) = -\frac{\partial f}{\partial y} \\
+        %     &\frac{\partial F}{\partial z} = \parz (z - f(x,y)) = 1
+        % \end{align*}
+        % Now to verify the formula:
+        % \begin{align*}
+        %     \int_U \frac{\abs{\nabla F}}{\abs{\parz F}}dxdy &= \int_U \frac{\sqrt{\left(\frac{\partial F}{\partial x}\right)^2 + \left(\frac{\partial F}{\partial y}\right)^2 + \left(\frac{\partial F}{\partial z}\right)^2 }}{\abs{\parz F}}dxdy \\
+        %     &= \int_U \sqrt{1 + \left(\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial z}}\right)^2 + \left(\frac{\frac{\partial F}{\partial y}}{\frac{\partial F}{\partial z}}\right)^2}dxdy \\
+        %     &= \int_U \sqrt{1 + \left(\frac{\partial f}{\partial x}\right)^2 + \left( \frac{\partial f}{\partial y}\right)^2}dxdy
+        % \end{align*}
         As in part (b). Now checking the formula:
         \begin{align*}
             \int_U \frac{\abs{\nabla F}}{\abs{\parz F}}dxdy &= \int_U 2\frac{\sqrt{x^2 + y^2 + z^2}}{2z}dxdy = \int_U \sqrt{1 + \frac{x^2}{z^2} + \frac{y^2}{z^2}}dxdy \\
