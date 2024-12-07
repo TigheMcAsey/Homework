@@ -1,0 +1,170 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 420hw3}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+
+\begin{document}
+    \begin{pb}
+        Let \(I = (a,b)\) be an open interval, then we have from equivalence to Riemann integral and FTC, we have
+        \begin{align*}
+            \abs{\int \chi_I e^{inx} dm} &= \abs{\int \chi_{\overline{I}} e^{inx} dm} = \abs{\int_a^b e^{inx} dx} = \abs{\frac{1}{in}(e^{inb} - e^{ina})} \leq \frac{2}{n}
+        \end{align*}
+        And hence taking the limit of both sides, we see that \(\lim_{n\to\infty}\int_\mathbb{R} \chi_I e^{inx} dm = 0\). 
+        
+        Let \(\epsilon > 0\) by the \(L^1\) approximation theorem (Folland 2.26), there exists
+        a simple function \(\phi\), which as in 2.26 we take the indicators to be on open intervals, such that \(\int \abs{f - \phi}dm < \epsilon\). Then
+        \begin{align*}
+            \abs{\int f e^{inx}dm} \leq \abs{\int (f - \phi) e^{inx}dm} + \abs{\int \phi e^{inx}dm} \leq \int \abs{f - \phi} dm + \abs{\int \phi e^{inx}dm} < \epsilon + \abs{\int \phi e^{inx}dm}
+        \end{align*}
+        Unwrapping the definition of \(\phi\), and taking the limit on both sides gives the desired result.
+        \begin{align*}
+            \lim_{n\to\infty} \abs{\int f e^{inx}dm} < \epsilon + \lim_{n\to\infty}\abs{\int \sum_1^N a_j \chi_{I_j} e^{inx}dm} 
+            \leq \epsilon + \sum_1^N a_j \lim_{n\to\infty}\abs{\int \chi_{I_j}e^{inx}dm} = \epsilon
+        \end{align*}   
+        And since \(\epsilon\) was arbitrary, it must be the case that \(\lim_{n\to\infty} \int f e^{inx}dm = 0\).
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} For each \(k\), let \(E_k\) be a set such that \(f_n \rightrightarrows f\) on \(E_k^c\), and \(\mu(E_k) < \frac{1}{k}\), then it is immediate that
+        \(f_n \to f\) on \(\left(\bigcap_1^\infty E_k \right)^c\), where \(E_1\) finally, monotonicity implies that \(\mu(\bigcap_1^\infty E_k) = 0\).
+        Here is some elaboration, let \(x \in \left(\bigcap_1^\infty E_k \right)^c\), then \(x \in E_k^c\) for some \(k\), since \(f_n \to f\) on \(E_k^c\), it follows that \(f_n(x) \to f(x)\).
+
+        \textbf{(b)} Let \(\hat{\epsilon}, \epsilon > 0\), then let \(N_k\) be the index given by uniform convergence \(f_n \rightrightarrows f\) on \(E_k^c\), such that \(n \geq N_k\) implies that
+        \(\norm{f - f_n}_\infty < \epsilon\) on \(E_k^c\). It follows that for some natural number \(k\), \(\frac{1}{k} < \hat{\epsilon}\). Then for any \(n > N_k\), we have
+        \(\norm{f - f_n}_\infty < \epsilon\) on \(E_k^c\), so that \(\set{x \vert \lim_{n\to\infty} \abs{f(x) - f_n(x)} \geq \epsilon} \subset E_k^c\), this implies by monotonicity that
+        \(\mu\set{x \vert \lim_{n\to\infty} \abs{f(x) - f_n(x)} \geq \epsilon} < \hat{\epsilon}\). But since \(\hat{\epsilon}\) was arbitrary, 
+        \(\mu\set{x \vert \lim_{n\to\infty} \abs{f(x) - f_n(x)} \geq \epsilon} = 0\) as desired. The proof is complete since \(\epsilon\) was arbitrary.
+    \end{pb}
+    \begin{pb}
+        By Folland 2.30, some subsequence \(\set{f_{n_k}}_k \subset \set{f_n}_n\) converges pointwise to \(f\) almost everywhere. Then since
+        \(\lim_{k\to \infty}\abs{f_{n_k}}  \leq g\), we have \(\abs{f} \leq g\) almost everywhere so that there is some \(h \in L^1\), such that \(h = g\) a.e. and \(\abs{f} \leq h\).
+        It follows that for any \(n\), we have \(\abs{f - f_n} \leq \abs{f} + \abs{f_n} \leq g + h\).
+
+        Let \(\epsilon > 0\), now since \(g, h \in L^1\), there exists some set \(K\) of finite measure, such that 
+        \[\int h - h\chi_K d\mu < \epsilon/4 \tand \int g - g\chi_K d\mu < \epsilon/4\]
+        (this is an immediate consequence of taking maximum support of either of the simple function approximations of \(g \tand h\)).
+        It follows that
+        \begin{align*}
+            \int\abs{f - f_n}d\mu &\leq \int \abs{f-f_n}\chi_Kd\mu + \int \abs{f - f_n}\chi_{K^c}d\mu \\
+            &\leq \int \abs{f-f_n}\chi_Kd\mu + \int \abs{f}\chi_{K^c}d\mu + \int\abs{f_n}\chi_{K^c}d\mu \\
+            &\leq \int \abs{f-f_n}\chi_Kd\mu + \int h\chi_{K^c}d\mu + \int g\chi_{K^c}d\mu \\
+            &< \int \abs{f-f_n}\chi_Kd\mu + \frac{1}{2}\epsilon
+        \end{align*}
+        Since \(g + h \in L^1\), we can apply problem 6 of last homework, which tells us that there is some \(\delta > 0\), such that \(\mu(E) < \delta\) implies that
+        \(\int_E g+h d\mu < \frac{1}{4}\epsilon\). By convergence in measure, there exists some \(N\), such that for any \(n \geq N\) we have 
+        \(\mu\set{x \vert \abs{f(x) - f_n(x)} \geq \frac{1}{4 \mu(K)}\epsilon} < \delta\). 
+        Let \[E := \set{x \in K \vert \abs{f(x) - f_n(x)} \geq \frac{1}{4 \mu(K)}\epsilon}\]
+        Then for any \(n \geq N\) we have (note that we take \(E^c = K \setminus E\))
+        \begin{align*}
+            \int \abs{f-f_n}d\mu &< \int \abs{f - f_n}\chi_K d\mu + \frac{1}{2}\epsilon \\
+            &= \int \abs{f - f_n}\chi_E d\mu + \int \abs{f - f_n}\chi_{E^c} d\mu + \frac{1}{2}\epsilon \\
+            &\leq \int (g + h)\chi_E d\mu + \int \abs{f - f_n}\chi_{E^c} d\mu + \frac{1}{2}\epsilon \\
+            &< \int \abs{f - f_n}\chi_{E^c} d\mu + \frac{3}{4}\epsilon \\
+            &\leq \int \frac{1}{4 \mu(K)}\epsilon \chi_{E^c}d\mu + \frac{3}{4}\epsilon \\
+            &= \frac{\mu(E^c)\epsilon}{4 \mu(K)} + \frac{3}{4}\epsilon \leq \frac{\mu(K)\epsilon}{4 \mu(K)} + \frac{3}{4}\epsilon = \epsilon
+        \end{align*}
+        So that by definition \(\lim_{n\to\infty}\int \abs{f - f_n}d\mu = 0\)
+    \end{pb}
+    \begin{pb}
+        We first show that \(D\) is in the product algebra. Define \(E_n := \bigcup_{\mathbb{Q}^2 \cap D}N_{1/n}(q)\)
+        It is immediate that each \(E_n \in \mathcal{B}_{[0,1]}\cap \mathcal{P}([0,1]) = \mathcal{M}\). Then since \(\mathcal{M}\) is a sigma algebra, we have
+        \(\cap_1^\infty E_n \in \mathcal{M}\). To see that \(\cap_1^\infty E_n = D\), first note that for any \(x \in D\), we have \(x = (\alpha,\alpha)\), then for any \(n\), by density
+        of rationals, we have some \(q\), such that \(\abs{\alpha - q} < \frac{1}{2n}\), then it follows that \(d(x,(q,q)) = \sqrt{2\frac{1}{4n^2}} = \frac{1}{n\sqrt{2}} < 1/n\). And since this holds for
+        each \(n\), we have \(x \in D\). Secondly since \(D\) is compact, any point in \(D^c\) has some positive distance away from \(D\), i.e. if \(x \in D^c\), then there exists some \(n\), such that
+        \(d(x,D) \geq \frac{1}{n}\) implying that \(x \not \in E_n\), so that \(x \in \left(\bigcap_1^\infty E_n \right)^c\). This suffices to show \(D = \bigcap_1^\infty E_n\).
+
+        For any \(x \in D\), we have by definition that \(\# D_x = 1\), so that we can write
+        \begin{align*}
+            \int \# D_x dm(x) = \int 1 dm = 1
+        \end{align*}
+        Whereas, for any \(y \in [0,1]\), we have that \(m(D^y) = 0\), so that
+        \[\int m(D^y)d\#(y) = \int 0 d \#(y) = 0\]
+        Finally, we compute \(m \times \# (D)\) from its definition as an outer measure. If \(\set{I_i}_1^\infty\) is any collection of rectangles covering \(D\). Define the map
+        \(\pi: \begin{cases}
+            (x,y) \mapsto 0 & x\neq y \\
+            (x,x) \mapsto x
+        \end{cases}\) then \(m\left(\pi\left(\bigcup_1^\infty I_i\right)\right) = 1 \leq \sum_1^\infty m(\pi(I_i))\), hence we may choose \(\ell\), such that \(m(\pi(I_\ell)) > 0\). This implies that
+        \(I_\ell \cap D\) must be uncountable, so that \(m(I_\ell^x) > 0 \tand \# I_\ell^y = \infty\). 
+        It follows that \[\sum_1^\infty m \times D (I_i) \geq m \times D (I_\ell) = m(I_\ell^x) \# I_\ell^y = \infty\]
+        Now since \(\set{I_i}_1^\infty\) was an arbitrary collection, this proves the measure must be infinity by definition of the outer measure.
+        
+        These results are not inconsistent with Tolleni's theorem, since the conditions of the theorem are not met. Namely, \(([0,1],\#)\) is not sigma finite, since the only
+        sets of finite measure are finite sets, but a countable union of at most countable sets is countable, so that no countable union of finite sets may cover \([0,1]\) which is uncountable.
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)}
+        since \([0,1]\) is compact by the Heine Borel theorem, and \(F'\) is continuous on a compact set, we have some real number \(M\), such that
+        \(\abs{F'} \leq M\) on  \([0,1]\). Then by the mean value theorem for vector valued functions, we have for any \(0 \leq x \leq y \leq 1\), that
+        \(\abs{F(y) - F(x)} = \abs{(y-x)F'(c)}\), for \(c \in (x,y)\). It follows that \(\abs{F(y) - F(x)} \leq M\abs{y-x}\). Then for any \(N \in \mathbb{N}\),
+        we may cover \(F[0,1]\) with
+        \[R_N := \bigcup_{k=1}^N \prod_{i=1}^n [F(\frac{1}{k})_{x_i} - \frac{M}{N}, F(\frac{1}{k})_{x_i} + \frac{M}{N}]\]
+        Where \([F(\frac{1}{k})_{x_i} - \frac{M}{N}, F(\frac{1}{k})_{x_i} + \frac{M}{N}]\) is a closed interval about the i-th coordinate of \(F(\frac{1}{k})\).
+        Since this holds for any \(N\), in particular we have by monotonicity
+        \begin{align*}
+            m^n(F[0,1]) \leq m^n(R_N) = N \left(\frac{2M}{N}\right)^n = \left(\frac{2M}{N^{\frac{n-1}{n}}}\right)^n \underset{N \to \infty}{\longrightarrow} 0
+        \end{align*}
+        And since the inequality holds for all \(N\), it also holds for the limit
+
+        \textbf{(b)}
+        Let \(n \geq d > 1\) and \(\delta > 0\). Choose \(N > \frac{M2\sqrt{n}}{\delta}\) (where \(M\) is as in part (a)). Then as in part (a), we have that th we can cover \(\mathcal{C}\) with
+        \(N\) rectangles \(\set{R_N^i}_1^N\), which are cartesian products of closed intervals length \(\frac{2M}{n}\) in each coordinate. Then we have
+        \begin{align*}
+            \text{Diam}R_N^i \leq \sqrt{\sum_{j=1}^n (\sup\set{\abs{z - y} \vert z,y \in (R_N^i)_{x_j}})^2} = \sqrt{\sum_1^n \left(\frac{2M}{N}\right)^2} = \frac{2M\sqrt{n}}{N} < \delta
+        \end{align*}
+        This implies that since \(H_{d,\delta}(\mathcal{C})\) comes from the infimum over such covers, we have for any \(N > \frac{M2\sqrt{n}}{\delta}\)
+        \begin{align*}
+            H_{d,\delta}(\mathcal{C}) \leq \sum_1^N \left(\frac{2M\sqrt{n}}{N}\right) = (2M\sqrt{n})^d N^{1-d}
+        \end{align*}
+        since this holds for all such \(N\), it also holds for the limit as \(N \to \infty\) so that (since \(d > 1\))
+        \begin{align*}
+            H_{d,\delta}(\mathcal{C}) \leq \lim_{N\to\infty} (2M\sqrt{n})^d N^{1-d} = 0
+        \end{align*}
+        And since this holds for any \(\delta > 0\), the right limit must be equal to zero. I.e. \(H_d(\mathcal{C}) = 0\).
+
+        % \textbf{(a)} Denote \(\frac{d}{dx}F(x) = (f_1(x),\hdots,f_n(x))\), where it is clear by definition that each \(f_i\) is continuous. We know that \(F[0,1]\) is measurable, since it is the continuous image of
+        % a compact set, hence compact, so that it is closed therefore in the Borel sets.
+        % Furthermore, since \(f_1\) is continuous, \(E_0 := \set{x \in [0,1] \vert f_1(x) = 0}\) is closed and clearly bounded hence compact, 
+        % so by the same logic, \(F(E_0)\) is Borel, then finally \(E_1 := \set{x \in [0,1] \vert f_1(x) \neq 0} = F(E) \cap F(E_0)^c\) is the intersection of two Borel sets (closure under compliments) and hence Borel.
+        % It follows that \(m^n(F(E)) = m^n(F(E_0)) + m^n(F(E_1))\). I claim that \(F(E_1)_x \tand F(E_0)_x\) are countable unions of connected components. We first prove it for \(F_1\), where for any 
+        % \(y \in F_1(E_1)\), we have \(x = F^{-1}(y)\), so that \(f_1(x) > 0\) (WLOG), then since \(f_1\) is continuous, there is some neighborhood of \(y\), such that \(f_1 > 0\).
+
+        % Now since \(\mathbb{R} \tand \mathbb{R}^{n-1}\) are both \(\sigma\)-finite with respect to the Lebesgue measure, we have by the Tolleni theorem, that
+        % \begin{align*}
+        %     m^n(F[0,1]) = m^n(F(E_0)) + m^n(F(E_1)) = \int m(F(E_0)^x) dm^{n-1}(x) + \int m^{n-1}(F(E_1)^x) dm(x)
+        % \end{align*}
+    \end{pb}
+    \begin{pb}
+        We first verify that \(R\) is measurable for simple \(f\). Since \(f\) is simple, we may write \(f = \sum_1^N c_i \chi_{E_i}\) for disjoint \(E_i\). It is immediate that
+        \(R = \bigcup_1^N E_i \times [0,c_i)\) which is a finite union of rectangles. We move on to the proof for general \(f\).
+
+        Since \(f\) is measurable and positive, Folland 2.10 furnishes a sequence of simple functions \(\phi_n \nearrow f\). Defining \(R_n\) for each \(\phi_n\), then \(\bigcup_1^\infty R_n = R\)
+        is a countable union of rectangles, thus is in the product sigma algebra. 
+        
+        It is easy to see that \(\bigcup_1^\infty R_n = R\), since for any \(x \in X\), 
+        \(f(x) > \sup\set{y \vert (x,y) \in \bigcup_1^\infty R_n} \geq \phi_i(x), \forall i\) where \(\phi\nearrow f\). Furthermore, for any \((x,y) \in \bigcup_1^\infty R_n\), we have \((x,y) \in R_n\) for some \(n\), then since
+        \(R_n\) was defined from a simple function, we have for any \(0 \leq z < y\), \((x,z) \in R_n \subset \bigcup_1^\infty R_n\).
+
+        Finally, verifying the value of the integral is relatively easy. Since \((X,\mathcal{M},\mu), (\mathbb{R},\mathcal{B}_\mathbb{R},m)\) are \(\sigma\)-finite, we can apply Folland theorem 2.36
+        \[\mu \times m(R) = \int_X m(R_x)d\mu\]
+        But then, since for any \(x\), \(m(R_x) = [0,f(x))\) has lebesgue measure \(f(x)\),
+        \[\mu \times m(R) = \int_X m(R_x)d\mu = \int_X f(x)d\mu\]
+    \end{pb}
+\end{document}

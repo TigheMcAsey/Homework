@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 422hw8}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\left\langle #1 \right\rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\falg}{F^{\text{alg}}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+\begin{document}
+    \begin{pb}
+        We have that \(\sqrt{a} \not \in F\), and \(\sqrt{a}\) satisfies the polynomial \(x^2 - a\) in \(F[x]\), it follows that \([L:F] = 2\), and \(\min(\sqrt{a};F) = x^2 - a\).
+        \(x^2 -a = (x-\sqrt{a})(x+\sqrt{a}) \in L[x]\), hence \(\sqrt{a}, -\sqrt{a}\) are conjugate in \(L/F\).
+
+        Assume that \(\alpha \in L\) has norm \(a\), then 
+        \begin{align*}
+            N_{L/F}(\alpha^{-1} \sqrt{a}) = N_{L/F}(\alpha^{-1})N_{L/F}(\sqrt{a}) = N_{L/F}(\alpha)^{-1}(-\sqrt{a}\cdot\sqrt{a}) = \frac{1}{a}(-a) = -1
+        \end{align*}
+
+        Conversely, assume that \(\beta \in L\) has norm \(-1\), then
+        \begin{align*}
+            N_{L/F}(\beta \sqrt{a}) = N_{L/F}(\beta)N_{L/F}(\sqrt{a}) = -1(-\sqrt{a}\cdot\sqrt{a}) = a
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        First note that \(K = F(\sqrt{2},\sqrt[4]{3})\). I claim that \([K:F] = 8\), proof being
+        \([\mathbb{Q}(\sqrt{3},\sqrt{2}):\mathbb{Q}] = 4\), but then
+        \begin{align*}
+           \mathbb{Q}(\sqrt[4]{3},\sqrt{2}) \neq \mathbb{Q}(\sqrt{3},\sqrt{2})
+        \end{align*}
+        To see this, \(\mathbb{Q}(\sqrt[4]{3},\sqrt{2})/\mathbb{Q}\) is not normal, since \(\sigma: \sqrt[4]{3} \mapsto i \sqrt[4]{3}\) is an automorphism of \(\mathbb{Q}(i,\sqrt[4]{3},\sqrt{2})\) not fixing \(\mathbb{Q}(\sqrt[4]{3},\sqrt{2}) \subset \mathbb{R}\), this implies that they are not equal, since \(\mathbb{Q}(\sqrt{2},\sqrt{3})\) is normal as the splitting field of \(x^2-2, x^2-3\) over \(\mathbb{Q}\). It follows that \(\sqrt[4]{3} \not \in \mathbb{Q}(\sqrt{3},\sqrt{2})\), so that
+        \begin{align*}
+            [\mathbb{Q}(\sqrt[4]{3},\sqrt{2}):\mathbb{Q}(\sqrt{3},\sqrt{2})] = 2
+        \end{align*}
+        Since \(\sqrt[4]{3}\) satisfies \(x^2 - \sqrt{3}\). Finally, we use once again that \(\mathbb{Q}(\sqrt[4]{3},\sqrt{2}) \subset \mathbb{R}\), so that \(i \not \in \mathbb{Q}(\sqrt[4]{3},\sqrt{2})\), where \(i\) satisfies \(x^2 + 1\). It follows that
+        \begin{align*}
+            [F(\sqrt[4]{3},\sqrt{2}):\mathbb{Q}(\sqrt[4]{3},\sqrt{2})] = 2
+        \end{align*}
+        Taken together by multiplicativity of degree, we have
+        \begin{align*}
+            [K:\mathbb{Q}] &= [\mathbb{Q}(\sqrt{3},\sqrt{2}):\mathbb{Q}][\mathbb{Q}(\sqrt[4]{3},\sqrt{2}):\mathbb{Q}(\sqrt{3},\sqrt{2})][K:\mathbb{Q}(\sqrt[4]{3},\sqrt{2})] = 16 \\
+            [F:\mathbb{Q}] &= 2 \\
+            \implies [K:F] &= 8
+        \end{align*}
+        Note that \(3\) is irreducible in the Gaussian integers, so that \(x^4 - 3\) is irreducible in \(F[x]\) by Eisenstein's criterion. It follows that \(\min(\sqrt[4]{3};F) = x^4 - 3\), and since \(\sqrt{2} \not \in F\), we have \(\min(\sqrt{2}:F) = x^2 - 2\). This gives us \(\sigma,\tau \in \gal(K/F)\), where \(\sigma: \sqrt[4]{3} \mapsto i\sqrt[4]{3} \tand \tau: \sqrt{2} \mapsto - \sqrt{2}\) since \(\# \gal(K/F) = 8 = \# \gen{\sigma,\tau}\), we have equality. Finally, \(\sigma^j\) fixes \(\sqrt{2}\) for all \(j\), i.e. \(\gen{\sigma} \cap \gen{\tau} = \set{1}\), and we have that \(\set{3^{i/4}2^{j/2}}_{0 \leq i \leq 3, j = 0,1}\) is a basis for \(K/F\), and it is immediate that \(\sigma\tau = \tau\sigma\) on each of the basis elements so that \[\gal(K/F) \simeq \gen{\sigma} \times \gen{\tau} \simeq C_4 \times C_2\] is abelian, with exponent \(4\).
+        % \(x^4 - 3\) is irreducible over \(F\) by Eisensteins criterion on the Gaussian Integers, where 3 is prime so that \([F(3^{1/4}):F] = 4\). Similarly, we have \(F(\sqrt{2})\) can be written as the tower \(\mathbb{Q}(i)/\mathbb{Q}(\sqrt{2})/\mathbb{Q}\), where both extensions have degree \(2\), since \(i \not \in \mathbb{Q}(\sqrt{2}) \subset \mathbb{R}\), it follows that \([F(\sqrt{2}):\mathbb{Q}] = 4\), so by multiplicativity of degree \([F(\sqrt{2}):F] = 2\). Now all that remains to show is that \(\sqrt{2} \not \in F(3^{1/4})\), so that \([F(\sqrt{2},3^{1/4}):F] = 8\) by multiplicativity of degree.
+        
+        % To see that \(\sqrt{2} \not \in F(3^{1/4})\), note that \(\set{3^{i/4}}_{1 \leq i \leq 4}\) is a basis for \([F(3^{1/4}):F]\), we can immediately check that the trace of an element is equal to zero in \(F(3^{1/4})/F\) iff the element is of the form \(a3^{1/4}+b\sqrt{3}+c3^{3/4}\), hence if 
+        % \begin{align*}
+        %     \alpha \in \set{}
+        %\end{align*}
+    \end{pb}
+    \begin{pb}
+        The following problem only makes sense in char 0, since in char \(p\), we dont necessarily have radical extensions are contained in Galois extensions, since they may not be seperable. Given this, we assume that char\(F = 0\)
+
+        Since \(\alpha\) is contained in a root extension of \(F\), we have that \(\alpha \in K\), where 
+        \begin{align*}
+            K = F_m/F_{m-1}/\cdots/F_1 = F
+        \end{align*}
+        where each \(F_{i+1}/F_i\) is given by adjoining an \(n_i\)-th root, i.e. \(\sqrt[n_i]{\alpha_i}\). Now define
+        \begin{align*}
+            L = F(\zeta_{\text{LCM}[n_1,\hdots,n_m]}) \supset F(\zeta_{n_i})_{i=1,\hdots,m}
+        \end{align*}
+        Now define \(L_{i+1} = L_i(\sqrt[n_i]{\alpha_i}), \; L_1 = L\)
+        it follows that since \(L\) contains each of the \(n_i\)-th roots of unity, we have that \( L_{i+1}/L_i\)
+        is Galois, with Galois group \(C_{n_i}\), and \(L_m \supset K\) implies that \(\alpha \in L_m\). This reduces the problem to showing that \(L/F\) can be written as a radical extension, with cyclic decomposition. Denote \(\ell = \text{LCM}[n_1,\hdots,n_m]\) with prime factorization \(\ell = \prod_1^N p_j^{r_j}\). 
+        Consider the tower of extensions
+        \begin{align*}
+            L = F(\zeta_{p_1^{r_1}\cdots p_N^{r_N}})/F(\zeta_{p_1^{r_1}\cdots p_N^{r_N - 1}})/ \cdots / F(\zeta_{p_1^{r_1}\cdots p_N})/ F(\zeta_{p_1^{r_1}\cdots p_{N-1}^{r_{N-1}}})/ \hdots/ F(\zeta_{p_1^{r_1}})/ \hdots / F(\zeta_{p_1})/F
+        \end{align*}
+        Each extension is galois over \(F\) (and hence also over the previous extension in the tower), since it is the splitting field of some polynomial of the form \(x^k - 1\). In particular, the galois groups over \(F\) are \(\left(\mathbb{Z}/(p_1^{r_1}\cdots p_k^{s})\right)^\times\). Given this, the fundamental theorem of Galois theory gives us that the Galois group at each step in the tower is either
+        \begin{align*}
+            \frac{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_k^{s})\right)^\times}{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_k^{s - 1})\right)^\times} \quad \tor \quad \frac{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_k)\right)^\times}{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_{k-1}^{r_{k-1}})\right)^\times}
+        \end{align*}        
+        From the previous homework, we proved that if \(k \vert n\), then \(\Phi_{nk}(x) = \Phi_n(x^k)\), i.e. \(\varphi(nk) = k\varphi(n)\), so that in particular we have
+        \begin{align*}
+            \# \frac{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_k^{s})\right)^\times}{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_k^{s - 1})\right)^\times} = p \implies \gal(F(\zeta_{p_1^{r_1}\cdots p_k^{s}})/F(\zeta_{p_1^{r_1}\cdots p_k^{s - 1}})) \simeq C_p
+        \end{align*}
+        Furthermore, this is a radical extension by adjoining a root of \(x^{p_k} - \zeta_{p_k^{s - 1}}\). In the second case, we employ the Chinese Remainder Theorem, so that
+        \begin{align*}
+            \frac{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_k)\right)^\times}{\left(\mathbb{Z}/(p_1^{r_1}\cdots p_{k-1}^{r_{k-1}})\right)^\times} = \frac{\left(\mathbb{Z}/{p_k}\right)^\times \times\prod_1^{k-1}\left(\mathbb{Z}/(p_i^{r_i})\right)}{\set{1} \times \prod_1^{k-1}\left(\mathbb{Z}/(p_i^{r_i})\right)} \simeq \left(\mathbb{Z}/p_k\right)^\times \simeq C_{p-1}
+        \end{align*}
+        Once again this is a radical extension by adjoining a root of \(x^{p_k} - 1\).
+
+
+
+
+                % \begin{align*}
+        %     L = &F(\zeta_{p_1^{r_1}},\zeta_{p_2^{r_2}},\hdots,\zeta_{p_N^{r_N}})/F(\zeta_{p_1^{r_1}},\zeta_{p_2^{r_2}},\hdots,\zeta_{p_N^{r_N-1}})/\cdots/F(\zeta_{p_1^{r_1}},\zeta_{p_2^{r_2}}\hdots,\zeta_{p_N})/F(\zeta_{p_1^{r_1}},\zeta_{p_2^{r_2}},\hdots,\zeta_{p_{N-1}^{r_{N-1}}}) \\
+        %     &/ \hdots /F(\zeta_{p_1^{r_1}})/F(\zeta_{p_1^{r_1-1}})/\hdots/F(\zeta_{p_1})/F
+        % \end{align*}
+    \end{pb}
+    \begin{pb}
+        First note that \(f\) is irreducible, this can be seen since \(\bar{f}\) is irreducible in \(\mathbf{F}_3\), since \(\bar{f}(a) = 1 \tor 2\), for any \(a \in \mathbf{F}_3\).
+        \(f\) has discriminant \(-(4\cdot(-3)^3 + 27) = 3^4 \in \mathbb{Q}^2\), hence \(\gal_f \simeq C_3\). Suppose for contradiction that \(K\) is a radical extension of \(\mathbb{Q}\), then since \(\gal(K/\mathbb{Q}) \simeq C_3\), by multiplicativity of degree, \(K\) must be written as a single extension of degree 3, since it is a radical extension \(K\) must be of the form \(\mathbb{Q}(\alpha)\), where \(\min(\alpha;\mathbb{Q}) = x^3 - a\). But then over the algebriac closure of \(K\), we have that \(x^3 - a = (x - a)(x - a\zeta_3)(x-a\zeta_3^2)\), so that \(K/\mathbb{Q}(\zeta_3)/\mathbb{Q}\), by multiplicativity of degree this implies that \(2 \vert [K:\mathbb{Q}] = 3\) a contradiction. Conversely, \(C_3 \simeq \gal_f\) is cyclic, implying it is solveable, hence \(f\) is solveable via radicals.
+    \end{pb}
+\end{document}

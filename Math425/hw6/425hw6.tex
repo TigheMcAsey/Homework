@@ -1,0 +1,124 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 425hw6}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\vp}{\varphi}
+\newcommand{\R}{\text{Re}}
+\newcommand{\I}{\text{Im}}
+\newcommand{\parx}{\frac{\partial}{\partial x}}
+\newcommand{\pary}{\frac{\partial}{\partial y}}
+\newcommand{\parz}{\frac{\partial}{\partial z}}
+\newcommand{\tth}{\tilde{\theta}}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} Let \(0 < \theta < 2\pi\), then using
+        \[v_1\sin\theta - v_2\cos\theta = v_2\]
+        we use the double angle formulae to get
+        \begin{align*}
+            v_1(2\sin(\theta/2)\cos(\theta/2)) = v_2 (2\cos^2(\theta/2))
+        \end{align*}
+        On the given domain we have \(\sin \theta/2 \neq 0\). If \(\cos \theta/2 = 0\) on our domain, then \(\theta = \pi\) implying that
+        \(v_1 = -v_1\) by the first equation, so that \(v_1 = 0\), immediately implying that \(v_1\) satisfies
+        \(v_1 = r\cos\theta/2 = 0\). If \(\cos \theta/2 \neq 0\), then we get
+        \begin{align*}
+            v_1 = v_2\frac{2\cos^2(\theta/2)}{2\sin(\theta/2)\cos(\theta/2)} = \frac{v_2\cos\theta/2}{\sin\theta/2} = r\cos\theta/2
+        \end{align*}
+        The other relation is trivial,
+        \[r\sin\theta/2 = \frac{\sin\theta/2}{\sin\theta/2}v_2 = v_2\]
+
+        Now considering \(-\pi < \tilde{\theta} < \pi\). Note that \(\cos\tth/2 \neq 0\) on our given domain. Similarly to as above, the double angle formulae
+        and the second equation give
+        \begin{align*}
+            v_1(2\sin(\tth/2)\cos(\tth/2)) = v_2 (2\cos^2(\tth/2))
+        \end{align*}
+        So that
+        \begin{align*}
+            v_2 = v_1\frac{\sin(\tth/2)}{\cos(\tth/2)} = \rho\sin(\tth/2)
+        \end{align*}
+        Once again, the other relation is trivial,
+        \[v_1 = \frac{\cos\tth/2}{\cos\tth/2}v_1 = \rho \cos\tth/2\]
+
+        \textbf{(b)} First note that \(U \cap V = \set{e^{i\theta}\vert \theta \in (0,\pi)\sqcup(\pi,2\pi)}\). Now let let 
+        \((x,v) = e^{i\theta} \in \pi^{-1}(U \cap V)\), then
+        we may write \((x,v)\) on \(\tilde{U} \times \mathbb{R}\) as \((\tth,\rho)\) for \(\tth \in (-\pi,0)\sqcup(0,\pi)\). Then if 
+        \((x,v) \in \pi^{-1}(\pi,2\pi)\) we have \(\tth \in (-\pi,0)\)
+        \begin{align*}
+            \varphi_1 \varphi_2^{-1}(\tth,\rho) = \varphi_1\left(e^{i\tth + 2\pi},\rho \begin{pmatrix} \cos((\tth + 2\pi)/2) \\ \sin((\tth + 2\pi)/2) \end{pmatrix}\right)
+            = \left(e^{i\tth + 2\pi},r\begin{pmatrix} \cos(\tth/2 + 2\pi) \\ \sin(\tth/2 + 2\pi) \end{pmatrix}\right)
+        \end{align*}
+        This implies that \(r = \rho \frac{\cos(\tth/2 + \pi)}{\cos\tth/2}  = -\rho\).
+        Otherwise, if \((x,v) \in \pi^{-1}(0,\pi)\), the coordinate change is the identity, and hence \(r = \rho\).
+        Then \(\tau_{12} = r/\rho\) implies that
+        \begin{align*}
+            \tau_{12}(e^{i\theta}) = \begin{cases}
+                1 & \theta \in (0,\pi) \\
+                -1 & \theta \in (\pi,2\pi)
+            \end{cases}
+        \end{align*}
+
+        \textbf{(c)}Applying the double angle identities, we get that \(\sin\theta = 2\sin(\theta/2)\cos(\theta/2)\), and 
+        \(1 - \cos(\theta) = 2\sin^2(\theta/2)\), the same relations hold of course for \(\tth\).
+         We first compute \(s\), let \(e^{i\theta} \in U\), then we may write \(\theta \in (0,2\pi)\). Then
+        \begin{align*}
+            \begin{pmatrix} \sin\theta \\ 1-\cos\theta \end{pmatrix} = \begin{pmatrix} 2\sin(\theta/2)\cos(\theta/2) \\ 2\sin^2(\theta/2) \end{pmatrix} 
+            = s(\theta)\begin{pmatrix} \cos\theta/2 \\ \sin\theta/2\end{pmatrix}
+        \end{align*}
+        We find that \(s(\theta) = 2\sin(\theta/2)\).
+        
+        Now to compute \(\tilde{s}\), let \(e^{i\tth} \in \tilde{U}\), then we may write \(\tth \in (-\pi,\pi)\). Then
+        \begin{align*}
+            \begin{pmatrix} \sin\tth \\ 1-\cos\tth \end{pmatrix} = \begin{pmatrix} 2\sin(\tth/2)\cos(\tth/2) \\ 2\sin^2(\tth/2) \end{pmatrix}
+            = \tilde{s}(\tth)\begin{pmatrix} \cos\tth/2 \\ \sin\tth/2 \end{pmatrix}
+        \end{align*}
+        We find that \(\tilde{s}(\tth) = 2\sin(\tth/2)\).
+
+        Now to verify the gluing relation, we have for \(e^{i\theta}\), such that \(\theta \in (0,\pi)\) that \(\theta = \tth\) and hence
+        \begin{align*}
+            s(\theta) = 2\sin(\theta/2) = 2\sin(\tth/2) = \tilde{s}(\tth) = \tau_{12}(e^{i\theta})\tilde{s}(\tth)
+        \end{align*}
+        And for \(e^{i\theta}\), such that \(\theta \in (\pi,2\pi)\) we have \(\theta = \tth + 2\pi\), so that
+        \begin{align*}
+            s(\theta) = 2\sin(\theta/2) = 2\sin(\tth/2 + \pi) = -2\sin(\tth/2) = -\tilde{s}(\tth) = \tau_{12}(e^{i\theta})\tilde{s}(\tth)
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        Let \(([x],w) \in \pi^{-1}(U_i) \cap \pi^{-1}(U_j)\). Then for any \(x \in [x]\), we have for each \(k\), that
+        \(\frac{x_k}{x_j}\) is well defined under the equaivalence relation. Hence \(w_k/w_j = x_k/x_j\) for each \(k\). Then
+        \[\Psi_i\Psi_j^{-1}([x],w_j) = \Psi_i([x],(\frac{x_0}{x_j}w_j, \hdots, \frac{x_n}{x_j}w_j)) = ([x],\frac{x_i}{x_j}w_j)\]
+        This gives us how the transition function must be defined,
+        \begin{align*}
+            \tau_{ij}([x]): r \mapsto \frac{x_i}{x_j}r
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        From the lectures on submanifolds, we know that the image of an embedding is a submanifold. Firstly, we know that \(s\) is smooth, and it is also clear that
+        \(\pi\) is smooth, so that \(s\) is smooth with smooth inverse \(\pi\vert_S\). This verifies that \(s\) is a homeomorphism. To show that \(s\) is an embedding, we need show that
+        \(Ds_p\) is injective for any \(p \in M\). It will suffice to show it has a left inverse, using the chain rule we get the left inverse 
+        \[\mathbf{1}_{T_pM} = D\mathbf{1}_p = D(\pi\circ s)_p = D\pi_{s(p)}Ds_p\]
+        So that \(s: M \to E\) is an embedding, and \(S\) is a submanifold of \(M\). Finally the diffeomorphism property is clear, since \(\pi \vert_S\) is smooth, so that
+        \(s\) is smooth with smooth inverse.
+    \end{pb}
+\end{document}

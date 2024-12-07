@@ -1,0 +1,195 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{xcolor}
+
+\fancyhf{}
+\lhead{Math 425hw7}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\vp}{\varphi}
+\newcommand{\R}{\text{Re}}
+\newcommand{\I}{\text{Im}}
+\newcommand{\parx}{\frac{\partial}{\partial x}}
+\newcommand{\pary}{\frac{\partial}{\partial y}}
+\newcommand{\parz}{\frac{\partial}{\partial z}}
+\newcommand{\tth}{\tilde{\theta}}
+\newcommand{\z}{\imath}
+\newcommand{\hook}{\lrcorner\;}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)}
+        Here we first note that on \(U\),
+        \[(x\circ \z):(x,y)\mapsto(x,0,0), \quad 
+        (y\circ \z):(x,y)\mapsto(0,y,0), \quad 
+        (z\circ \z)(x,y) \mapsto (0,0,\varphi^{-1}(x,y)_z) = (0,0,\sqrt{1-x^2-y^2})\]
+        This allows us to calculate
+        \begin{align*}
+            \z^*dx &= d(x\circ \z) = dx \\
+            \z^*dy &= d(y\circ \z) = dy \\
+            \z^*dz &= d(z \circ \z) = d(0,0,\sqrt{1-x^2-y^2}) = \parx\sqrt{1-x^2-y^2}dx + \pary\sqrt{1-x^2-y^2} dy \\
+            &= -\frac{x}{\sqrt{1-x^2-y^2}}dx -\frac{y}{\sqrt{1-x^2-y^2}}dy
+        \end{align*}
+
+        \textbf{(b)}
+        \begin{align*}
+            \z^*(xdx + ydy + zdz) &= \z^*(xdx) + \z^*(ydy) + \z^*(zdz) \\
+            &= (x \circ \z)(\z^*dx) + (y \circ \z)(\z^*dy) + (z \circ \z)(\z^*dz) \\
+            &= x dx + y dy - z\left(\frac{x}{\sqrt{1-x^2-y^2}}dx +\frac{y}{\sqrt{1-x^2-y^2}}dy\right)dz \\
+            &= x dx + y dy - (xdx + ydy) = 0
+        \end{align*}
+
+        We could have anticipated that this value would be zero, because the evaluation of a tangent vector at a point by this pull back can be seen as taking the dot product of the vector with the point's position vector in \(\mathbb{R}^3\) (see the second line of the calculation above), however, the position vector of a point on the 2-sphere is the radial vector outward from the 2-sphere and thus is perpendicular to the tangent space (plane) of the 2-sphere at that point, hence any vector in the tangent space (plane) of the two-sphere at that point should be orthogonal to the position vector at that point, implying that their dot product should be zero.
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)}
+            \(\set{\alpha,\beta}\) being the dual frame of \(\set{X,Y}\) is equivalent to
+            \[\alpha(X) = \beta(Y) = 1 \tand \alpha(Y) = \beta(X) = 0\]
+            We solve for \(X\) and \(Y\). Firstly, we may write wlog
+            \begin{align*}
+                &X = u_1\parx + u_2\pary &Y = v_1\parx + v_2\pary
+            \end{align*}
+            Then we get a system of equations for \(X\),
+            \begin{align}
+                &\alpha(X) = 1 \iff xu_1 + yu_2 = 1 \\
+                &\beta(X) = 0 \iff yu_1 + xu_2 = 0
+            \end{align}
+            taking \(x(1) - y(2)\) we get \(x^2u_1 - y^2u_1 = x\), so that
+            \(u_1 = \frac{x}{x^2 - y^2}\). Substituting this into (2) yields \(u_2 = \frac{-y}{x^2-y^2}\). Similarly, we solve for \(Y\) with the equations
+            \begin{align}
+                &\alpha(Y) = 0 \iff xv_1 + yv_2 = 0 \\
+                &\beta(Y) = 1 \iff yv_1 + xv_2 = 1
+            \end{align}
+            Then taking \(y(4) - x(3)\) we get \((y^2 - x^2)v_1 = y\) so that \(v_1 = \frac{y}{y^2 - x^2}\), and finally substituting back into (3), \(v_2 = \frac{x}{x^2 - y^2}\). The result is
+            \begin{align*}
+                &X = \frac{x}{x^2 - y^2}\parx - \frac{y}{x^2-y^2}\pary &Y = \frac{-y}{x^2 - y^2}\parx + \frac{x}{x^2 - y^2}\pary
+            \end{align*}
+            It is immediate that by construction the vector fields \(X,Y\) satisfy the condition \(\alpha(X) = \beta(Y) = 1 \tand \alpha(Y) = \beta(X) = 0\). Furthermore, these are vector fields on \(\mathbb{R}^2\setminus\set{(x,y)\vert x = \pm y}\), since each expression is infinitely differentiable on \(\set{(x,y)\vert x = \pm y}^c\). 
+
+            \textbf{(b)} We first compute that 
+            \[dh = 2xy dx + x^2 dy \tand dg = y\cos(xy)dx + x\cos(xy)dy\]
+            Then we have that
+            \begin{align*}
+                dh \wedge dg &= 2xy^2\cos(xy)dx \wedge dx + 2x^2y\cos(xy)dx \wedge dy + x^2y\cos(xy)dy\wedge dx
+                + x^3\cos(xy)dy\wedge dy \\
+                &= (2x^2y\cos(xy) - x^2y\cos(xy))dx\wedge dy = x^2y\cos(xy)dx\wedge dy
+            \end{align*}
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} The regular level set theorem, to check that \(c\) is indeed a regular value,
+        we have that for any \(p \in f^{-1}(c)\), that
+        \begin{align*}
+            \begin{bmatrix}
+                \parx f\vert_p & \pary f\vert_p & \parz f\vert_p
+            \end{bmatrix} \neq 
+            \begin{bmatrix}
+                0 & 0 & 0
+            \end{bmatrix}
+        \end{align*}
+        Since the \(z\) partial is non-zero by assumption. Note that by the regular level set theorem \(S\) has dimension \(3-1 = 2\).
+
+        \textbf{(b)} Since \(S\) has dimension 2, we have that \(\z^* \omega \in \Omega^2(S)\) is a top form. To see that it is nowhere vanishing, note that \(df\z \equiv 0\) (proof below). Now consider any point \(p \in S\), we can take \(\set{u,v}\) as a basis for \(T_pS\) where \(d\z(u) = (x_1,y_1,z_1) \tand d\z(v) = (x_2,y_2,z_2)\), it follows that neither of \((x_i,y_i) = (0,0)\), otherwise 
+        \[df\z(u) = \parz f \vert_pz_1 \neq 0 \tor df\z(v) = \parz f \vert_pz_2 \neq 0\]
+        contradicting that \(df\z \equiv 0\), it follows that
+        \(d\z u = (x_1,y_1,z_1) \tand d\z v = (x_2,y_2,z_2)\) such that 
+        \[(0,0) \neq (x_1,y_1) \neq \lambda(x_2,y_2) \neq (0,0) \quad \forall \lambda \in \mathbb{R}\] 
+        since in the case of \((x_1,y_1) = \lambda(x_2,y_2)\) we have \(u- \lambda v \neq 0\) (by linear independence of \(u,v\) assumed by them being a basis for the two dimensional \(T_pS\)), so that \(d\z(u - \lambda v) = (0,0,z_3)\) for \(z_3 \neq 0\), so that for the same reasons as above \(df(z_3) \neq 0\), a contradiction. Now given this characterization of \(T_pS\), we compute on 
+        \(T_pS\)
+        \begin{align*}
+            \z^*\omega(u,v) &= \omega(d\iota(u),d\iota(v)) = \omega(x_1\parx + y_1 \pary + z_1\parz,x_2\parx + y_2 \pary + z_2\parz) \\
+            &= dx\wedge dy (x_1\parx + y_1 \pary + z_1\parz,x_2\parx + y_2 \pary + z_2\parz)\\
+            &= x_1y_2 - x_2y_1 = \det \begin{bmatrix}
+                x_1 & x_2 \\
+                y_1 & y_2
+            \end{bmatrix} \neq 0 \text{ Since } (x_1,y_1) \not \in \text{Span}(x_2,y_2)
+        \end{align*}
+        Which of course proves that for any \(p\), we have \(\z^*\omega \not \equiv 0\) on \(T_pS\).
+
+        \textbf{Proof that} \(\mathbf{df\z \equiv 0}\): Consider any \(p \in S\), let \(u \in T_pS\), then for some path \(\gamma: (-\epsilon,\epsilon) \to S\), we have that \(\gamma(0) = p, \gamma'(0) = u\). Then \(df\z_p(u) = \frac{d}{dt}\vert_{t=0}f\z(\gamma(t))\), but since \(\gamma(-\epsilon,\epsilon) \subset S\), we have \(f\z(\gamma(t)) = c, \; \forall t \in (-\epsilon,\epsilon)\), hence
+        \[df\z_p(u) = \frac{d}{dt}\vert_{t=0}f\z(\gamma(t)) = \frac{d}{dt}\vert_{t=0} c = 0\]
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)}
+        I claim that \(\lambda = 2z\), we check this in the \(z > 0 \tand x > 0\) hemisphere charts, the rest of the charts work similarly. Let \(U = S^2 \cap \set{z > 0}, V = S^2 \cap \set{x > 0}\), then
+        \begin{align*}
+            d\eta &= d\z^*\tilde{\eta} = \z^*d\tilde{\eta} = \z^*(-dy\wedge dx + dx \wedge dy) = 2 \z^*(dx\wedge dy) = 2(\z^*dx \wedge \z^*dy) \\
+            \z^* \tilde{\omega} &= (x\circ \z)\z^*(dy \wedge dz) + (y\circ \z)\z^*(dz \wedge dx) + (z\circ \z)\z^*(dx \wedge dy) \\
+            &= x (\z^* dy \wedge \z^* dz) + y(\z^* dz \wedge \z^*dx) + z(\z^*dx + \z^*dy)
+        \end{align*}
+        In \((U,(x,y))\) we have coordinates \((x,y,\sqrt{1-x^2-y^2}) \mapsto (x,y)\), hence by the same computations as in problem 1, we have
+        \begin{align*}
+            \z^*dx = dx, \quad \z^*dy = dy, \quad \z^*dz = -\frac{1}{\sqrt{1-x^2-y^2}}(xdx + ydy)
+        \end{align*}
+        So, in this chart \(d \eta = 2 dx\wedge dy\), and
+        \begin{align*}
+            \omega &= x (\z^* dy \wedge \z^* dz) + y(\z^* dz \wedge \z^*dx) + z(\z^*dx + \z^*dy) \\
+            &= x (dy \wedge -\frac{1}{\sqrt{1-x^2-y^2}}(xdx + ydy)) + y (-\frac{1}{\sqrt{1-x^2-y^2}}(xdx + ydy) \wedge dx) + \sqrt{1-x^2-y^2}dx \wedge dy \\
+            &= \frac{x^2}{\sqrt{1-x^2-y^2}}(dx \wedge dy) + \frac{y^2}{\sqrt{1-x^2-y^2}}(dx \wedge dy) + \sqrt{1-x^2-y^2}dx \wedge dy \\
+            &= \frac{1}{\sqrt{1-x^2-y^2}}dx \wedge dy
+        \end{align*}
+        So that indeed \(\lambda = 2z = 2\sqrt{1 -x^2-y^2}\) satisfies \(\lambda\omega = d\eta\). The closed form for \(\eta\) on \(x\) and \(y\) hemispheres looks a bit different, so we verify equality on \(V\), then equality on the rest of the hemisphere charts follows similarly. On \(V\)
+        we use the same computation as problem 1 due to symmetry of the charts, to find that
+        \begin{align*}
+            \z^*dx = - \frac{1}{\sqrt{1-x^2-y^2}}(ydy+zdz), \quad \z^*dy = dy, \quad 
+            \z^*dz = dz
+        \end{align*}
+        So that in \(V\), we have 
+        \[d \eta = \frac{-2}{\sqrt{1-x^2-y^2}}(ydy + zdz) \wedge dy = \frac{2z}{\sqrt{1-x^2-y^2}}dy\wedge dz\]
+        And the calculation for \(\omega\) is symmetric to the one above, so that
+        \[\omega = \frac{1}{\sqrt{1-y^2-z^2}}dy\wedge dz\]
+        Verifying that \(\lambda \omega = d\eta\) on \(V\), the rest of the charts are computed similarly to one of \(U\) or \(V\).
+
+        \textbf{(b)} First note that in the \(z < 0\) hemisphere, we get
+        \(\omega = \frac{-1}{\sqrt{1-x^2-y^2}} dx \wedge dy = \frac{1}{z}dx\wedge dy\).
+
+        We rewrite \(\parz = \frac{\partial x}{\partial z}\parx + \frac{\partial y}{\partial z}\pary = (\frac{\partial z}{\partial x})^{-1}\parx + (\frac{\partial z}{\partial y})^{-1}\pary\), in either \(z > 0\) hemisphere coordinates or \(z < 0\) hemisphere coordinates (note we are doing this since \(z\) is a function of \(x,y\) here) we get that \(\parz = - \frac{z}{x}\parx - \frac{z}{y}\pary\).
+        Then
+        \begin{align*}
+            X &= \left(-xz - \frac{z(x^2 + y^2)}{x} \right)\parx  
+            + \left(-yz - \frac{z(x^2 + y^2)}{y}\right) \pary \\
+            &= -z\left(\frac{2x^2 + y^2}{x}\right) \parx - z\left(\frac{x^2 + 2y^2}{y}\right)\pary
+        \end{align*}
+
+        This allows us to compute \(dx(X)\), and \(dy(X)\) in either hemispheres coordinates.
+        \begin{align*}
+            &dx(X) = -z\left(\frac{2x^2 + y^2}{x}\right) &dy(X) = -z\left(\frac{x^2 + 2y^2}{y}\right)\\
+            &dx(Y) = -y &dy(Y) = x
+        \end{align*}
+        Now computing \(X \hook \omega \tand Y \hook \omega\) by plugging in the above values,
+        \begin{align*}
+            X \hook \omega &= X \hook \frac{1}{z}dx \wedge dy 
+            = \frac{1}{z}(dx(X)dy - dy(X)dx) \\
+            &= \frac{1}{z}(-z\left(\frac{2x^2 + y^2}{x}\right)dy + z\left(\frac{x^2 + 2y^2}{y}\right)dx) \\
+            &= -\left(\frac{2x^2 + y^2}{x}\right)dy + \left(\frac{x^2 + 2y^2}{y}\right)dx \\
+            Y \hook \omega &= Y \hook \frac{1}{z}dx \wedge dy = \frac{1}{z}(dx(Y)dy - dy(Y)dx) \\
+            &= \frac{1}{z}\left(-ydy -xdx\right)
+        \end{align*}
+        Now we compute their wedge product,
+        \begin{align*}
+            X \hook \omega \wedge Y \hook \omega &= -\left(\frac{2x^2 + y^2}{x}\right)dy + \left(\frac{x^2 + 2y^2}{y}\right)dx \wedge \frac{-1}{z}(ydy + xdx) \\
+            &= \frac{(2x^2 +y^2)}{z}dy \wedge dx - \frac{x^2 + y^2}{z} dx \wedge dy \\
+            &= \frac{-3(x^2 + y^2)}{z}dx \wedge dy
+        \end{align*}
+
+        This gives us that \(\phi = -3(x^2 + y^2)\) in either hemispheres coordinates, it is clear that \(\phi \in C^\infty(S^2)\). Since \(X \hook \omega \wedge Y \hook \omega = \phi \omega\) on either hemisphere, and forms are continuous, it follows that they are also equal on the boundary of the hemispheres. This implies that \(\phi\) is defined this way on all of \(S^2\), since the definition is valid for \(z > 0\), \(z < 0\), and their boundary being \(z = 0\).
+    \end{pb}
+\end{document}
