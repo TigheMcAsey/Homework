@@ -31,13 +31,22 @@
 
 \begin{document}
     \begin{pb}
-        \textbf{Lemma.} Any integer matrix \(M\) of rank 2 has a unique representative of the form
+        \textbf{Lemma.} Any integer matrix \(M\) of rank 2 can be reduced by row operations to a unique representative of the form
         \begin{align*}
             A = \begin{bmatrix} a & b \\ 0 & d \end{bmatrix} \quad 0 < a, d \tand 0 \leq b < d
         \end{align*}
-        such that \(\text{Rowsp}M = \text{Rowsp}A\).
 
-        As proof denote \(M = \begin{bmatrix} w & x \\ y & z \end{bmatrix}\), then by Bezout's identity, there exist \(p,q \in \mathbb{Z}\) such that \(pw + qy = \gcd(w,y)\).
+        For existence, we show that we have elements of the above form in the span of \(\gen{we_1 + xe_2} \oplus \gen{ye_1 + ze_2}\). If \(w = 0\), then \(y \neq 0\) (if \(y < 0\) multiply \(ye_1 + ze_2\) by \(-1\), same for \(x < 0\) with \(xe_2\)), so by long division, there exists some \(m\) such that \(0 \leq z - mx < x\), so that the matrix in this case is
+        \(\begin{bmatrix} y & z - mx \\ 0 & x \end{bmatrix}\)
+        
+        Now assuming that \(w \neq 0\), by Bezout's identity there exist integers \(p,q\) (\(p \neq 0\)) such that \(pw + qy = (w,y) = a\). Then we have \(ae_1 + re_2 \in \gen{we_1 + xe_2} \oplus \gen{ye_1 + ze_2}\) for some \(r\). Subtracting since \(a \vert y\), we may subtract \(y/a(ae_1 + re_2)\) from \(ye_1 + ze_2\). This gives us the element \((z - ry/a)e_2\), which is non-zero since \(ae_1 + re_2 \not \in \gen{ye_1 + ze_2}\) since we had \(p \neq 0\). Rewrite \(d = \abs{z - ry/a}\), then once again by long division, we get some \(m\), such that \(0 \leq r - md < d\), subtracting \(md e_2\) from \(ae_1 + re_2\), and rewriting \(b = r-md\) gives us our desired rowspace representative \(\begin{bmatrix} a & b \\ 0 & d \end{bmatrix}\). We can see that in both cases \(w = 0\) and \(w \neq 0\) our constructed matrix has equal rowspace to the original, since we can construct it using only row swaps, adding and subtracting multiples of rows from eachother and multiplying the rows by \(\pm 1\).
+
+        For uniqueness, we want to show that given \(0 < a,d,x,z\) and \(0 \leq y < z\) and \(0 \leq b < d\) we have
+        \begin{align*}
+            V := \gen{ae_1 + be_2}\oplus\gen{de_2} = U := \gen{xe_1 + ye_2}\oplus\gen{ze_2}
+        \end{align*}
+        exactly when \((a,b,d) = (x,y,z)\), equality of coefficients implying equality of modules is obvious so we prove the other direction. First assume that \(d e_2 \in U \iff z \vert d\), similarly \(z e_2 \in V \iff d \vert z\), so \(U = V\) implies that \(z = d\). Similarly, there exists some \(\ell \in \mathbb{Z}\) such that \(ae_1 + \ell e_2 \in U\) exactly when \(x \vert a\), and conversely there exists some \(k \in \mathbb{Z}\) such that \(xe_1 + ke_2 \in V\) exactly when \(a \vert x\), so that \(U = V\) implies that \(a = x\). Finally suppose that \(x = a \tand d = z\). Then \(ae_1 + be_2 \in U\) exactly when \(b \equiv y \mod d\), but since \(0 \leq b,y < d\), this means that \(U = V\) implies \(b = y\), this finishes the proof of uniqueness of representative.
+        \newline
 
         \(G := \pi_1(S_1 \times S_1) \simeq \mathbb{Z} \times \mathbb{Z}\). Since \(G\) is abelian, in particular all of its subgroups are normal. We apply the correspondence of degree \(d\) covering spaces (up to isomorphism) with index \(d\)subgroups up to conjugacy of \(G \simeq \mathbb{Z} \times \mathbb{Z}\). Since each of the subgroups of \(G\) are normal, this reduces the problem to determining the number of subgroups \(H \subset G\) with \([G:H] = d\).
 
@@ -50,7 +59,16 @@
         \begin{align*}
             H = K \iff \text{Rowsp}\begin{bmatrix}a & b\\ c & d \end{bmatrix} = \text{Rowsp}\begin{bmatrix}w & x\\ y & z \end{bmatrix}
         \end{align*}
-        Finally reducing the problem to counting the number of integer matrices with determinant \(d\) up to equality of row spaces.
+        Finally reducing the problem to counting the number of integer matrices with determinant \(d\) up to equality of row spaces. Using the lemma, we can consider all integer matrices of the form
+        \begin{align*}
+            A = \begin{bmatrix} x & y \\ 0 & z \end{bmatrix} \quad 0 < x, z \tand 0 \leq y < z \tand \det A = xz = d
+        \end{align*}
+        Every matrix of this form with determinant \(d\) must have \(z \vert d\), so fixing \(0 < z \vert d\), there is a unique choice for \(x\), such that \(\det A = xz = d\), then each choice of \(0 \leq y < z\), we get a unique row space satisfying \(\det A = d\).
+        counting these gives us the number of degree \(d\) covering spaces up to isomorphism is
+        \begin{align*}
+            \sum_{z \vert d} \# \set{0 \leq y < z \vert y \in \mathbb{Z}} = \sum_{k \vert d} k = \sigma(d)
+        \end{align*}
+        As desired.
     \end{pb}
     \begin{pb}
         \textbf{(a)} We consider the point \(x_0\) as the base point of the two loops. 
@@ -58,7 +76,11 @@
         \begin{align*}
             H_1 = N(\gen{a^2,ab^{-1}}) \quad H_2 = N(\gen{a^2,b}) \quad H_3 = N(\gen{b^2,a})
         \end{align*}
-        So that there are at most 3 covering spaces of degree 2. The three covering spaces drawn clearly fulfill the criteria to be covering spaces of \(X\) (they are path connected, locally path connected, Hausdorff and its clear each point has elementary neighborhoods). To see that these covering spaces are distinct, we note that any covering space transformation between them must send the lifts of \(x_0\) to lifts of \(x_0\). Now fix a lift \(\tilde{x}\) in covering space \(i\), and let \(\tilde{x_1}, \tilde{x_2}\) be the lifts of \(x_0\) in space \(j\), a necessary condition for a covering space morphism between spaces \(i\) and \(j\) is that
+        So that there are at most 3 covering spaces of degree 2. 
+        
+        \textcolor{red}{Include Degree 2 Covering Space Image HERE}
+        
+        The three covering spaces drawn clearly fulfill the criteria to be covering spaces of \(X\) (they are path connected, locally path connected, Hausdorff and its clear each point has elementary neighborhoods). To see that these covering spaces are distinct, we note that any covering space transformation between them must send the lifts of \(x_0\) to lifts of \(x_0\). Now fix a lift \(\tilde{x}\) in covering space \(i\), and let \(\tilde{x_1}, \tilde{x_2}\) be the lifts of \(x_0\) in space \(j\), a necessary condition for a covering space morphism between spaces \(i\) and \(j\) is that
         \begin{align*}
             p^i_*\pi_1(\tilde{X_i},\tilde{x}) \subset p^j_*\pi_1(\tilde{X_j},\tilde{x_1}) \tor p^i_*\pi_1(\tilde{X_i},\tilde{x}) \subset p^j_*\pi_1(\tilde{X_j},\tilde{x_2})
         \end{align*}
@@ -73,10 +95,14 @@
         \end{align*}
 
         \textbf{(b)} There are 7 covering spaces, all included in the picture.
+
+        \textcolor{red}{Include Degree 3 covering spaces Here}
         
         Because there are many more cases to consider than part (a), and the reasoning is similar I will be a bit less explicit in this section, but try to explain the reasoning for each step.
 
         Once again, \(x_0\) will refer to the base point of the two circles and \(G\) to \(\pi_1(X,x_0)\), with spaces as labelled in the picture use the notation \((\tilde{X_i},p^i)_{i=1}^7\), when applicable I may use the \(\tilde{x_T},\tilde{x_M},\tilde{x_B}\) to distinguish between the Top, Middle and Bottom points in \(F_{x_0}\) for a given covering space. Then each of the three points in \(F_{x_0}\) in a covering space must have an incoming and outgoing \(a\)-cycle, This uniquely defines a permutation in \(S_3\) via the action \(a\) on each point so there are 6 cases (drawing attached). Then the covering spaces must be a combination of taking the possible \(a\) and \(b\) loops.
+
+        \textcolor{red}{Include one sided loops for degree 3 HERE}
 
         We only consider the connected combinations, which reduces the search. Furthermore, we only need consider the sets of \(b\) loops corresponding to one sided loops 1,2 and 5 since the other loops are just permutations of these, since these are equivalent to permutations of eachother, and applying the same permutation to the \(a\) loops in a given covering space will give an isomorphic covering space for \(b\) loops 2,3 and 4 or 5 and 6.
         
@@ -164,7 +190,10 @@
         in order for \(\tilde{e}\) to be the identity we require that \(\tilde{m}(\tilde{e},\tilde{e}) = \tilde{e}\), as previously stated, enforcing that \(p\) is a group homomorphism requires that \(\tilde{m}\) is a lift of \(m \circ (p \times p)\), but then since a product of connected spaces is connected, we have that any \(\tilde{m}'\) satisfying the same condition is a lift of the same map which agrees on the point \((\tilde{e},\tilde{e})\), and hence must be an identical map by connectivity of \(\tilde{G}\times \tilde{G}\).
 
         \textbf{The map} \(\mathbf{(m \circ (p\times p))_*}\) : By functoriality, we can write 
-        \((m \circ (p\times p))_* = m_* (p\times p)_*\), so for our purposes we only need study the map \(m_*\) on \(\pi_1(G,e) \times \pi_1(G,e)\). Denote the projection maps \(\theta_1,\theta_2: \tilde{G}^2 \to \tilde{G}\), where \(\theta_1\) projects onto the first coordinate and \(\theta_2\) the second. Then we have the isomorphism (page 77 of Massey) \(\pi_1(\tilde{G} \times \tilde{G},(\tilde{e},\tilde{e})) \to \pi_1(\tilde{G},\tilde{e}) \times \pi_1(\tilde{G},\tilde{e})\) given by \([\gamma] \mapsto ((\theta_1)_*[\gamma],(\theta_2)_*[\gamma])\).
+        \((m \circ (p\times p))_* = m_* (p\times p)_*\), so for our purposes we only need study the map \(m_*\) on \(\pi_1(G \times G,(e,e))\), we know that for any path of the form \((\alpha,1_e), \; [\alpha] \in \pi_1(G,e)\) that \(m \circ (\alpha,1_e) (t) = \alpha(t)\), so that in particular \(m_* [\alpha,1_e] = [\alpha]\) (same for paths of the form \((1_e,\alpha)\)), so we aim to use this to study \(m_*\). Denote the projection maps \(\theta_1,\theta_2: G^2 \to G\), where \(\theta_1\) projects onto the first coordinate and \(\theta_2\) the second. Then we have the isomorphism (page 77 of Massey) \(\pi_1(G \times G,(e,e)) \to \pi_1(G,e) \times \pi_1(G,e)\) given by \([\gamma] \overset{\theta}{\mapsto} ((\theta_1)_*[\gamma],(\theta_2)_*[\gamma])\). Then we have that the equivalence class of paths given by \((\theta_1\circ\gamma, e)\cdot(e,\theta_2\circ\gamma)\) maps under \(\theta\) to the same equivalence class of paths as \(\gamma\), since \(\theta\) is an isomorphism they are equal, so in particular we can write the path \([\gamma] = [\alpha,1_e][1_e,\beta]\) where \([\alpha], [\beta] \in \pi_1(G,e)\) (also note that if \([\gamma] \in p_*\pi_1(\tilde{G} \times{\tilde{G}},(\tilde{e},\tilde{e}))\), then \((\theta_i)_*[\gamma] \in p_*\pi_1(\tilde{G},\tilde{e})\) via \(\theta\)). since \(m_*\) is a homomorphism of covering spaces, we have for \([\gamma] \in \pi_1(G\times G, (e,e)), [\gamma] = [\alpha,1_e][1_e,\beta]\) 
+        \begin{align*}
+            m_*([\gamma]) = m_*([\alpha,1_e][1_e,\beta]) = m_*([\alpha,1_e])m_*([1_e,\beta]) = [\alpha][\beta]
+        \end{align*}
 
         \textbf{Existence of }\(\mathbf{\tilde{m}}\) : By our characterization of the map \((m \circ (p\times p))_*\) we have that 
         \begin{align*}

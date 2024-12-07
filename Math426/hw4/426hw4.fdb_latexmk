@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1733559817.6614 "/home/tighemcasey/Math hw/Math426/hw4/426hw4.tex" "426hw4.pdf" "426hw4" 1733559818.93026 0
+["pdflatex"] 1733607386.65625 "/home/tighemcasey/Math hw/Math426/hw4/426hw4.tex" "426hw4.pdf" "426hw4" 1733607387.88421 0
   "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1729096780.68571 25678 aa7c8fd3909e804e7d85441c21595406 ""
   "/home/tighemcasey/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1726102813.02348 21086786 07df747a8ef29f8e2edc5ba549d24369 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1726102823.09648 1004 54797486969f23fa377b128694d548df ""
@@ -124,9 +124,9 @@
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tikz-cd/tikzlibrarycd.code.tex" 1727727998.02642 23059 b4b98da760150611227e2533f15fe352 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/enumerate.sty" 1726102839.64648 3468 ad69b54642e68f9fdf39ec1a16dd7341 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1727727991.28242 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "/home/tighemcasey/Math hw/Math426/hw4/426hw4.tex" 1733559816.27701 26937 04687375c369778540db839c56ebd5e9 ""
-  "426hw4.aux" 1733559818.58801 32 2d1df76398b3c48c6419a45a7331db2d "pdflatex"
-  "426hw4.tex" 1733559816.27701 26937 04687375c369778540db839c56ebd5e9 ""
+  "/home/tighemcasey/Math hw/Math426/hw4/426hw4.tex" 1733607384.72825 31269 c265a657f71c49c092d1fd66edba1c3a ""
+  "426hw4.aux" 1733607387.61725 32 2d1df76398b3c48c6419a45a7331db2d "pdflatex"
+  "426hw4.tex" 1733607384.72825 31269 c265a657f71c49c092d1fd66edba1c3a ""
   (generated)
   "426hw4.aux"
   "426hw4.log"
