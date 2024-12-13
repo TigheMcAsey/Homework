@@ -6,6 +6,8 @@
 \usepackage{fancyhdr}
 \usepackage{enumerate} % For custom lists
 \usepackage{tikz-cd}
+\usepackage{tikz-network}
+
 
 \fancyhf{}
 \lhead{Math 426hw3}
@@ -32,7 +34,7 @@
 \begin{document}
     \begin{pb}
         We first check that \(f_*\) is well defined, by definition of being a strong deformation retract we have \(f_*: A \to A\) as the identity map on objects, furthermore if \(\gamma\) is a path, then
-        \(f(\gamma,1)\subset Y\), so that we only need check that \(f_*\) is well defined on equivalence classes of paths to see that \(f_*\) is a map from \(\Pi(X,A)\) to \(\Pi(Y,A)\).
+        \(f(\gamma(I),1)\subset Y\), so that we only need check that \(f_*\) is well defined on equivalence classes of paths to see that \(f_*\) is a map from \(\Pi(X,A)\) to \(\Pi(Y,A)\).
         Let \(\gamma\) and \(\gamma'\) be homotopic paths (with respect to \(A\)), then since \(f_*\) is a strong deformation retract onto \(Y\), we have
         \(f_*(\gamma) \sim_A \gamma \tand f_*(\gamma') \sim_A \gamma'\) are homotopic. It follows that by transitivity
         \begin{align*}
@@ -51,33 +53,81 @@
         \(q\), since there are no paths between the two points we know what this groupoid looks like since we know the fundamental group of the circle.
         Hence by problem 1, we have \(\Pi(U \cap V, \set{p,q}) = \cdots\)
 
-        \textbf{(b)} Here is an explicit strong deformation retract of \(U\) (you can ignore this and look at the picture if you like).
-        We can identify \(U\) as having coordinates \((t,x)\), where \(t\) spans the circular portion of \(U\),
-        and \(x\) the horizontal. Now assume that \(p\) is at \((0,0)\) and \(q\) at \((0,\epsilon)\) where \(x \in (-1,1), t \in [0,1]\), so that \(\epsilon \in (0,1)\), in this case
-        we can see that \(t = 1\) at the identified boundary. Then we cant take the strong deformation retract
-        \begin{align*}
-            &H: U \times I \to U \\
-            &((t,x),s) \mapsto \begin{cases}
-                (t,xe^{t(1-\frac{1}{1-s})}) & s \neq 1\\
-                (t,0) & s = 1 \tand t \neq 0 \\
-                (t,x) & s = 1 \tand t = 0
-            \end{cases}
-        \end{align*}
-        This is clearly continuous, away from \(s = 1\), but it is continuous there as well since \(\lim_{s\to1}e^{1-\frac{1}{1-s}} = 0\). This gives us a strong deformation 
-        retract from \(U\) to a circle union the line through \(p,q\) where clearly we can retract the portion of the line to the left of \(p\) onto \(p\). Alternatively, here is a picture of the
-        retract:
+        \textbf{(b)} There is a strong deformation 
+        retract from \(U\) to a circle union the line through \(p,q\). Here is a picture of the
+        retract (which we take to be the retract equivalent to composing the homotopies "at twice the speed"):
             
-        \textcolor{red}{Picture of SDR Here}
+        \includegraphics[scale=1]{graphics/SDR.png}
 
         From the lemma, this retracted space has the same fundamental groupoid as \(U\). Hence we have that
-        \(\Pi(U,\set{p,q}) = \cdots\)
+        \vspace{2mm}
+        \begin{equation*}
+            \Pi(U,\set{p,q}) = 
+            \text{\huge{$\{$}} \begin{tikzpicture}
+                \Vertex[label = p, position=below, x = 0, size = .1, color = black]{p}
+                \Vertex[label = q, position=below, x = 1, size = .1, color = black]{q}
+                \Edge[lw = 1pt, label=a, position = left, loopshape=45, loopposition = 180, Direct = true](p)(p)
+                \Edge[lw = 1pt, label=d, position=above, Direct = true](p)(q)
+                %\Edge[lw = 1pt, label=c, position=below, Direct = true, bend = 30](q)(p)
+                \end{tikzpicture} \text{\huge{$\}$}}
+        \end{equation*}
+        \vspace{2mm}
 
         \textbf{(c)} We use the same method as in part (b) to conclude that the fundamental groupoid \(\Pi(V, \set{p,q})\).
-        \(\Pi(V, \set{p,q}) = \cdots\)
+        \vspace{2mm}
+        \begin{equation*}
+            \Pi(V,\set{p,q}) = 
+            \text{\huge{$\{$}} \begin{tikzpicture}
+                \Vertex[label = p, position=below, x = 0, size = .1, color = black]{p}
+                \Vertex[label = q, position=below, x = 1, size = .1, color = black]{q}
+                \Edge[lw = 1pt, label=a, position = left, loopshape=45, loopposition = 180, Direct = true](p)(p)
+                %\Edge[lw = 1pt, label=d, position=above, Direct = true](p)(q)
+                \Edge[lw = 1pt, label=c, position=below, Direct = true](q)(p)
+                \end{tikzpicture} \text{\huge{$\}$}}
+        \end{equation*}
+        \vspace{2mm}
 
-        \textbf{(d)} We first notice that in \(U\) we have \([b] = [d^{-1}ad]\), and in \(V\) we have \([b] = [cac^{-1}]\). I claim that the category \(X\), with
+        \textbf{(d)} We first notice that in \(U\) we have \([b] = [d^{-1}ad]\), and in \(V\) we have \([b] = [cac^{-1}]\), so that the maps described in the
+        pushout below are actually just the embedding. I claim that the category \(X\), with
         \(\text{Ob}(X) = \set{p,q}\) and
-        \[\text{Mor}_X(p,p) = \gen{a,dc \vert a = (dc)^{-1}a(dc)} \; \text{Mor}_X(q,q) = \gen{cad, cd \vert cad = (cd)^{-1}} \; \text{Mor}_X(p,q) = \gen{d,c^{-1}}\]
+        \[\text{Mor}_X(p,p) = \gen{a,dc \vert a = (dc)^{-1}a(dc)} \; \text{Mor}_X(q,q) = \gen{d^{-1}ad, cd \vert cad = (cd)(d^{-1}ad)(cd)^{-1} = d^{-1}ad} \; \text{Mor}_X(p,q) = \gen{d,c^{-1}}\]
+        Since this is a groupoid, we need not specify \(\text{Mor}_X(q,p)\), since it is implicit in \(\text{Mor}_X(p,q)\). So that our category is given by
+
+        \vspace{2mm}
+        \begin{equation*}
+            X = 
+            \text{\huge{$\{$}} \begin{tikzpicture}
+                \Vertex[label = p, position=below, x = 0, size = .1, color = black]{p}
+                \Vertex[label = q, position=below, x = 1, size = .1, color = black]{q}
+                \Edge[lw = 1pt, label=a, position = left, loopshape=45, loopposition = 180, Direct = true](p)(p)
+                \Edge[lw = 1pt, label=d, position=above, Direct = true, bend = 30](p)(q)
+                \Edge[lw = 1pt, label=c, position=below, Direct = true, bend = 30](q)(p)
+                \end{tikzpicture} \text{\huge{$\vert$}} a = (dc)^{-1}a(dc) \text{\huge{$\}$}}
+        \end{equation*}
+        \vspace{2mm}
+        
+        Now given a category \(\mathcal{G}\), and maps 
+        \(f_U: \Pi(U,\set{p,q}) \to \mathcal{G}, \; f_V: \Pi(V,\set{p,q}) \to \mathcal{G}\) we wish to show that there exists a unique \(f\), such that the pushforward diagram commutes.
+        \begin{equation*}
+            \begin{tikzcd}
+                \Pi(U\cap V, \set{p,q}) \arrow[d,"b \mapsto cac^{-1}"'] \arrow[r,"b \mapsto d^{-1}ad"] &
+                \Pi(U, \set{p,q}) \arrow[d,""'] \arrow[ddr,bend left,"f_U"] \\
+                \Pi(V, \set{p,q}) \arrow[r,""] \arrow[drr,bend right,"f_V"'] &
+                X \arrow[dr,dashed,"\exists ! f"] \\
+                && \mathcal{G}
+            \end{tikzcd}
+        \end{equation*}
+        Then the only possible definition for \(f\) is
+        \begin{align*}
+            &f(p) = f_U(p) = f_V(p) \quad \quad f(q) = f_U(q) = f_V(q) \\
+            &f(a) = f_U(a) = f_V(a) \quad \quad f(d) = f_U(d) = f_V(d) \quad \quad f(c) = f_U(c) = f_V(c)
+        \end{align*}
+        Where \(f\) clearly satisfies the necessary condition for commutativity: \(f(d^{-1}ad) = f(cac^{-1})\), since \(a = (dc)^{-1}a(dc)\), so that
+        \(d^{-1}ad = cac^{-1}\) in \(X\).
+
+        \textbf{(e)} Consider \(a \mapsto (1,0) \quad dc \mapsto (0,1)\), this extends to a valid homomorphism, since the relation on \(\text{Mor}(p,p)\) is equivalent to the generators commuting.
+        The map takes generators onto generators so is clearly onto, and has kernel \(1_p\) hence an isomorphism.
+        
     \end{pb}
     \begin{pb}
         \textbf{(a)}
@@ -99,6 +149,34 @@
         This implies that \(y^6 = xy^4x^{-1} = y^4\) and hence \(y^2 = 1\). Our original relations then give us \(x = yx\) implying \(y=1\) which implies that \(x^2 = x^3\), so that \(x = 1\) as well.
     \end{pb}
     \begin{pb}
-        
+        Below the computations is a more complete image of the possible loops, as well as the loop orientations at crossings inducing the Wirtinger relations.
+
+        Wirtinger relations:
+        \begin{align*}
+            &\mathbf{C_1}: pbp^{-1}a^{-1} = 1 \implies a = pbp^{-1}\\
+            &\mathbf{C_2}: aga^{-1}f^{-1} = 1\\
+            &\mathbf{C_3}: fpf^{-1}q^{-1} = 1\\
+            &\mathbf{C_4}: qbq^{-1}a^{-1} = 1\\
+            &\mathbf{C_5}: bgb^{-1}f^{-1} = 1 \implies f = bgb^{-1}\\
+            &\mathbf{C_6}: gpg^{-1}q^{-1} = 1 \implies q = gpg^{-1}
+        \end{align*}
+
+        We may now rewrite \(\mathbf{C_1},\mathbf{C_5} \tand \mathbf{C_6}\) in terms of \(p,b \tand g\). After rewriting
+        \begin{align}
+            &\mathbf{C_2}: pbp^{-1}gpb^{-1}p^{-1}bg^{-1}b^{-1} = 1 \\
+            &\mathbf{C_3}: bgb^{-1}pbg^{-1}b^{-1}gp^{-1}g^{-1} = 1 \\
+            &\mathbf{C_4}: gpg^{-1}bgp^{-1}g^{-1}pb^{-1}p^{-1} = 1
+        \end{align}
+        We then conjugate both sides of equation (1) by \(b^{-1}\), equation (2) by \(g^{-1}\) and equation (3) by \(p^{-1}\), these respectively give us
+        \begin{align*}
+            \mathbf{C_2}: 1 = b^{-1}pbp^{-1}gpb^{-1}p^{-1}bg^{-1} = [b^{-1}pbp^{-1},g] = [[b^{-1},p],g] \\
+            \mathbf{C_3}: 1 = g^{-1}bgb^{-1}pbg^{-1}b^{-1}gp^{-1} = [g^{-1}bgb^{-1},p] = [[g^{-1},b],p] \\
+            \mathbf{C_4}: 1 = p^{-1}gpg^{-1}bgp^{-1}g^{-1}pb^{-1} = [p^{-1}gpg^{-1},b] = [[p^{-1},g],b]
+        \end{align*}
+
+        \begin{figure}
+            \centering
+            \includegraphics[scale=1]{graphics/Borromean Rings.png}
+        \end{figure}
     \end{pb}
 \end{document}
