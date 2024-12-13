@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 422hw9}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\left\langle #1 \right\rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\falg}{F^{\text{alg}}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+\begin{document}
+    \begin{pb}
+        Yes, we know that a regular n-gon is constructable exactly when \(\varphi(n) = 2^k\) for some \(k\), as such a regular pentagon is constructable (\(\varphi(5) = 4 = 2^2\)). The angle between the verices of the pentagon is \(72^\circ\), hence \(72^\circ\) is a constructable angle, hence we can construct \(12^\circ = 72^\circ - 60^\circ\).
+    \end{pb}
+    \begin{pb}
+        This is a corollary of the more general proof in problem 3, alternatively:
+
+        \(\Phi_5(x)\) is the irreducible polynomial \(x^4 + x^3 + x^2 + x + 1\), with galois group \(\left(\mathbb{Z}/4 \mathbb{Z}\right)^\times \simeq C_4\). it follows that if \(K\) is the splitting field of \(\Phi_5\) over \(\mathbb{Q}\), then we may take \(K^{C_2} \longleftrightarrow C_2 \subset C_4\) by the Galois correspondence. Then \(K/K^{C_2}/\mathbb{Q}\) is a tower of degree two extensions containing all of the roots of \(\Phi_5\). Hence the roots of \(\Phi_5\) are constructable.
+    \end{pb}
+    \begin{pb}
+        We prove a more general statement, \(a\) is constructable iff for \(f := \min(a;\mathbb{Q})\)
+        we have \(\exists k \in \mathbb{N}, \# G_f = 2^k\).
+
+        First assume that \(a\) is constructable, then \(a\) lies in a tower of degree 2 extensions, \(F = F_n/F_{n-1}/\hdots/F_1 = \mathbb{Q}\), to show that \(G_f = \#2^k\), it will suffice to show that the splitting field of \(f\) has cardinality \(2^k\), and to show this it will suffice to show that if \(F\) is obtained from a tower of degree 2 extensions of \(\mathbb{Q}\), then \(F\) is contained in a normal extension \(L\) of \(\mathbb{Q}\) degree \(2^k\) for some \(k\), since then the normal closure of \(\mathbb{Q}(a)\) must be contained in \(L\), and
+        \[[L:K][K:\mathbb{Q}] = 2^k \implies \#G_f = [K:\mathbb{Q}] = 2^r, r \leq k\]
+        We prove this by induction on the height of the tower, if the tower has height 1, this is trivial since degree 2 extensions are normal. Now, assuming its true for \(n-1\), suppose that \(F_n\) = \(F_{n-1}(\alpha)\) and \(L'\) be the normal field containing \(F_{n-1}\). For \(\alpha^2 \in F\), let \(\set{\alpha = \alpha_1, \hdots \alpha_k}\) be the conjugates of \(\alpha\) over \(\mathbb{Q}\) it follows that for each \(\alpha_i\), we have \(\sigma\), such that \(\sigma(\alpha) = \alpha_i\) which means that \(\sigma(\alpha^2) = \alpha_i^2\), hence all of \(\alpha_i^2 \in L'\), defining \(L = L'(\alpha_i)_{i=1}^n\), we have
+        \begin{align*}
+            L = L'(\alpha_i)_{i=1}^n/L'(\alpha_i)_{i=1}^{n-1}/L'(\alpha)
+        \end{align*}
+        each extension having degree 2 or 1, since \(\alpha_i^2 \in L'\), this suffices to show that there is a normal field containing \(F\) with extension degree a power of 2 over \(\mathbb{Q}\), and hence this also proves that the Galois closure and Galois group must have order \(2^r\) for some \(r\). 
+        
+        Now assume that \(\# G_f = 2^k\), we want to show that \(K\) (the splitting field of \(f\)) can be obtained by a square root tower. We use that if \(G\) is a \(p\)-group (cardinality \(p^n\)), then \(G\) contains a tower of normal subgroups
+        \begin{align*}
+            H_1 \lhd H_2 \lhd \cdots \lhd H_n = G, \quad \# H_j = p^j
+        \end{align*}
+        applying this to the case \(p=2\), we get the tower from the galois correspondnece
+        \begin{align*}
+            1 \lhd H_1 \lhd \cdots \lhd H_k = G_f \longleftrightarrow \mathbb{Q} \subset K_1 \subset \cdots \subset K_k = K 
+        \end{align*}
+        where \(2 = [H_i:H_{i-1}] = [K_i:K_{i-1}]\).
+
+        Apply this to the special cases of \(A_4, D_4\), we see that \(D_4\) has \(2^3\) order, so if it is isomorphic to the galois group of the minimum polynomial of \(a\), \(a\) is indeed constructable. In the second case, if \(A_4\) is isomorphic to the Galois group of the minimum polynomial of \(a\) then \(a\) cannot be constructable by the above proof (\(3 \vert\# A_4 = 12\)).
+    \end{pb}
+    \begin{pb}
+        Suppose that \(f\) has a root \(\alpha \in \mathbb{C}\setminus \mathbb{R}\), then denoting \(\tau\) as complex conjugation and \(K\) as the splitting field of \(f\), \[\tau\vert_{K} \in G_f\]
+        Here we have \(\tau\vert_K (\alpha) \neq \alpha\), so that \(\tau\vert_K \neq 1_K\), and \(\tau\vert_K^2 = 1\) imples that \(G_f\) has an element of order \(2\), hence \(G_f \not \simeq A_3\) which contains no elements of order 2. Proven by contrapositive.
+
+        The converse is false, consider the polynomial
+        \begin{align*}
+            f(x) = x^3 - 4x + 2
+        \end{align*}
+        Irreducible by Eisenstein. Furthermore,
+        \begin{align*}
+            0 < D(f) = -(4(-4)^3 + 27(2)^2) = 4(4^3 - 27) = 4(37) \not \in \mathbb{Q}^2
+        \end{align*}
+        so that \(f\) has Galois group \(S_3\) since its discriminant is non-square, and \(f\) has real roots since \(D(f) > 0\).
+    \end{pb}
+    \begin{pb}
+        Yes, \(\varphi(257) = 256 = 2^8\).
+        The 70-gon is not constructable since \(\varphi(70) = \varphi(5)\varphi(7)\varphi(2) = 24\) which is not a power of \(2\). The 85-gon is constructable since \(\varphi(85) = \varphi(17)\varphi(5) = 4\cdot16 = 2^6\)
+    \end{pb}
+\end{document}
