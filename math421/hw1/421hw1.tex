@@ -1,0 +1,56 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 421hw1}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
+
+\begin{document}
+    \begin{pb}
+        \textbf{a} Let \(x \in A_1^\circ \cup A_2^\circ\), then without loss of generality it will suffice to show \(A_1^\circ \subset (A_1 \cup A_2)^\circ\). We have that \(A_1^\circ \subset A_1 \subset A_1 \cup A_2\), which is open, then
+        \[(A_1 \cup A_2)^\circ \subset (A_1 \cup A_2)^\circ \cup A_1^\circ \subset A_1 \cup A_2\]
+        is open, and since  \((A_1 \cup A_2)^\circ\) is the largest open set contained in \(A_1 \cup A_2\), it must be the case that
+        \[(A_1 \cup A_2)^\circ = (A_1 \cup A_2)^\circ \cup A_1^\circ\]
+        so that \(A_1^\circ \subset (A_1 \cup A_2)^\circ\).
+        
+        To show that equality need not hold, consider the usual (metric) topology on \(\mathbb{R}\), with \(A_1 = [-1,0], A_2 = [0,1]\), then
+        \begin{align*}
+            A_1^\circ \cup A_2^\circ = (-1,0) \cup (0,1) \subsetneq (-1,1) = (A_1 \cup A_2)^\circ
+        \end{align*}
+
+        \textbf{(b)} Once again, it will suffice to show that \(\overline{A_1} \supset \overline{A_1 \cap A_2}\), then \(\overline{A_2} \supset \overline{A_1 \cap A_2} \implies \overline{A_1} \cap \overline{A_2} \supset \overline{A_1 \cap A_2}\) will follow by symmetry. Note that \(\overline{A_1} \supset A_1 \supset A_1\cap A_2\) is closed, so that in particular
+        \begin{align*}
+            \overline{A_1 \cap A_2} \supset \overline{A_1} \cap \overline{A_1 \cap A_2} \supset A_1 \cap (A_1 \cap A_2) = A_1 \cap A_2
+        \end{align*}
+        is closed, implying that since \(\overline{A_1 \cap A_2}\) is smallest closed set containing \(A_1 \cap A_2\), we must have \(\overline{A_1 \cap A_2} = \overline{A_1} \cap \overline{A_1 \cap A_2}\) which, in particular, implies that \(\overline{A_1 \cap A_2} \subset \overline{A_1}\).
+
+        To show equality need not hold, consider the usual (metric) topology on \(\mathbb{R}\), with \(A_1 = (-1,0), A_2 = (0,1)\), then
+        \begin{align*}
+            \overline{A_1}\cap \overline{A_2} = \set{0} \supsetneq \emptyset = \overline{A_1 \cap A_2}
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        
+    \end{pb}
+\end{document}
