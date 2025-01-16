@@ -51,6 +51,27 @@
         \end{align*}
     \end{pb}
     \begin{pb}
+        An immediately equivalent condition to nowhere density is that the closure contains no (non-empty) open sets. Furthermore, notice that if \(A\) is nowhere dense, then so is \(\overline{A}\) which follows from \(\overline{A} = \overline{\overline{A}}\).
+
+        With the above in mind, let \(U\) be open, then \(V = U \setminus \overline{A} = U \cap \overline{A}^c\) is nonempty by nowhere density of \(A\) (and hence \(\overline{A}\)), and is furthermore the intersection of two open sets thus open. It follows that \(V \setminus \overline{B} = V \cap \overline{B}^c \neq \emptyset\) by nowhere density of \(B\). This implies that
+        \begin{align*}
+            &U \setminus \overline{A\cup B} = U \cap (\overline{A}\cup \overline{B})^c = (U \cap \overline{A}^c) \cap \overline{B}^c = V \cap \overline{B}^c \neq \emptyset \\
+            \implies U \not \subset \overline{A\cup B}
+        \end{align*}
+        Since \(U\) was arbitrary, we can conclude that \(\overline{A\cup B}\) contains no non-empty open sets and is thus nowhere dense.
+    \end{pb}
+    \begin{pb}
+        \(\emptyset, X \in \mathcal{T}(\mathcal{E})\) is immediate. Now let \(\set{U_\alpha}_{\alpha\in A} \subset \mathcal{T}(\mathcal{E})\), if each \(U_\alpha\) is empty, then we are done, otherwise if \(X = U_{\alpha'}\) for some \(\alpha'\) we have 
+        \begin{align*}
+            \bigcup_{\alpha \in A}U_\alpha = X \bigcup_{\alpha \in A \setminus \alpha'} U_\alpha = X \in \mathcal{T}(\mathcal{E})
+        \end{align*}
+        Now we may assume without loss of generality that \(X \neq U_\alpha, \forall \alpha\), and that \(U_\alpha \neq \emptyset \forall \alpha\), since this doesn't affect the union, then
+        each of the sets in the union \(\bigcup_{\alpha\in A}U_\alpha\) are unions of finite intersections of sets in \(\mathcal{E}'\), so we can rewrite
+        \begin{align*}
+            \bigcup_{\alpha \in A}U_\alpha = \bigcup_{\alpha \in A} \bigcup_{\beta \in B_\alpha} U_{\alpha,\beta} = \bigcup_{(\alpha,\beta) \in S} U_{\alpha,\beta}
+        \end{align*}
+        where \(U_\alpha = \bigcup_{\beta \in B_\alpha} U_{\alpha,\beta}\), and each \(U_{\alpha,\beta} \in \mathcal{E}'\). And where \(S\) is defined as \(\set{(\alpha,\beta) \vert \alpha \in A, \beta \in B_\alpha}\) which suffices to show that \(\bigcup_{\alpha \in A} U_\alpha \in \mathcal{T}(\mathcal{E})\) by definition of \(\mathcal{T}(\mathcal{E})\).
+        
         
     \end{pb}
 \end{document}
