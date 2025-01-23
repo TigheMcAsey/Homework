@@ -29,8 +29,8 @@
 
 \begin{document}
     \begin{pb}
-        If \(V = \mathbf{0}\), then the problem is trivial, so assume not. It will suffice to show that \(V\) has a linearly independent subset, and that every linearly independent subset is contained in a basis. To see that \(V\) contains a linearly independent subset, let \(\mathbf{v} \in V\setminus\mathbf{0}\), then for \(a \in F\), \(a\mathbf{v} = \mathbf{0} \iff a = 0\), so that \(\set{\mathbf{v}}\) is linearly independent. Now suppose that \(S\) is a linearly independent set, if \(\gen{S} = V\) we are done, so assume not. Let \(X := \set{T \subset V \vert S \subset T \tand T \text{ is linearly independent}}\), Then \((X,\subset)\) is a poset. Now let \(\cdots \subset T_{\alpha} \subset T_{\alpha'} \subset \cdots\) be a chain in \(X\) with index set \(A\), I claim that \(T := \bigcup_{\alpha \in A}T_\alpha\) is an upper bound. It is immediate that \(S \subset T \subset V\), to see that \(T\) is linearly independent, let \(\set{\mathbf{v}_1,\hdots,\mathbf{v}_n} \subset T\), such that for \(\set{a_1,\hdots,a_n} \subset F\) we have \(\sum_1^n a_i\mathbf{v}_i = \mathbf{0}\), then each \(\mathbf{v}_i \in T_{\alpha_i}\) for some \(\alpha_i \in A\), since the \(T_{\alpha_i}\) are in the chain, one of them contains the others, assume without loss of generality
-        \(T_{\alpha_1} \supset T_{\alpha_i}, \; 1 \leq i \leq n\), then since \(T_{\alpha_1}\) is linearly independent it follows that each \(a_i = 0\). This proves that \(T\) is linealry independent and in particular \(T \in X\). Now apply Zorn's lemma to \((X,\subset)\) to furnish a maximal independent set with respect to inclusion \(M\), to see that \(M\) must be a basis, assume not. Then there must be some \(\mathbf{u} \in V\), such that for any finite subset \(\set{\mathbf{v}_i}_{i=1}^n \subset M\), we cannot write
+        If \(V = \mathbf{0}\), then the problem is trivial, so assume not. It will suffice to show that \(V\) has a linearly independent subset, and that every linearly independent subset is contained in a basis. To see that \(V\) contains a linearly independent subset, let \(\mathbf{v} \in V\setminus\mathbf{0}\), then for \(a \in F\), \(a\mathbf{v} = \mathbf{0} \iff a = 0\), so that \(\set{\mathbf{v}}\) is linearly independent. Now suppose that \(S\) is a linearly independent set, if \(\gen{S} = V\) we are done, so assume not. Let \(X := \set{T \subset V \mid S \subset T \tand T \text{ is linearly independent}}\), Then \((X,\subset)\) is a poset. Now let \(C\) be a chain in \(X\), I claim that \(T := \bigcup_{T \in C}T\) is an upper bound. It is immediate that \(S \subset T \subset V\), to see that \(T\) is linearly independent, let \(\set{\mathbf{v}_1,\hdots,\mathbf{v}_n} \subset T\), such that for \(\set{a_1,\hdots,a_n} \subset F\) we have \(\sum_1^n a_i\mathbf{v}_i = \mathbf{0}\), then each \(\mathbf{v}_i \in T_i\) for some \(T_i \in C\), since the \(T_i\) are in the chain, one of them contains the others, assume without loss of generality
+        \(T_1 \supset T_i, \; 1 \leq i \leq n\), then since \(T_1\) is linearly independent it follows that each \(a_i = 0\). This proves that \(T\) is linearly independent and in particular \(T \in X\). Now apply Zorn's lemma to \((X,\subset)\) to furnish a maximal independent set with respect to inclusion \(M\), to see that \(M\) must be a basis, assume not. Then there must be some \(\mathbf{u} \in V\), such that for any finite subset \(\set{\mathbf{v}_i}_{i=1}^n \subset M\), we cannot write
         \begin{align*}
             \mathbf{u} = \sum_1^n a_i\mathbf{v}_i \quad a_i \in F
         \end{align*}
@@ -52,12 +52,12 @@
         \end{align*}
         So that \(I = P\) or \(I = A\) proving that \(P\) is maximal. \qed
 
-        \textbf{(b)} Let \(k\) be a field, consider \(A = k[X,Y]\), then \((X)\) is prime but not maximal. As proof, note that \((X) \subsetneq (X,Y) \subsetneq k[X,Y]\), so that \((X)\) is not maximal, to see that \((X)\) is prime suppose that \(fg \in (X)\), if \(fg = 0\), then \(f = 0 \tor g = 0\) since \(k[X,Y]\) is a domain and \(0 \in (X)\) so we are done. So assume that \(fg \neq 0\), then
+        \textbf{(b)} Let \(k\) be a field, consider \(A = k[X,Y]\), then \((X)\) is prime but not maximal. As proof, note that \((X) \subsetneq (X,Y) \subsetneq k[X,Y]\), so that \((X)\) is not maximal (any non-zero element of \((X)\) has positive degree in \(X\), but \(\deg_X Y = 0\), and any element non-zero \(f \in (X,Y)\) has \(\deg_X f + \deg_Y f > 0\), implying that \(1 \not \in (X,Y)\)) to see that \((X)\) is prime suppose that \(fg \in (X)\), if \(fg = 0\), then \(f = 0 \tor g = 0\) since \(k[X,Y]\) is a domain and \(0 \in (X)\) so we are done. So assume that \(fg \neq 0\), then
         \[\deg_X(fg) = \deg_X(f) + \deg_X(g) > 0 \implies \deg_X f > 0 \tor \deg_X g > 0\]
         which implies that  either \(f \in (X)\) or \(g \in (X)\) \qed
     \end{pb}
     \begin{pb}
-        Consider \(X := \set{I \subset A \vert I \text{ prime}}\), along with \(\leq\), where for \(I,J \in X\) we have \(I \leq J\) when \(I \supset J\), this defines a partial order (this can easily be seen since the partial order axioms are symmetric and \(I \leq J\) when \(I \subset J\) is a partial order). Now let \(C\) be a chain of ideals  in \(X\), and define \(P := \bigcap_{I \in C} I\), it will suffice to show that \(P\) is prime so that \(P\) is an upper bound for \(C\). Suppose that \(ab \in P\), if \(b \in P\) then we are done, so assume \(b \not \in P\), then for some \(I \in C\) we have \(b \not \in I\), so for any  \(J \in C\), such that \(J \subset I\), we have \(ab \in J\), which is prime implying that \(a \in J\), since \(b \not \in J\). It follows that \(a \in J\) for any \(J \in C\), since if \(J \subset I\) we have \(a \in J\), and since \(a \in I\) we have \(a \in J\) for \(J \supset I\) as well, this proves that \(a \in P\) so that \(P\) is prime and hence an upper bound for \(C\). Given that each chain in the poset \((X,\leq)\) has an upper bound, by Zorn's lemma \(X\) contains a maximal element \(Q \in X\) implies that \(Q\) is a prime ideal, and \(Q\) maximal with respect to \(\geq\) implies that \(Q\) is minimal with respect to inclusion. \qed
+        Consider \(X := \set{I \subset A \mid I \text{ prime}}\), along with \(\leq\), where for \(I,J \in X\) we have \(I \leq J\) when \(I \supset J\), this defines a partial order (this can easily be seen since the partial order axioms are symmetric and \(I \leq J\) when \(I \subset J\) is a partial order). Now let \(C\) be a chain of ideals  in \(X\), and define \(P := \bigcap_{I \in C} I\), it will suffice to show that \(P\) is prime so that \(P\) is an upper bound for \(C\). Suppose that \(ab \in P\), if \(b \in P\) then we are done, so assume \(b \not \in P\), then for some \(I \in C\) we have \(b \not \in I\), so for any  \(J \in C\), such that \(J \subset I\), we have \(ab \in J\), which is prime implying that \(a \in J\), since \(b \not \in J\). It follows that \(a \in J\) for any \(J \in C\), since if \(J \subset I\) we have \(a \in J\), and since \(a \in I\) we have \(a \in J\) for \(J \supset I\) as well, this proves that \(a \in P\) so that \(P\) is prime and hence an upper bound for \(C\) in \(X\). Given that each chain in the poset \((X,\leq)\) has an upper bound, by Zorn's lemma \(X\) contains a maximal element \(Q \in X\) implies that \(Q\) is a prime ideal, and \(Q\) maximal with respect to \(\geq\) implies that \(Q\) is minimal with respect to inclusion. \qed
     \end{pb}
     \begin{pb}
         \textbf{(a)} Suppose that \(a_0\) is a unit, then for some \(b_0 \in A\), we have \(a_0 b_0 = 1\). Now define
@@ -71,50 +71,35 @@
         \end{align*}
         Hence \(fg = 1\) i.e. \(f\) is a unit. Conversely suppose that \(f\) is a unit, then for some \(g = \sum_0^\infty b_iX^i\) we have \(fg = 1\), in particular the constant term of \(fg\) is equal to \(1\), the constant term of \(fg\) is \(a_0b_0\), so that \(a_0b_0 = 1\) hence proving \(a_0\) is a unit. \qed
 
-        \textbf{(b)} Assume that \(A\) is local, then \(A\) has a unique maximal ideal \(I\). Define \(\mathfrak{m} = \set{\sum_0^\infty a_iX^i \in A[[X]] \vert a_0 \in I}\) which is an ideal (the constant term of a sum or product is the sum or product of the constant terms), \(\mathfrak{m}\) is clearly proper since \(1 \not \in I\) implies that \(1 \not \in \mathfrak{m}\). Now let \(J \neq A[[X]]\) be an ideal, it will suffice to show that \(J \subset \mathfrak{m}\). Let \(f = \sum_0^\infty a_iX^i \in J\), since \(J \neq A[[X]]\) we must have that \(f\) is not invertible, implying that by part (a), \(a_0 \in A\) is not invertible. But then since \((A,I)\) is local and \(a_0\) is not invertible we must have \(a_0 \in I\) so that \(f \in \mathfrak{m}\).
+        \textbf{(b)} Assume that \(A\) is local, then \(A\) has a unique maximal ideal \(I\). Define \(\mathfrak{m} = \set{\sum_0^\infty a_iX^i \in A[[X]] \mid a_0 \in I}\) which is an ideal (the constant term of a sum or product is the sum or product of the constant terms), \(\mathfrak{m}\) is clearly proper since \(1 \not \in I\) implies that \(1 \not \in \mathfrak{m}\). Now let \(J \neq A[[X]]\) be an ideal, it will suffice to show that \(J \subset \mathfrak{m}\). Let \(f = \sum_0^\infty a_iX^i \in J\), since \(J \neq A[[X]]\) we must have that \(f\) is not invertible, implying that by part (a), \(a_0 \in A\) is not invertible. But then since \((A,I)\) is local and \(a_0\) is not invertible we must have \(a_0 \in I\) so that \(f \in \mathfrak{m}\).
 
         Conversely, suppose that \((A[[X]],\mathfrak{m})\) is local, then consider
-        \[I := \set{a \in A \vert a \text{ is the constant term of some } f\in A}\]
+        \[I := \set{a \in A \mid a \text{ is the constant term of some } f\in A}\]
         Once again, this is an ideal since the sum of constant terms of formal series is equal to the constant term of their sum and \(a \in A, f\in \mathfrak{m}\), then \(af \in \mathfrak{m}\), so the set is closed under arbitrary products in \(A\). We can conclude that \(1 \not \in I\), since if it were, then it would be the constant term of some \(f \in \mathfrak{m}\), which would imply \(f\) is invertible (by part (a)) which would imply \(\mathfrak{m} = A[[X]]\) which is not true. So \(I \subsetneq A\). Let \(a \in A\), such that \(a\) is not invertible, then the formal series \(a = a + \sum_1^\infty0X^i\) is not invertible by part (a), hence \(a \in I\), contraposing we can conclude that \(a \in A \setminus I\) implies that \(a\) is invertible which is equivalent to \((A,I)\) being a local ring. \qed
     \end{pb}
     \begin{pb}
-        \textbf{(a)} Let \(N = \set{\sum_0^\infty a_iX^i \vert a_i \text{ is nilpotent } \forall i}\), then suppose for contradiction that that \(f \not \in N\), and for some \(n\), \(f^n = 0\) for \(f = \sum_0^\infty a_iX^i \in A[[X]]\). Let \(i\) be the smallest index such that \(a_i\) is not nilpotent, and denote \(f^n = \sum_0^\infty b_iX^i\), then 
+        \textbf{(a)} Let \(N = \set{\sum_0^\infty a_iX^i \mid a_i \text{ is nilpotent } \forall i}\), \(N\) is an ideal follows from \(\text{Nil}(A)\) is an ideal. Suppose for contradiction that that \(f \not \in N\), and for some \(n\), \(f^n = 0\) for \(f = \sum_0^\infty a_iX^i \in A[[X]]\). Let \(i\) be the smallest index such that \(a_i\) is not nilpotent, and denote \(f^n = \sum_0^\infty b_iX^i = 0\), then 
         \begin{align*}
-            f^n \in N \implies a_i^n = b_{ni} = 0 \implies a_i \text{ is nilpotent}
+            \text{Nil}(A) = b_{ni} + \text{Nil}(A) = \sum_{\set{(j_1,\hdots,j_n) \mid \sum_{k=1}^n j_k = ni}} a_{j_1}a_{j_2}\cdots a_{j_n}  + \text{Nil}(A) = a_i^n + \text{Nil}(A)
         \end{align*}
-        contradicting \(f \not \in N\), implying that the nildradical of \(A[[X]]\) is a subset of \(N\) as desired. \qed
+        The last equality follows since all terms of the sum one atleast one \(a_j, \; j \neq i\) must also contain some \(a_{j'}, \; j' \leq i\) (not necessarily distinct from \(a_j\)).
+        This is a contradiction, since \(a_i\) was taken to not be nilpotent, but \(a_i^n\) is nilpotent implying that \(a_i\) is nilpotent. Hence proving that the nildradical of \(A[[X]]\) is a subset of \(N\) as desired. \qed
 
 
-        \textbf{(b)} To show that the converse is not true, consider \(A = k[Y_0,Y_1,Y_2,\hdots]/(Y_i^{i+1})_{i=1}^\infty\), and define
+        \textbf{(b)} To show that the converse is not true, consider \(A = k[Y_1,Y_2,\hdots]/(Y_i^{i+1})_{i=1}^\infty\), and define
         \begin{align*}
-            f := \sum_0^\infty Y_iX^i
+            f := \sum_1^\infty Y_iX^i
         \end{align*}
         Then for any \(n\), denote \(f^n = \sum_0^\infty b_iX^i\), to show \(f^n \neq 0\) it will suffice to show atleast one \(b_i \neq 0\), consider \(b_{n^2}\), we may write \(b_{n^2}\) as a polynomial in \(Y_n\), then
         \begin{align*}
-            b_{n^2} = \sum_{i=0}^n Y_n^i h_i(Y_0,Y_1,\hdots,Y_{n-1},Y_{n+1},\hdots,Y_{n^2})
+            b_{n^2} = \sum_{i=0}^n Y_n^i h_i(Y_1,\hdots,Y_{n-1},Y_{n+1},\hdots,Y_{n^2})
         \end{align*}
-        Then in this case \(h_n = 1\), and \(\deg_{Y_n}(\sum_{i=0}^{n-1} Y_n^i h_i(Y_0,Y_1,\hdots,Y_{n-1},Y_{n+1},\hdots,Y_{n^2})) < n\), so that \(b_{n^2}\) has degree \(n\) in \(Y_n\) and hence must be non-zero. \qed
+        Then in this case \(h_n = 1\), and \(\deg_{Y_n}(\sum_{i=0}^{n-1} Y_n^i h_i(Y_1,\hdots,Y_{n-1},Y_{n+1},\hdots,Y_{n^2})) < n\), so that \(b_{n^2}\) has degree \(n\) in \(Y_n\) and hence must be non-zero. \qed
     \end{pb}
     \begin{pb}
-        \textbf{(a)} Note that for the definition of the following functions the details can be ignored, the only substance is given any interval \(U\), there is some \(\chi_U \in A\), such that \(\chi_U > 0\) on \(U \cap[0,1]\) and \(\chi_U = 0\) on \([0,1] \setminus U\).
+        \textbf{(a)} We first verify that \(M_a\) is indeed maximal, by the first isomorphism theorem, \(A/M_a \cong h_a(A)\), where \(h_a(A) \subset \mathbb{R}\), to see that \(h_a(A) = \mathbb{R}\), note that for each \(x \in \mathbb{R}\), has some continuous function \(f_x\) on \([0,1]\), such that \(f(a) = x\), namely the constant function \(f : [0,1] \to \set{x}\), this implies that the image of \(h_a\) is \(\mathbb{R}\) and hence a field implying that \(M_a\) was maximal by the correspondance theorem.
         
-        For arbitrary \(0 < a < b < 1\), define the following functions
-        \begin{align*}
-            &\chi_{0,1}(x) = 1 \\
-            &\chi_{0,b}(x) = \begin{cases}
-                0 & x \in (b,1] \\
-                1 - \frac{x}{b} & x \in (0,b]
-            \end{cases} \\
-            &\chi_{a,1}(x) = \begin{cases}
-                0 & x \in [0,a) \\
-                \frac{1}{1-a}(x-a) & x \in [a,1]
-            \end{cases} \\
-            &\chi_{a,b}(x) = \begin{cases}
-                0 & x \in [0,a) \cup (b,1] \\
-                -(x-a)(x-b) & x\in [a,b]
-            \end{cases}
-        \end{align*}
-        It is immediate that each \(\chi_{p,q} \in A\), and furthermore given an open interval \(U = (a,b) \subset \mathbb{R}\) we have \(\chi_{\max\set{a,0},\min\set{b,1}}\) is positive on \(U \cap [0,1]\) and zero on \([0,1]\setminus U\).
+        \textbf{Lemma.} Given any interval \(U \subset \mathbb{R}\), there is some \(\chi_U \in A\), such that \(\chi_U > 0\) on \(U \cap[0,1]\) and \(\chi_U = 0\) on \([0,1] \setminus U\). The proof of the lemma is simple, simply take \(U = (a,b)\), then \(\chi_U' := -(x-a)(x-b)\) satisfies the properties but takes values on \(\mathbb{R}\), not \([0,1]\), so we may simply define our function as the restriction, \(\chi_U = \chi_U' \vert_{[0,1]}\).
 
         Let \(I \subset A\), supposing that \(I\) is not contained in \(M_a\) for any \(a\). Then for any \(a \in [0,1]\), there exists \(f_a \in I\), such that \(f_a(a) \neq 0\), we may assume that \(f_a(a) > 0\) by multiplying by \(\pm1 \in A\). Then for each \(f_a\), continuity furnishes some \(\delta_a > 0\), such that \(f_a(a-\delta_a,a+\delta_a) \subset (0,\infty)\), define \(U_a = (a - \delta_a,a+\delta_a)\). Then \(\set{U_a}_{a\in[0,1]}\) is an open cover for \([0,1]\), so we may take some finite subcover \(\set{U_{a_1},\hdots,U_{a_n}}\) where \(f_{a_i}\vert_{\set{U_{a_i}}} > 0\), by the ideal properties we have that \(g = \sum_1^nf_{a_i}\chi_{U_{a_i}} \in I\) (note that each \(f_{a_i}\) is only supported on a set where its positive). Now for any \(x \in [0,1]\), we have \(x \in U_{a_j}\) for some \(1 \leq j \leq n\) so that
         \begin{align*}
@@ -122,8 +107,8 @@
         \end{align*}
         hence \(g(x)\) is non-zero on \([0,1]\), implying that the function \(\frac{1}{g(x)}\) is well defined and continuous on \([0,1]\). This implies that \(1 = \frac{1}{g}g \in I\), so that \(I = A\). This shows that any proper ideal \(I \subsetneq A\) is such that \(I \subset M_a\) for some \(a \in [0,1]\) which allows us to conclude that \(I\) being maximal implies that \(I = M_a\) for some \(a \in [0,1]\). \qed
 
-        \textbf{(b)} Consider \(I := \set{f \in A \vert \exists \epsilon_f > 0, \text{ such that } f(0,\epsilon_f) = 0}\). First note that \(I\) is an ideal, since if \(f,g \in I\), then take
-        \(\epsilon = \min\set{\epsilon_f,\epsilon_g}\), so that \(x \in (0,\epsilon)\) implies that \(f(x) = g(x) = 0\) and hence \(f+g(x) = 0\) and if \(f \in I, g \in A\), then for any \(x \in(0,\epsilon_f)\) we have \(fg(x) = 0g(x) = 0\). It is also obvious that \(1 \not \in I\) implying that \(I \neq A\). Finally, for any \(a \in (0,1)\), the function
+        \textbf{(b)} Consider \(I := \set{f \in A \mid \exists \epsilon_f > 0, \text{ such that } f(0,\epsilon_f) = 0}\). First note that \(I\) is an ideal, since if \(f,g \in I\), then take
+        \(\epsilon = \min\set{\epsilon_f,\epsilon_g}\), so that \(x \in (0,\epsilon)\) implies that \(f(x) = g(x) = 0\) and hence \((f+g)(x) = 0\) and if \(f \in I, g \in A\), then for any \(x \in(0,\epsilon_f)\) we have \(fg(x) = 0g(x) = 0\). It is also obvious that \(1 \not \in I\) implying that \(I \neq A\). Finally, for any \(a \in (0,1)\), the function
         \begin{align*}
             f:x \mapsto \begin{cases}
                 0 & x < a/2 \\
@@ -133,7 +118,7 @@
         is continuous and hence \(f \in A\), but \(f \not \in M_a\), implying that \(I\) is not included in \(M_a\) for any \(a \in (0,1)\), but \(I \subsetneq A\) implies that \(I \subset J\) for some maximal ideal \(J \subset A\), where \(J\) cannot be of the form \(M_a\) since \(J\) includes \(I\). \qed
 
         \textbf{(c)} Once again there is a maximal ideal not of the form \(M_a\).
-        Consider \[I := \set{f \in A \vert f \text{ has compact support}}\]
+        Consider \[I := \set{f \in A \mid f \text{ has compact support}}\]
         Then \(I\) is an ideal, as proof let \(f,g \in I\), then we have compact sets \(U_f,U_g\) such that \(f \vert_{U_f^c} = 0\) and \(g \vert_{U_g^c} = 0\), since finite unions of compact sets are compact, we have \(U_f \cup U_g\) which is compact, and \(f + g\vert_{(U_f \cup U_g)^c} = 0\), the other condition is obvious since if \(f \in I, g \in A\), then
         \(\text{supp}(fg) \subset \text{supp}(f)\) which is contained in a compact set. Once again it is obvious that \(1 \not \in I\) implying that \(I \subsetneq A\). Now let \(a \in \mathbb{R}\), then we have \(f \in I \setminus M_a\), where \(f\) is defined as
         \begin{align*}
