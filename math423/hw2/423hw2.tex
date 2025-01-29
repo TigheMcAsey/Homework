@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 423hw1}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\left\langle #1 \right\rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\falg}{F^{\text{alg}}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\spec}{\text{Spec}}
+\newcommand{\nil}{\text{Nil}}
+
+\begin{document}
+    \begin{pb}
+        It suffices to show that \(\spec(A)\) satisfies the finite intersection property (FIP) for closed sets, since if given any collection of closed sets \(\set{V_i}_{i \in I}\) we have
+        \begin{align*}
+            \bigcap_{i \in I}V_i = \emptyset \implies \exists V_{i_1},\hdots,V_{i_N}, \text{ such that } \bigcap_{j=1}^N V_{i_j} = \emptyset
+        \end{align*}
+        Then given any collection \(\set{U_i}_{i \in I}\) of open sets we have
+        \begin{align*}
+            \bigcup_{i \in I}U_i = \spec(A) &\iff \bigcap_{i \in I}U_i^c = \emptyset \implies \exists U_{i_1}^c,\hdots,U_{i_N}^c, \text{ such that } \bigcap_{j=1}^N U_{i_j}^c = \emptyset \\
+            &\iff \left(\bigcup_{j=1}^N U_{i_j}\right)^c = \emptyset \iff \bigcup_{j=1}^N U_{i_j} = \spec(A)
+        \end{align*}
+        
+        Now let \(\set{V_i}_{i \in I}\) be a collection of closed sets, such that \(\bigcap_{i \in I}V_i = \emptyset\), then by the characterization of Zariski closed sets, \(V_i = V(S_i)\), for some \(S_i \subset A\), and \(\emptyset = \bigcap_{i \in I}V_i = V(\bigcup_{i \in I}S_i)\). This suffices to show that \(\gen{\bigcup_{i \in I}S_i} = A\), since if \(\gen{\bigcup_{i \in I}S_i}\) were a proper ideal of \(A\), then there would exist some maximal ideal \(\mathfrak{m} \supset \gen{\bigcup_{i \in I}S_i}\), and since maximal ideals are prime we would have \(\mathfrak{m} \in V(\bigcup_{i \in I} S_i)\) which is impossible since it is empty. Since \(\gen{\bigcup_{i \in I}S_i} = A\), there exist \(\set{s_k}_{k=1}^n \subset \bigcup_{i \in I}S_i \tand \set{a_k}_{k=1}^n \subset A\), such that \(\sum_{k=1}^n a_ks_k = 1\), each \(s_k\) lies in some \(S_{i_k}\) which implies that \(\gen{\bigcup_{k=1}^N S_{i_k}} = A\), in particular
+        \begin{align*}
+            \emptyset = V(A) = V\left(\bigcup_{k=1}^N S_{i_k}\right) = \bigcap_{k=1}^N V_{i_k}
+        \end{align*}
+        This suffices to show that \(\spec(A)\) satisfies the FIP and is hence quasi-compact. \qed
+    \end{pb}
+    \begin{pb}
+        First suppose that \(\nil(A)\) is prime, and let \(V(S_1), V(S_2)\) be Zariski closed sets, such that \(V(S_1) \cup V(S_2) = \spec(A)\), then since \(\nil(A)\) is prime it must be contained in one of the two closed sets, without loss of generality assume that \(\nil(A) \subset V(S_1)\), then
+        \begin{align*}
+            S_1 \subset \nil(A) = \bigcap_{\substack{P \subset A \\ P \text{ is a prime Ideal}}} P
+        \end{align*}
+        Implying that \(P \in V(S_1)\) for all prime ideals \(P \subset A\), but this is equivalent to \(V(S_1) = \spec(A)\), since \(V(S_1),V(S_2)\) were arbitrary this suffices to show that \(\spec(A)\) is irreducible.
+
+        I will prove the converse using the contrapositive. Assume that \(\nil(A)\) is not prime, then there are \(x,y \in A\), such that \(x,y \not \in \text{Nil}(A)\), and \(xy \in \nil(A)\). It follows that
+        \begin{align*}
+            V((x))\cup V((y)) = V((xy)) \supset V(\nil(A)) = \spec(A)
+        \end{align*}
+        where \(V(\nil(A)) = \spec(A)\) is proven in the previous part of the problem. So it will suffice to show that \(V((x)), V((y)) \subsetneq \spec(A)\) to conclude that \(\spec(A)\) is irreducible. Since \[x,y \not \in \nil(A) = \bigcap_{\substack{P \subset A \\ P \text{ is a prime Ideal}}} P\]
+        there are prime ideals \(x \not \in P_x, y \not \in P_y\), so that \(P_x \not \in V((x)), P_y \not \in V((y))\) hence neither can be all of \(\spec(A)\). \qed
+    \end{pb}
+\end{document}
