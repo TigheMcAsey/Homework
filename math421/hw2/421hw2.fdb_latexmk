@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1737695252.14716 "c:/Users/Tighe/4thYear/Homework-1/math421/hw1/421hw1.tex" "421hw1.pdf" "421hw1" 1737695252.74062 0
-  "421hw1.aux" 1737695252 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
-  "421hw1.tex" 1737695251 13207 fbf856b2277eb9a67bfc62b24850fcf4 ""
+["pdflatex"] 1737705837.46818 "c:/Users/Tighe/4thYear/Homework-1/math421/hw2/421hw2.tex" "421hw2.pdf" "421hw2" 1737705838.01284 0
+  "421hw2.aux" 1737705837 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "421hw2.tex" 1737705836 9534 06b3da99411e04339a368f405d677afb ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1729493139 83612 69670e67469cfaca8927b121b745dcf0 ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1712006200 24236005 6d56eca885e541cfa5825b8ee25492da ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -44,9 +44,9 @@
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1665067579 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1710412547 29918 d08e4795c0778dfb000e82d9225c6ce2 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
-  "c:/Users/Tighe/4thYear/Homework-1/math421/hw1/421hw1.tex" 1737695251 13207 fbf856b2277eb9a67bfc62b24850fcf4 ""
+  "c:/Users/Tighe/4thYear/Homework-1/math421/hw2/421hw2.tex" 1737705836 9534 06b3da99411e04339a368f405d677afb ""
   (generated)
-  "421hw1.aux"
-  "421hw1.log"
-  "421hw1.pdf"
+  "421hw2.aux"
+  "421hw2.log"
+  "421hw2.pdf"
   (rewritten before read)

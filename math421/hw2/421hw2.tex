@@ -1,0 +1,80 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 421hw2}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} Let \(\mathcal{B} = \set{U_i}_1^\infty\) be a countable basis for \(X\), then for each \(U_i\) assign some \(x_i \in U_i\). Let \(y \in X\), and \(V\) a neighborhood of \(y\), then since \(\mathcal{B}\) contains a neighborhood base for \(y\), we have some \(x_i \in U_i \subset V\), hence \(V \cap \set{x_i}_1^\infty \neq \emptyset\). Since \(V\) was arbitrary we can conclude that \(y \in \overline{\set{x_i}_1^\infty}\). Since \(y\) was arbitrary \(X = \overline{\set{x_i}_1^\infty}\). \qed
+
+        \textbf{(b)} Let \(\set{x_i}_1^\infty\) be a countable dense subset of \(X\), now define \(\mathcal{B}:= \set{N_{\frac{1}{n}}(x_i) \mid n,i \in \mathbb{N}}\), where \(N_r(x) := \set{y \in X \mid d(x,y) < r}\). There is an obvious bijection \(\mathcal{B} \to \mathbb{N}\times \mathbb{N}, \; N_{\frac{1}{n}}(x_i) \mapsto (n,i)\)so in particular \(\mathcal{B}\) is countable. Now let \(y \in X\), and let \(U\) be a neighborhood of \(y\). Then \(U \supset N_{r}(y)\) for some \(r > 0\). Then there exists some \(x_i \in N_r(y)\) by density, by definition of the set, \(d(x_i,y) < r\), so that \(N_{r - d(x_i,y)}(x_i) \subset N_r(y)\) by the triangle inequality. Since we have \(0 < r - d(x_i,y)\), we may choose \(N\), such that \(\frac{1}{N} < r - d(x_i,y)\) which gives the desired inclusion to prove that \(\mathcal{B}\) is a basis.
+        \begin{align*}
+            N_{\frac{1}{N}}(x_i) \subset N_{r - d(x_i,y)}(x_i) \subset N_r(y) \subset U \qed
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Since we are in a metric space we may use the \(\epsilon-\delta\) definition of continuity, where it is tautological that the function \(d(x,\cdot):X \to X\), since continuity is defined in terms of the distance function. Given this it suffices to show that for \(x_1,x_2 \in X\), \(\abs{d_F(x_1) - d_F(x_2)} \leq d(x_1,x_2)\) to show continuity. Without loss of generality we may assume that \(d_F(x_1) \geq d_F(x_2)\). Note that for any \(y \in F\), \(d(x_1,y) \leq d(x_1,x_2) + d(x_2,y)\), so in particular we have for any \(y \in F\) that \(d_F(x_1) \leq d(x_1,x_2) + d(x_2,y)\), which of course implies that \(d_F(x_1) \leq d(x_1,x_2) + d_F(x_2)\), taken together we get the desired ineqaulity to prove continuity of \(d_F\):
+        \begin{align*}
+            \abs{d_F(x_1) - d_F(x_2)} = d_F(x_1) - d_F(x_2) \leq d(x_1,x_2) + d_F(x_2) - d_F(x_2) = d(x_1,x_2)
+        \end{align*}
+        \(x \in F \implies d_F(x) = 0\) is immediate from \(d(x,x) = 0\). Since \(F^c\) is open, any \(x \in F^c\) has some neighborhood \(N_\epsilon(x) \subset F^c, \; \epsilon > 0\) implying that \(d_F(x) \geq \epsilon > 0\). \qed
+        
+        \textbf{(b)} The difference of continuous functions is continuous, we have from part (a) thatb\(d_{F_i}\) are continuous which implies continuity of \(g\). Now let \(x \in F_2 \subset F_1^c\), then by part (a), we have \(d_{F_2}(x) = 0, d_{F_1}(x) > 0\), so that \(g(x) = d_{F_1}(x) > 0\). If \(x \in F_1 \subset F_2^c\), then by part (a) we have \(d_{F_1}(x) = 0\) and \(d_{F_2}(x) > 0\), implying that \(g(x) = -d_{F_2}(x) < 0\). \qed
+
+        \textbf{(c)} Metric spaces are Hausdorff and hence \(T_1\), so it suffices to show that any two closed sets can be seperated by disjoint open sets. Let \(F_1, F_2\) be disjoint closed sets and define \(g\) as in (b), we can use from part (b) that \(g\) is continuous. This implies that
+        \(g^{-1}(0,\infty) \tand g^{-1}(-\infty,0)\) are open.  Furthermore, we have from part (b) that \(F_1 \subset g^{-1}(-\infty,0) \tand F_2 \subset g^{-1}(0,\infty)\) we are done since these sets are disjoint:
+        \begin{align*}
+            g^{-1}(-\infty,0)\cap g^{-1}(0,\infty) = g^{-1}((-\infty,0)\cap(0,\infty)) = g^{-1}\emptyset = \emptyset \qed
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        This follows simply by rewriting the sets \(S\) and \(\tilde{S}\).
+
+        \begin{align*}
+            &S \overset{\text{def}}{=} \set{W \cap \bigcup_{\alpha \in A}\bigcap_{i=1}^nf_{\alpha,i}^{-1}(U_{\alpha,i}) \mid A \text{ is an arbitrary index set, }n \in \mathbb{N}, U_{\alpha,i} \in Y_{\alpha,i}} \\
+            &\tilde{S} \overset{\text{def}}{=} \set{\bigcup_{\alpha \in A}\bigcap_{i=1}^nf_{\alpha,i}\vert_W^{-1}(U_{\alpha,i}) \mid A \text{ is an arbitrary index set, }n \in \mathbb{N}, U_{\alpha,i} \in Y_{\alpha,i}}
+        \end{align*}
+        Then we can write
+        \begin{align*}
+            W \cap \bigcup_{\alpha \in A}\bigcap_{i=1}^nf_{\alpha,i}^{-1}(U_{\alpha,i}) = \bigcup_{\alpha \in A}\bigcap_{i=1}^n\left(f_{\alpha,i}^{-1}(U_{\alpha,i})\cap W\right) = \bigcup_{\alpha \in A}\bigcap_{i=1}^n\left(f_{\alpha,i}^{-1}(U_{\alpha,i}\cap f(W))\right) = \bigcup_{\alpha \in A}\bigcap_{i=1}^nf_{\alpha,i}\vert_W^{-1}(U_{\alpha,i})
+        \end{align*}
+        So that \(S\) and \(\tilde{S}\) define the same set.\qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} \(\implies\) \textbf{(b)} This follows from the \(f_i\) being continuous on the weak topology they generate. C.f. Notes Prop 1.59.\qed
+
+        \textbf{(b)} \(\implies\) \textbf{(a)} Suppose for contraposition that \(x_\alpha \not \to x\). Then there exists some neighborhood \(U\) of \(x\), such that for any \(\alpha_0 \in A\), there exists some \(\alpha \geq \alpha_0\), such that \(x_\alpha \not \in U\). We may assume without loss of generality that \(U\) is an open neighborhood by passing to an open subset containing \(x\). By definition of the weak topology, \(U = \bigcup_{i\in I}\bigcap_{j=1}^N f_{i_j}^{-1}(U_{i_j})\) for open \(U_{i_j} \in \mathcal{T}(Y_{i_j})\), \(x\) must lie in some \(\bigcap_{j=1}^N f_{i_j}^{-1}(U_{i_j})\), so we may once again without loss of generality rechoose \(U = \bigcap_{j=1}^N f_{i_j}^{-1}(U_{i_j})\). Now suppose for \(j = 2,\hdots,N\) there exists some \(\alpha_0^j\), such that for any \(\alpha \geq \alpha_0^j\) we have \(f_{i_j}(x_\alpha) \in U_{i_j}\), then taking \(\gamma \geq \alpha_0^j, \;\forall j \in 2,\hdots,N\), we have for any \(\alpha_0\), there exists some \(\alpha \geq \alpha_0, \gamma\), such that \(x_\alpha \not \in U\), implying that \(x_\alpha \not \in \bigcap_{j=1}^Nf_{i_j}^{-1}(U_{i_j})\), and since \(x_\alpha\) lies in \(f_{i_2}^{-1}(U_{i_2}),\hdots, f_{i_N}^{-1}(U_{i_N})\) we must have that \(x_\alpha \not \in f_{i_1}^{-1}(U_{i_1})\), equivalently \(f_{i_1}(x_\alpha) \not \in U_{i_1}\). But \(U_{i_1}\) is open and contains \(f_{i_1}(x)\), so we necessarily have \(f_{i_1}(x_\alpha) \not \to f_{i_1}(x)\). \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} \(\implies\) \textbf{(b)} Let \((x,y)\) be an accumulation point of \(\set{(x,x)}\), then there is a \((x_\alpha,x_\alpha)_{\alpha\in A} \to (x,y)\), from this we may define the net \((x_\alpha)_{\alpha \in A}\), where we say \(x_\alpha \leq x_{\alpha'}\) when \((x_\alpha,x_\alpha) \leq (x_{\alpha'},x_{\alpha'})\). Then if \(U\) is a neighborhood of \(x\), \(U \times X\) is a neighborhood of \((x,y)\), so for some \(\alpha_0\) we have for all \(\alpha \geq \alpha_0\), \((x_\alpha,x_\alpha) \in U \times X\), implying that \(x_\alpha \in U\) for all \(\alpha \geq \alpha_0\), i.e. \(x_\alpha \to x\).  By the same argument we find that \(x_\alpha \to y\), but since \(X\) is Hausdorff we know that nets have unique limits, and hence \(x = y\), implying that \((x,y) \in \set{(x,x)}\), i.e. \(\text{acc}\set{(x,x)} \subset \set{(x,x)}\) is closed. \qed
+
+        \textbf{(b)} Let \(x \neq y \in X\), then \((x,y) \in \set{(x,x)}^c\) is open. Since \(\set{U \times V \mid U,V \text{ open in } X}\) is a basis for the product topology, we have \(\set{(x,x)}^c = \bigcup_{\alpha \in A} U_\alpha \times V_\alpha\), then for some \(U\times V\), we have \((x,y) \in U \times V\), and furthermore \(U \cap V = \emptyset\), since \(U \times V \subset \set{(x,x)}^c\). Since \(U, V\) are open in \(X\) and we have \(x \in U, y \in V\) proves that \(X\) is Hausdorff.
+    \end{pb}
+    \begin{pb}
+        Suppose that \(x \in \overline{\set{x \in X \mid f(x) = g(x)}}\), equivalently there is some net \(x_\alpha \to x\), such that \(f(x_\alpha) = g(x_\alpha), \; \forall \alpha\). By continuity of \(f,g\) we have \(f(x_\alpha) \to f(x), \; g(x_\alpha) \to g(x)\). Define a new net \(y_\alpha\), where \(y_\alpha = f(x_\alpha) = g(x_\alpha)\), such that \(y_{\alpha'} \geq y_\alpha\) when \(\alpha' \geq \alpha\), then \(y_\alpha \to f(x),y_\alpha \to g(x)\), since \(Y\) is Hausdorff, nets in \(Y\) have unique limits implying that \(f(x) = g(x)\), so that \(x \in \set{x \in X \mid f(x) = g(x)}\), which suffices to show that \(\set{x \in X \mid f(x) = g(x)} = \overline{\set{x \in X \mid f(x) = g(x)}}\). \qed
+    \end{pb}
+\end{document}
