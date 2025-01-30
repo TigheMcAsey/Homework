@@ -6,8 +6,8 @@
 
 \fancyhf{}
 \lhead{Math 421hw1}
+\rhead{Tighe McAsey - 37499480}
 \pagestyle{fancy}
-
 % Page dimensions
 \geometry{a4paper, margin=1in}
 
@@ -28,11 +28,11 @@
 
 \begin{document}
     \begin{pb}
-        \textbf{a} Let \(x \in A_1^\circ \cup A_2^\circ\), then without loss of generality it will suffice to show \(A_1^\circ \subset (A_1 \cup A_2)^\circ\). We have that \(A_1^\circ \subset A_1 \subset A_1 \cup A_2\), which is open, then
+        \textbf{(a)} Without loss of generality it will suffice to show \(A_1^\circ \subset (A_1 \cup A_2)^\circ\), then the case \(A_2^\circ \subset (A_1 \cup A_2)^\circ\) is symmetrical. We have that \(A_1^\circ \subset A_1 \subset A_1 \cup A_2\), which is open, then
         \[(A_1 \cup A_2)^\circ \subset (A_1 \cup A_2)^\circ \cup A_1^\circ \subset A_1 \cup A_2\]
         is open, and since  \((A_1 \cup A_2)^\circ\) is the largest open set contained in \(A_1 \cup A_2\), it must be the case that
         \[(A_1 \cup A_2)^\circ = (A_1 \cup A_2)^\circ \cup A_1^\circ\]
-        so that \(A_1^\circ \subset (A_1 \cup A_2)^\circ\).
+        so that \(A_1^\circ \subset (A_1 \cup A_2)^\circ\). \qed
         
         To show that equality need not hold, consider the usual (metric) topology on \(\mathbb{R}\), with \(A_1 = [-1,0], A_2 = [0,1]\), then
         \begin{align*}
@@ -43,7 +43,7 @@
         \begin{align*}
             \overline{A_1 \cap A_2} \supset \overline{A_1} \cap \overline{A_1 \cap A_2} \supset A_1 \cap (A_1 \cap A_2) = A_1 \cap A_2
         \end{align*}
-        is closed, implying that since \(\overline{A_1 \cap A_2}\) is smallest closed set containing \(A_1 \cap A_2\), we must have \(\overline{A_1 \cap A_2} = \overline{A_1} \cap \overline{A_1 \cap A_2}\) which, in particular, implies that \(\overline{A_1 \cap A_2} \subset \overline{A_1}\).
+        is closed, implying that since \(\overline{A_1 \cap A_2}\) is smallest closed set containing \(A_1 \cap A_2\), we must have \(\overline{A_1 \cap A_2} = \overline{A_1} \cap \overline{A_1 \cap A_2}\) which, in particular, implies that \(\overline{A_1 \cap A_2} \subset \overline{A_1}\). \qed
 
         To show equality need not hold, consider the usual (metric) topology on \(\mathbb{R}\), with \(A_1 = (-1,0), A_2 = (0,1)\), then
         \begin{align*}
@@ -56,7 +56,7 @@
         With the above in mind, let \(U\) be open, then \(V = U \setminus \overline{A} = U \cap \overline{A}^c\) is nonempty by nowhere density of \(A\) (and hence \(\overline{A}\)), and is furthermore the intersection of two open sets thus open. It follows that \(V \setminus \overline{B} = V \cap \overline{B}^c \neq \emptyset\) by nowhere density of \(B\). This implies that
         \begin{align*}
             &U \setminus \overline{A\cup B} = U \cap (\overline{A}\cup \overline{B})^c = (U \cap \overline{A}^c) \cap \overline{B}^c = V \cap \overline{B}^c \neq \emptyset \\
-            \implies U \not \subset \overline{A\cup B}
+            \implies &U \not \subset \overline{A\cup B}
         \end{align*}
         Since \(U\) was arbitrary, we can conclude that \(\overline{A\cup B}\) contains no non-empty open sets and is thus nowhere dense.
     \end{pb}
@@ -65,16 +65,17 @@
         \begin{align*}
             \bigcup_{\alpha \in A}U_\alpha = X \bigcup_{\alpha \in A \setminus \alpha'} U_\alpha = X \in \mathcal{T}(\mathcal{E})
         \end{align*}
-        Now we may assume without loss of generality that \(X \neq U_\alpha, \forall \alpha\), and that \(U_\alpha \neq \emptyset \forall \alpha\), since this doesn't affect the union, then
+        Now we may assume without loss of generality that \(X \neq U_\alpha, \forall \alpha\), and that \(U_\alpha \neq \emptyset, \forall \alpha\), since this doesn't affect the union, then
         each of the sets in the union \(\bigcup_{\alpha\in A}U_\alpha\) are unions of finite intersections of sets in \(\mathcal{E}'\), so we can rewrite
         \begin{align*}
             \bigcup_{\alpha \in A}U_\alpha = \bigcup_{\alpha \in A} \bigcup_{\beta \in B_\alpha} U_{\alpha,\beta} = \bigcup_{(\alpha,\beta) \in S} U_{\alpha,\beta}
         \end{align*}
-        where \(U_\alpha = \bigcup_{\beta \in B_\alpha} U_{\alpha,\beta}\), and each \(U_{\alpha,\beta} \in \mathcal{E}'\). And where \(S\) is defined as \(\set{(\alpha,\beta) \vert \alpha \in A, \beta \in B_\alpha}\) which suffices to show that \(\bigcup_{\alpha \in A} U_\alpha \in \mathcal{T}(\mathcal{E})\) by definition of \(\mathcal{T}(\mathcal{E})\). Now suppose that \(U_1,\hdots,U_n \in \mathcal{T}(\mathcal{E})\), then \(U_i = \bigcap_{j=1}^{N_i} E^i_j\), \(E_j^i \in \mathcal{E}\), then
+        where \(U_\alpha = \bigcup_{\beta \in B_\alpha} U_{\alpha,\beta}\), and each \(U_{\alpha,\beta} \in \mathcal{E}'\). And where \(S\) is defined as \(\set{(\alpha,\beta) \vert \alpha \in A, \beta \in B_\alpha}\) which suffices to show that \(\bigcup_{\alpha \in A} U_\alpha \in \mathcal{T}(\mathcal{E})\) by definition of \(\mathcal{T}(\mathcal{E})\). To show that \(\mathcal{T}(\mathcal{E})\) is closed under finite intersections, it suffices to show that it is closed under intersections of two elements (then induction may be applied to show it for finite intersections). So let \(U, V \in \mathcal{T}(\mathcal{E})\), if either is \(X \tor \emptyset\), then we are done trivially, so assume not. Then we can write \(U = \bigcup_{\alpha\in A}E_\alpha, V = \bigcup_{\beta\in B}E_\beta\), for \(E_\alpha, E_\beta \in \mathcal{E}'\). Then
         \begin{align*}
-            \bigcap_{i=1}^n \bigcap_{j=1}^{N_i} E_j^i = \bigcap_{(i,j) \in S} E_j^i
+            U \cap V &= \left(\bigcup_{\alpha\in A} E_\alpha\right)\cap \left(\bigcup_{\beta\in B} E_\beta\right) = \bigcup_{\alpha\in A}\left( E_\alpha \cap \bigcup_{\beta\in B} E_\beta\right) = \bigcup_{\alpha\in A}\bigcup_{\beta\in B}E_\alpha\cap E_\beta = \bigcup_{(\alpha,\beta) \in A \times B} E_\alpha\cap E_\beta
         \end{align*}
-        where \(S = \set{(i,j) \vert 1\leq i \leq n, 1 \leq j \leq N_i}\), this is a finite intersection of elements in \(\mathcal{E}\) thus is in \(\mathcal{T}(\mathcal{E})\) by definition. This suffices to show that the set defined as \(\mathcal{T}(\mathcal{E})\) is a topology.
+        the intersection of two sets in \(\mathcal{E}'\) is still a finite intersection of sets in \(\mathcal{E}\), so \(U \cap V\) is still in \(\mathcal{T}(\mathcal{E})\). This suffices to show that \(\mathcal{T}(\mathcal{E})\) is a topology.
+        
 
         To show that \(\mathcal{T}(\mathcal{E})\) is the topology generated by \(\mathcal{E}\), we need to show that every topology \(\mathcal{T}\) on \(X\), such that \(\mathcal{E} \subset \mathcal{T}\) is such that \(\mathcal{T} \supset \mathcal{T}(\mathcal{E})\). Let \(\mathcal{T}\) be a topology on \(X\) containing \(\mathcal{E}\), and suppose that \(U \in \mathcal{T}(\mathcal{E})\), if \(U = X \tor \emptyset\), then \(X \in \mathcal{T}\) by definition of a topology. Otherwise \(U = \bigcup_{\alpha \in A}\bigcap_1^{N_\alpha} E^\alpha_i\) for some \(E^{\alpha}_i \in \mathcal{E}\), but then since \(\mathcal{E} \subset \mathcal{T}\), so are finite intersections hence \(\set{\bigcap_1^{N_\alpha} E^\alpha_i \vert \alpha \in A} \subset \mathcal{T}\), and since \(\mathcal{T}\) is closed under arbitrary unions, we have that
         \begin{align*}
@@ -83,7 +84,7 @@
         so that \(\mathcal{T}(\mathcal{E}) \subset \mathcal{T}\) as desired, this suffices to show that \(\mathcal{T}(E) = \bigcap_{\text{Topologies on }X \text{ containing }\mathcal{E}} \mathcal{T}\) (equality since \(\mathcal{T}(\mathcal{E})\) is one of the elements of the intersection, and is included in all sets in the intersection).
     \end{pb}
     \begin{pb}
-        \textbf{(a)} Consider the collection of sets \(\set{S_j}_{j=1}^\infty\), such that each \(S_j\) is a neighborhood of \(p\), then each \(S_j\) contains some open set, \(V_j\) which contains \(p\). If \(S\) were a neighborhood base, then for any open set \(U \in \mathcal{T}\), such that \(p \in U\), we would have some \(V_j \subset S_j \subset U\), so it will suffice to show that there exists an open set \(U\), such that \(V_j \not \subset U\) for any \(j\) to conclude that \(\set{S_j}_1^\infty\) is not a neighborhood base for \(p\). Then since \(\set{S_j}_1^\infty\) was arbitrary this suffices to show that \(p\) does not have a countable neighborhood base.
+        \textbf{(a)} Consider a collection of sets \(\set{S_j}_{j=1}^\infty\), such that each \(S_j\) is a neighborhood of \(p\), then each \(S_j\) contains some open set, \(V_j\) which contains \(p\). If \(S\) were a neighborhood base, then for any open set \(U \in \mathcal{T}\), such that \(p \in U\), we would have some \(V_j \subset S_j \subset U\), so it will suffice to show that there exists an open set \(U\), such that \(V_j \not \subset U\) for any \(j\) to conclude that \(\set{S_j}_1^\infty\) is not a neighborhood base for \(p\). Then since \(\set{S_j}_1^\infty\) was arbitrary this suffices to show that \(p\) does not have a countable neighborhood base.
 
         In problem (3), we provided a closed form for the open sets in the topology generated by a set. Applying this result, we may write
         \begin{align*}
@@ -98,7 +99,7 @@
                 0 & x = a
             \end{cases}
         \end{align*}
-        since \(a \neq a^i_{\beta^j}, \; \forall i,j\), we have that
+        since \(a \neq a^i_{\beta^j}, \; \forall j\), we have that
         \begin{align*}
             f \in \bigcap_{i = 1}^{N_{\beta^j}} X_{a^i_{\beta^j},k^i_{\beta^j}} \subset V_j, \tand
             f \not \in U
@@ -118,10 +119,9 @@
             x \mapsto 0 & \text{else}
         \end{cases}\), which maps finitely many values to \(1\), but for any \(f \in \bigcap_1^\infty U_n, \; f^{-1}(\set{1})\) is an infinite set.
 
-        \textbf{(d)} Let \(f \in X\), fix an open set \(U\) containing \(f\), then from question 3, we know that there is some non-empty \(\bigcap_{i=1}^N X_{a_i,k_i} \subset U\). Fix a countable subset \(\set{\alpha_i}_1^\infty \subset A \setminus \set{a_i}_1^N\) (this countable subset is not necessary I simply want to avoid the discussion of whether or not \(\emptyset\) is countable), then we have
+        \textbf{(d)} It will suffice to show that every point of \(X\) is an either in \(K\), or an accumulation point of \(K\), equivalently fixing a point \(g \in X\), we have for any open set \(U\) containing \(g\), \(U \cap K \neq \emptyset\). Let \(g \in X\), and \(U\) an open set containing \(g\). Then from question 3, we know that there is some non-empty \(\bigcap_{i=1}^N X_{a_i,k_i} \subset U\). Then we may define the function
         \begin{align*}
             f: \begin{cases}
-                x \mapsto 1 & x \in \set{\alpha_i}_1^\infty \\
                 x \mapsto k_i & x \in \set{a_i}_1^N \\
                 x \mapsto 0 & \text{else}
             \end{cases}, \text{ by construction } f \in K\cap U
