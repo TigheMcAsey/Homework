@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1738215508.03135 "/home/tighemcasey/Math hw/math427/427Exercises.tex" "427Exercises.pdf" "427Exercises" 1738215509.26333 0
+["pdflatex"] 1738283895.54168 "/home/tighemcasey/Math hw/math427/427Exercises.tex" "427Exercises.pdf" "427Exercises" 1738283897.07048 0
   "/home/tighemcasey/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1735924788.82836 25678 aa7c8fd3909e804e7d85441c21595406 ""
   "/home/tighemcasey/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1735931833.3482 12668 06b14841952620e188e9e22d17b384a8 ""
   "/home/tighemcasey/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1726102813.02348 21086786 07df747a8ef29f8e2edc5ba549d24369 ""
@@ -38,6 +38,7 @@
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1726102823.19948 35752 024fb6c41858982481f6968b5fc26508 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1726102823.20148 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1726102823.20448 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1726102823.21048 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1726102823.21548 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1726102823.25348 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1726102823.26048 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
@@ -144,9 +145,9 @@
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/enumerate.sty" 1726102839.64648 3468 ad69b54642e68f9fdf39ec1a16dd7341 ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/tools/xr.sty" 1726102839.65348 3650 6bb518b93447ab8234847aee22289e5c ""
   "/home/tighemcasey/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1727727991.28242 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "/home/tighemcasey/Math hw/math427/427Exercises.tex" 1738215506.94048 17185 5f8d8183cd7c2823c6470922e8aa4194 ""
-  "427Exercises.aux" 1738215508.97748 1065 a4e1ec8f81f7e00861514aa2ab240e16 "pdflatex"
-  "427Exercises.tex" 1738215506.94048 17185 5f8d8183cd7c2823c6470922e8aa4194 ""
+  "/home/tighemcasey/Math hw/math427/427Exercises.tex" 1738283892.86618 20580 fbcf7abd8d0ec122668d2939ea6ac8cc ""
+  "427Exercises.aux" 1738283896.82618 1065 e99e6fb99d59aa0f510cff6de50b22f7 "pdflatex"
+  "427Exercises.tex" 1738283892.86618 20580 fbcf7abd8d0ec122668d2939ea6ac8cc ""
   "427Notes.aux" 1738210920.13252 264 f1fa86c5ea23b3f6bd70bddcc545ee21 ""
   "427Notes.tex" 1738211268.34152 1111 e4d3ad5064c11fcfa6f0aafaf06dde43 ""
   (generated)

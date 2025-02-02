@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  29 JAN 2025 21:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  30 JAN 2025 16:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -486,6 +486,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [4]
+Overfull \hbox (68.9349pt too wide) detected at line 316
+[]
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -494,24 +499,33 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[5] (427Exercises.aux)
+[5]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[6] (427Exercises.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15046 strings out of 475834
- 311287 string characters out of 5777780
- 1950957 words of memory out of 5000000
- 37417 multiletter control sequences out of 15000+600000
+ 15366 strings out of 475834
+ 319308 string characters out of 5777780
+ 1959957 words of memory out of 5000000
+ 37737 multiletter control sequences out of 15000+600000
  566782 words of font info for 68 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 116i,15n,121p,744b,981s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/tighemcasey/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on 427Exercises.pdf (5 pages, 218771 bytes).
+ 116i,16n,121p,744b,984s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/tighemcasey/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/tighemcasey/.miktex/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on 427Exercises.pdf (6 pages, 238634 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
+ 119 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

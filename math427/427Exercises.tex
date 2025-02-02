@@ -224,14 +224,42 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \(fg = 1_{C_*(\Gamma)}\), \(gf = 1_{C_*(\Gamma')}\), so they are homotopies so long as they are chain maps. This is trivial except for the "square" where edges map to vertices.
     Commutativity on generators is trivial apart from \(e_0\), and \(e_0'\), in this case \(f\circ d_1(e_0) = f(v_1 - v_0) = v_1' - v_0' = -(v_0' - v_1') = d_1'(-e_0') = d_1'\circ f (e_0)\). The proof is the same for \(g\).
 
-    (ii) 
+    (ii) \textcolor{red}{TODO!!}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
     \emph{exercise - }\label{HEx5} Using the cell structures for \(S^2\) from \(e^2 \cup e^0\), \(e^2 \cup e^2 \cup e^1 \cup e^0\) Build \(C_*(S^2)\) and compute its Homology.
 
-    \emph{proof - } \textcolor{red}{TODO}
+    \emph{proof - } The first cell structure gives the sequence
+
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] & \mathbb{Z} \arrow[r] & 0 \arrow[r] & \mathbb{Z} \arrow[r] & 0
+        \end{tikzcd}
+    \end{equation*}
+
+    In this case the homology modules are trivially \(H_i(C_*(S^2)) = \begin{cases}
+        0 & i \neq 0,2 \\
+        1 & i = 0,2
+    \end{cases}\)
+
+    The second cell structure gives the sequence
+
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] & \mathbb{Z}e_0^2 \oplus \mathbb{Z}e_1^2 \arrow[r,"{d_2}"] & \mathbb{Z}e_0^1 \arrow[r,"{d_1}"] & \mathbb{Z}e_0^0 \arrow[r] & 0
+        \end{tikzcd}
+    \end{equation*}
+
+    Where \(\mathbb{Z}e_0^2 \oplus \mathbb{Z}e_1^2 = \mathbb{Z}\gen{e_0^2 + e_1^2} \oplus \mathbb{Z}\gen{e_0^2 - e_1^2}\), and \(d_2: e_0^2 \mapsto e_0^1, e_1^2 \mapsto -e_0^1\), so that
+    \begin{align*}
+        H_2(C_*(S^2)) = \frac{\mathbb{Z}\gen{e_0^2 + e_1^2} \oplus \mathbb{Z}\gen{e_0^2 - e_1^2}}{\mathbb{Z}\gen{e_0^2 + e_1^2}} \cong \mathbb{Z}
+    \end{align*}
+    And \(d_1: e_0^1 \mapsto e_0^0 - e_0^0\), so that \(d_1 \equiv 0\) which gives us \(H_0(C_*(S^2)) = \mathbb{Z}\), and \(H_1(C_*(S^2)) = \mathbb{Z}/\mathbb{Z} \cong 0\), with \(H_i = 0\) for \(i > 2\). The same result as above.
+    
+
+
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -243,25 +271,49 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx7} \(S^1 \wedge S^1 \simeq S^2\)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } \(S^1 \wedge S^1 \cong \frac{T^2}{S^1 \vee S^1}\), where \(T^2 \cong D^2/\sim\), then
+    \begin{align*}
+        S^1 \wedge S^1 = \frac{T^2}{S^1 \vee S^1} \cong \frac{D^2/\sim}{\partial D^2} = \frac{D^2}{\partial D^2} \cong S^2
+    \end{align*}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx8} \(SX \simeq \sum X\)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } Letting \(I := [-1,1]\) and \(x \in X\), we have 
+    \begin{align*}
+        SX := \frac{X \times I}{X \times\set{1} \sim e_0^N, \; X \times \set{-1} \sim e_0^S} \tand \sum X = \frac{SX}{\set{x} \times I \sim \text{pt}}
+    \end{align*}
+
+    Take \(f\) to be the quotient map, and \(g: \sum X \to SX\), 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx9} \(X \wedge S^1 \simeq \sum X\)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } It is important here that the same point \(x \in X\) is used in either quotient. Consider the map \(f: I \to S^1, t \mapsto e^{i\pi t}\), then we get the following,
+    \begin{equation*}
+        \begin{tikzcd}
+            X \times I \arrow[d,"{\pi}"] \arrow[r,"{1 \times f}"] & X \times S^1 \arrow[d,"{\pi'}"] \\
+            \frac{X \times I}{X \times \set{1} \cup X \times \set{-1} \cup \set{x}\times I} \arrow[r,"{\overline{1 \times f}}"] &\frac{X \times S^1}{X\times \set{1} \cup \set{x} \times S^1}
+        \end{tikzcd}
+    \end{equation*}
+
+    The bottom left here is the (reduced) suspension \(\sum X\), and the bottom right is \(X \wedge S^1\). Here the induced map is clearly bijective, since the quotients here are equivalent to quotienting by the image of the quotients, along with quotienting on the left side \(f^{-1}(1) \times \set{1} \sim f^{-1}(-1) \times \set{-1} \sim x\), where \(f\) wasn't injective. This also ensures that the inverse map is continuous.
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx10} Use \(\tilde{H_i}\) to show that \(\partial D^n\) cannot be a retract of \(D^n\)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } We use the Long Exact Sequence property.
+
+    \begin{equation*}
+        \begin{tikzcd}
+            \tilde{H_n}(\partial D^n) \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \tilde{H_n}(D^n/\partial D^n) \arrow[r] & \tilde{H_{n-1}}(\partial D^n) \arrow[r] & \tilde{H_{n-1}}(D^n) \arrow[r] & \tilde{H_{n-1}}(D^n/\partial D^n) \\
+            \tilde{H_n}(S^{n-1}) \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \tilde{H_n}(S^n) \arrow[r] & \tilde{H_{n-1}(S^{n-1})} \arrow[r] &\tilde{H_{n-1}}(D^n) \arrow[r] & \tilde{H_{n-1}}(S^n)\\
+            0 \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \mathbb{Z} \arrow[r] & \mathbb{Z} \arrow[r] &\tilde{H_{n-1}}(D^n) \arrow[r] & 0
+        \end{tikzcd}
+    \end{equation*}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
