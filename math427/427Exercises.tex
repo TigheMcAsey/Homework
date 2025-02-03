@@ -265,7 +265,8 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx6} Show that "augmentation" still gives a chain complex, i.e. \(\epsilon\circ d_1 = 0\) \textcolor{red}{cite Augmentation in notes}
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } It will suffice to check on generators of \(C_1\), let \(e^1_\beta \in C_1\), then 
+    \[\epsilon d_1(e^1_\beta) = \epsilon (e_\alpha^0 - e_{\alpha'}^0) = 1-1 = 0\]
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -280,12 +281,11 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx8} \(SX \simeq \sum X\)
 
-    \emph{proof - } Letting \(I := [-1,1]\) and \(x \in X\), we have 
+    \emph{proof - } Here \(X\) is a CW-complex, we can give \(X \times I\) a CW structure, namely
     \begin{align*}
-        SX := \frac{X \times I}{X \times\set{1} \sim e_0^N, \; X \times \set{-1} \sim e_0^S} \tand \sum X = \frac{SX}{\set{x} \times I \sim \text{pt}}
+        (X \times I)^n = X^{n-1} \times I \cup X^n \times S^0
     \end{align*}
-
-    Take \(f\) to be the quotient map, and \(g: \sum X \to SX\), 
+    where we glue along the same boundaries in the union as in \(X^{n-1} \hookrightarrow X^n \tand S^0 \hookrightarrow I\). \textcolor{red}{TODO}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -305,21 +305,50 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx10} Use \(\tilde{H_i}\) to show that \(\partial D^n\) cannot be a retract of \(D^n\)
 
-    \emph{proof - } We use the Long Exact Sequence property.
+    \emph{proof - } We have that \(D^n/\partial D^n \cong S^n\), furthermore \(D^n \simeq \set{x}\) for all \(n\), implying that \(\tilde{H}_i(D^n) \cong \tilde{H}_i(\set{x}) = 0\), for any \(i,n \in \mathbb{Z}_{\geq 0}\). Suppose for contradiction that there were a retract \(h: D^n \to \partial D^n\), then denoting \(\iota: \partial D^n \hookrightarrow D^n\) we would have that \(h \circ \iota \simeq 1_{\partial D^n}\), by functoriality we get the following commutative diagram (also note that \(\partial D^n = S^{n-1}\)):
 
     \begin{equation*}
         \begin{tikzcd}
-            \tilde{H_n}(\partial D^n) \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \tilde{H_n}(D^n/\partial D^n) \arrow[r] & \tilde{H_{n-1}}(\partial D^n) \arrow[r] & \tilde{H_{n-1}}(D^n) \arrow[r] & \tilde{H_{n-1}}(D^n/\partial D^n) \\
-            \tilde{H_n}(S^{n-1}) \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \tilde{H_n}(S^n) \arrow[r] & \tilde{H_{n-1}(S^{n-1})} \arrow[r] &\tilde{H_{n-1}}(D^n) \arrow[r] & \tilde{H_{n-1}}(S^n)\\
-            0 \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \mathbb{Z} \arrow[r] & \mathbb{Z} \arrow[r] &\tilde{H_{n-1}}(D^n) \arrow[r] & 0
+            \tilde{H}_{n-1}(\partial D^n) \arrow[r,"{1}"] \arrow[d,"{\iota_*}"] &\tilde{H}_{n-1}(\partial D^n) \\
+            \tilde{H}_{n-1}(D^n) \arrow[ur,"{h_*}"]
         \end{tikzcd}
     \end{equation*}
+    Where this diagram is equivalent to
+    \begin{equation*}
+        \begin{tikzcd}
+            \mathbb{Z} \arrow[r,"{1}"] \arrow[d] &\mathbb{Z} \\
+            0 \arrow[ur]
+        \end{tikzcd}
+    \end{equation*}
+    This is clearly a contradiction since there are no surjective morphisms \(0 \to \mathbb{Z}\). \qed
+
+    % \begin{equation*}
+    %     \begin{tikzcd}
+    %         \tilde{H}_n(\partial D^n) \arrow[r] & \tilde{H}_n(D^n) \arrow[r] & \tilde{H}_n(D^n/\partial D^n) \arrow[r] & \tilde{H}_{n-1}(\partial D^n) \arrow[r] & \tilde{H}_{n-1}(D^n) \arrow[r] & \tilde{H}_{n-1}(D^n/\partial D^n) \\
+    %         \tilde{H_n}(S^{n-1}) \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \tilde{H_n}(S^n) \arrow[r] & \tilde{H}_{n-1}(S^{n-1}) \arrow[r] &\tilde{H}_{n-1}(D^n) \arrow[r] & \tilde{H}_{n-1}(S^n)\\
+    %         0 \arrow[r] & \tilde{H_n}(D^n) \arrow[r] & \mathbb{Z} \arrow[r] & \mathbb{Z} \arrow[r] &\tilde{H_{n-1}}(D^n) \arrow[r] & 0
+    %     \end{tikzcd}
+    % \end{equation*}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx11} Let \(f: S^n \to S^n\), show if \(f\) is not surjective then \(\deg f = 0\)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } Suppose that \(f\) is not surjective, then we can pick some \(x \in S^n \setminus f(S^n)\), by the stereographic projection \(S^n \setminus \set{x} \cong \mathbb{R}^n \simeq \set{*}\), so we have the following commutative diagram, where the downward map is taken by restricting the codomain of \(f\) to \(S^n \setminus \set{x}\), and the upper diagonal is the inclusion.
+    \begin{equation*}
+        \begin{tikzcd}
+            \tilde{H_n}(S^n) \arrow[r,"{f_*}"] \arrow[d] &\tilde{H_n}(S^n) \\
+            \tilde{H_n}(\set{*}) \arrow[ur]
+        \end{tikzcd}
+    \end{equation*}
+    equivalently,
+    \begin{equation*}
+        \begin{tikzcd}
+            \mathbb{Z} \arrow[r,"{f_*}"] \arrow[d] &\mathbb{Z} \\
+            0 \arrow[ur]
+        \end{tikzcd}
+    \end{equation*}
+    so \(f_*\) must be the zero map.
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -332,13 +361,45 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx13} Compute the Homology of \(X\), where \(X\) is the triangulation of the Torus.
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } Let the upper triangle be \(e_U^2\), the lower triangle be \(e_L^2\), the upper/lower boundary be \(e_\alpha^1\), the left/right boundary be \(e_\beta^1\), and the diagonal be \(e_\gamma^1\), there is only one zero-cell, we may call it \(e^0\). Then:
+    \begin{align*}
+        \pi_\alpha \varphi_U = \pi_\beta \varphi_U = 1 = - \pi_\gamma \varphi_U \\
+        \pi_\alpha \varphi_L = \pi_\beta \varphi_L = -1 = - \pi_\gamma \varphi_L \\
+        \pi_0 \varphi_\alpha = \pi_0 \varphi_\beta = \pi_0 \varphi_\gamma = 1 - 1 = 0
+    \end{align*}
+
+    In this case we have the cell structure \textcolor{red}{TODO}
+    \begin{align*}
+        ...
+    \end{align*}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx14} Show from the Homology axioms that \(\tilde{H_n}(X^{n+1}) = \tilde{H_n}(X)\)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } We have from Axiom 1, the following sequence is exact
+    \begin{equation*}
+        \begin{tikzcd}
+            \tilde{H}_{k+1}(X^{n+1}/X^n) \arrow[r] & \tilde{H}_{k}(X^n) \arrow[r] & \tilde{H}_{k}(X^{n+1}) \arrow[r] & \tilde{H}_{k}(X^{n+1}/X^n)
+        \end{tikzcd}
+    \end{equation*}
+    We have the following from construction of a CW complex:
+    \begin{align*}
+        X^{n+1}/X^n = \frac{\frac{e_\alpha^{n+1} \bigsqcup_\alpha X^n}{x \sim \varphi_\alpha(x),\; x \in \partial e_\alpha^{n+1},\; \varphi_\alpha(x) \in X^n}}{X^n} = \frac{\bigsqcup_\alpha e_\alpha^{n+1}}{\bigsqcup_{\alpha}\partial e_\alpha^{n+1}} \cong \bigvee_\alpha S^{n+1}
+    \end{align*}
+    So for \(k \neq n+1,n\) we have
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] & \tilde{H}_{k}(X^n) \arrow[r] & \tilde{H}_{k}(X^{n+1}) \arrow[r] & 0
+        \end{tikzcd}
+    \end{equation*}
+    by exactness this gives an isomorphism. Then we can get the following:
+    \begin{equation*}
+        \begin{tikzcd}
+            \tilde{H}_{n}(X^{n+1}/X^n) \arrow[r] & \tilde{H}_{n-1}(X^n) \arrow[r] & \tilde{H}_{n-1}(X^{n+1}) \arrow[r] & \tilde{H}_{n-1}(X^{n+1}/X^n)
+        \end{tikzcd}
+    \end{equation*}
+    
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -348,12 +409,22 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \emph{exercise - }\label{HEx16} Let \(X\) be a cell complex with subcomplex \(A\), furthermore let \(K \subset A\) be any set such that \(\overline{K} \subset A\), show that
+    \emph{exercise - }\label{HEx16} Let \(X\) be a cell complex with subcomplex \(A\), furthermore let \(K \subset A\) be any set such that \(\overline{K} \subset A^\circ\), show that
     \begin{align*}
         \frac{X \setminus K}{A \setminus K} \simeq X/A
     \end{align*}
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } We get the following commutative diagram, since \(\iota: X \setminus K \hookrightarrow X\) is such that \(\iota \vert_{A \setminus K} : A \setminus K \hookrightarrow A\)
+
+    \begin{equation*}
+        \begin{tikzcd}
+            X \setminus K \arrow[r,"{\iota}"] \arrow[d,"{\pi_1}"] & X \arrow[d,"{\pi_2}"] \\
+            \frac{X \setminus K}{A \setminus K} \arrow[r,"{\overline{\iota}}"] & X/A
+        \end{tikzcd}
+    \end{equation*}
+
+    The induced map is clearly bijective, since \(\iota\) is bijective on \(A^c\). Continuity of \(\overline{\iota}\) follows from continuity of \(\iota\). To see that \(\overline{\iota}^{-1}\) is continuous, let \(U\) be open  in \(X\), if \(\set{a} \not \in U\) (here \(\set{a} \subset A \setminus K\)), then \(\pi_1^{-1}(U) = \pi_1^{-1}(U) \cap \overline{K}^c\), so \(\iota(\pi_1^{-1}(U) \cap \overline{K}^c) = \pi_2^{-1}(\overline{\iota}(U))\) which the former is open in the subspace topology iff it is open in \(X\). Now if \(\set{a} \subset U\), then \(\pi_2^{-1}\overline{\iota}(U) = \iota\pi_1^{-1}(U) \cup A^\circ\), where \(\iota\pi_1^{-1}(U) = V \cap K^c\), where \(V\) is open in \(X\), rewriting this we get \(\pi_2^{-1}\overline{\iota}(U) = V \cup A^\circ\) which is open in \(X\), so \(\overline{\iota}(U)\) is open in the quotient topology. \qed
+
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
