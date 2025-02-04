@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1738616723.93231 "c:/Users/Tighe/4thYear/Homework-1/math427/427Exercises.tex" "427Exercises.pdf" "427Exercises" 1738616725.39072 0
-  "427Exercises.aux" 1738616725 1065 a149d1c00552fe60020b5ad605adc1da "pdflatex"
-  "427Exercises.tex" 1738616723 26108 81096d037e6c190d866961f54e3b5333 ""
+["pdflatex"] 1738640504.72206 "c:/Users/Tighe/4thYear/Homework-1/math427/427Exercises.tex" "427Exercises.pdf" "427Exercises" 1738640506.12946 0
+  "427Exercises.aux" 1738640505 1065 0ed96024386da92bf20425ec38d918ff "pdflatex"
+  "427Exercises.tex" 1738640503 30064 95c2753aac693022e7fdc91f4673ba80 ""
   "427Notes.aux" 1738372790 269 f1fa86c5ea23b3f6bd70bddcc545ee21 ""
   "427Notes.tex" 1738372790 1151 e4d3ad5064c11fcfa6f0aafaf06dde43 ""
   "C:/Users/Tighe/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1729493139 83612 69670e67469cfaca8927b121b745dcf0 ""
@@ -150,7 +150,7 @@
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/tools/enumerate.sty" 1700599895 3468 0ef513f22d965f96b06adb5cff671cd7 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/tools/xr.sty" 1700599895 2607 a964d1613be0945563d71d1e0cfe91d7 ""
   "C:/Users/Tighe/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/Tighe/4thYear/Homework-1/math427/427Exercises.tex" 1738616723 26108 81096d037e6c190d866961f54e3b5333 ""
+  "c:/Users/Tighe/4thYear/Homework-1/math427/427Exercises.tex" 1738640503 30064 95c2753aac693022e7fdc91f4673ba80 ""
   (generated)
   "427Exercises.aux"
   "427Exercises.log"

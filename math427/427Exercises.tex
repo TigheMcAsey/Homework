@@ -139,13 +139,13 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
 \emph{exercise - }\label{HEx1} Let \(G\) be a graph, then \(\ker d_1 = \set{\text{Cycles in }G}\)
 
-\emph{proof - } We have the map \(d_1: \oplus_i \mathbf{Z}e_i \to \oplus_i \mathbf{Zv_i}\), then \(\sum_i k_i e_i \in \ker d_1 \iff \sum_i k_i (H(e_i) - T(e_i)) = 0\), where \(H(e)\) denotes the target of an edge, and \(T(e)\) denotes the source of an edge. Then \(\sum_i k_i (H(e_i) - T(e_i)) = \sum_j\ell_j v_j = 0 \iff \ell_j = 0,\; \forall j\). Where \(\ell_j = \sum_{\set{e_i \mid v_j = H(e_i)}} k_i - \sum_{\set{e_i \mid v_j = T(e_i)}} k_i\) so that \(\ell_j = 0\) for all \(j\) exactly when every vertex has an equal number of in and out edges.
+\emph{proof - } We have the map \(d_1: \oplus_i \mathbf{Z}e_i \to \oplus_i \mathbf{Zv_i}\), then \(\sum_i k_i e_i \in \ker d_1 \iff \sum_i k_i (H(e_i) - T(e_i)) = 0\), where \(H(e)\) denotes the target of an edge, and \(T(e)\) denotes the source of an edge. Then \(\sum_i k_i (H(e_i) - T(e_i)) = \sum_j\ell_j v_j = 0 \iff \ell_j = 0,\; \forall j\). Where \(\ell_j = \sum_{\set{e_i \mid v_j = H(e_i)}} k_i - \sum_{\set{e_i \mid v_j = T(e_i)}} k_i\) so that \(\ell_j = 0\) for all \(j\) exactly when every vertex has an equal number of in and out edges. \qed
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \emph{exercise - }\label{HEx2} Show that for the graph \(G\), with \(V(G) = \set{x,y}, E(G) = \set{a = (x,y),b = (x,y), c = (x,y)}\) we have \(\ker d_1 = \gen{a-b, b-c}\)
 
-\emph{proof - } Here we have \(d_1: a,b,c \mapsto y-x\), then \(a-b, b-c \in \ker d_1\). We have \(d_1: n_1a + n_2b + n_3c \mapsto (n_1 + n_2 + n_3)(x-y)\), so that \(\ker d_1 = \set{na + mb + k\ell \mid n + m + \ell = 0}\), so fixing \(na + mb + k\ell = na + mb + -(n+m)c \in \ker d_1\), we have \(na + mb + k\ell = n(a-b) + (m+n)(b-c) \in (a-b,b-c)\)
+\emph{proof - } Here we have \(d_1: a,b,c \mapsto y-x\), then \(a-b, b-c \in \ker d_1\). We have \(d_1: n_1a + n_2b + n_3c \mapsto (n_1 + n_2 + n_3)(x-y)\), so that \(\ker d_1 = \set{na + mb + k\ell \mid n + m + \ell = 0}\), so fixing \(na + mb + k\ell = na + mb + -(n+m)c \in \ker d_1\), we have \(na + mb + k\ell = n(a-b) + (m+n)(b-c) \in (a-b,b-c)\) \qed
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -194,7 +194,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     To show that \(C_*(G)\), and \(C_*(G')\) are chain homotopic, define \[f:v_i \mapsto v_i', e_i \mapsto e_i', \quad g: v_i' \mapsto v_i, e_i' \mapsto e_i\].
     By construction these are chain maps, since firstly \(d_0 = 0, d_0' = 0\), and \(e_i = e_i'\) for each \(e_i \neq (v_1,v_5)\), and the values of \(d_1\) agree with \(d_1'\) on each of the equal \(e_i = e_i'\). For \(e = (v_1,v_5), e' = (v_5,v_1)\), we have \(f_1(e) = -e',g_1(e')=-e\), for \(e \neq (v_1,v_5), e' \neq (v_5,v_1)\) commutativity is obvious since \(d(e) = d'(e')\) in this case. For \(e = (v_1,v_5)\) we have \(f_0 \circ d(e) = f_0(x-y) = x-y = -(y-x) = -d_1'(e') = d_1'(f_1(e))\), the argument is the exact same for commutativity of the square replacing \(g\) for \(f\) and \(e'\) for \(e\). Then \(f \circ g = 1\), so we can just choose our homotopy to be the zero map.
 
-    To see that the homology is the same, there are 2 possible solutions both are easy. The first is that they are isomorphic as chain complexes, the second is that \(d_1\) is rewritten by multiplying a row by \(-1\), preserving the row reduced form and hence the generators of the kernel.
+    To see that the homology is the same, there are 2 possible solutions both are easy. The first is that they are isomorphic as chain complexes, the second is that \(d_1\) is rewritten by multiplying a row by \(-1\), preserving the row reduced form and hence the generators of the kernel. \qed
 
 
 
@@ -224,7 +224,29 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \(fg = 1_{C_*(\Gamma)}\), \(gf = 1_{C_*(\Gamma')}\), so they are homotopies so long as they are chain maps. This is trivial except for the "square" where edges map to vertices.
     Commutativity on generators is trivial apart from \(e_0\), and \(e_0'\), in this case \(f\circ d_1(e_0) = f(v_1 - v_0) = v_1' - v_0' = -(v_0' - v_1') = d_1'(-e_0') = d_1'\circ f (e_0)\). The proof is the same for \(g\).
 
-    (ii) \textcolor{red}{TODO!!}
+    (ii) Suppose we are quotienting the edge \(e_0 = (v_0,v_1), v_0 \neq v_1\). Here in order to focus on the most relevant parts of the chain complex we do some book keeping:
+    \begin{align*}
+        &C_*(\Gamma)_2 = \mathbb{Z}_0^2 \oplus S_2 &C_*(\Gamma)_1 = \mathbb{Z}_0^1 \oplus \mathbb{Z}_1^1 \oplus S_1 \\
+        &C_*(\Gamma')_2 = S_2' &C_*(\Gamma')_1 = \mathbb{Z}_0' \oplus S_1'
+    \end{align*}
+    Here there are natural identifications of all edges and vertices in \(S_i \tand S_i'\). There is really only one way to define \(f\) if we want to keep the natural mapping \(f: S_i \to S_i'\),
+    \begin{align*}
+        &f_1: (a_0e_0,a_1e_1,\hdots,a_me_m) \mapsto (a_1\overline{e_1},a_2\overline{e_2},\hdots,a_m\overline{e_m}) \\
+        &f_0:(a_0v_0,a_1v_1,\hdots,a_nv_n) \mapsto ((a_0+a_1)\overline{v_1},a_2\overline{v_2},\hdots,a_n\overline{v_n})
+    \end{align*}
+    It is clear that \(f\) is a chain map from construction. Now we define \(g: C_*(\Gamma') \to C_*(\Gamma)\) as follows,
+    \begin{align*}
+        g_0: (a_1\overline{v_1},\hdots,a_n\overline{v_n}) \mapsto (0,a_1v_1,\hdots,a_nv_n)
+    \end{align*}
+    Then taking the natural map \(S_2' \to S_2\), composition with \(d\) gives \(e_i \mapsto \sum_{j=0}^nk_j^iv_j\), define \(g_1: \overline{e_i} \mapsto k^i_0e_0 + e_i\). Then we have \(\overline{k_1^i} = k_0^i + k_1^i\)
+    \[d_1g_1(\overline{e_i}) = d_1(k_0^ie_0 + e_i) = k_0^i(v_1 - v_0) + \sum_{j=0}^n k_j^i v_j\]
+    \[g_0\overline{d_1}(\overline{e_i}) = g_0\left(\sum_{j=1}^n \overline{k_j^i} \overline{v_j}\right) = g_0\left((k_0^i + k_1^i)\overline{v_1} + \sum_{j=2}^n k_j^i \overline{v_j}\right) = \sum_{j=0}^n k_j^i v_j + k_0^i(v_1 - v_0)\]
+    This implies that \(g\) is indeed a chain map. It is immediate that \(fg = 1_{C_*(\Gamma')}\), we need to provide a homotopy to show that \(gf \simeq 1_{C_*(\Gamma)}\). Explicitly we have
+    \begin{align*}
+        &1 - g_1f_1 = \left(a_0 - \sum_1^m a_i k_0^i\right)e_0 \\
+        &1 - g_0f_0 = a_0(v_0 - v_1)
+    \end{align*}
+    the map \(h: v_0 \mapsto -e_0\) obviously satisfies \(d_1h_1(a_0,\hdots,a_n) = a_0(v_0 - v_1)\). We only need to check that \(h_1d_1 = \left(a_0 - \sum_1^m a_i k_0^i\right)e_0\), but the first coordinate of \(d_1(a_0e_0 + \sum_{i=1}^m a_i e_i)\) is \(-a_0 + \sum_{i=1}^m a_ik_0^i\), by definition of \(k_0^i\), and since \(e_0 = (v_0,v_1)\). It follows that \[h_1\circ d_1(a_0e_0 + \sum_{i=1}^m a_i e_i) = -(-a_0 + \sum_{i=1}^m a_ik_0^i)e_0 = 1-g_1f_1 \qed\]
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -299,8 +321,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
         \end{tikzcd}
     \end{equation*}
 
-    The bottom left here is the (reduced) suspension \(\sum X\), and the bottom right is \(X \wedge S^1\). Here the induced map is clearly bijective, since the quotients here are equivalent to quotienting by the image of the quotients, along with quotienting on the left side \(f^{-1}(1) \times \set{1} \sim f^{-1}(-1) \times \set{-1} \sim x\), where \(f\) wasn't injective. This also ensures that the inverse map is continuous.
-
+    The bottom left here is the (reduced) suspension \(\sum X\), and the bottom right is \(X \wedge S^1\). Here the induced map is clearly bijective, since the quotients here are equivalent to quotienting by the image of the quotients, along with quotienting on the left side \(f^{-1}(1) \times \set{1} \sim f^{-1}(-1) \times \set{-1} \sim x\), where \(f\) wasn't injective. Continuity of the inverse follows, since we have \(\frac{X \times I}{X \times \partial I} \cong X \times S^1\), and we can factor our map through this homeomorphism before taking quotients.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx10} Use \(\tilde{H_i}\) to show that \(\partial D^n\) cannot be a retract of \(D^n\)
@@ -368,10 +389,17 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
         \pi_0 \varphi_\alpha = \pi_0 \varphi_\beta = \pi_0 \varphi_\gamma = 1 - 1 = 0
     \end{align*}
 
-    In this case we have the cell structure \textcolor{red}{TODO}
+    In this case we have the cell structure
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] & \mathbb{Z}\gen{e^2_U} \oplus \mathbb{Z}\gen{e^2_L} \arrow[r,"{d_2}"] & \mathbb{Z} \gen{e^1_\alpha} \oplus \mathbb{Z} \gen{e^1_\beta} \oplus \mathbb{Z} \gen{e^1_\gamma} \arrow[r,"{d_1}"] &\mathbb{Z} \gen{e^0} \arrow[r] & 0
+        \end{tikzcd}
+    \end{equation*}
+    Where \(\ker d_2 = e_U^2 + e_L^2\), \(d_1 = 0 = d_0\), rewriting \(C_1(X)\) to have \(\text{Im}\,C_2(X)\) as one of its three generators, we get the usual Homology modules for the Torus
     \begin{align*}
-        ...
+        H_2(X) \cong \mathbb{Z}, \quad H_1(X) \cong \mathbb{Z} \oplus \mathbb{Z}, \quad H_0(X) \cong \mathbb{Z}
     \end{align*}
+
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -380,32 +408,39 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \emph{proof - } We have from Axiom 1, the following sequence is exact
     \begin{equation*}
         \begin{tikzcd}
-            \tilde{H}_{k+1}(X^{n+1}/X^n) \arrow[r] & \tilde{H}_{k}(X^n) \arrow[r] & \tilde{H}_{k}(X^{n+1}) \arrow[r] & \tilde{H}_{k}(X^{n+1}/X^n)
+            \tilde{H}_{k+1}(X^{m+1}/X^m) \arrow[r] & \tilde{H}_{k}(X^m) \arrow[r] & \tilde{H}_{k}(X^{m+1}) \arrow[r] & \tilde{H}_{k}(X^{m+1}/X^m)
         \end{tikzcd}
     \end{equation*}
     We have the following from construction of a CW complex:
     \begin{align*}
         X^{n+1}/X^n = \frac{\frac{e_\alpha^{n+1} \bigsqcup_\alpha X^n}{x \sim \varphi_\alpha(x),\; x \in \partial e_\alpha^{n+1},\; \varphi_\alpha(x) \in X^n}}{X^n} = \frac{\bigsqcup_\alpha e_\alpha^{n+1}}{\bigsqcup_{\alpha}\partial e_\alpha^{n+1}} \cong \bigvee_\alpha S^{n+1}
     \end{align*}
-    So for \(k \neq n+1,n\) we have
+    So for \(k \neq m+1,m\) we have
     \begin{equation*}
         \begin{tikzcd}
-            0 \arrow[r] & \tilde{H}_{k}(X^n) \arrow[r] & \tilde{H}_{k}(X^{n+1}) \arrow[r] & 0
+            0 \arrow[r] & \tilde{H}_{k}(X^m) \arrow[r] & \tilde{H}_{k}(X^{m+1}) \arrow[r] & 0
         \end{tikzcd}
     \end{equation*}
-    by exactness this gives an isomorphism. Then we can get the following:
-    \begin{equation*}
-        \begin{tikzcd}
-            \tilde{H}_{n}(X^{n+1}/X^n) \arrow[r] & \tilde{H}_{n-1}(X^n) \arrow[r] & \tilde{H}_{n-1}(X^{n+1}) \arrow[r] & \tilde{H}_{n-1}(X^{n+1}/X^n)
-        \end{tikzcd}
-    \end{equation*}
+    by exactness this gives an isomorphism \(\tilde{H}_n(X^{n+1}) \cong \tilde{H}_n(X^{n+2}) \cong \cdots \cong \tilde{H}_n(X)\)
     
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx15} Rewrite Homoology axioms (1-3) in the context of the category \textbf{Pairs}
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } First note that functoriality gives homotopy invarience, homotopy equivalent maps \(f,g:(X,A) \to (Y,B), \; f \simeq g\) (here we mean the restrictions induce homotopy equivalences on the smaller spaces) induce the same maps of homology modules \(f_* = g_*: H_n(X,A) \to H_n(X,B)\)
+    \begin{enumerate}
+        \item The following sequence is long exact:
+        \begin{equation*}
+            \begin{tikzcd}
+                \cdots H_{n+1}(X,A) \arrow[r] & H_n(A,\set{*}) \arrow[r] & H_n(X,\set{*}) \arrow[r] &H_n(X,A) \arrow[r] &\cdots
+            \end{tikzcd}
+        \end{equation*}
+        \item For any \(n\), \(H_n\left(\bigvee_\alpha (X_\alpha,A_\alpha)\right) = \bigoplus_\alpha H_n(X_\alpha,A_\alpha)\), here we are quotienting an element in \(A, B\) resp. when we take \((X,A)\vee(Y,B)\)
+        \item \(H_n(S^0,\set{*}) = \begin{cases}
+            \mathbb{Z} & n=0 \\ 0 & n > 0
+        \end{cases}\)
+    \end{enumerate}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
