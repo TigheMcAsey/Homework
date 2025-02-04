@@ -126,9 +126,7 @@ This verifies the homotopy.
     H^i := \frac{\ker(d_i)}{\im(d_{i+1})}
 \end{align*}
 Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), there is a natural induced map of \(f_i\) on \(H^i\), given by restricting \(f_i\) to \(\im(d_{i+1})\), then taking the unique map from the quotient by the kernel of \(d_i\), which exists and is unique by the first isomorphism theorem. Calling this induced map \(f_{i,*}\), we need to check that
-\(f_{i,*}\) maps into \(H_i'\). First it is immediate that \(f_i\vert_{\ker{d_i}}: \ker d_i \to \ker d_i'\), since \(d_i'f_i = f_{i-1}d_i\), where the right hand side is zero when restricted to \(\ker(d_i)\).
-
-\textcolor{red}{TODO -- Finish proof}
+\(f_{i,*}\) maps into \(H_i'\). First it is immediate that \(f_i\vert_{\ker{d_i}}: \ker d_i \to \ker d_i'\), since \(d_i'f_i = f_{i-1}d_i\), where the right hand side is zero when restricted to \(\ker(d_i)\), well definition on cosets follows from "\(d^2 = 0\)". So only need check that \((hd + dh)_* = 0\), \(d_{i+1}h \in \text{Im}\, d_{i+1} = 0\) so it only remains to show that \(h: \text{Im}\,d_i \to \text{Im}\,d_{i+1}\), \textcolor{red}{TODO -- finish proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -465,5 +463,31 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx17} Compute \(\tilde{H_i}(\mathbb{RP}^n)\)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } We compute this using cellular homology and degree. First a lemma,
+
+    \textbf{Lemma.} The antipodal map \(f: S^n \to S^n, x \mapsto -x\) is such that \(\deg f = (-1)^{n+1}\)
+
+    Proof of lemma: Consider the CW structure \(e_U^n \cup e_L^n \cup e^{n-1} \cup e^0\) on \(S^n\), \(\tilde{H}_k(S^n) = 0\) unless \(k=n\), so we just consider \(k=n\). It follows that the map \(r: e_U^n \leftrightarrow e_L^n\) on \(\tilde{H}_n(S^n) = \mathbb{Z}\gen{e_U^n - e_L^n}\) takes \(1 \mapsto -1\), so \(r\) has degree \(-1\). Now taking one \(r_i\) for each coordinate plane in \(\mathbb{R}^{n+1}\), we have \(f = \prod_{i=1}^{n+1} r_i \simeq r^{n+1}\) (rotations are homotopies), hence \(\deg f = \deg r^{n+1} = (\deg r)^{n+1} = (-1)^{n+1}\). \qed
+
+    Continuing with the proof of the theorem, we give \(\mathbb{RP}^n\) the usual cell structure, i.e. since
+    \begin{align*}
+        &\mathbb{RP}^n \cong S^n/\!\!\sim \;\cong \frac{D^n}{\sim_{\partial D^n}} = \frac{D^n}{\sim_{S^{n-1}}}
+    \end{align*}
+    we find that taking \(\varphi_n\) as the identity map \(\partial D^n \to S^{n-1}\)
+    \begin{align*}
+        \mathbb{RP}^n = e^n \cup_{\varphi_n} \mathbb{RP}^{n-1} = e^n \cup_{\varphi_n} e^{n-1} \cup_{\varphi_{n-1}} \cdots \cup_{\varphi_0} e^0
+    \end{align*}
+    This gives a chain complex:
+    \begin{equation*}
+        \begin{tikzcd}
+            C_{n+1}(\mathbb{RP}^n) \arrow[r] &C_n(\mathbb{RP}^n) \arrow[r] &C_{n-1}(\mathbb{RP}^n) \arrow[r] &C_{n-2}(\mathbb{RP}^n) \arrow[r] &\cdots \arrow[r] &C_0(\mathbb{RP}^n) \arrow[r] & 0 \\
+            0 \arrow[r] &\mathbb{Z} \arrow[r] &\mathbb{Z} \arrow[r] &\mathbb{Z} \arrow[r] &\cdots \arrow[r] &\mathbb{Z} \arrow[r] & 0
+        \end{tikzcd}
+    \end{equation*}
+    We want to use degree to compute \(d_k\).
+    % Now fix \(x \in \mathbb{RP}^{n-1} = S^n/\!\!\sim\), in this case our projection map is just the identity, and \(\varphi_n^{-1}(x) = \set{x,-x}\). It follows that 
+    % \[\deg \varphi_n = \deg \varphi_n \vert_x + \varphi_n \vert_{-x} = \deg 1 + \deg(x \mapsto -x) = 1 + (-1)^{n+1} = \begin{cases}
+    %     2 & \text{n even} \\
+    %     0 & \text{n odd}
+    % \end{cases}\]
 \end{document}
