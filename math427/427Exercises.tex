@@ -301,12 +301,16 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx8} \(SX \simeq \sum X\)
 
-    \emph{proof - } Here \(X\) is a CW-complex, we can give \(X \times I\) a CW structure, namely
+    \emph{proof - } Here \((X,\set{*})\) is a (pointed but ignore the point for now) CW-complex, we can give \(X \times I\) a CW structure, note that we have \(\partial e^n = \partial(e^{n-1} \times I) = (\partial e^{n-1} \times I)\cup e^{n-1} \times \partial I\)
+    (we can do this using point set topology and the fact that the sets are closed), then the CW-structure on \((X \times I)^n\) can be taken to be \((X \times I)^0 = X^0 \times \partial I\), then taking \(\varphi_\alpha^n\) to be the gluing map of \(e_\alpha^{n}\) into \(X^n\):
     \begin{align*}
-        (X \times I)^n = X^{n-1} \times I \cup X^n \times S^0
+        (X \times I)^n = (X \times I)^{n-1} \bigcup_{\varphi_\alpha^n} e_\alpha^n \times \partial I \bigcup_{\varphi_\alpha^{n-1} \times I} e_\alpha^{n-1} \times I
     \end{align*}
-    where we glue along the same boundaries in the union as in \(X^{n-1} \hookrightarrow X^n \tand S^0 \hookrightarrow I\). \textcolor{red}{TODO}
-
+    This gives a CW structure on \(X \times I\) with \(X \times \partial I\) as a substructure, there is a canonical CW structure on the quotient given by replacing \(\varphi_\alpha^n\) with \(\pi\vert_{X^n} \circ\varphi_\alpha^n\). Furthermore since \(* \in X^0\), we have \(\set{*} \times I \in (X \times I)^1\), which can be identified with its image in the quotient. This is a contractible subcomplex, so by the CW extension theorem
+    \begin{align*}
+        SX = \frac{X \times I}{X \times \partial I} \cong \frac{X \times I}{X \times \partial I \cup \set{*} \times I} = \sum X
+    \end{align*}
+    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx9} \(X \wedge S^1 \simeq \sum X\)
@@ -373,7 +377,48 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - }\label{HEx12} Let \(f\) as in the previous exercise, show that \(\deg f = \deg \sum_* f \) (remark first  show that the suspension \(\sum\) is functorial)
 
-    \emph{proof - }\textcolor{red}{TODO}
+    \emph{proof - } given \(f: X \to Y\), we can define \(\sum_* f\) as the induced map in the following diagram
+    \begin{equation*}
+        \begin{tikzcd}
+            X \times I \arrow[d,"{\pi_X}"] \arrow[r,"{f \times 1}"]& Y \times I \arrow[d,"\pi_Y"] \\
+            \sum X \arrow[r,"{\sum_* f}"]& \sum Y
+        \end{tikzcd}
+    \end{equation*}
+    Continuity simply follows from continuity of \(f\), and the definition of quotient topology taking opens to opens on the upper half of the square, then commutativity and the universal property of the quotient on the lower square. To get \(\sum_* fg = \sum_*f \sum_*g\) simply factor \(f\circ g \times 1\) through the following diagram
+    \begin{equation*}
+        \begin{tikzcd}
+            X \times I \arrow[d,"{\pi_X}"] \arrow[r,"{f \times 1}"]& Y \times I \arrow[d,"\pi_Y"] \arrow[r,"{g \times 1}"] &Z \times I \arrow[d,"{\pi_Z}"] \\
+            \sum X \arrow[r,"{\sum_* f}"]& \sum Y \arrow[r,"{\sum_* g}"]& \sum Z
+        \end{tikzcd}
+    \end{equation*}
+    \(\sum_*1 = 1_{\sum_*}\) is obvious. This suffices to show functoriality.
+
+    For the proof of the main result, note that by an identical construction, the canonical \(C_*\) is functorial, \(f: X \to Y\), then \(C_*f : C_{1_X} \to C_{1_Y}\). It suffices to show the following result for \(SX\), since it has the same Homology as \(\sum X\) by homotopy equivalence, so factoring \(f\) through this equivalence won't affect the degree. We have naturality (identifying \(S^n \leftrightarrow S^n \times \set{0} f \leftrightarrow C_*f \vert_{S^n \times \set{0}}\))
+    \begin{equation*}
+        \begin{tikzcd}
+            S^n \arrow[d,"{f}"] \arrow[r]& CS^n\arrow[d,"{C_*f}"]\\
+            S^n \arrow[r]& CS^n 
+        \end{tikzcd}
+    \end{equation*}
+    And hence, we get a chain map
+    \begin{equation*}
+        \begin{tikzcd}
+            H_{n+1}(CS^n) \arrow[d,"{(C_*f)_*}"] \arrow[r,"{}"]& H_{n+1}(CS^n,S^n) \arrow[d,"{(S_*f)_*}"]\arrow[r,"{}"]& H_n(S^n)\arrow[d,"{f_*}"] \arrow[r,"{}"]& H_n(CS^n) \arrow[d,"{(C_*f)_*}"] \\
+            H_{n+1}(CS^n)\arrow[r,"{}"]& H_{n+1}(CS^n,S^n) \arrow[r,"{}"]& H_n(S^n) \arrow[r,"{}"]& H_n(CS^n)
+        \end{tikzcd}
+    \end{equation*}
+    Which we can rewrite as
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[d,"{(C_*f)_*}"] \arrow[r,"{}"]& H_{n+1}(S(S^n)) \arrow[d,"{(S_*f)_*}"]\arrow[r,"{}"]& H_n(S^n)\arrow[d,"{f_*}"] \arrow[r,"{}"]& 0 \arrow[d,"{(C_*f)_*}"] \\
+            0\arrow[r,"{}"]& H_{n+1}(S(S^n)) \arrow[r,"{}"]& H_n(S^n) \arrow[r,"{}"]& 0
+        \end{tikzcd}
+    \end{equation*}
+    Commutativity suffices to show that the degrees of the maps must be equal. \qed
+    
+    \textbf{Remark 1.} Use of the \(0\) maps on either end of the sequence is a bit of a cheat here so we get for free that \(H_{n+1}(S(S^n)) \cong \mathbb{Z}\), and we need to ensure the map \(H_{n+1}(S(S^n)) \to H_n(S^n)\) is nonzero since otherwise we cannot conclude about \((\sum_*f)_*(1) = (S_*f)_*(1)\) from the above diagram.
+
+    \textbf{Remark 2.} To make sense of degree here we should really show that \(\sum S^n \simeq S(S^n) \simeq S^{n+1}\), there is an explicit homeomorphism by simply rescaling by the factor in \(I\) in \(S^n \times I\), then taking the quotient.
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -484,10 +529,29 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
             0 \arrow[r] &\mathbb{Z} \arrow[r] &\mathbb{Z} \arrow[r] &\mathbb{Z} \arrow[r] &\cdots \arrow[r] &\mathbb{Z} \arrow[r] & 0
         \end{tikzcd}
     \end{equation*}
-    We want to use degree to compute \(d_k\).
-    % Now fix \(x \in \mathbb{RP}^{n-1} = S^n/\!\!\sim\), in this case our projection map is just the identity, and \(\varphi_n^{-1}(x) = \set{x,-x}\). It follows that 
-    % \[\deg \varphi_n = \deg \varphi_n \vert_x + \varphi_n \vert_{-x} = \deg 1 + \deg(x \mapsto -x) = 1 + (-1)^{n+1} = \begin{cases}
-    %     2 & \text{n even} \\
-    %     0 & \text{n odd}
-    % \end{cases}\]
+    We want to use degree to compute \(d_k\). In this case, we only have one \(n-1\)-cell and we are attaching only one \(n\)-cell, so the we can determine \(d_n\) from \(d_n(e^n) = (\deg f) e^{n-1}\). Where \(f\) is just the composition
+    \begin{equation*}
+        \begin{tikzcd}
+            \partial e^n \arrow[rr,"{f}"] \arrow[rd,"{\varphi}"]&  &\frac{\mathbb{RP}^{n-1}}{\mathbb{RP}^{n-2}} \\
+            &\mathbb{RP}^{n-1} \arrow[ru,"{\pi}"]
+        \end{tikzcd}
+    \end{equation*}
+    Fix a point \(y \in \frac{\mathbb{RP}^{n-1}}{\mathbb{RP}^{n-2}}\), then \(f^{-1}(y) = \set{x,-x}\), taking neighborhoods as in the definition of local degree, we may take \(V = f(U_1)\), and \(U_2\) homeomorphic to \(V\) via \(f\) by excision on either \(U_1\) or \(U_2\). Then there is a homeomorphism \(f\vert_{U_2}f\vert_{U_1}^{-1}: U_1 \to U_2\). This map extends to the antipodal map \(r^{n+1}: \partial e^n \to \partial e^n\) which has degree \(\sigma(n+1)\), it follows that (since \(\deg g^{-1} = \deg g,\; \forall g\) invertible) we have \(\deg f \vert_{-x} = (-1)^{n+1} \deg f \vert_x\). If \(\deg f \vert_x = -1\), then this is actually arbitrary, since we could have chosen opposite generators for \(H_n(S^n)\), so we can assume that \(\deg f \vert_x = 1\). This computes \(d_n\)
+    \begin{align*}
+        d_n(e^n) = \deg f = \deg f \vert_x + \deg f \vert_{-x} = 1 + \sigma(n+1)
+    \end{align*}
+    This gives us the chain complex
+    \begin{equation*}
+        \begin{tikzcd}
+            &\cdots \arrow[r,"{\times 2}"]& \mathbb{Z} \arrow[r,"{0}"] &\mathbb{Z} \arrow[r,"{\times 2}"] &\mathbb{Z} \arrow[r] & 0 \arrow[r]& 0
+        \end{tikzcd}
+    \end{equation*}
+    Now we can directly compute
+    \begin{align*}
+        \tilde{H}_k(\mathbb{RP}^n) = \begin{cases}
+            \mathbb{Z} & k=n \equiv 1\!\!\!\mod{2} \\
+            \mathbb{Z}/(2) & n \geq k \equiv 1\!\!\!\mod{2}\\
+            0 & \text{else}
+        \end{cases}
+    \end{align*}
 \end{document}
