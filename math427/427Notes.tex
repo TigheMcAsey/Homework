@@ -38,4 +38,16 @@
     \textbf{CAUTION!! - } The connection (this is what we call the diagonal maps often denoted \(\mathbf{h}\)) diagram need to not commute.
 
     \section{Homology}
+
+    \subsection{The Cellular Chain Complex}
+
+    \textbf{Definition of the cellular chain complex: } The cellular chain complex is defined on a CW complex, given by \(C_n = H_n(X^n/X^{n-1})\), 
+    it is easy to see that this is free on n-cells since this is the homology of that many n-spheres.
+
+    \textbf{Calculating differential maps: } Given the above, construction of cellular homology from an ES or reduced ES theory, we can calculate the image of the
+    chain map \(d_n\), by simply calculating the degree on every component. I.e. Let \(\set{e_\alpha^{n-1}}_A \tand \set{e_\beta^{n-1}}_B\) be the \(n \tand n-1\)-cells in \(X\), 
+    then \(d_n\) is determined by its degree on each of the \(\del e_\alpha^n\). In particular we have the familiar formula (the quotient in the image is commonly called \(S^{n-1}_\beta\)).
+    \[d_n (e^n_\alpha) = \deg (q_\beta\varphi_\alpha): \partial e_\alpha \to \frac{X^{n-1}}{X^{n-1} \setminus e^{n-1}_\beta}\]
+
+    \section{Cohomology}
 \end{document}
