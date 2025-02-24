@@ -1,0 +1,254 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 421hw3}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} Let \((a_1,\hdots,a_n) \in K^n\), and denote \(M := \max\set{\norm{e_i} \mid 1 \leq i \leq n}\)
+        \begin{align*}
+            \norm{\phi(a_1,\hdots,a_n)} &= \norm{\sum_1^n a_i e_i} = \leq \sum_{i=1}^n \left(\abs{a_i}\norm{e_i} + \sum_{j\neq i}\abs{a_j}\norm{e_i}\right)
+            = \sum_{i=1}^n \norm{e_i}\sum_{j=1}^n \abs{a_j}\\ 
+            &= \sum_1^n \norm{(a_1,\hdots,a_n)}_1\norm{e_i} \leq nM\norm{(a_1,\hdots,a_n)}_1
+        \end{align*}
+        Hence \(\norm{\phi(x)} \leq nM\norm{x}_1\) is bounded.
+
+        \textbf{(b)} We first show that \(K^n\) with \(\norm{\cdot}_1\) is homeomorphic to \(K^n\) with \(\norm{\cdot}_2\) via the identity map. To see the map is continuous, let \(\epsilon > 0\), then \(\norm{x-y}_1 < \frac{\epsilon}{\sqrt{n}}\) implies that in particular each coordinate must have absolute value less than \(\sqrt{\frac{\epsilon}{n}}\),
+        \begin{align*}
+            \norm{x-y}_2 = \sqrt{\sum_{i=1}^n \abs{x_i - y_i}^2} \leq \sqrt{\sum_{i=1}^n \frac{\epsilon^2}{n}} = \epsilon
+        \end{align*}
+        To see that the map is open, note that by the Cauchy Schwarz inequality we have \(\norm{x}_1 \leq \sqrt{n\norm{x}_2}\), so choosing \(\delta = \frac{\epsilon^2}{\sqrt{n}}\) we have for \(\norm{x-y}_2 < \delta\),
+        \begin{align*}
+            \norm{x-y}_1 \leq \sqrt{n\norm{x-y}_2} < \sqrt{n\delta} = \epsilon
+        \end{align*}
+
+        Since \((K^n,\norm{\cdot}_1)\) is homeomorphic to \(K^n\) wth the usual topology (via the identity map), we have that a set \(F\) is compact in \((K^n,\norm{\cdot}_1)\) if and only if it is compact in \(K^n\). The unit sphere in \(K^n\) with the usual topology is compact by the Heine-Borel theorem, so the unit sphere in \((K^n,\norm{\cdot}_1)\) is compact.
+
+        \textbf{(c)} We have that the continuous image of a compact set is compact (proven in class but the details are just take an open cover of the image and pull it back to the original set to choose the finite subcover). Since the unit sphere in \((K^n,\norm{\cdot}_1)\) is compact, the image of the unit sphere under \(\phi\) is compact, this implies that for some \(y \in \phi(S)\), we have \(0 \neq m := \norm{y} = \inf\set{\norm{y} \mid y \in \phi(S)}\) (the inequality to zero follows from injectivity of \(\phi\), and compactness implies that some point realizes the infimum). Now let \(x \in X\), if \(\norm{x} = 0\) then \(\phi^{-1}(x) = 0\) and boundedness is immediate, so assume not, then \(\frac{\phi^{-1}(x)}{\norm{\phi^{-1}(x)}_1} = x' \in S\), hence applying \(\phi\) to both sides and rearranging,
+        \begin{align*}
+            \norm{\phi^{-1}(x)}_1 = \frac{\norm{x}}{\norm{\phi(x')}} \leq \frac{1}{m}\norm{x}
+        \end{align*}
+        so that \(\phi^{-1}\) is bounded.
+
+        \textbf{(d)} Let \(\norm{\cdot}_\alpha \tand \norm{\cdot}_\beta\) be two norms on \(X\), then since the norm in parts (a) and (c) were arbitrary, this furnishes constants \(C_\alpha, C_\beta, D_\alpha, D_\beta\), such that the following inequalities hold for any \(y \in K^n\) and \(x \in X\)
+        \begin{align*}
+            &\norm{\phi(y)}_\alpha \leq C_\alpha\norm{y}_1
+            &\norm{\phi(y)}_\beta \leq C_\beta\norm{y}_1\\
+            &\norm{\phi^{-1}(x)}_1 \leq D_\alpha\norm{x}_\alpha
+            &\norm{\phi^{-1}(x)}_1 \leq D_\beta\norm{x}_\beta
+        \end{align*}
+        Now let \(x \in X\), if \(x = 0\), then we can choose \(C = 1\) in the definition of equivalence of norms, so assume not, then
+        \begin{align*}
+            &\norm{x}_\beta \geq \frac{1}{D_\beta}\norm{\phi^{-1}(x)}_1 \geq \frac{1}{D_\beta}\left(\frac{1}{C_\alpha}\norm{\phi\phi^{-1}(x)}_\alpha\right) = \frac{1}{D_\beta C_\alpha}\norm{x}_\alpha \\
+            &\norm{x}_\alpha \geq \frac{1}{D_\alpha}\norm{\phi^{-1}(x)}_1 \geq \frac{1}{D_\alpha}\left(\frac{1}{C_\beta}\norm{\phi\phi^{-1}(x)}_\beta\right) = \frac{1}{D_\alpha C_\beta}\norm{x}_\beta \\
+        \end{align*}
+        So that \(\frac{1}{C_\alpha D_\beta}\norm{x}_\alpha \leq \norm{x}_\beta \leq D_\alpha C_\beta\norm{x}_\alpha\).
+        Choosing \(C = \max\set{C_\alpha D_\beta, D_\alpha C_\beta}\) furnishes the desired equivalece of norms
+        \begin{align*}
+            \frac{1}{C}\norm{x}_\alpha \leq \norm{x}_\beta \leq C\norm{x}_\alpha
+        \end{align*}
+
+        \textbf{(e)} Let \((X,\norm{\cdot})\) be a finite dimensional normed \(K\)-vector space, and let \((x_n)_1^\infty\) be a cauchy sequence. We may use \(\phi\) as defined earlier in the question, then \((\phi^{-1}(x_n))_1^\infty\) is a cauchy sequence in \(K^n\) (verification below) by completeness of \((K^n,\norm{\cdot}_1)\), we have \(\phi^{-1}(x_n) \to y\), boundedness of \(\phi^{-1}\) furnishes some \(C\), such that for any \(x \in X\), \(\norm{x} \leq C\norm{\phi^{-1}(x)}\)
+        \begin{align*}
+            0 \leq \norm{x_n - \phi(y)} \leq C\norm{\phi^{-1}(x_n) - y} \overset{n \to \infty}{\longrightarrow} 0
+        \end{align*}
+        Convergence follows by the squeeze theorem, implying that \(X\) is complete and hence Banach.
+
+        \textbf{Proof that }\((\varphi^{-1}(x_n))_1^\infty\) \textbf{is cauchy.} Let \(\epsilon > 0\), note that the proof of continuity of linear operators in fact also implies uniform continuity. Hence there exists \(\delta > 0\) such that \(\norm{x-y} < \delta\) implies \(\norm{\phi^{-1}(x) - \phi^{-1}(y)} < \epsilon\). Since \((x_n)_1^\infty\) is cauchy, there exists some \(N\) such that for all \(n,m \geq N\), \(\norm{x_n - x_m} < \delta\), hence for any \(n,m \geq N\), \(\norm{\phi^{-1}(x_n) - \phi^{-1}(x_m)} < \epsilon\), so that \((\phi^{-1}(x_n))_1^\infty\) is cauchy.
+        \end{pb}
+
+        \begin{pb}
+            \textbf{(a)} I will drop the subscript \(x \neq y\) in the definition of the norm for brevity.
+            \begin{itemize}
+                \item \emph{Homogeneity}: Let \(\lambda \in K^\times \tand f \in \Lambda_\alpha([0,1])\), then
+                \begin{align*}
+                    \norm{\lambda f}_{\Lambda_\alpha} &= \abs{\lambda f(0)} + \sup_{x,y \in [0,1]} \frac{\abs{\lambda f(x) - \lambda f(y)}}{\abs{x - y}^\alpha}
+                    = \abs{\lambda}\abs{f(0)} + \sup_{x,y \in [0,1]} \frac{\abs{\lambda}\abs{f(x) - f(y)}}{\abs{x - y}^\alpha} \\
+                    &= \abs{\lambda}\abs{f(0)} + \abs{\lambda}\sup_{x,y \in [0,1]} \frac{\abs{f(x) - f(y)}}{\abs{x - y}^\alpha} = \abs{\lambda}\norm{f}_{\Lambda_\alpha}
+                \end{align*}
+                \item \emph{Triangle Inequality}: Let \(f,g \in \Lambda_\alpha([0,1])\), then
+                \begin{align*}
+                    \norm{f + g}_{\Lambda_\alpha} &= \abs{f(0) + g(0)} + \sup_{x,y \in [0,1]} \frac{\abs{f(x) + g(x) - f(y) - g(y)}}{\abs{x - y}^\alpha} \\
+                    &\leq \abs{f(0) + g(0)} + \sup_{x,y \in [0,1]} \frac{\abs{f(x) - f(y)} + \abs{g(x) - g(y)}}{\abs{x - y}^\alpha} \\
+                    &\leq \abs{f(0)} + \sup_{x,y \in [0,1]} \frac{\abs{f(x) - f(y)}}{\abs{x - y}^\alpha} + \abs{g(0)} + \sup_{x,y \in [0,1]} \frac{\abs{g(x) - g(y)}}{\abs{x - y}^\alpha} \\
+                    &= \norm{f}_{\Lambda_\alpha} + \norm{g}_{\Lambda_\alpha}
+                \end{align*}
+                The first inequality holds since it can be applied to each \(x,y \in [0,1], \; x \neq y\) so in particular it also holds for the supremum over all such \(x,y\). the second inequality follows from applying the triangle inequality to the evaluation at 0, as well as the more general inequality \(\sup_{a \in A} h(a) + r(a) \leq \sup_{a \in A} h(a) + \sup_{a \in A} r(a)\). applied in this case with \(A = \set{(x,y) \in [0,1]^2 \mid x \neq y}\), \(h((a,b)) = \frac{\abs{f(a) - f(b)}}{\abs{a - b}^\alpha}\), and \(r((a,b)) = \frac{\abs{g(a) - g(b)}}{\abs{a - b}^\alpha}\).
+                \item \emph{Positive Definite}: Let \(f \in \Lambda_\alpha([0,1])\), then \(f = 0\) of course implies that \(\norm{f}_{\Lambda_\alpha} = 0\), if \(f \neq 0\), then either \(f(0) \neq 0\), in which case \(\norm{f}_{\Lambda_\alpha} \geq \abs{f(0)} > 0\), or \(f(0) = 0\), and there is some \(x \in (0,1]\), such that \(f(x) \neq 0\), in which case
+                \begin{align*}
+                    \norm{f}_{\Lambda_\alpha} \geq \sup_{x,y \in [0,1]} \frac{\abs{f(x) - f(y)}}{\abs{x - y}^\alpha} \geq \frac{\abs{f(x)}}{\abs{x - 0}^\alpha} > 0
+                \end{align*}
+            \end{itemize}
+
+            \textbf{(b)} We first check that \(\lambda_\alpha([0,1])\) is a subspace, firstly it is immediate that \(\lambda_\alpha([0,1])\) contains the function \(x \mapsto 0\). Let \(f,g \in \lambda_\alpha([0,1])\), \(c \in \mathbb{R}\), and \(y \in [0,1]\), then
+            \begin{align*}
+                \lim_{x \to y} \frac{\abs{(cf + g)(x) - (cf + g)(y)}}{\abs{x-y}^\alpha} &\leq \lim_{x \to y}\frac{\abs{c}\abs{f(x) - f(y)} + \abs{g(x) - g(y)}}{\abs{x-y}^\alpha} \\ &= \abs{c}\lim_{x\to y}\frac{\abs{f(x) - f(y)}}{\abs{x-y}^\alpha} + \lim_{x\to y}\frac{\abs{g(x) - g(y)}}{\abs{x-y}^\alpha} = 0
+            \end{align*}
+            so that \(cf + g \in \lambda_\alpha([0,1])\). Hence \(\lambda_\alpha([0,1])\) is a subspace of \(\Lambda_\alpha([0,1])\). To see that the subspace is closed, suppose that \((f_n)_1^\infty\) is a sequence in \(\lambda_\alpha([0,1])\) such that \(f_n \to f\) in \(\Lambda_\alpha([0,1])\), now let \(y \in [0,1]\) and \(\epsilon > 0\). It follows that for some \(N \in \mathbb{N}\) we have \(n \geq N\) implies that \(\norm{f - f_n}_{\Lambda_\alpha} < \epsilon\), furthermore \(f \in \lambda_\alpha([0,1])\) implies that \(\lim_{x \to y} \frac{\abs{f(x) - f(y)}}{\abs{x-y}^\alpha} = 0\), now let \(n \geq N\)
+            \begin{align*}
+                0 \leq \lim_{x \to y}\frac{\abs{f_n(x) - f_n(y)}}{\abs{x-y}^\alpha} &= \lim_{x \to y}\frac{\abs{f(x) - f(x) + f_n(x) - f(y) + f(y) - f_n(y)}}{\abs{x-y}^\alpha} \\
+                &\leq \lim_{x \to y}\frac{\abs{f(x) - f(y)}}{\abs{x-y}^\alpha} + \lim_{x \to y}\frac{\abs{(f_n(x) - f(x)) - (f_n(y) - f(y))}}{\abs{x-y}^\alpha} \\
+                &\leq 0 + \sup_{x,y \in [0,1]}\frac{\abs{(f_n(x) - f(x)) - (f_n(y) + f(y))}}{\abs{x-y}^\alpha} \\
+                &\leq \norm{f_n - f}_{\Lambda_\alpha} = \norm{f - f_n}_{\Lambda_\alpha} < \epsilon
+            \end{align*}
+            and since \(\epsilon\) was arbitrary, we can conclude that \(\lim_{x \to y}\frac{\abs{f_n(x) - f_n(y)}}{\abs{x-y}^\alpha} = 0\), so that \(f_n \in \lambda_\alpha([0,1])\), and hence the subspace is closed. It remains to show that the space is infinite dimensional, let \(\alpha \in (0,1)\), then for \(\epsilon \in (0,1-\alpha)\), we have that \(f_\epsilon: x \mapsto x^{\alpha + \epsilon}\) is such that \(f_\epsilon \in \lambda_\alpha([0,1])\), to see this note that for \(\beta \in (0,1)\) and \(x,y \in [0,1]\) we have that \(\abs{x^\beta - y^\beta} \leq \abs{x-y}^\beta\) (proof below), we may apply this so that
+            \begin{align*}
+                0 \leq \lim_{x \to y}\frac{\abs{f_\epsilon(x) - f_\epsilon(y)}}{\abs{x-y}^\alpha} = \lim_{x \to y}\frac{\abs{x^{\alpha + \epsilon} - y^{\alpha + \epsilon}}}{\abs{x-y}^\alpha} \leq \lim_{x \to y}\frac{\abs{x - y}^{\alpha + \epsilon}}{\abs{x-y}^\alpha} = \lim_{x \to y}\abs{x-y}^\epsilon = 0
+            \end{align*}
+            It will suffice to show that the set \(\set{f_\epsilon \mid \epsilon \in (0,1-\alpha)}\) is linearly independent, this follows from \(x \mapsto x^\beta \not \in \Lambda_\gamma([0,1])\) for any \(\beta < \gamma\), and since \(\Lambda_\gamma\) is a vectorspace, it is the case that \(x \mapsto x^\beta\) is linearly independent from \(x \mapsto x^\gamma\) for any \(\beta < \gamma\). To see that \(x \mapsto x^\beta \not \in \Lambda_\gamma\), we have that for \(y = 0\),
+            \begin{align*}
+                \lim_{x \to 0}\frac{\abs{x^\beta}}{\abs{x^\gamma}} = \lim_{x \to 0}\frac{1}{\abs{x^{\gamma - \beta}}} = \infty
+            \end{align*}
+            so that in particular \(\norm{x \mapsto x^\beta}_{\Lambda_\gamma} \geq \sup_{x,y \in [0,1]}\frac{x^\beta - y^\beta}{(x - y)^\gamma} = \infty\), this suffices to show that \(x \mapsto x^\beta\) is linearly independent from \(\set{x \mapsto x^\gamma \vert \gamma > \beta}\) it follows by transfinite induction that the set \(\set{f_\epsilon \mid \epsilon \in (0,1-\alpha)}\) is linearly independent (the base case is trivial since the empty set is linearly independent), and hence \(\lambda_\alpha([0,1])\) is infinite dimensional.
+
+            Finally if \(f \in \lambda_1([0,1])\), then \(f\) is differentiable by definition, and \(f'(y) = 0\) for all \(y \in (0,1)\), it follows by the mean value theorem that for any \(t \in (0,1]\), we have that \(f(t) = f(0) + tf'(c)\) for some \(c \in (0,t)\), but since \(f'(c) = 0\), we have that \(f(t) = f(0)\), so that \(f\) is constant.
+
+            \textbf{Proof that \(\mathbf{\abs{x^\beta - y^\beta} \leq \abs{x-y}^\beta}\).} Let \(x,y \in [0,1]\), then if \(x \tor y\) are zero the result is immediate, so assume not. Without loss of generality assume that \(x < y\), then
+            \begin{align*}
+                \abs{x^\beta - y^\beta} \leq \abs{x - y}^\beta \iff \frac{\abs{x^\beta - y^\beta}}{y^\beta} \leq \frac{\abs{x - y}^\beta}{y^\beta} \iff \abs{1 - \left(\frac{x}{y}\right)^\beta} \leq \abs{1 - \frac{x}{y}}^\beta
+            \end{align*}
+            Now since \(\frac{x}{y} \in (0,1)\), we also have that \(1 - \frac{x}{y} \in (0,1)\), which gives us the following inequalities
+            \begin{align*}
+                \abs{1 - \left(\frac{x}{y}\right)^\beta} \leq \abs{1 - \frac{x}{y}} \leq \abs{1 - \frac{x}{y}}^\beta
+            \end{align*}
+            so that \(\abs{x^\beta - y^\beta} \leq \abs{x - y}^\beta\), and hence \(x^\beta\) is Holder continuous of exponent \(\beta\).
+        \end{pb}
+
+        \begin{pb}
+            It is immediate from the definition that \(M \subset {M^\perp}^\perp\), so it will suffice to show that \({M^\perp}^\perp\) is closed to conclude that \(\overline{M} \subset {M^\perp}^\perp\). Let \(x \in \overline{{M^\perp}^\perp}\), then there is a net \((x_\alpha)_A\) in \({M^\perp}^\perp\), such that \(x_\alpha \to x\). It follows that for any \(f \in M^\perp\), \(f\) is continuous, so that \(f(x) = \lim f(x_\alpha) = \lim 0 = 0\), since this holds for arbitrary \(f \in M^\perp\), we have that \(x \in {M^\perp}^\perp\), hence \({M^\perp}^\perp\) is closed so that \(\overline{M} \subset {M^\perp}^\perp\).
+
+            Conversely, suppose that \(x \not \in \overline{M}\), then \(\gen{x} \setminus 0 \subset M^c\), since \(M\) is a subspace of \(X\). Now I claim the function \(d_M: t \mapsto \inf\set{\norm{t-y} \mid y \in M}\) is a seminorm. The triangle inequality is proven in the previous homework, now let \(t \in X, \; \lambda \in K^\times \) since \(M\) is a subspace, whenever \(y \in M\) we also have \(\lambda^{-1}y \in M\), using the fact that \(\abs{\lambda}\norm{t - \lambda^{-1}y} = \norm{\lambda t - y}\), we get that \[d_M(\lambda t) = \inf\set{\norm{\lambda t - y} \mid y \in M} = \inf\set{\abs{\lambda}\norm{t - y} \mid y \in M} = \abs{\lambda}\inf\set{\norm{t - y} \mid y \in M} = \abs{\lambda}d_M(t)\]
+            so we can conclude that \(d_M: X \to K\) is a seminorm. Now define \(f: M + \gen{x} \to k\) be defined by extending linearly from \(x \overset{f}{\mapsto} d_M(x)\), and \(f(M) = 0\). It is immediate that \(f\) is bound above by \(d_M\) on its support, so we may apply the Hahn Banach theorem to \(f\) and \(d_M\), to get some linear functional \(F: X \to K\), such that \(F \leq d_M\), and \(F\vert M + \gen{x} = f\) (in particular \(F \in M^\perp\)). Since \(x \not \in \overline{M}\), we have \(d_M(\lambda x) > 0\), for any \(\lambda \in K^\times\), this implies that \(F(x) = f(x) = d_M(x) > 0\), so that \(x \not \in {M^{\perp}}^\perp\), which suffices to show that \({M^\perp}^\perp \subset \overline{M}\), and hence the two sets are equal.
+        \end{pb}
+        \begin{pb}
+            \textbf{(a)} we First check that \(\sim\) is an equivalence relation, since \(M\) is a subspace it contains \(0\), so reflexivity is satisfied by \(x-x = 0\). Symmetry also follows by \(M\) being a subspace, since if \(m \in M\), then so is \(-m\), so that \(x-y \in M \iff y-x = -(x-y) \in M\). Finally, if \(x-y \tand y-z \in M\), then \((x-y) + (y-z) = x-z \in M\) since subspaces are closed under addition this suffices to show that \(\sim\) is an equivalence relation.
+
+            To check that \(X/M\) is a vectorspace, we check the axioms:
+
+            \begin{itemize}
+                \item \emph{Associativity of addition}
+                \item \emph{Commutativity of addition}
+                \item \emph{Associativity of scalar multiplication}
+                \item \emph{Existence of 0}
+                \item \emph{Existence of 1}
+                \item \emph{Additive inverses}
+                \item \emph{distributivity of scalar multiplication over vector addition}
+                \item \emph{distributivity of scalar multiplication over field addition}
+            \end{itemize}
+            
+            To see that addition is well defined, suppose that \(x \sim x'\), and \(y \sim y'\), then \(x + y - (x' + y') = (x - x') + (y-y')\) which is a sum of elements of \(M\), hence is in \(M\) so that \(x + y \sim x' + y'\). To see that scalar multiplication is well defined, suppose that \(x \sim x'\), then \(x - x' \in M\), so that for \(\lambda \in K\), we have \(\lambda(x - x') = \lambda x - \lambda x' \in M\), hence \(\lambda x \sim \lambda x'\).
+
+            \textbf{(b)} Once again this is a simple check of the axioms for the norm.
+            \begin{itemize}
+                \item \emph{Positive Definite}: \(\norm{x + M} \geq 0\) follows directly from the norm on \(X\) being positive definite. If \(x \sim 0\), then for some \(m \in M\), we have that \(x + m = 0\), and hence \(0 \leq \norm{x + M} \leq \norm{x + m} = 0\). Finally, if \(x \not \sim 0\), then \(x \not \in M\), and hence since \(M\) is closed, there is some \(\epsilon > 0\), such that \(x \in N_\epsilon(x) \subset M^c\), it follows by definition of subspace that for any \(m \in M, \; m + N_\epsilon(x) := \set{m + y \mid y \in N_\epsilon(x)} \subset M^c\), where \(m + N_\epsilon(x) = N_\epsilon(m + x)\) is immediate. Hence for any \(m \in M\), we have \(0 \not \in N_\epsilon(x + m)\), which implies that \(x + m \not \in N_\epsilon(0)\), and hence \(\norm{x + m} \geq \epsilon\), so that \(\norm{x + M} \geq \epsilon > 0\).
+                \item \emph{Triangle inequality}: Let \(x,y \in X\), then for any \(m,n \in M\), we have that
+                \(\norm{x + m} + \norm{y + n} \geq \norm{x + y + m + n}\), then since \(m + n \in M\), this implies that \(\norm{x + m} + \norm{y + n} \geq \norm{x + y + M}\), so that
+                \begin{align*}
+                    \norm{x + m} \geq \norm{x + y + M} - \norm{y + n}
+                \end{align*}
+                since \(m\) was arbitrary, this implies that
+                \begin{align*}
+                    \norm{x + M} \geq \norm{x + y + M} - \norm{y + n} \iff \norm{x + M} + \norm{y + n} \geq \norm{x + y + M}
+                \end{align*}
+                so that \(\norm{y + n} \geq \norm{x + y + M} - \norm{x + M}\), now since \(n\) is arbitrary, we have that
+                \begin{align*}
+                    \norm{y + M} \geq \norm{x + y + M} - \norm{x + M}
+                \end{align*}
+                and hence \(\norm{x + M} + \norm{y + M} \geq \norm{x + y + M}\).
+                \item \emph{Homogeneity}: Let \(x \in X \tand \lambda \in K\), then \(S = \set{\lambda x - \lambda m \mid m \in M} = \set{\lambda x - m \mid m \in M} = S'\) and hence,
+                \begin{align*}
+                    \norm{\lambda x + M} &= \inf\set{\norm{\lambda x - m} \mid m \in M} = \inf\set{\norm{\lambda x - m} \mid \lambda x - m \in S'} \\ 
+                    &= \inf\set{\norm{\lambda x - \lambda m} \mid \lambda x - \lambda m \in S} = \inf\set{\abs{\lambda}\norm{x - m} \mid m \in M} = \abs{\lambda}\norm{x + M}
+                \end{align*}
+            \end{itemize}
+
+            \textbf{(c)} Since \(0 \in M\), we have that for any \(x \in X\), \(\norm{\pi(x)} = \norm{x + M} = \inf_{m \in M}\norm{x + m} \leq \norm{x + 0} = \norm{x}\), so that \(\pi\) is bounded. To see linearity, let \(x,y \in M\) and \(\lambda \in K\), then
+            \begin{align*}
+                \pi(\lambda x + y) = \lambda x + y + M = (\lambda x + M) + (y + M) = \lambda(x + M) + (y + M) = \lambda\pi(x) + \pi(y)
+            \end{align*}
+            Finally, to see that \(\norm{\pi} = 1\), one inequality is immediate, since for any \(x \in X\) with \(\norm{x} = 1\), we have \(\norm{\pi(x)} \leq \norm{x} = 1\), and hence since \(x\) was arbitrary, \(\sup_{\set{x \in X \mid \norm{x} = 1}}\norm{\pi(x)} \leq 1\), so it will suffice to show the opposite inequality. Now let \(1 > \epsilon > 0\), by Riesz's lemma, there is some \(x \in X\) such that \(\norm{x} = 1\) and \(\norm{x - m} \geq 1 - \epsilon\) for all \(m \in M\), then since \(m\) is arbitrary, this implies that \(\norm{\pi} \geq \norm{\pi(x)} = \norm{x + M} \geq 1 - \epsilon\), since this holds for arbitrarily small \(\epsilon\), we have that \(\norm{\pi} \geq 1\), and hence \(\norm{\pi} = 1\).
+
+            \textbf{(d)} Since \(\norm{\pi(x)} = \norm{x + M} \leq \norm{x}\) it is immediate that \(\pi(B_X) \subset B_{X/M}\). It remains to prove the other inclusion, let \(x + M \in B_{X/M}\), then \(\norm{x + M} = r < 1\), hence there is some \(m \in M\), such that \(\norm{x + m} \leq r + \frac{1 - r}{2} < 1\), it follows that \(x + m \in B_X\), and \(\pi(x + m) = x + m + M = x + M\) so that \(x + M \in \pi(B_{X})\), and hence \(B_{X/M} \subset \pi(B_X)\) which suffices to show that the two sets are equal.
+
+            \textbf{(e)} Since open balls form a basis for the two topologies on \(X \tand X/M\), it will suffice to show, for \(r \in \mathbb{R}_{> 0}\), and \(x \in X\) that \(\pi^{-1}(N_r(x + M))\) is open in \(X\), and \(\pi(N_r(x))\) is open in \(X/M\), I will prove something slightly stronger; namely \(\pi^{-1}(N_r(x + M)) = \bigcup_{m \in M}N_r(x + m)\) and \(\pi(N_r(x)) = N_r(x + M)\).
+
+            Let \(y \in \bigcup_{m \in M}N_r(x + m)\), then
+            \begin{align*}
+                \norm{x + M - \pi(y)} = \norm{x + M - (y + M)} = \norm{x - y + M} \leq \norm{x + m - y} < r
+            \end{align*}
+            so that \(\pi(y) \in N_r(x + M)\), implying that \(y \in \pi^{-1}N_r(x+M)\). Conversely, let \(y \in \pi^{-1}N_r(x + M)\), then \(\norm{x + M - \pi(y)} = \norm{x - y + M} = \ell < r\), hence there is some \(m \in M\), such that \(\norm{x - y + m} \leq \ell + \frac{r - \ell}{2} < r\), it is immediate that \(y \in N_r(x + m) \subset \bigcup_{m \in M} N_r(x + m)\).
+
+            Now let \(y \in N_r(x)\), then \[r > \norm{x - y + 0} \geq \norm{x - y + M} = \norm{x + M - (y + M)} = \norm{x + M - \pi(y)}\] so that \(\pi(y) \in N_r(x + M)\) which suffices to show that \(\pi(N_r(x)) \subset N_r(x + M)\). Now conversely, let \(y + M \in N_r(x + M)\), then \(r > \ell = \norm{x + M - (y + M)} = \norm{x - y + M}\), hence there is some \(m \in M\), such that \(\norm{x - y + m} \leq \ell + \frac{r - \ell}{2} < r\), hence \(y - m \in N_r(x)\), so that \(\pi(y - m) = y - m + M = y + M \in \pi(N_r(x))\) and thus \(N_r(x + M) \subset \pi(N_r(x))\) so that the two sets are equal. To see that this concludes the proof, supose that \(U\) is open in \(X/M\), then \(U = \bigcup_{\alpha}N_{r_\alpha}((x + M)_\alpha)\), hence \[\pi^{-1}(U) = \bigcup_\alpha \pi^{-1}N_{r_\alpha}((x + M)_\alpha) = \bigcup_\alpha \bigcup_{m \in M}N_{r_\alpha}(x_\alpha + m)\]
+            so that \(\pi^{-1}(U)\) is open, conversely if \(U \subset X/M\), and \(\pi^{-1}(U)\) is open, then \(\pi^{-1}(U) = \bigcup_\alpha N_{r_\alpha}(x_\alpha)\), so that \[U = \pi(\pi^{-1}(U)) = \pi\left(\bigcup_\alpha N_{r_\alpha}(x_\alpha)\right) = \bigcup_\alpha \pi(N_{r_\alpha}(x_\alpha)) = \bigcup_\alpha N_{r_\alpha}(x_\alpha + M)\]
+            implying that \(U\) is open, and hence \(U\) is open if and only if \(\pi^{-1}\) of \(U\) is.
+
+            \textbf{(f)} We use Theorem 2.11 in the notes, an NVS is complete when every absolutely convergent sequence is convergent. Let \(\sum_1^\infty \norm{x_i + M}\) be an absolutely convergent series in \(X/M\), then we may choose \(m_i \in M\), such that \(\norm{x_i + m_i} \leq \norm{x_i + M} + \frac{1}{2^i}\), this is immediate from the definition of the norm on \(X/M\). it follows that the series \(\sum_1^\infty \norm{x_i + m_i}\) is absolutely convergent, and hence \(\sum_1^\infty x_i + m_i\) is convergent in \(X\), suppose that \(\sum_1^\infty x_i + m_i \to y\), then let \(\epsilon > 0\), there exists some \(N \in \mathbb{N}\), such that for all \(n \geq N\), \(\norm{\left(\sum_1^n x_i + m_i\right) - y} < \epsilon\), it follows that if \(n \geq N\), then
+            \begin{align*}
+                0 \leq \norm{\left(\sum_1^n x_i + M\right) - \pi(y)} &= \norm{\left(\sum_1^n x_i\right) - y + M} \leq \norm{\left(\sum_1^n x_i\right) - y + \sum_1^n m_i} \\
+                &= \norm{\left(\sum_1^n x_i + m_i\right) - y} < \epsilon
+            \end{align*}
+            Since \(\epsilon\) was arbitrary, this suffices to show that \(\sum_1^\infty x_i + M = \pi(y)\), so that the series is convergent in \(X/M\), and hence \(X/M\) is complete.
+        \end{pb}
+        \begin{pb}
+            We have that \(\norm{\cdot}\vert_{\gen{T}} : \gen{T} \to K\) is linear on the subspace \(\gen{T}\) by homogeneity of \(\norm{\cdot}\). Furthermore \(\norm{\cdot}\vert_{\gen{T}} \leq \norm{\cdot}\) on \(\gen{T}\) trivially, it follows that by the Hahn-Banach extension theorem, there is some \(F \in X^{**}\), such that \(\abs{F} \leq \norm{\cdot}\) and \(F\vert_{\gen{T}} = \norm{\cdot}\vert_{\gen{T}}\). Since \(X\) is reflexive, it follows that \(F = E_x\) for some \(x \in X\), furthermore since \(E_x\) is an isometry it follows that \(\norm{x} = \norm{F} = 1\). This completes the proof, since
+            \begin{align*}
+                \norm{T} = \norm{T}\vert_{\gen{T}} = E_x(T) = T(x)
+            \end{align*}
+        \end{pb}
+        \begin{pb}
+            \textbf{(a)}
+            \begin{align*}
+                \abs{T(f)} &= \abs{\int_0^{\frac12} fdx - \int_{\frac12}^1 fdx} \leq\abs{\int_0^{\frac12}fdx} + \abs{\int_{\frac12}^1fdx} \leq \int_0^{\frac12}\abs{f}dx + \int_{\frac12}^1\abs{f}dx \\
+                &\leq \int_0^{\frac12}\sup_{[0,1]}\abs{f} + \int_{\frac12}^1\sup_{[0,1]}\abs{f} = \int_0^1 \sup_{[0,1]}\abs{f} = \norm{f}
+            \end{align*}
+
+            \textbf{(b)} I claim that \(\norm{T} = 1\). From part (a), we know that \(\norm{T} \leq 1\), so it will suffice to show that \(\norm{T} \geq 1\). Let \(1 > \epsilon > 0\), then the piecewise linear function
+            \begin{align*}
+                f_\epsilon := \begin{cases}
+                    1 & x \in [0, \frac12 - \frac{\epsilon}{2}] \\
+                    -\frac{2}{\epsilon}x + \frac{1}{\epsilon} & x \in (\frac12 - \frac{\epsilon}{2}, \frac12 + \frac{\epsilon}{2}) \\
+                    -1 & x \in [\frac12 + \frac{\epsilon}{2}, 1]
+                \end{cases}
+            \end{align*}
+            is clearly continuous, such that \(f_\epsilon\vert_{[0,\frac12]} \geq 0, \; f_\epsilon\vert_{[\frac12,1]} \leq 0\) and \(\norm{f_\epsilon} = 1\), furthermore we have that
+            \begin{align*}
+                \norm{T} \geq \abs{T(f_\epsilon)} = \int_0^{\frac12}f_\epsilon dx - \int_{\frac12}^1f_\epsilon dx \geq \int_0^{\frac12 - \frac{\epsilon}{2}}f_\epsilon dx - \int_{\frac12 + \frac{\epsilon}{2}}^1f_\epsilon dx = 1 - \epsilon
+            \end{align*}
+            and since this holds for arbitrarily small \(\epsilon\), we have that \(\norm{T} \geq 1\), and hence \(\norm{T} = 1\).
+
+            \textbf{(c)} No. Assume such an \(f\) exists, if \(\int_0^{\frac12} fdx = 0\), then it is clear that \(\abs{T(f)} \leq \frac12\), so we may assume without loss of generality that \(\int_0^\frac12 f dx > 0\) (if it is less than zero the definitions are symmetric when replacing \(f\) with \(-f\)). Fixing \(\int_0^\frac12 fdx > 0\) also implies that \(-\int_\frac12^1 f dx > 0\), since otherwise \(\abs{T(f)} \leq \frac12\). Taken together, this implies that \(f(a) > 0\) for some \(a \in [0,\frac12)\), and \(f(b) < 0\) for some \(b \in (\frac12,1]\), then by the intermediate value theorem, there is some \(c \in (a,b)\), such that \(f(c) = 0\). By continuity of \(f\) at \(c\), there is some \(\delta > 0\), such that \(\abs{x - c} < \delta\) implies that \(\abs{f(x)} < \frac12\). It follows that
+            \begin{align*}
+                \abs{T(f)} &= \abs{\int_0^{\frac12}fdx - \int_{\frac12}^1fdx} \leq \abs{\int_0^\frac12 fdx} + \abs{\int_\frac12^1 fdx} \leq \int_0^\frac12 \abs{f}dx + \int_\frac12^1 \abs{f}dx \\ 
+                &= \int_0^1 \abs{f}dx = \int_0^{c - \delta}\abs{f}dx + \int_{c + \delta}^1\abs{f}dx + \int_{c - \delta}^{c + \delta}\abs{f}dx \\
+                &\leq \int_0^{c-\delta} \norm{f}dx + \int_{c+\delta}^1 \norm{f}dx + \int_{c - \delta}^{c + \delta}\frac12dx = 1 - \delta < 1
+            \end{align*}
+
+            \textbf{(d)} No, if it were then by problem 5, we would have some \(f \in C[0,1]\) such that \(\norm{f} = 1\), and \(T(f) = \norm{T}\) but we proved this is impossible in (c).
+            
+        \end{pb}
+\end{document}
