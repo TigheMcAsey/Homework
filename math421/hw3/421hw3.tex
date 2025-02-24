@@ -120,11 +120,7 @@
             \begin{align*}
                 0 \leq \lim_{x \to y}\frac{\abs{f_\epsilon(x) - f_\epsilon(y)}}{\abs{x-y}^\alpha} = \lim_{x \to y}\frac{\abs{x^{\alpha + \epsilon} - y^{\alpha + \epsilon}}}{\abs{x-y}^\alpha} \leq \lim_{x \to y}\frac{\abs{x - y}^{\alpha + \epsilon}}{\abs{x-y}^\alpha} = \lim_{x \to y}\abs{x-y}^\epsilon = 0
             \end{align*}
-            It will suffice to show that the set \(\set{f_\epsilon \mid \epsilon \in (0,1-\alpha)}\) is linearly independent, this follows from \(x \mapsto x^\beta \not \in \Lambda_\gamma([0,1])\) for any \(\beta < \gamma\), and since \(\Lambda_\gamma\) is a vectorspace, it is the case that \(x \mapsto x^\beta\) is linearly independent from \(x \mapsto x^\gamma\) for any \(\beta < \gamma\). To see that \(x \mapsto x^\beta \not \in \Lambda_\gamma\), we have that for \(y = 0\),
-            \begin{align*}
-                \lim_{x \to 0}\frac{\abs{x^\beta}}{\abs{x^\gamma}} = \lim_{x \to 0}\frac{1}{\abs{x^{\gamma - \beta}}} = \infty
-            \end{align*}
-            so that in particular \(\norm{x \mapsto x^\beta}_{\Lambda_\gamma} \geq \sup_{x,y \in [0,1]}\frac{x^\beta - y^\beta}{(x - y)^\gamma} = \infty\), this suffices to show that \(x \mapsto x^\beta\) is linearly independent from \(\set{x \mapsto x^\gamma \vert \gamma > \beta}\) it follows by transfinite induction that the set \(\set{f_\epsilon \mid \epsilon \in (0,1-\alpha)}\) is linearly independent (the base case is trivial since the empty set is linearly independent), and hence \(\lambda_\alpha([0,1])\) is infinite dimensional.
+            It will suffice to show that the set \(\set{f_\epsilon \mid \epsilon \in (0,1-\alpha) \cap \set{q - \alpha \mid q \in \mathbb{Q}}}\) is linearly independent, let \(\set{f_{\epsilon_i}}_{i=1}^n \subset \set{f_\epsilon \mid \epsilon \in (0,1-\alpha) \cap \mathbb{Q}}\), and suppose that \(\sum_{i=1}^n c_i f_{\epsilon_i} = 0\), since \(\epsilon_i + \alpha \in \mathbb{Q}\), we may clear denomenators with some \(\ell \in \mathbb{Z}\), i.e. \(\set{\ell(\epsilon_i + \alpha)} \subset \mathbb{Z}\). It follows that \(x^\ell(\sum_1^n c_i f_{\epsilon_i})\) is either identically zero, or a polynomial, of degree \(\max_i\set{\ell (\alpha + \epsilon_i)}\), hence by the factor theorem has finitely many (at most \(\set{\ell (\alpha + \epsilon_i)}\)) zeroes. Since \(\sum_{i=1}^n c_i f_{\epsilon_i} = 0\) is uniformly zero on the uncountable set \([0,1]\) it must be identically zero, so that the set is linearly independent, and hence infinite dimensional.
 
             Finally if \(f \in \lambda_1([0,1])\), then \(f\) is differentiable by definition, and \(f'(y) = 0\) for all \(y \in (0,1)\), it follows by the mean value theorem that for any \(t \in (0,1]\), we have that \(f(t) = f(0) + tf'(c)\) for some \(c \in (0,t)\), but since \(f'(c) = 0\), we have that \(f(t) = f(0)\), so that \(f\) is constant.
 
@@ -152,13 +148,40 @@
 
             \begin{itemize}
                 \item \emph{Associativity of addition}
+                \begin{align*}
+                    (x + M + y + M) + z + M &= x + y + M + z + M = x + y + z + M = x + M + y + z + M \\
+                    &= x + M + (y + M + z + M)
+                \end{align*}
                 \item \emph{Commutativity of addition}
+                \begin{align*}
+                    x + M + y + M = x + y + M = y + x + M = y + M + x + M
+                \end{align*}
                 \item \emph{Associativity of scalar multiplication}
+                \begin{align*}
+                    \alpha \beta (x + M) = \alpha \beta x + M = \alpha(\beta x + M) = \alpha(\beta(x + M))
+                \end{align*}
                 \item \emph{Existence of 0}
+                \begin{align*}
+                    0 + M + x + M = 0 + x + M = x + M \tand 0(x + M) = 0x + M = 0 + M
+                \end{align*}
                 \item \emph{Existence of 1}
+                \begin{align*}
+                    1(x + M) = 1x + M = x + M
+                \end{align*}
                 \item \emph{Additive inverses}
+                \begin{align*}
+                    (-x + M) + x + M = -x + x + M = 0 + M
+                \end{align*}
                 \item \emph{distributivity of scalar multiplication over vector addition}
+                \begin{align*}
+                    \alpha(x + M + y + M) &= \alpha(x + y + M) = \alpha (x + y) + M = \alpha x + \alpha y + M = \alpha x + M + \alpha y + M \\
+                    &= \alpha(x + M) + \alpha(y + M)
+                \end{align*}
                 \item \emph{distributivity of scalar multiplication over field addition}
+                \begin{align*}
+                    (\alpha + \beta)(x + M) &= (\alpha + \beta)x + M = \alpha x + \beta x + M = \alpha x + M + \beta x + M \\
+                    &= \alpha(x + M) + \beta(x + M)
+                \end{align*}
             \end{itemize}
             
             To see that addition is well defined, suppose that \(x \sim x'\), and \(y \sim y'\), then \(x + y - (x' + y') = (x - x') + (y-y')\) which is a sum of elements of \(M\), hence is in \(M\) so that \(x + y \sim x' + y'\). To see that scalar multiplication is well defined, suppose that \(x \sim x'\), then \(x - x' \in M\), so that for \(\lambda \in K\), we have \(\lambda(x - x') = \lambda x - \lambda x' \in M\), hence \(\lambda x \sim \lambda x'\).
