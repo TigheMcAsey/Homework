@@ -33,12 +33,12 @@
         \textbf{(a)} Let \((a_1,\hdots,a_n) \in K^n\), and denote \(M := \max\set{\norm{e_i} \mid 1 \leq i \leq n}\)
         \begin{align*}
             \norm{\phi(a_1,\hdots,a_n)} &= \norm{\sum_1^n a_i e_i} = \leq \sum_{i=1}^n \left(\abs{a_i}\norm{e_i} + \sum_{j\neq i}\abs{a_j}\norm{e_i}\right)
-            = \sum_{i=1}^n \norm{e_i}\sum_{j=1}^n \abs{a_j}\\ 
+            = \sum_{i=1}^n \left(\norm{e_i}\sum_{j=1}^n \abs{a_j}\right)\\ 
             &= \sum_1^n \norm{(a_1,\hdots,a_n)}_1\norm{e_i} \leq nM\norm{(a_1,\hdots,a_n)}_1
         \end{align*}
         Hence \(\norm{\phi(x)} \leq nM\norm{x}_1\) is bounded.
 
-        \textbf{(b)} We first show that \(K^n\) with \(\norm{\cdot}_1\) is homeomorphic to \(K^n\) with \(\norm{\cdot}_2\) via the identity map. To see the map is continuous, let \(\epsilon > 0\), then \(\norm{x-y}_1 < \frac{\epsilon}{\sqrt{n}}\) implies that in particular each coordinate must have absolute value less than \(\sqrt{\frac{\epsilon}{n}}\),
+        \textbf{(b)} We first show that \(K^n\) with \(\norm{\cdot}_1\) is homeomorphic to \(K^n\) with \(\norm{\cdot}_2\) via the identity map. To see the map is continuous, let \(\epsilon > 0\), then \(\norm{x-y}_1 < \frac{\epsilon}{\sqrt{n}}\) implies that in particular each coordinate must have absolute value less than \(\frac{\epsilon}{\sqrt{n}}\),
         \begin{align*}
             \norm{x-y}_2 = \sqrt{\sum_{i=1}^n \abs{x_i - y_i}^2} \leq \sqrt{\sum_{i=1}^n \frac{\epsilon^2}{n}} = \epsilon
         \end{align*}
@@ -47,7 +47,7 @@
             \norm{x-y}_1 \leq \sqrt{n\norm{x-y}_2} < \sqrt{n\delta} = \epsilon
         \end{align*}
 
-        Since \((K^n,\norm{\cdot}_1)\) is homeomorphic to \(K^n\) wth the usual topology (via the identity map), we have that a set \(F\) is compact in \((K^n,\norm{\cdot}_1)\) if and only if it is compact in \(K^n\). The unit sphere in \(K^n\) with the usual topology is compact by the Heine-Borel theorem, so the unit sphere in \((K^n,\norm{\cdot}_1)\) is compact.
+        Since \((K^n,\norm{\cdot}_1)\) is homeomorphic to \(K^n\) with the usual topology (via the identity map), we have that a set \(F\) is compact in \((K^n,\norm{\cdot}_1)\) if and only if it is compact in \(K^n\). The unit sphere in \(K^n\) with the usual topology is compact by the Heine-Borel theorem, so the unit sphere in \((K^n,\norm{\cdot}_1)\) is compact.
 
         \textbf{(c)} We have that the continuous image of a compact set is compact (proven in class but the details are just take an open cover of the image and pull it back to the original set to choose the finite subcover). Since the unit sphere in \((K^n,\norm{\cdot}_1)\) is compact, the image of the unit sphere under \(\phi\) is compact, this implies that for some \(y \in \phi(S)\), we have \(0 \neq m := \norm{y} = \inf\set{\norm{y} \mid y \in \phi(S)}\) (the inequality to zero follows from injectivity of \(\phi\), and compactness implies that some point realizes the infimum). Now let \(x \in X\), if \(\norm{x} = 0\) then \(\phi^{-1}(x) = 0\) and boundedness is immediate, so assume not, then \(\frac{\phi^{-1}(x)}{\norm{\phi^{-1}(x)}_1} = x' \in S\), hence applying \(\phi\) to both sides and rearranging,
         \begin{align*}
@@ -68,7 +68,7 @@
             &\norm{x}_\alpha \geq \frac{1}{D_\alpha}\norm{\phi^{-1}(x)}_1 \geq \frac{1}{D_\alpha}\left(\frac{1}{C_\beta}\norm{\phi\phi^{-1}(x)}_\beta\right) = \frac{1}{D_\alpha C_\beta}\norm{x}_\beta \\
         \end{align*}
         So that \(\frac{1}{C_\alpha D_\beta}\norm{x}_\alpha \leq \norm{x}_\beta \leq D_\alpha C_\beta\norm{x}_\alpha\).
-        Choosing \(C = \max\set{C_\alpha D_\beta, D_\alpha C_\beta}\) furnishes the desired equivalece of norms
+        Choosing \(C = \max\set{C_\alpha D_\beta, D_\alpha C_\beta}\) furnishes the desired equivalence of norms
         \begin{align*}
             \frac{1}{C}\norm{x}_\alpha \leq \norm{x}_\beta \leq C\norm{x}_\alpha
         \end{align*}
@@ -79,13 +79,13 @@
         \end{align*}
         Convergence follows by the squeeze theorem, implying that \(X\) is complete and hence Banach.
 
-        \textbf{Proof that }\((\varphi^{-1}(x_n))_1^\infty\) \textbf{is cauchy.} Let \(\epsilon > 0\), note that the proof of continuity of linear operators in fact also implies uniform continuity. Hence there exists \(\delta > 0\) such that \(\norm{x-y} < \delta\) implies \(\norm{\phi^{-1}(x) - \phi^{-1}(y)} < \epsilon\). Since \((x_n)_1^\infty\) is cauchy, there exists some \(N\) such that for all \(n,m \geq N\), \(\norm{x_n - x_m} < \delta\), hence for any \(n,m \geq N\), \(\norm{\phi^{-1}(x_n) - \phi^{-1}(x_m)} < \epsilon\), so that \((\phi^{-1}(x_n))_1^\infty\) is cauchy.
+        \textbf{Proof that }\((\phi^{-1}(x_n))_1^\infty\) \textbf{is cauchy.} Let \(\epsilon > 0\), note that the proof of continuity of linear operators in fact also implies uniform continuity. Hence there exists \(\delta > 0\) such that \(\norm{x-y} < \delta\) implies \(\norm{\phi^{-1}(x) - \phi^{-1}(y)} < \epsilon\). Since \((x_n)_1^\infty\) is cauchy, there exists some \(N\) such that for all \(n,m \geq N\), \(\norm{x_n - x_m} < \delta\), hence for any \(n,m \geq N\), \(\norm{\phi^{-1}(x_n) - \phi^{-1}(x_m)} < \epsilon\), so that \((\phi^{-1}(x_n))_1^\infty\) is cauchy.
         \end{pb}
 
         \begin{pb}
             \textbf{(a)} I will drop the subscript \(x \neq y\) in the definition of the norm for brevity.
             \begin{itemize}
-                \item \emph{Homogeneity}: Let \(\lambda \in K^\times \tand f \in \Lambda_\alpha([0,1])\), then
+                \item \emph{Homogeneity}: Let \(\lambda \in \mathbb{R}^\times \tand f \in \Lambda_\alpha([0,1])\), then
                 \begin{align*}
                     \norm{\lambda f}_{\Lambda_\alpha} &= \abs{\lambda f(0)} + \sup_{x,y \in [0,1]} \frac{\abs{\lambda f(x) - \lambda f(y)}}{\abs{x - y}^\alpha}
                     = \abs{\lambda}\abs{f(0)} + \sup_{x,y \in [0,1]} \frac{\abs{\lambda}\abs{f(x) - f(y)}}{\abs{x - y}^\alpha} \\
@@ -120,7 +120,7 @@
             \begin{align*}
                 0 \leq \lim_{x \to y}\frac{\abs{f_\epsilon(x) - f_\epsilon(y)}}{\abs{x-y}^\alpha} = \lim_{x \to y}\frac{\abs{x^{\alpha + \epsilon} - y^{\alpha + \epsilon}}}{\abs{x-y}^\alpha} \leq \lim_{x \to y}\frac{\abs{x - y}^{\alpha + \epsilon}}{\abs{x-y}^\alpha} = \lim_{x \to y}\abs{x-y}^\epsilon = 0
             \end{align*}
-            It will suffice to show that the set \(\set{f_\epsilon \mid \epsilon \in (0,1-\alpha) \cap \set{q - \alpha \mid q \in \mathbb{Q}}}\) is linearly independent, let \(\set{f_{\epsilon_i}}_{i=1}^n \subset \set{f_\epsilon \mid \epsilon \in (0,1-\alpha) \cap \mathbb{Q}}\), and suppose that \(\sum_{i=1}^n c_i f_{\epsilon_i} = 0\), since \(\epsilon_i + \alpha \in \mathbb{Q}\), we may clear denomenators with some \(\ell \in \mathbb{Z}\), i.e. \(\set{\ell(\epsilon_i + \alpha)} \subset \mathbb{Z}\). It follows that \(x^\ell(\sum_1^n c_i f_{\epsilon_i})\) is either identically zero, or a polynomial, of degree \(\max_i\set{\ell (\alpha + \epsilon_i)}\), hence by the factor theorem has finitely many (at most \(\set{\ell (\alpha + \epsilon_i)}\)) zeroes. Since \(\sum_{i=1}^n c_i f_{\epsilon_i} = 0\) is uniformly zero on the uncountable set \([0,1]\) it must be identically zero, so that the set is linearly independent, and hence infinite dimensional.
+            It will suffice to show that the set \(\set{f_\epsilon \mid \epsilon \in (0,1-\alpha) \cap \set{q - \alpha \mid q \in \mathbb{Q}}}\) is linearly independent since it is infinite by density of \(\mathbb{Q}\), let \(\set{f_{\epsilon_i}}_{i=1}^n \subset \set{f_\epsilon \mid \epsilon \in (0,1-\alpha) \cap \set{q - \alpha \mid q \in \mathbb{Q}}}\), and suppose that \(\sum_{i=1}^n c_i f_{\epsilon_i} = 0\), since \(\epsilon_i + \alpha \in \mathbb{Q}\), we may clear denomenators with some \(\ell \in \mathbb{Z}\), i.e. \(\set{\ell(\epsilon_i + \alpha)} \subset \mathbb{Z}\). It follows that \(x^\ell(\sum_1^n c_i f_{\epsilon_i})\) either has coefficients identically zero, or is a non-zero polynomial, of degree \(\max_i\set{\ell (\alpha + \epsilon_i)}\), hence by the factor theorem has finitely many (at most \(\set{\ell (\alpha + \epsilon_i)}\)) zeroes. Since \(\sum_{i=1}^n c_i f_{\epsilon_i} = 0\) is uniformly zero on the uncountable set \([0,1]\), so is \(x^\ell(\sum_1^n c_i f_{\epsilon_i})\) thus the coefficients must be identically zero, so that the set is linearly independent, and hence infinite dimensional.
 
             Finally if \(f \in \lambda_1([0,1])\), then \(f\) is differentiable by definition, and \(f'(y) = 0\) for all \(y \in (0,1)\), it follows by the mean value theorem that for any \(t \in (0,1]\), we have that \(f(t) = f(0) + tf'(c)\) for some \(c \in (0,t)\), but since \(f'(c) = 0\), we have that \(f(t) = f(0)\), so that \(f\) is constant.
 
@@ -136,13 +136,13 @@
         \end{pb}
 
         \begin{pb}
-            It is immediate from the definition that \(M \subset {M^\perp}^\perp\), so it will suffice to show that \({M^\perp}^\perp\) is closed to conclude that \(\overline{M} \subset {M^\perp}^\perp\). Let \(x \in \overline{{M^\perp}^\perp}\), then there is a net \((x_\alpha)_A\) in \({M^\perp}^\perp\), such that \(x_\alpha \to x\). It follows that for any \(f \in M^\perp\), \(f\) is continuous, so that \(f(x) = \lim f(x_\alpha) = \lim 0 = 0\), since this holds for arbitrary \(f \in M^\perp\), we have that \(x \in {M^\perp}^\perp\), hence \({M^\perp}^\perp\) is closed so that \(\overline{M} \subset {M^\perp}^\perp\).
+            It is immediate from the definition that \(M \subset {M^\perp}^\perp\), so it will suffice to show that \({M^\perp}^\perp\) is closed to conclude that \(\overline{M} \subset {M^\perp}^\perp\). Let \(x \in \overline{{M^\perp}^\perp}\), then there is a sequence \((x_n)_1^\infty\) in \({M^\perp}^\perp\), such that \(x_n \to x\). It follows that for any \(f \in M^\perp\), \(f\) is continuous, so that \(f(x) = \lim f(x_n) = \lim 0 = 0\), since this holds for arbitrary \(f \in M^\perp\), we have that \(x \in {M^\perp}^\perp\), hence \({M^\perp}^\perp\) is closed so that \(\overline{M} \subset {M^\perp}^\perp\).
 
             Conversely, suppose that \(x \not \in \overline{M}\), then \(\gen{x} \setminus 0 \subset M^c\), since \(M\) is a subspace of \(X\). Now I claim the function \(d_M: t \mapsto \inf\set{\norm{t-y} \mid y \in M}\) is a seminorm. The triangle inequality is proven in the previous homework, now let \(t \in X, \; \lambda \in K^\times \) since \(M\) is a subspace, whenever \(y \in M\) we also have \(\lambda^{-1}y \in M\), using the fact that \(\abs{\lambda}\norm{t - \lambda^{-1}y} = \norm{\lambda t - y}\), we get that \[d_M(\lambda t) = \inf\set{\norm{\lambda t - y} \mid y \in M} = \inf\set{\abs{\lambda}\norm{t - y} \mid y \in M} = \abs{\lambda}\inf\set{\norm{t - y} \mid y \in M} = \abs{\lambda}d_M(t)\]
-            so we can conclude that \(d_M: X \to K\) is a seminorm. Now define \(f: M + \gen{x} \to k\) be defined by extending linearly from \(x \overset{f}{\mapsto} d_M(x)\), and \(f(M) = 0\). It is immediate that \(f\) is bound above by \(d_M\) on its support, so we may apply the Hahn Banach theorem to \(f\) and \(d_M\), to get some linear functional \(F: X \to K\), such that \(F \leq d_M\), and \(F\vert M + \gen{x} = f\) (in particular \(F \in M^\perp\)). Since \(x \not \in \overline{M}\), we have \(d_M(\lambda x) > 0\), for any \(\lambda \in K^\times\), this implies that \(F(x) = f(x) = d_M(x) > 0\), so that \(x \not \in {M^{\perp}}^\perp\), which suffices to show that \({M^\perp}^\perp \subset \overline{M}\), and hence the two sets are equal.
+            so we can conclude that \(d_M: X \to K\) is a seminorm. Now define \(f: \gen{x} \to K\) be defined as \(f = d_M \vert_{\gen{x}}\). It is immediate that \(f\) is bound above by \(d_M\) on its support, so we may apply the Hahn Banach theorem to \(f\) and \(d_M\), to get some linear functional \(F: X \to K\), such that \(\abs{F} \leq d_M\) (in particular \(F \in M^\perp\)), and \(F\vert_{\gen{x}} = f\). Since \(x \not \in \overline{M}\), we have \(d_M(\lambda x) > 0\), for any \(\lambda \in K^\times\), this implies that \(F(x) = f(x) = d_M(x) > 0\), so that \(x \not \in {M^{\perp}}^\perp\), which suffices to show that \({M^\perp}^\perp \subset \overline{M}\), and hence the two sets are equal.
         \end{pb}
         \begin{pb}
-            \textbf{(a)} we First check that \(\sim\) is an equivalence relation, since \(M\) is a subspace it contains \(0\), so reflexivity is satisfied by \(x-x = 0\). Symmetry also follows by \(M\) being a subspace, since if \(m \in M\), then so is \(-m\), so that \(x-y \in M \iff y-x = -(x-y) \in M\). Finally, if \(x-y \tand y-z \in M\), then \((x-y) + (y-z) = x-z \in M\) since subspaces are closed under addition this suffices to show that \(\sim\) is an equivalence relation.
+            \textbf{(a)} We first check that \(\sim\) is an equivalence relation, since \(M\) is a subspace it contains \(0\), so reflexivity is satisfied by \(x-x = 0\). Symmetry also follows by \(M\) being a subspace, since if \(m \in M\), then so is \(-m\), so that \(x-y \in M \iff y-x = -(x-y) \in M\). Finally, if \(x-y \tand y-z \in M\), then \((x-y) + (y-z) = x-z \in M\) since subspaces are closed under addition this suffices to show that \(\sim\) is an equivalence relation.
 
             To check that \(X/M\) is a vectorspace, we check the axioms:
 
@@ -220,7 +220,7 @@
 
             \textbf{(e)} Since open balls form a basis for the two topologies on \(X \tand X/M\), it will suffice to show, for \(r \in \mathbb{R}_{> 0}\), and \(x \in X\) that \(\pi^{-1}(N_r(x + M))\) is open in \(X\), and \(\pi(N_r(x))\) is open in \(X/M\), I will prove something slightly stronger; namely \(\pi^{-1}(N_r(x + M)) = \bigcup_{m \in M}N_r(x + m)\) and \(\pi(N_r(x)) = N_r(x + M)\).
 
-            Let \(y \in \bigcup_{m \in M}N_r(x + m)\), then
+            Let \(y \in \bigcup_{m \in M}N_r(x + m)\), then \(y \in N_r(x + m)\) for some \(m \in M\), so that
             \begin{align*}
                 \norm{x + M - \pi(y)} = \norm{x + M - (y + M)} = \norm{x - y + M} \leq \norm{x + m - y} < r
             \end{align*}
@@ -244,7 +244,7 @@
             \end{align*}
         \end{pb}
         \begin{pb}
-            \textbf{(a)}
+            \textbf{(a)} \(T\) is linear by linearity of the integral. To see that \(T\) is bounded, let \(f \in C[0,1]\), then
             \begin{align*}
                 \abs{T(f)} &= \abs{\int_0^{\frac12} fdx - \int_{\frac12}^1 fdx} \leq\abs{\int_0^{\frac12}fdx} + \abs{\int_{\frac12}^1fdx} \leq \int_0^{\frac12}\abs{f}dx + \int_{\frac12}^1\abs{f}dx \\
                 &\leq \int_0^{\frac12}\sup_{[0,1]}\abs{f} + \int_{\frac12}^1\sup_{[0,1]}\abs{f} = \int_0^1 \sup_{[0,1]}\abs{f} = \norm{f}
