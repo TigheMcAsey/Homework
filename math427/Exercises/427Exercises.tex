@@ -30,7 +30,10 @@
 \newcommand{\gal}{\text{Gal}}
 \newcommand{\mor}{\text{Mor}}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
-\newcommand{\im}{\text{Im}}
+\newcommand{\im}{\text{Im\,}}
+\newcommand{\homo}{\text{Hom}}
+\newcommand{\ext}{\text{Ext}}
+
 \title{Exercises}
 
 \begin{document}
@@ -41,6 +44,17 @@
 \emph{exercise - }\label{PreEx1} Show the forgetful functor \(F: \text{Vect}_k \to \text{Set}\) is a functor.
 
 \emph{proof - } The identity linear transformation is the identity when regarded as a set mapping, if \(T: U \to V, \varphi: V \to S\) as vector spaces, then \(F(\varphi)\circ F(T)\) is a well defined set mapping, which maps \(U \to S\) as sets.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\emph{exercise - }\label{PreEx2} \(\homo(-,G)\) is functorial
+
+\emph{proof - } Note that if \(f: H \to K\), then \(\homo(-,G)(f) = f^*\) where \(f^*: \homo(K,G) \to \homo(H,G)\) via \(f^*(k) = k \circ f\). We first check associativity, let \(f: H \to K,\; g: K \to N\), and \(z \in \homo(N,G)\), then \((fg)^*(z) = z \circ fg = f^*(z)\circ g = g^*f^*z\).
+
+We can also check that identity is preserved, since if \(f: \homo(H,G) \to \homo(K,G)\) and \(g: \homo(N,G) \to \homo(H,G)\), then for \(h \in \homo(H,G) \tand n \in \homo(N,G)\)
+\begin{align*}
+    f 1_H^* h = f (n \circ 1_H) = f(h) \tand 1_H^*gn = g(n) \circ 1 = g(n) \qed
+\end{align*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -126,7 +140,7 @@ This verifies the homotopy.
     H^i := \frac{\ker(d_i)}{\im(d_{i+1})}
 \end{align*}
 Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), there is a natural induced map of \(f_i\) on \(H^i\), given by restricting \(f_i\) to \(\im(d_{i+1})\), then taking the unique map from the quotient by the kernel of \(d_i\), which exists and is unique by the first isomorphism theorem. Calling this induced map \(f_{i,*}\), we need to check that
-\(f_{i,*}\) maps into \(H_i'\). First it is immediate that \(f_i\vert_{\ker{d_i}}: \ker d_i \to \ker d_i'\), since \(d_i'f_i = f_{i-1}d_i\), where the right hand side is zero when restricted to \(\ker(d_i)\), well definition on cosets follows from "\(d^2 = 0\)". So only need check that \((hd + dh)_* = 0\), \(d_{i+1}h \in \text{Im}\, d_{i+1} = 0\) so it only remains to show that \(h: \text{Im}\,d_i \to \text{Im}\,d_{i+1}\), \textcolor{red}{TODO -- finish proof}
+\(f_{i,*}\) maps into \(H_i'\). First it is immediate that \(f_i\vert_{\ker{d_i}}: \ker d_i \to \ker d_i'\), since \(d_i'f_i = f_{i-1}d_i\), where the right hand side is zero when restricted to \(\ker(d_i)\), well definition on cosets follows from "\(d^2 = 0\)". So only need check that \((hd + dh)_* = 0\), \(d_{i+1}h \in \text{Im}\, d_{i+1} = 0\) so it only remains to show that \(hd_i = 0\) on \(\ker d_i\), this is trivial since \(h(0) = 0\) and for any \(z \in \ker d_i\) \(hd_i(z) = h(0)\). \qed
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -286,7 +300,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \emph{exercise - }\label{HEx6} Show that "augmentation" still gives a chain complex, i.e. \(\epsilon\circ d_1 = 0\) \textcolor{red}{cite Augmentation in notes}
 
     \emph{proof - } It will suffice to check on generators of \(C_1\), let \(e^1_\beta \in C_1\), then 
-    \[\epsilon d_1(e^1_\beta) = \epsilon (e_\alpha^0 - e_{\alpha'}^0) = 1-1 = 0\]
+    \[\epsilon d_1(e^1_\beta) = \epsilon (e_\alpha^0 - e_{\beta}^0) = \epsilon(e_\alpha^0) - \epsilon(e_\beta^0) = 1-1 = 0\]
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -554,4 +568,238 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
             0 & \text{else}
         \end{cases}
     \end{align*}
+    \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{HEx18} \(d^2 = 0\) in simplicial Homology.
+
+    \emph{proof - } Let \(\sigma_\alpha: \Delta^n(X) \to X\), as in the definition of simplicial Homology. Then
+    \begin{align*}
+        \partial_{n-1}\partial_n\sigma_\alpha &= \partial_{n-1} \sum_{i=0}^n(-1)^i\sigma_\alpha\vert_{[v_0, v_1, \hdots, \hat{v}_i, \hdots, v_n]}
+        = \sum_{i=0}^n (-1)^i \partial_{n-1}\sigma_\alpha\vert_{[v_0, v_1, \hdots, \hat{v}_i, \hdots, v_n]} \\
+        &= \sum_{i=0}^n\sum_{0 \leq j < i \leq n}(-1)^{i+j}\sigma_\alpha\vert_{[v_0,\hdots,\hat{v_j},\hdots,\hat{v_i},\hdots,v_n]} \; + \; \sum_{i=0}^n\sum_{0 \leq i < j \leq n}(-1)^{i+(j-1)}\sigma_\alpha\vert_{[v_0,\hdots,\hat{v_i},\hdots,\hat{v_j},\hdots,v_n]} \\
+        &= \sum_{i=0}^n\sum_{0 \leq j < i \leq n}(-1)^{i+j}\sigma_\alpha\vert_{[v_0,\hdots,\hat{v_j},\hdots,\hat{v_i},\hdots,v_n]} \; + \; \sum_{j=0}^n\sum_{0 \leq i < j \leq n}(-1)^{i+j - 1}\sigma_\alpha\vert_{[v_0,\hdots,\hat{v_i},\hdots,\hat{v_j},\hdots,v_n]} \\
+    \end{align*}
+    Now we may swap the indices \(i\) and \(j\) in the second sum, which gives us the result that
+    \begin{align*}
+        \partial_{n-1}\partial_n\sigma_\alpha = \sum_{i=0}^n\sum_{0 \leq j < i \leq n}(-1)^{i+j}\sigma_\alpha\vert_{[v_0,\hdots,\hat{v_j},\hdots,\hat{v_i},\hdots,v_n]} \; - \; \sum_{i=0}^n\sum_{0 \leq j < i \leq n}(-1)^{i+j}\sigma_\alpha\vert_{[v_0,\hdots,\hat{v_j},\hdots,\hat{v_i},\hdots,v_n]}
+    \end{align*}
+    So the two summations cancel leaving us with "\(\partial^2 \sigma_\alpha\) \(=0\)" \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \section{Cohomology} \label{Cex}
+
+    \emph{exercise - }\label{CEx1} \({(d^*)}^2 = 0\)
+
+    \emph{proof - } Let \(f \in C^{n+1} = \homo(C_{n+1},G)\), then let \(x \in C_{n+1}\) be arbitrary, it follows that \(d_{n+1}^*d_n^* f = f\circ d_n \circ d_{n+1}\), so that \(d_{n+1}^*d_n^* f = f(0) = 0\). \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx2} (Note the upper sequence is exact) Show the following universal property:
+    \begin{equation*}
+    \begin{tikzcd}
+        0 \arrow[r] & A \arrow[r] \arrow[rd,"{0}"] & B \arrow[r] \arrow[d] & C \arrow[r] \arrow[ld,dashed,"{\exists !}"] & 0 \\
+        & & Z
+    \end{tikzcd}
+    \end{equation*}
+
+    \emph{proof - } \(C \overset{f}{\cong} B/A\), so by the first isomorphism theorem, Since the map in question sends \(A \to 0\) there exists a unique map \(j : B/A \to Z\), such that the diagram commutes with \(B/A\) in place of \(C\). It follows that \(jf: C \to Z\) makes the diagram commute, and if any other map \(\iota\) were to make the diagram commute, then \(\iota f^{-1} = j\) implies that \(\iota = j\) so that uniqueness is satisfied as well.  \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx3} In the proof of the universal coefficient theorem, we define a map \[f: H^n(C^*) \to \homo(H_n(C_*),G)\]
+    To do so, we take a representative of \([\phi] \in H^n(C^*)\), so that \(\phi: C^* \to G, \tand d^* \phi = 0\). By choice of \(\phi\), it follows that the sequence is exact, so we can apply the results of the previous exercise [\ref{CEx2}]
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r] & B_n \arrow[r] \arrow[rd,"{0}"] & Z_n \arrow[r] \arrow[d,"{\phi\vert_{Z_n}}"] & Z_n/B_n \arrow[r] \arrow[ld,dashed,"{\exists !}"] & 0 \\
+            & & Z
+        \end{tikzcd}
+    \end{equation*}
+    We may define \(f([\phi])\) to be the unique map making the diagram commute. This is well defined since maps in the equivalence class only differ on boundaries which are mapped to \(0\). \emph{Show that \(f\) is a homomorphism}.
+
+    \emph{proof - } We need to show that \(f([\phi]) + f([\psi]) = f([\phi + \psi])\), it will suffice to show that \(f([\phi]) + f([\psi])\) satisfies the universal prperty for \((\phi + \psi)\vert_{Z_n} = \phi \vert_{Z_n} + \psi \vert_{Z_n}\), so let \(x \in Z_n\) and denote the quotient map as \(q\), then \[(f([\phi]) + f([\psi]))(q(x)) = f([\phi])(q(x)) + f([\psi])(q(x)) = \phi\vert_{Z_n}(x) + \psi\vert_{Z_n}(x) \qed\]
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx4} Assume that the following sequence is exact:
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & A \arrow[r,"{\iota}"] & B \arrow[r,"{q}"] & F \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    Show that the following are equivalent:
+    \begin{enumerate}
+        \item \(B \cong A \oplus F\)
+        \item There is a section \(s: F \to B\), such that \(q \circ s = 1_F\)
+        \item There is a section \(s': B \to A\), such that \(s' \circ \iota = 1_A\)
+    \end{enumerate}
+
+    \emph{Proof - } \((1) \implies (2),(3)\) is obvious. Now assume (2), then \(s(F) \subset B\) is a submodule, let \(x \in s(F) \cap \iota(A)\), then \(x = s(y)\) for \(y \in F\), it follows that \(0 = q(x) = qs(y) = y\) and hence \(s(y) = 0\). Now let \(x \in B\), then \(q(x - sq(x)) = q(x) - q(x) = 0\), hence \(x - sq(x) \in \ker q = \im \,\iota\), hence \(x = sq(x) + \iota(y) \in s(F) + \iota(A)\). Now assume (3), we may define \(\varphi: B \to A \oplus F\) via
+    \(\varphi:b \mapsto (s'(b),q(b))\), to see that the map is surjective, let \((a,f) \in A \oplus F\), then choose some \(x \in q^{-1}(f)\), and consider \[\varphi(\iota(a - s'(x)) + x) = (s'\iota (a - s'(x)) + s'(x),q\iota(a-s'(x)) + q(x)) = (a - s'(x) + s'(x),f) = (a,f)\]
+    To check injectivity, suppose that \(\varphi(x) = 0\), then \(q(x) = 0\) implying that \(x \in \iota(A)\), so that \(x = \iota(y)\), and \(0 = s'(x) = s'\iota(y) = y\) so that \(x = \iota(0) = 0\). \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx5} Suppose that \(F\) is free, and the following sequence is exact:
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & A \arrow[r,"{\iota}"] & B \arrow[r,"{q}"] & F \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    Then the sequence splits.
+
+    \emph{proof - } We may write \(F = \oplus_I Re_i\), then for each \(i \in I\), choose some \(b_i \in q^{-1}(e_i)\), it follows that by the universal property of a free module we can define a map by taking \(e_i \mapsto b_i\) and extending linearly. This defines a section hence the sequence is split (it satisfies condition 2 of the previous exercise [\ref{CEx4}]). \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx6} In the proof of the Universal coefficient theorem, we want to show that \(f\) is surjective. to do so it suffices to construct a section \(s: \homo(H_n(C_*),G) \to H^n(C^*)\), such that \(fs =1\). Since \(B_{n-1}\) is free, and the following sequence is short exact, there is some \(p: C_n \to Z_n\), such that \(p\vert_{Z_n} = 1_{Z_n}\) by the equivalence of definitions of split exact.
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & Z_n \arrow[r,"{}"] & C_n \arrow[r,"{d_n}"] & B_n \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    To define \(s\), we let \(\alpha \in \homo(H_n(C_*),G)\), then we may take \(\overline{\alpha} := \alpha q\), so that the following commutes
+    \begin{equation*}
+        \begin{tikzcd}
+            C_n \arrow[d,"{p}"] \\
+            Z_n \arrow[d,"{\overline{\alpha}}"] \arrow[r,"{q}"] & H_n(C_*) \arrow[ld,"{\alpha}"]\\
+            G
+        \end{tikzcd}
+    \end{equation*}
+    By commutativity, of the previous diagram (zero map) the following diagram commutes and the sequence is exact
+    \begin{equation*}
+        \begin{tikzcd}
+            & &C_n \arrow[d,"{p}"] \\
+            0 \arrow[r,"{}"] & B_n \arrow[rd,"{0}"] \arrow[r,"{}"] & Z_n \arrow[d,"{\overline{\alpha}}"] \arrow[r,"{q}"] & H_n(C_*) \arrow[ld,"{\alpha}"] \arrow[r,"{}"] & 0\\
+            & &G
+        \end{tikzcd}
+    \end{equation*}
+    We may define \(s(\alpha) = [\overline{\alpha} \circ p] \in H^n(C^*)\), furthermore commutativity of the above diagram means that for \(\overline{\alpha} = \overline{\alpha} \circ p \vert_{Z_n}\) we have that \(\alpha\) satisfies the universal property, so that \(fs(\alpha) = f([\overline{\alpha}p]) = \alpha\).
+    \emph{Show that \(s\) is a homomorphism}
+
+    \emph{proof - } Let \(\alpha, \beta \in \homo(H_n(C_*),G)\), then
+    \[s(\alpha + \beta) = \overline{\alpha + \beta} p = (\alpha + \beta)qp = \alpha qp + \beta qp = \overline{\alpha}p + \overline{\beta} p = s(\alpha) + s(\beta) \qed\]
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx7} Show that if a sequence is split exact, then \(\homo(-,G)\) acts as a (right) exact functor on the sequence.
+
+    \emph{proof - } \(\homo(-,G)\) is always left exact, so it suffices to show right exactness, i.e. given the split exact sequence
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & A \arrow[r,"{f}"] & B \arrow[r,"{}"] & C \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    Check that \(\homo(B,G) \to \homo(A,G)\) is surjective in
+    \begin{equation*}
+        \begin{tikzcd}
+            \homo(A,G) & \homo(B,G) \arrow[l,"{f^*}"] & \homo(C,G) \arrow[l,"{}"] & 0 \arrow[l,"{}"]
+        \end{tikzcd}
+    \end{equation*}
+    By split exactness, there is some \(s: B \to A\), such that \(sf = 1\). It follows that \(\alpha s \in \homo(B,G)\), such that
+    \(f^*(\alpha s) = \alpha sf = \alpha 1 = \alpha\), this suffices to show surjectivity and hence exactness. \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx8} We have the split exact sequence of chain complexes
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & \mathbf{Z_*} \arrow[r,"{}"] & \mathbf{C_*} \arrow[r,"{}"] & \mathbf{B_{* - 1}} \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    since the sequence is split, it dualizes to an exact sequence of cochain complexes,
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & \mathbf{B^{* - 1}} \arrow[r,"{}"] & \mathbf{C^*} \arrow[r,"{}"] & \mathbf{Z^*} \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    By the snake lemma we get a long exact sequence
+    \begin{equation*}
+        \begin{tikzcd}
+            \cdots \arrow[r,"{}"] & Z^{n-1} \arrow[r,"{\partial}"] & B^{n-1} \arrow[r,"{}"] & H^n(\mathbf{C^*}) \arrow[r,"{}"] & Z^n \arrow[r,"{\partial}"] & B^n\cdots
+        \end{tikzcd}
+    \end{equation*}
+    \emph{Trace through the snake lemma to show that} \(\partial = \iota_{n-1}^*\)
+
+    \emph{proof - }
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx9} Let \(H\) and \(H'\) be modules with free resolutions \(F_*\) and \(F'_*\), and \(\alpha: H \to H'\) be a homomorphism. Define a chain map as follows: Let \(e_0 \in F_0\), then define \(\alpha_0:e_0 \mapsto b_0\), where \(b_0 \in f_0'^{-1}(\alpha f_0(e_0))\), more generally, take \(\alpha_n: e_n \mapsto b_n \in f_n'^{-1}(\alpha_{n-1}f_0(e_n))\), it is immediate by definition that this is a chain map. Now let \(\beta_i\) be another chain map, given by taking possibly different choices of \(c_n \in f_n'^{-1}(\alpha_{n-1}f_0(e_n))\) (here we abuse notation that \(\alpha = \alpha_{-1}\)).
+
+    \emph{proof - } Since \(\alpha = \alpha_{-1} = \beta_{-1}\) we should simply choose \(h_{-1} = 0\), for the case of \(h_0\), we exploit the fact that \(F_0\) is free, so if \(\alpha - \beta = d_1h_0\) on the generating set, then they are equal on the entire module. So let \(e\) be a generator of one of the summands of \(F_0\), then we may simply choose \(h_0(e) \in f'^{-1}_1\set{\alpha_0(e) - \beta_0(e)}\) which is a map since \(F_0\) is free. Now we may construct \(h_n\) based off of \(h_{n-1}\), once again let \(e\) be one of the canonical generators of the free module \(F_n\), then choose \(h_n(e) \in f_{n+1}'^{-1}\set{\alpha_n(e) - \beta_n(e) - h_{n-1}f_n(e)}\), once again this is well defined since \(F_n\) is free, and it satisfies the property of a chain homotopy by construction. \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx10} Classify all extensions of \(\mathbb{Z}/(2)\) by \(\mathbb{Z}/(2)\).
+
+    \emph{proof - } To do so we compute \(\ext(\mathbb{Z}/(2),\mathbb{Z}/(2)) := H^1(F^*;\mathbb{Z}/(2))\), where \(F^*\) is a free resolution for \(\mathbb{Z}/(2)\). We can take the free resolution
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & \mathbb{Z} \arrow[r,"{\cdot 2}"] & \mathbb{Z} \arrow[r,"{}"] & \mathbb{Z}/(2) \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    Dualizing we get
+    \begin{equation*}
+        \begin{tikzcd}
+            0 & \mathbb{Z}/(2) \arrow[l,"{}"] & \mathbb{Z}/(2) \arrow[l,"{\cdot 0}"] & \mathbb{Z}/(2) \arrow[l,"{}"] & 0 \arrow[l,"{}"]
+        \end{tikzcd}
+    \end{equation*}
+    The first cohomology group is \(\frac{\ker \mathbb{Z}/(2) \to 0}{\im 0} \cong \mathbb{Z}/(2)\), so there are two extensions. The extensions are
+    \(\mathbb{Z}/(2) \oplus \mathbb{Z}/(2) \tand \mathbb{Z}/(4)\). It is immediate that these are both extensions, and are non-isomorphic. A second way to see these re the only extensions, is that any extension must have order 4, and these are the only two groups of order 4. \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx11} When taking a group extension of \(G\) by \(M\), i.e. some group \(E\), such that the following is exact
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & M \arrow[r,"{j}"] & E \arrow[r,"{q}"] & G \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    we may take a set function \(s: G \to E\), where \(qs = 1_G\), but \(s\) is not necessarily a group homomorphism. There is a function \(c: G \times G \to E\) which measures the defect of \(s\) from being a homomorphism,
+    \begin{align*}
+        c:(g_1,g_2) \mapsto s(g_1)s(g_2)s(g_1g_2)^{-1}
+    \end{align*}
+    \emph{Show that }\(s(1) = c(1,1)\)
+
+    \emph{proof - } Trivial
+    \begin{align*}
+        c(1,1) = s(1)s(1)s(1)^{-1} = s(1) \qed
+    \end{align*}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx12} In the previous question, we constructed a function \(c\) to measure the deviation of a section from a group law, such a \(c\) is determined uniquely by the group extension \(E\). We would like to show that \(E\) uniquely determines some \([c] \in H^2(G;M)\), this will suffice to show there is an injection \[\set{E \mid E \text{ is an extension of }G \text{ by }M} \hookrightarrow H^2(G;M)\]
+    It is immediate that \(c(G \times G) \in \ker q\), so that we may identify \(c\) with \(j^{-1}c : G \times G \to M\). We still havent specified what \(H^2(G;M)\) is, consider the chain complex given by \(C^n(G;M)\) as the set of set valued functions \(G^n \to M\)
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] & C^0(G;M) 0 \arrow[r,"{d_0}"] & C^1(G;M) \arrow[r,"{d_1}"] & C^2(G;M) \arrow[r,"{d_2}"] & \cdots
+        \end{tikzcd}
+    \end{equation*}
+    Where we define \[df(g_0,g_1,\hdots,g_n) = f(g_1,g_2,\hdots,g_n) + (-1)^{n+1}f(g_0,g_1,\hdots,g_{n-1}) + \sum_{k=1}^n (-1)^nf(g_0,\hdots,g_{i-2},g_{i-1}g_i,g_{i+1},\hdots,g_n)\]
+    in the case of \(d_1: C^1 \to C^2\), we get \(df(g_1,g_2) = f(g_1) + f(g_2) - f(g_1g_2)\), hence \(\ker d\) is the collection of group homomorphisms \(G \to M\). It is the case that \(d^2 = 0\), so this defines a chain complex. Since \(c\) is uniquely determined by \(s\), it will suffice to show that given another choice \(s': G \to E\) we have that \(c'\) differs from \(c\) only by a coboundary. \emph{Show that \([c] = [c']\), equivalently for some \(f: G \to M\) we have that \(c' = c + df\)}
+
+    \emph{proof - } Since all of our sections map into \(\ker q = \im j\), we continue to refer to our maps as \(G \to M\) by implicity composing with \(j^{-1}\). Now we may define \(f = s' - s\), so that \(s' = f + s\), it follows that \[c'(g_1,g_2) = (f(g_1) + s(g_1)) + (f(g_2) + s(g_2)) - (f(g_1g_2) + s(g_1g_2)) = c(g_1,g_2) + df(g_1,g_2)\]
+    So that \([c] = [c'] \in H^2(G,M)\) depends only on isomorphism class of \(E\).
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{CEx13} In the previous exercises we completed verifications to show that \[\text{Extensions} \hookrightarrow H^2(G;M)\]
+    We want to show that this is a correspondence, let \(c\) be a cocycle, we want to show that \(c\) defines a group operation on the set \(M \times G\). \emph{Given a cocycle \(c\) define a group operation on \(M \times G\)}.
+
+    \emph{proof - } We define the group law as \((x,y)(z,w) = (x + z + c(y,w),yw)\), (associativity is easy and painful to prove) the identity is \((-c(1,1),1)\), as proof
+    \begin{align*}
+        (m,x)(-c(1,1),1) = (m - c(1,1) + c(x,1),x)
+    \end{align*}
+    and since \(c\) is a cocycle, we have \[0 = dc(x,1,1) = c(1,1) - c(x,1) - c(x1,1) + c(x,11) = c(1,1) - c(x,1)\]
+    So that the given identity is indeed the identity. The inverse is \((-c(x,x')-c(1,1)-m,x^{-1})\), which is verified below;
+    \begin{align*}
+        (m,x)(-c(x,x')-c(1,1)-m,x^{-1}) &= (m - m - c(x,x^{-1}) - c(1,1) + c(x,x^{-1}),xx^{-1}) \\
+        &= (-c(1,1),1) \qed
+    \end{align*}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

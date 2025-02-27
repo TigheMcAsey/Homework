@@ -1,8 +1,8 @@
-PWD /Users/tighe/School:Work/Homework/math427
+PWD /Users/tighe/School:Work/Homework/math427/Exercises
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/tighe/School:Work/Homework/math427/427Exercises.tex
+INPUT /Users/tighe/School:Work/Homework/math427/Exercises/427Exercises.tex
 OUTPUT 427Exercises.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -168,9 +168,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarr
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/xr.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/xr.sty
-INPUT ./427Notes.tex
-INPUT ./427Notes.tex
-INPUT 427Notes.aux
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT ./427Exercises.aux
