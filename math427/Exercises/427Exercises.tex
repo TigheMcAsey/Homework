@@ -337,7 +337,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
         \end{tikzcd}
     \end{equation*}
 
-    The bottom left here is the (reduced) suspension \(\sum X\), and the bottom right is \(X \wedge S^1\). Here the induced map is clearly bijective, since the quotients here are equivalent to quotienting by the image of the quotients, along with quotienting on the left side \(f^{-1}(1) \times \set{1} \sim f^{-1}(-1) \times \set{-1} \sim x\), where \(f\) wasn't injective. Continuity of the inverse follows, since we have \(\frac{X \times I}{X \times \partial I} \cong X \times S^1\), and we can factor our map through this homeomorphism before taking quotients.
+    The bottom left here is the (reduced) suspension \(\sum X\), and the bottom right is \(X \wedge S^1\). Here the induced map is clearly bijective, since the quotients here are equivalent to quotienting by the image of the quotients, along with quotienting on the left side \(f^{-1}(1) \times \set{1} \sim f^{-1}(-1) \times \set{-1} \sim x\), where \(f\) wasn't injective. Continuity of the inverse follows, since we have \(\frac{X \times I}{X \times \partial I} \cong \frac{X \times S^1}{X \times 1}\), and we can factor our map through this homeomorphism before taking quotients.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{HEx10} Use \(\tilde{H_i}\) to show that \(\partial D^n\) cannot be a retract of \(D^n\)
@@ -620,7 +620,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \end{equation*}
     We may define \(f([\phi])\) to be the unique map making the diagram commute. This is well defined since maps in the equivalence class only differ on boundaries which are mapped to \(0\). \emph{Show that \(f\) is a homomorphism}.
 
-    \emph{proof - } We need to show that \(f([\phi]) + f([\psi]) = f([\phi + \psi])\), it will suffice to show that \(f([\phi]) + f([\psi])\) satisfies the universal prperty for \((\phi + \psi)\vert_{Z_n} = \phi \vert_{Z_n} + \psi \vert_{Z_n}\), so let \(x \in Z_n\) and denote the quotient map as \(q\), then \[(f([\phi]) + f([\psi]))(q(x)) = f([\phi])(q(x)) + f([\psi])(q(x)) = \phi\vert_{Z_n}(x) + \psi\vert_{Z_n}(x) \qed\]
+    \emph{proof - } We need to show that \(f([\phi]) + f([\psi]) = f([\phi + \psi])\), it will suffice to show that \(f([\phi]) + f([\psi])\) satisfies the universal property for \((\phi + \psi)\vert_{Z_n} = \phi \vert_{Z_n} + \psi \vert_{Z_n}\), so let \(x \in Z_n\) and denote the quotient map as \(q\), then \[(f([\phi]) + f([\psi]))(q(x)) = f([\phi])(q(x)) + f([\psi])(q(x)) = \phi\vert_{Z_n}(x) + \psi\vert_{Z_n}(x) \qed\]
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -788,7 +788,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \emph{exercise - }\label{CEx13} In the previous exercises we completed verifications to show that \[\text{Extensions} \hookrightarrow H^2(G;M)\]
-    We want to show that this is a correspondence, let \(c\) be a cocycle, we want to show that \(c\) defines a group operation on the set \(M \times G\). \emph{Given a cocycle \(c\) define a group operation on \(M \times G\)}.
+    We want to show that this is a correspondence, i.e. we have an injection \[H^2(G;M) \hookrightarrow \text{Extensions}\] let \(c\) be a cocycle, we want to show that \(c\) defines a group operation on the set \(M \times G\). \emph{Given a cocycle \(c\) define a group operation on \(M \times G\)}.
 
     \emph{proof - } We define the group law as \((x,y)(z,w) = (x + z + c(y,w),yw)\), (associativity is easy and painful to prove) the identity is \((-c(1,1),1)\), as proof
     \begin{align*}
@@ -802,4 +802,122 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \end{align*}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \section{Additional Problems}
+
+    \textbf{Ben Williams HW2 Problem 2.} Let \(p\) be a prime number, determine all group extensions of \(\mathbb{Z}/(p^b)\) by \(\mathbb{Z}/(p^a)\).
+
+    \emph{proof - } For \(k \in \set{1,\hdots,\min\set{a,b}}\) we can consider the extension \(E = \mathbb{Z}/(p^{a + b - k}) \oplus \mathbb{Z}/(p^k)\), we can map this onto \(p^b\) via \((1,0) \mapsto 1, (0,1) \mapsto p^{b-k}\), then the kernel is generated by \((p^{b-k},-1)\) hence has order \(p^a\) and is cyclic. This suffices to show that \(E\) is an extension as desired. It remains to prove that these classify all extensions.
+    
+    To do so, we can compute \(\ext(\mathbb{Z}/(p^a),\mathbb{Z}/(p^b))\). Consider the free resolution
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] &\mathbb{Z} \arrow[r,"{\cdot p^a}"] &\mathbb{Z} \arrow[r,"{}"] & Z/(p^a) \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    We dualize this free resolution to get
+    \begin{equation*}
+        \begin{tikzcd}
+            0 & \homo(\mathbb{Z},\mathbb{Z}/(p^b)) \arrow[l,"{}"] & \homo(\mathbb{Z},\mathbb{Z}/(p^b)) \arrow[l,"{(\cdot p^a)^*}"] & \homo(\mathbb{Z}/(p^a),\mathbb{Z}/(p^b)) \arrow[l,"{}"] & 0 \arrow[l,"{}"]
+        \end{tikzcd}
+    \end{equation*}
+    Which is equal to
+    \begin{equation*}
+        \begin{tikzcd}
+            0 & \mathbb{Z}/(p^b) \arrow[l,"{}"] & \mathbb{Z}/(p^b) \arrow[l,"{\cdot p^a}"] & G \arrow[l,"{}"] & 0 \arrow[l,"{}"]
+        \end{tikzcd}
+    \end{equation*}
+    So that \(\ext(\mathbb{Z}/(p^a),\mathbb{Z}/(p^b)) \cong (\mathbb{Z}/(p^b))/\im p^a \cong \mathbb{Z}/(p^{\min(a,b)})\) this classifies all isomorphism classes of extensions, to classify the extensions, suppose that \(\varphi : \mathbb{Z}/(p^a) \overset{\cong}{\to} \mathbb{Z}/(p^a)\), replacing the injection \(j\) of \(A\) into \(E\) with \(j \varphi\), we have the following diagram
+    \begin{equation*}
+        \begin{tikzcd}
+            0 \arrow[r,"{}"] &\mathbb{Z}/(p^a) \arrow[r,"{j \varphi}"] \arrow[d,"{\varphi \cong}"] & E \arrow[r,"{}"] \arrow[d,"{\cong}"] & \mathbb{Z}/(p^b) \arrow[r,"{}"] \arrow[d,"{}"] & 0 \\
+            0 \arrow[r,"{}"]& \mathbb{Z}/(p^a) \arrow[r,"{}"] & E' \arrow[r,"{}"] & \mathbb{Z}/(p^b) \arrow[r,"{}"] & 0
+        \end{tikzcd}
+    \end{equation*}
+    Hence \(E \cong E'\) as groups if they differ by an isomorphism of \(\mathbb{Z}/(p^a)\). In particular we need to quotient the action of \(\text{Aut}\,\mathbb{Z}/(p^a)\) from \(\ext(\mathbb{Z}/(p^a),\mathbb{Z}/(p^b))\). It follows that two elements \(x,y \in \ext(\mathbb{Z}/(p^a),\mathbb{Z}/(p^b))\) are similar iff \(x = ky\) for \((k,p^a) = 1\), so in particular for \(k,k'\) coprime to \(p\), we have that \(kp^n \sim k'p^m \iff n = m\), so that
+    \begin{align*}
+       \frac{\ext(\mathbb{Z}/(p^a),\mathbb{Z}/(p^b))}{\text{Aut}\,\mathbb{Z}/(p^a)} = \set{1,p,\hdots,p^{\min\set{a,b}}}
+    \end{align*}
+    so that \(\min\set{a,b}\) is an upper bound for the number of extensions. Since we have already shown that this many non-isomorphic extensions exist we know there are no more and thus we have classified all extensions. \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \textbf{Ben Williams HW2 Problem 3.} Let \(d \in \mathbb{Z}\) and \(n \in \mathbb{Z}_{>0}\) describe a sujrective map \(S^n \to S^n\) of degree \(d\).
+
+    \emph{proof (not explicit) - } Since \(\deg f = \deg \Sigma_* f\), it will suffice to provide a map \(S^1 \to S^1\) for each degree. For \(d = 0\), consider
+    the map \(f\) that factors through
+    \begin{align*}
+        S^1 &\overset{p}{\to} I \overset{\pi_{\partial S^1}}{\to} S^1 \\
+        e^{i\theta} &\overset{p}{\mapsto} \begin{cases} \theta/\pi & \theta \in [0,\pi] \\
+                                                        2 - \theta/\pi & \theta \in [\pi,2\pi) \end{cases}
+    \end{align*}
+    It follows that applying the homology functor, \(f_*: \mathbb{Z} \to \mathbb{Z}\) factors through
+    \begin{align*}
+        \mathbb{Z} \to 0 \to \mathbb{Z}
+    \end{align*}
+    and hence must be zero. In the other cases \(\deg f\) is consistent with winding number so we can simply take \(f: x \mapsto x^d\).
+
+    \emph{proof (explicit) - } In the case \(d = 0\), we use the same technique of letting \(f\) be the projection of the sphere onto \(D^n\) (this is equivalent to taking \((x_1,x_2,\hdots,x_n) \mapsto (x_1,x_2, \hdots, x_{n-1})\)), then quotienting by the boundary of \(D^n\). It follows that \(f\) once again factors through
+    \begin{align*}
+        S^n \to  D^n \to S^n
+    \end{align*}
+    and hence \(f_*\) factors through
+    \begin{align*}
+        \mathbb{Z} \to 0 \to \mathbb{Z}
+    \end{align*}
+    As for the case of \(d \neq 0\), it will suffice by composition being multiplicative to provide a function of degree \(\set{-1,0,1,2,\hdots}\). If we consider \(S^n\) to have the cell complex of the upper and lower hemisphere, then \(\tilde{H}^n(S^n) = \gen{e^n_N - e^n_S}\), taking \(f\) to be the map swapping the hemispheres is sufficient. For \(d \geq 1\) take \(x \mapsto x^d\), we can use the local degree formula at \(y = 1\), \(f^{-1}\set{1} = \set{\zeta_d^k}_{k=0}^{d-1}\), taking disjoint neighbordhoods \(\zeta_k \in U_k\), such that \(f(U_k) \subset V \supset \set{1}\), we have by excision that for some \(r\), such that \(B_r(\zeta_d^k) \subset U_k\) for all \(k\), \(\tilde{H}^n(B_r(\zeta_d^k),B_r(\zeta_d^k) \setminus \set{\zeta_d^k}) \cong \tilde{H}^n(U_k,U_k \setminus \set{\zeta_d^k})\), and similarly \(\tilde{H}^n(B_{r^d}(1),B_{r^d}(1) \setminus \set{1}) \cong \tilde{H}^n(V,V \setminus \set{1})\), with this replacement of \(U_k, V\) we get that \(f\vert_{\zeta_d^k}\) is an homeomorphism hence having degree \(\pm 1\), and furthermore \(f\vert_{\zeta_d^{k_1}}^{-1}f\vert_{\zeta_d^k}\) is the identity map, so that these maps have the same sign. It follows that \(x^d\) has degree equal to the sum of the degrees at \(\zeta_d^k\) which are each 1. \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \textbf{Ben Williams HW2 Problem 4.} Extend a polynomial function \(f: \mathbb{C} \to \mathbb{C}\) to a map on the riemann sphere (the one point compactification), show that \(\deg f\) is the same as the degree of \(f\) as a polynomial.
+
+    \emph{proof - } The map \(z \mapsto z^n\) on the Riemann sphere has degree \(n\), for the same reason it has degree \(n\) on \(S^2\) in the previous question. We may rewirite \(f\) as a polynomial to be \(\prod_{i=1}^N (x-\alpha_i)^{n_i}\), taking \(f^{-1}(0) = \set{\alpha_i}_1^N\), by the sum of local degree formula it suffices to show that \[f \vert_{\alpha_i} : \hat{C} \setminus \set{\alpha_i} \to \hat{C} \setminus \set{0}\]
+    has degree \(n_i\). By choosing a small enough neighborhood of \(\alpha_i\), since polynomial functions have isolated zeros we can homotope \(f \vert_{\alpha_i}\) to \(x^n\), due to excision this does not change the homology and which is proven in the previous exercise to have degree \(n\).
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \textbf{Example.} Build a CW complex with a given homology
+
+    \emph{construction - } Let \(G_1, \hdots, G_N\) be abelian groups, we will construct \(X\), such that \(\tilde{H}_n(X) = G_n\). By the structure theorem we have that \(G_\ell = \bigoplus_j \mathbb{Z} \bigoplus_i \mathbb{Z}/(p_i^{k_i})\), by the wedge sum property it will suffice to compute \(X_\ell\) with \(\tilde{H}_i(X_\ell) = G_\ell\) iff \(i = \ell\) and \(0\) otherwise, then take \(X = \bigvee_\ell X_\ell\). Now fix \(\ell\) and call \(G := G_\ell\), once again we may construct a space \(X_\ell^j\) with \(\tilde{H}_\ell(X_\ell^j)\) equal to one summand \(G^j\) in \(G\), and the rest of the homology groups zero. We showed in a previous exercise that there is a map \(f: S^n \to S^n\) of degree \(d\) for any \(n \geq 1\) and \(d \in \mathbb{Z}\). If \(G^j = \mathbb{Z}\), then simply take \(X_n^j = S^n\), otherwise if \(G^j = \mathbb{Z}/(m)\), take \(X_n^j\) to be \(e^{n+1} \cup_f S^n\), so that \(X_n^j\) has cell complex
+    \begin{equation*}
+        \begin{tikzcd}
+            \cdots \arrow[r,"{}"] & 0 \arrow[r,"{}"] & \mathbb{Z} \arrow[r,"{\cdot m}"] & \mathbb{Z} \arrow[r,"{}"] & 0 \arrow[r,"{}"] & 0\cdots
+        \end{tikzcd}
+    \end{equation*}
+    Taking the homology we get
+    \begin{align*}
+        \tilde{H}_i(X_n^j) = \begin{cases}
+            \mathbb{Z}/(m) & i = n \\
+            0 & \text{else}
+        \end{cases}
+    \end{align*}
+    \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Compute \(H_*(\mathbb{CP}^n)\)
+
+    \emph{proof - } We have \[\mathbb{CP}^n \cong \frac{S^{2n+1}}{v \sim \lambda v} \cong \frac{D^{2n}}{\sim_{\partial D^n}} \cong e^{2n}\bigcup_{\sim_{\partial e^{2n}}}\mathbb{CP}^{n-1}\]
+    and hence \(\mathbb{CP}^n \) has a cell complex with cells \(\set{e^{2k}}_{k=0}^n\). It follows that \[H_k(\mathbb{CP}^n) = C_k(\mathbb{CP}^n) = \begin{cases}
+        \mathbb{Z} & 2n \geq k \equiv 0 \;\text{mod}\,2 \\
+        0 &\text{else}
+    \end{cases}\]
+    \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \textbf{Hatcher prop. 0.17.} We say \((X,A)\) has the homotopy extension property, when for any \(f_0 : X \to Y\), the homotopy \(f_t : A \to Y\) of \(f_0\vert_A\) can be extended to a homotopy \(f_t: X \to Y\). Suppose that \((X,A)\) satisfies the HEP and \(A \simeq \set{*}\), show that \(q: X \to X/A\) is a homotopy equivalence. 
+    
+    \emph{proof - } Let \(f_0\) be the one map, and \(f_t\) be a homotopy extending the contraction of \(A\). \textcolor{red}{TODO}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \textbf{Example from Hatcher.} If \(U \subset R^n\) and \(V \subset R^m\), then \(U \cong V\) implies that \(n = m\).
+
+    \emph{proof - } 
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \end{document}
