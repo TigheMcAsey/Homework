@@ -1,0 +1,135 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 421hw4}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} Convexity of the interior is a corollary of problem (b). To show that the closure is convex, let \(x,y \in \overline{C}\), then there are sequences \(x_n \to x \tand y_n \to y\) such that \(x_n,y_n \in C\) for all \(n \in \mathbb{N}\). Now let \(t \in (0,1)\) and \(z = (1-t)y + tx\), by convexity of \(C\), \((1-t)y_n + tx_n \in C\) for each \(n\). Convexity will follow from \((1-t)y_n + tx_n \to z\) which will prove that \(z \in \overline{C}\). Let \(\epsilon > 0\), then by assumption on \(x,y\) there is \(N \in \mathbb{N}\), such that \(n \geq N\) implies that \(\norm{x - x_n} < \epsilon \tand \norm{y - y_n} < \epsilon\). It follows that for any \(n \geq N\),
+        \begin{align*}
+            \norm{(1-t)y_n + tx_n - z} &= \norm{(1-t)y_n + tx_n - (1-t)y - tx} \leq \norm{(1-t)(y_n-y)} + \norm{t(x_n - x)}\\ 
+            &= (1-t)\norm{y_n - y} + t\norm{x_n - x} < (1-t)\epsilon + t \epsilon = \epsilon \qed
+        \end{align*}
+
+        \textbf{(b)} since \(y \in C^\circ\), there is some \(r > 0\), such that \(N_r(y) \subset C^\circ\). Now let \(t \in (0,1)\) and \(z = tx + (1-t)y\), I claim that \(N_{(1-t)r}(z) \subset C\) implying that \(z \in C^\circ\). Let \(w \in N_{(1-t)r}(z)\), then \(w = z + s\) for some \(s\) with \(\norm{s} < (1-t)r\). It follows that \(\norm{\frac{s}{1-t}} < r\), so that \(y + \frac{s}{1-t} \in N_r(y)\). Since \(N_r(y) \subset C\), convexity implies that
+        \begin{align*}
+            (1-t)(y + \frac{s}{1-t}) + tx = z + s = w \in C
+        \end{align*}
+        and since \(w\) was arbitrary, we may conclude that \(N_{(1-t)r}(z) \subset C\) so that \(z \in C^\circ\). \qed
+
+        \textbf{(c)} Let \(z \in \overline{C}\), then there is some sequence \((z_n)_1^\infty \subset C\), such that \(z_n \to z\). Since \(C^\circ\) is nonempty, fix \(x \in C^\circ\). Using part (b), we have for \(t \in (0,1)\) and \(n \in \mathbb{N}\) that \(tz_n + (1-t)x \in C^\circ\). Let \(t_n = (1-\frac{1}{n})\), then \(t_nz_n + (1-t_n)x \in C^\circ\) for each \(n\). Let \(\epsilon > 0\), then choose \(N\) large enough that \(n \geq N\) implies that \(\frac{\norm{x}}{n} < \epsilon/4 \tand \frac{\norm{z}}{n} < \epsilon/4 \tand \norm{z - z_n} < \epsilon/4\). It follows that for \(n \geq N\),
+        \begin{align*}
+            \norm{z - t_nz_n + (1-t_n)x} &= \norm{z - z_n + \frac{1}{n}z_n + \frac{1}{n}x} \leq \norm{z - z_n} + \frac{1}{n}\norm{z_n} + \frac{1}{n}\norm{x} \\
+            &< \frac{2}{4}\epsilon + \frac{1}{n}\norm{z_n - z + z} \leq \frac{1}{2}\epsilon + \frac{1}{n}\norm{z_n - z} + \frac{1}{n}\norm{z} \\
+            &< \frac12 \epsilon + \frac{1}{4n}\epsilon + \frac14 \epsilon \leq \epsilon
+        \end{align*}
+        And hence \(t_nz_n + (1-t_n)x \to z\), where \(t_nz_n + (1-t_n)x \in C^\circ\) for all \(n\). This suffices to show that \(z \in \overline{C^\circ}\). \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Suppose \(z\) is an extreme point, since normed vector spaces are \(T_1\), we know that \(\set{z}\) is non-empty and closed. Now suppose that \(x,y \in C\) and \(t \in (0,1)\), such that \(tx + (1-t)y = z\). By assumption that \(z\) is extreme this implies that \(x = y\), so that \(z = tx + (1-t)x = x\), so that \(y = x = z \in E\). Conversely, suppose that \(\set{z}\) is an extreme subset of \(C\), then let \(x,y \in C\) and \(t \in (0,1)\) such that \(tx + (1-t)y = z\), since \(\set{z}\) is exreme, we know that \(x,y\in \set{z}\) so that \(x = y = z\), implying that \(z\) is extreme.
+
+        \textbf{(b)} We first need to show that \(B\) is closed and non-empty, to see that \(B\) is closed, let \(b \in \overline{B}\), then there is some sequence \((b_n)_1^\infty \subset B\), such that \(b_n \to B\), by continuity of \(f\), \(\max_{a \in A}f(a) = \lim_{n\to\infty}f(b_n) = f(b) \in B\), now to see that \(B\) is non-empty, note that \(A\) is a closed subset of a compact set, hence compact so that for some \(a \in A\) we have \(f(a) = \sup_Af(a)\). Now let \(z \in B\), and assume that \(x,y \in A\) and \(t \in (0,1)\), such that \(z = tx + (1-t)y\). Assume WLOG \(f(x) \geq f(y)\)
+        \begin{align*}
+            f(z) = f(tx + (1-t)y) = f(tx) + f((1-t)y) = tf(x) + (1-t)f(y) \leq tf(x) + (1-t)f(x) = f(x)
+        \end{align*}
+        but the other inequality is by assumption of \(f(z) = \max_A\set{f}\), so that \(f(z) = f(x) \in B\). It follows that
+        \begin{align*}
+            f(z) - tf(z) = (1-t)f(y) \implies (1-t)f(z) = (1-t)f(y) \implies f(z) = f(y) \in B \qed
+        \end{align*}
+
+        \textbf{(c)} Let \(\mathcal{C} := \set{E_\alpha}_{\alpha \in I} \subset \mathcal{F}(E)\) be a chain, I claim that \(\bigcap_I E_\alpha\) is an upper bound for \(\mathcal{C}\) in \(\mathcal{F}(E)\). Since each \(E_\alpha\) is a closed subset of a compact set and hence compact, by the finite intersection property \(\bigcap_I E_\alpha \neq \emptyset\), it is also closed since arbitrary intersections of closed sets are closed. To see that it is extreme, let \(z \in \bigcap_I E_\alpha\), if \(x,y \in C\) and \(t \in (0,1)\), such that \(z = tx + (1-t)y\), then since \(E_\alpha\) is extreme for each \(\alpha\), we have that \(x \in E_\alpha \tand y \in E_\alpha\) for all \(\alpha \in I\), thus \(x,y \in \bigcap_I E_\alpha\), it is immediate that \(E_\alpha \leq \bigcap_I E_\alpha\) for all \(\alpha \in I\), and \(E \in \mathcal{F}(E) \neq \emptyset\) so by Zorn's lemma a maximal element exists.
+
+        Now suppose that \(E_0 \in \mathcal{F}(E)\) is maximal, such that there are \(x_0,y_0 \in E_0\) with \(x_0 \neq y_0\), if \(y_0 \in \gen{x_0}\), then we can extend \(f: \gen{x_0} \to \mathbb{R}, \; \lambda x_0 \mapsto \lambda\norm{x_0}\) using the Hahn Banach theorem since \(f \leq \norm{\cdot}\), in this case it follows that since \(y_0 \neq x_0\) it must be the case that \(f(x_0) \neq f(y_0)\), so in particular we may assume without loss of generality \(f(x_0) > y_0\), but in this case \(y_0 \not \in \set{e \in E_0 \mid f(e) = \max_{x \in E_0}f(x)} \subsetneq E_0\), which is exremal by part (b), contradicting maximality of \(E_0\). Now we may assume that \(y_0 \not \in \gen{x_0}\), we may define \(f: \gen{y_0} \to \mathbb{R}, \; f: \lambda y_0 \mapsto \lambda\inf_{x \in \gen{x_0}}\norm{y_0 - x}\), it follows that \(f \leq d_{\gen{x_0}}\), so once again by the Hahn Banach extension theorem, we find some \(F \in X^*\), with \(F \leq d_{\gen{x_0}}\) and \(F \vert_{\gen{y_0}} = f\), implying that \(F(y_0) > 0 = F(x_0)\), and hence \(x_0 \not \in \set{e \in E_0 \mid f(e) = \max_{x \in E_0}f(x)} \subsetneq E_0\), which is exremal by part (b), contradicting maximality of \(E_0\). In either case we find that \(E_0\) is not maximal, contradicting our assumption so any maximal set must in fact consist of a single point. \qed
+
+        \textbf{(d)} By definition \(C\) is an extremal subset of itself, hence \(C \in \mathcal{F}(C) \neq \emptyset\), by the previous problem \(\mathcal{F}(C)\) contains a maximal element which is a singleton set \(\set{z}\), in part (a) we showed that \(z\) is an extremal point. \qed
+
+        \textbf{(e)} \(E_C \subset C\) which is closed and convex, so it is trivial that \(A = \overline{\text{conv}\,E_C} \subset C\), it remains to show the reverse inequality. Assume for contradiction that there is some \(c \in C \setminus A\), it follows that there is some smaller convex closed convex set \(c \not \in A \supset E_C\). It follows that \(A, \set{c} \subset C\) are closed subsets of a compact set and thus compact, implying that by the Hahn Banach seperation theorem there is a hyperplane strictly seperating \(A \tand \set{c}\). Let \(f\) be the functional used in defining the hyperplane (if necessary we may change the sign on \(f\), such that \(f(c) > \sup f\vert_A\)), we know that \(\set{x \in C \mid f(x) = \max_{z \in c}f(z)} \subset C \setminus A\) is extremal, furthermore by part (c), \(\mathcal{F}(\set{x \in C \mid f(x) = \max_{z \in c}f(z)})\) contains a minimal element with respect to inclusion, which must be a singleton \(\set{z} \subset C\), by part (a) we know that \(z\) is an extreme point, and hence \(z \not \in A\) implies that \(A\) does not contain all extreme points of \(C\), a contradiction. \qed
+    \end{pb}
+    \begin{pb}
+        I will prove both directions by contrapositive. Suppose first that \(T^*\) not injective, then there are \(f,f' \in Y^*\), such that \(fT = f'T\), i.e. \(T^*(f - f') = 0\), where \(f-f' \neq 0\). Since \(0 \neq f - f'\), there is some \(y \in Y\), such that \((f - f')(y) = \epsilon > 0\), since \(f-f' \in Y^*\) we know they are continuous, and hence there is some \(r>0\), such that \((f-f')\vert_{N_r(y)} > \frac{\epsilon}{2}\), since \(T^*(f-f') = 0\), it follows that \(N_r(y) \cap \im\, T = \emptyset\), and hence \(\im\,T\) is not dense in \(Y\).
+
+        Conversely, suppose \(\im\, T\) is not dense in \(Y\), then since \(\im\,T\) is a subspace of \(Y\), we have that \(d_{\im\,T}:x \mapsto \inf\set{\norm{x-t}\mid t \in \im\,T}\) is a seminorm on \(Y\). Since \(\im\,T\) is not dense in \(Y\), we have some non-empty open set \(U \subset (\im\,T)^c\), fix \(y \in U\), it follows that \(f: \lambda y\mapsto \lambda\inf_{t \in \im\,T}\norm{y - t}\) is linear of \(\gen{y}\), and bound above by \(d_{\im\,T}\). By the Hahn Banach linear extension theorem, there is some \(F \in Y^*\), such that \(F \leq d_{\im\,T}\), and \(F\vert_{\gen{y}} = f\). So that \(F(y) > 0\) implies that \(F \neq 0\), but since \(F\vert_{\im\,T} = 0\) we have \(T^*F = 0\) thus \(T^*\) is not injective. \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} In this problem we may replace \(f\) with another element of its equivalence class, as such assume for convenience that \(\sup_X\abs{f} = \text{ess}\sup_X f\). If \(p = q\) we are done trivially with \(\norm{i_{q,q}} = 1\), so assume that \(p < q\). First suppose that \(q = \infty\), and \(f \in L^\infty\), then
+        \begin{align*}
+            \left(\int_X \abs{f}^p\right)^{\frac{1}{p}} \leq \left(\int_X \sup_X \abs{f}^p\right)^{\frac{1}{p}} = \mu(X)^{\frac{1}{p}}\sup_X\abs{f} < \infty
+        \end{align*}
+        So that \(L^\infty \subset L^p\). \(\norm{1}_\infty = 1\), and for any \(f \in L^\infty\), \(\norm{f}_\infty = 1\), we have that \(\abs{f(x)} \leq 1, \forall x \in X\). It follows that
+        \begin{align*}
+            \mu(X)^{\frac{1}{p}} = \norm{1}_q\leq \sup_{f \in L^\infty}\norm{\iota_{p,\infty}f}_p \leq \norm{1}_q = \mu(X)^{\frac{1}{p}}
+        \end{align*}
+        so that \(\mu(X)^{\frac{1}{p}}\) is the operator norm. Now suppose that \(1 \leq p < q < \infty\), then \(\frac{p}{q} + \frac{q - p}{q} = 1\), so that for \(f \in L^q\) we have
+        \begin{align*}
+            \int_X \abs{f}^p\cdot 1\overset{\text{Holder}}{\leq} \left(\int_X \abs{f}^{p\frac{q}{p}}\right)^{p/q}\left(\int_X 1^{\frac{q}{q-p}}\right)^{\frac{q-p}{q}} = \norm{f}_q^p\mu(X)^{\frac{q-p}{q}}
+        \end{align*}
+        We can take the \(p\)-th root of either side to conclude that
+        \begin{align*}
+            \norm{f}_p \leq \norm{f}_q\mu(X)^{\frac{q-p}{pq}} < \infty
+        \end{align*}
+        so that \(L^q \subset L^p\), to see that \(\norm{\iota_{p,q}} = \mu(X)^{\frac{q-p}{pq}}\), we need only provide one \(f \in L^q\), with \(\norm{f}_q = 1\), such that \(\norm{f}_p = \mu(X)^{\frac{q-p}{pq}}\) since the other inequality is proved above, take \(f = \frac{1}{\mu(X)^{\frac{1}{q}}}\), then
+        \begin{align*}
+            \left(\int_X \abs{f}^q\right)^{1/q} = 1 \tand \left(\int_X \abs{f}^{p/q}\right)^{1/p} = \left(\mu(X)\mu(X)^{-\frac{p}{q}}\right)^{1/p} = \mu(X)^{\frac{1}{p} - \frac{1}{q}} = \mu(X)^{\frac{q-p}{pq}} \qed
+        \end{align*}
+
+        \textbf{(b)}
+        Note the following holds for any \(p\),
+        \begin{align*}
+            \left(\int_X \abs{f}^p\right)^{\frac{1}{p}} \leq \left(\int_X \norm{f}_\infty^p\right)^{\frac{1}{p}} = \mu(X)^{\frac{1}{p}}\norm{f}_\infty < \infty
+        \end{align*}
+        Now let \(\epsilon > 0\), by definition of \(\norm{\cdot}_\infty\) we know that for some \(E \subset X\) we have \(\abs{f}\vert_E > \norm{f}_\infty - \frac{\epsilon}{2}\) and \(0 < m = \mu(E)\). Since \(\lim_{p\to\infty}\mu(X)^{\frac{1}{p}} = \lim_{p\to\infty}\mu(E)^{\frac{1}{p}} = 1\), there is \(N\) sufficiently large, so that \(p \geq N\) implies that \(\mu(X)^{\frac{1}{p}}\norm{f}_\infty < \norm{f}_\infty + \epsilon\) and \(\mu(E)^{\frac{1}{p}}(\norm{f}_\infty - \frac{\epsilon}{2}) > \norm{f}_\infty - \epsilon\), so that
+        \begin{align*}
+            \norm{f}_\infty - \epsilon < \mu(E)^{\frac{1}{p}}\left(\norm{f}_\infty - \frac{\epsilon}{2}\right) \leq \left(\int_E\abs{f}^p\right)^{\frac{1}{p}} \leq \left(\int_X \abs{f}^p\right)^{\frac{1}{p}} \leq \left(\int_X \norm{f}_\infty^p\right)^{\frac{1}{p}} = \mu(X)^{\frac{1}{p}}\norm{f}_\infty < \norm{f}_\infty + \epsilon
+        \end{align*}
+        In particular, we find that
+        \begin{align*}
+            \abs{\norm{f}_p - \norm{f}_\infty} < \epsilon
+        \end{align*}
+        which suffices to show \(\lim_{p\to\infty} \norm{f}_p\) exists and is equal to \(\norm{f}_\infty\). \qed
+
+        \textbf{(c)} Let \(C \in \mathbb{R}_{>0}\) and suppose for contraposition that \(f \not \in L^\infty\), then there is some \(E \subset X\), such that \(0 < \delta = \mu(E)\) and \(\abs{f}\vert_E \geq 2C\). Since \(\lim_{p\to\infty}\mu(E)^{\frac{1}{p}} = 1\), there is \(N\) sufficiently large, such that \(p \geq N\) implies that \(\mu(E)^{\frac{1}{p}} > \frac12\). It follows that
+        \begin{align*}
+            \norm{f}_p \geq \left(\int_E \abs{f}^p\right)^{\frac{1}{p}} \geq \left(\int_E (2C)^p\right)^{\frac{1}{p}} = \mu(E)^{\frac{1}{p}}2C > C
+        \end{align*}
+        so that \(\norm{f}_p\) is not smaller than \(C\) for any \(p \geq N\). \qed
+
+        \textbf{(d)} Define \(f\) as follows,
+        \begin{align*}
+            f = \sum_{i=1}^\infty i\chi_{(2^{-i},2^{-i + 1}]}
+        \end{align*}
+        Immediately by definition we see that \(f \not \in L^\infty\). Now let \(p \in [1,\infty)\), we find that
+        \begin{align*}
+            \norm{f}_p = \left(\int_X \sum_1^\infty i^p\chi_{(2^{-i},2^{-i + 1}]}\right)^{\frac{1}{p}} \overset{\text{MCT}}{=} \left(\lim_{N\to\infty}\int_X \sum_1^N i^p\chi_{(2^{-i},2^{-i + 1}]}\right)^{\frac{1}{p}} = \left(\lim_{N\to\infty}\sum_1^N i^p2^{-i}\right)^{\frac{1}{p}}
+        \end{align*}
+        Where \(\lim_{i\to\infty}\frac{(i+1)^p2^{-i-1}}{i^p2^{-i}} = \frac12\), and hence \(\sum_1^\infty i^p2^{-i} < \infty\) by the ratio test. This suffices to show that
+        \begin{align*}
+            \norm{f}_p = \left(\sum_1^\infty i^p2^{-i}\right)^{\frac{1}{p}} < \infty
+        \end{align*}
+        so that \(f \in L^p\) and since \(p\) was arbitrary we can conclude that \(f \in \bigcap_{p \in [1,\infty)}L^p\). \qed
+    \end{pb}
+\end{document}
