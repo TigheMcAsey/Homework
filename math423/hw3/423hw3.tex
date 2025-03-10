@@ -6,7 +6,7 @@
 \usepackage{tikz-cd}
 
 \fancyhf{}
-\lhead{Math 423hw1}
+\lhead{Math 423hw3}
 \rhead{Tighe McAsey - 37499480}
 \pagestyle{fancy}
 
@@ -46,20 +46,19 @@
         is exact, but
         \begin{equation*}
             \begin{tikzcd}
-                0 \arrow[r,"{}"] & A\otimes M \arrow[r,"{(1\times f)_*}"] & B \otimes M
+                0 \arrow[r,"{}"] & A\otimes M \arrow[r,"{f_*}"] & B \otimes M
             \end{tikzcd}
         \end{equation*}
-        is not. It follows that there is some \(0 \neq \sum_1^n a_i \otimes x_i \in A \otimes M\), such that \((1\times f)_*(\sum_1^n a_i\otimes x_i) = 0\). I claim that \(M_0 = (x_1,\hdots,x_n)\) is the desired submodule. To see this, note \((1 \times f)\vert_{A \times M_0} = 1\times f\vert_{M_0}\), and if \(j\) is the map \(A \times M \to A \otimes M_0\) in the definition of the tensor, then \(j\vert_{A \times M_0}\) is equal the map \(A \times M_0 \to A \otimes M_0\) in the definition of the tensor. It follows that for any \(v \in A \otimes M_0\), \(v = j\vert_{A \times M_0}(u), \; u \in A \times M_0\), so that
+        is not. It follows that there is some \(0 \neq \sum_1^n a_i \otimes x_i \in A \otimes M\), such that \(f_*(\sum_1^n a_i\otimes x_i) = 0\). I claim that \(M_0 = (x_1,\hdots,x_n)\) is the desired submodule. To see this, note \((f \times 1)\vert_{A \times M_0} = f\times 1_{M_0}\), and if \(j\) is the map \(A \times M \to A \otimes M_0\) in the definition of the tensor, then \(j\vert_{A \times M_0}\) is equal the map \(A \times M_0 \to A \otimes M_0\) in the definition of the tensor. It follows that for any \(v \in A \otimes M_0\), \(v = j\vert_{A \times M_0}(u), \; u \in A \times M_0\), so that
         \begin{align*}
-            (1 \times f\vert_{M_0})_*(v) = (1 \times f\vert_{M_0})_*j\vert_{A \times M_0}(u) = 1 \times f\vert_{M_0}(u) = 1 \times f (u) = (1\times f)_*j(u)
+            f \otimes 1_{M_0}(v) = f \otimes 1_{M_0}j\vert_{A \times M_0}(u) = f \times 1_{M_0}(u) = f \times 1_M (u) = f_*j(u)
         \end{align*}
-        and hence \((1 \times f\vert_{A \times M_0})_*j\vert_{M_0}(\sum_1^n (a_i, x_i)) = (1 \times f)_*j(\sum_1^n (a_i,x_i)) = (1\times f)_*(\sum_1^n a_i \otimes x_i) = 0\), where \(0 \neq \sum_1^n a_i \otimes x_i =  j(\sum_1^n (a_i,x_i)) = j\vert_{A \times M_0}(\sum_1^n (a_i,x_i))\) which suffices to show that \(1 \times f\vert_{M_0}\) is not injective, and hence \(M_0\) is not flat, with the following sequence as witness.
+        and hence \(f \otimes 1_{M_0}j\vert_{M_0}(\sum_1^n (a_i, x_i)) = f_*j(\sum_1^n (a_i,x_i)) = f_*(\sum_1^n a_i \otimes x_i) = 0\), where \(0 \neq \sum_1^n a_i \otimes x_i =  j(\sum_1^n (a_i,x_i)) = j\vert_{A \times M_0}(\sum_1^n (a_i,x_i))\) which suffices to show that \(f \otimes 1_{M_0}\) is not injective, and hence \(M_0\) is not flat, with the following sequence as witness.
         \begin{equation*}
             \begin{tikzcd}
-                0 \arrow[r,"{}"] &A \otimes M_0 \arrow[r,"{(1 \times f\vert_{M_0})_*}"] &B \otimes M_0
+                0 \arrow[r,"{}"] &A \otimes M_0 \arrow[r,"{f \otimes 1_{M_0}}"] &B \otimes M_0 \qed
             \end{tikzcd}
         \end{equation*}
-        !!! NEED TO DEAL WITH \(B \otimes M_0\) !!!
     \end{pb}
     \begin{pb}
         Since \(C[X]\) is a PID, it satisfies Bezout's identity. So assume \(f_1, f_2\) are coprime polynomials, it follows that there exist \(g,h \in \mathbb{C}[X]\), such that \(f_1h + f_2g = 1\). Now let \(m \otimes n \in M_1 \otimes M_2\), it follows that
@@ -75,27 +74,26 @@
         the last equality following since both \(f_i \in I\). It follows that \(\overline{m}: M_1 \times M_2 \to \mathbb{C}(X)/I\) is a nonzero (since \((1,1) \mapsto 1\)) bilinear map, so \(\overline{m} = \eta j\) where \(j\) is the map from the definition of the tensor product and \(\eta: M_1 \otimes M_2 \to \mathbb{C}[X]/I\). Since \(\overline{m}\) is non-zero, it follows that \(\eta\) is nonzero and hence \(M_1 \otimes M_2 \neq 0\) since \(\eta \not \in \set{0} = \text{Hom}(0,\mathbb{C}[X]/I)\). \qed
     \end{pb}
     \begin{pb}
-        Consider the exact sequence of \(\mathbb{R}\) modules
+        Consider the exact sequence of \(A\) modules
         \begin{equation*}
             \begin{tikzcd}
-                0 \arrow[r,"{}"] &\mathbb{R} \arrow[r,"{\iota}"] & A
+                0 \arrow[r,"{}"] &(t) \arrow[r,"{\iota}"] & A
             \end{tikzcd}
         \end{equation*}
-        Where \(\iota: 1\mapsto t\), exactness is clear. The following is well defined by extesion of scalars.
+        Where \(\iota: t\mapsto t\), injectivity and therefore exactness is clear. To see \(N\) is not flat, tensor the above sequence to get
         \begin{equation*}
             \begin{tikzcd}
-                0 \arrow[r,"{}"] &\mathbb{R}\otimes_A N \arrow[r,"{\iota_*}"] &A \otimes_A N
+                0 \arrow[r,"{}"] &(t)\otimes_A N \arrow[r,"{\iota_*}"] &A \otimes_A N
             \end{tikzcd}
         \end{equation*}
-        Furthermore, \[\iota_* 1 \otimes e_2 = \iota_*1\otimes te_1 = t\iota_*1\otimes e_1 = t(t \otimes e_1) = t^2(1 \otimes e_1) = 0\]
-        Now it will suffice to check that \(0 \neq 1 \otimes e_2 \in \mathbb{R} \otimes_A N\). When regarding \(\mathbb{R}\) as an \(A\)-module, via extension of scalars, we are taking \(\mathbb{R} \cong A \otimes_\mathbb{R} \mathbb{R} \cong A\), so we define our \(A\)-bilinear map on \(A \times N\). Simply consider the multiplication map \(m:(a,b) \mapsto ab\), then \(0 \neq e_2 = m(1,e_2)\), since this map factors is bilinear, it factors through \(j\), so that \(1 \otimes e_2 \overset{\text{def}}{=} j(1,e_2) \neq 0\) which suffices to show that \(\ker \iota_* \neq 0\) so that the tensored sequence is not exact and hence \(N\) is not flat. \qed
+        We find that \[\iota_* t \otimes e_2 = \iota_*t\otimes te_1 = \iota_* t(t \otimes e_1) = \iota_*(t^2 \otimes e_1) = \iota_*(0) = 0\]
+        Now it will suffice to check that \(0 \neq t \otimes e_2 \in \mathbb{R} \otimes_A N\). Simply consider the multiplication map \(m:(a,b) \mapsto ab\), then \(0 \neq te_2 = m(t,e_2)\), since this map is bilinear, it factors through \(j\), so that \(t \otimes e_2 \overset{\text{def}}{=} j(t,e_2) \neq 0\) which suffices to show that \(\ker \iota_* \neq 0\) so that the tensored sequence is not exact and hence \(N\) is not flat. \qed
     \end{pb}
     \begin{pb}
-        Suppose that \(r \leq n\), and \(g_1,g_2,\hdots,g_r\) generate \(I\) as an \(A\) module. Let \[J := (X_1^2,X_1X_2,\hdots,X_1X_n,X_2^2,X_2X_3 \hdots, X_n^2)\]
-        be the ideal generated by all degree 2 monomials in \(\mathbb{R}[X_1,\hdots,X_n]\), it follows that by assumption each monomial in \(f_1,\hdots f_m\) is divisible by some element of \(J\), and hence \((f_i)_1^m/J = 0\).
-        It follows that \(\overline{g_1},\hdots,\overline{g_r}\) generate \(I/J\) as an \(A\)-module, now note that no element of \(I\) has a term with degree \(0\), hence each monomial of \(g_i\) (and hence \(\overline{g_i}\)) has degree atleast one. Since all monomials degree larger than or equal to \(2\) are annihilated in \(I/J\) we may conclude that each \(\overline{g_i} = X_j\) up to units. It follows that each \(\overline{g_i} = X_j\), and we may reindex without loss of generality so that \((g_1,\hdots,g_r) = (X_1,\hdots,X_r)\).
+        Suppose that \(r \leq n\), and \(g_1,g_2,\hdots,g_r\) generate \(I\) as an \(A\) module. It is immediate that \(I^2\) is the ideal generated by all degree 2 monomials of \(A\), it follows that by assumption each monomial in \(f_1,\hdots f_m\) is divisible by some element of \(I^2\), and hence \((f_i)_1^m/I^2 = 0\).
+        \(\overline{g_1},\hdots,\overline{g_r}\) generate \(I/I^2\) as an \(A\)-module, now note that no element of \(I\) has a term with degree \(0\), hence each monomial of \(g_i\) (and hence \(\overline{g_i}\)) has degree atleast one. Since all monomials degree larger than or equal to \(2\) are annihilated in \(I/I^2\) we may conclude that each \(\overline{g_i}\) is a polynomial consisting of only monomial terms.
 
-        Applying the third isomorphism theorem, \[A/I \cong \frac{\mathbb{R}[X_1,\hdots,X_n]/I}{(f_1,\hdots,f_m)/I} \cong \mathbb{R}[X_1,\hdots,X_n]/I \cong \mathbb{R}\] is a field, and \((X_1,\hdots,X_r)/J = I/J\) as an \(A\)-module implies that
+        Applying the third isomorphism theorem, \[A/I \cong \frac{\mathbb{R}[X_1,\hdots,X_n]/I}{(f_1,\hdots,f_m)/I} \cong \mathbb{R}[X_1,\hdots,X_n]/I \cong \mathbb{R}\] is a field, and \((X_1,\hdots,X_r)/I^2 = I/I^2\) as an \(A\)-module implies that
         \begin{align*}
             \bigoplus_1^r A/I \cong (X_1,\hdots,X_r)/J/(X_1,\hdots,X_r)I = I/J/I^2 \cong \bigoplus_1^n A/I
         \end{align*}

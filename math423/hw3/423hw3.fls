@@ -2,8 +2,8 @@ PWD /Users/tighe/School:Work/Homework/math423/hw3
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/tighe/School:Work/Homework/math423/hw3/423hw2.tex
-OUTPUT 423hw2.log
+INPUT /Users/tighe/School:Work/Homework/math423/hw3/423hw3.tex
+OUTPUT 423hw3.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/size11.clo
@@ -168,10 +168,10 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarr
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./423hw2.aux
-INPUT ./423hw2.aux
-INPUT 423hw2.aux
-OUTPUT 423hw2.aux
+INPUT ./423hw3.aux
+INPUT ./423hw3.aux
+INPUT 423hw3.aux
+OUTPUT 423hw3.aux
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -204,9 +204,9 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-OUTPUT 423hw2.pdf
+OUTPUT 423hw3.pdf
 INPUT /usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT 423hw2.aux
+INPUT 423hw3.aux
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb

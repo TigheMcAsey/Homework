@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1741139508.47141 "/Users/tighe/School:Work/Homework/math423/hw3/423hw2.tex" "423hw2.pdf" "423hw2" 1741139509.0307 0
-  "/Users/tighe/School:Work/Homework/math423/hw3/423hw2.tex" 1741139508.26838 9588 a7b0a500a00ab4bf2e0c965d91a5c46b ""
+["pdflatex"] 1741628027.13184 "/Users/tighe/School:Work/Homework/math423/hw3/423hw3.tex" "423hw3.pdf" "423hw3" 1741628027.67939 0
+  "/Users/tighe/School:Work/Homework/math423/hw3/423hw3.tex" 1741628026.93108 9048 33d72cbbf713216fe8c243982f6b405a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -132,10 +132,10 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1739668623.84621 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1739668619 8221421 65c51ee59c8e6121ca7ef37059414766 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "423hw2.aux" 1741139508.98455 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
-  "423hw2.tex" 1741139508.26838 9588 a7b0a500a00ab4bf2e0c965d91a5c46b ""
+  "423hw3.aux" 1741628027.63273 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
+  "423hw3.tex" 1741628026.93108 9048 33d72cbbf713216fe8c243982f6b405a ""
   (generated)
-  "423hw2.aux"
-  "423hw2.log"
-  "423hw2.pdf"
+  "423hw3.aux"
+  "423hw3.log"
+  "423hw3.pdf"
   (rewritten before read)
