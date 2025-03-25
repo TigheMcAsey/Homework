@@ -4,7 +4,12 @@
 \usepackage{fancyhdr}
 \usepackage{enumerate} % For custom lists
 \usepackage{tikz-cd}
+\usepackage{tikz}
+\usetikzlibrary{knots}
+\usetikzlibrary{shapes,snakes}
 \usepackage{xr}
+\usepackage{hyperref}
+
 \externaldocument{427Notes}
 
 \fancyhf{}
@@ -34,10 +39,70 @@
 \newcommand{\homo}{\text{Hom}}
 \newcommand{\ext}{\text{Ext}}
 
+%KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS
+\newcommand{\KP}[1]{%
+  \begin{tikzpicture}[baseline=-\dimexpr\fontdimen22\textfont2\relax]
+  #1
+  \end{tikzpicture}%
+}
+\newcommand{\KPB}{%
+  \KP{
+    \draw[color=black,thick] (-0.3,0.3) -- (0.3,-0.3);
+    \draw[color=black,thick] (-0.3,-0.3) -- (-0.05,-0.05);
+    \draw[color=black,thick] (0.05,0.05) -- (0.3,0.3);
+  }%
+}
+\newcommand{\KPC}{%
+  \KP{%
+    \draw[color=black,thick] (-0.3,0.3) .. controls (0,-0.05) .. (0.3,0.3);
+    \draw[color=black,thick] (-0.3,-0.3) .. controls (0,0.05) .. (0.3,-0.3);
+  }%
+}
+\newcommand{\KPD}{%
+  \KP{%
+    \draw[color=black,thick] (-0.3,-0.3) .. controls (0.05,0) .. (-0.3,0.3);
+    \draw[color=black,thick] (0.3,-0.3) .. controls (-0.05,0) .. (0.3,0.3);
+  }%
+}
+\newcommand{\KPR}{
+    \KP{%
+    \draw[color=black,thick] (-0.3,-0.3) .. controls (0.05,0) .. (-0.3,0.3);
+  }%
+}
+\newcommand{\KPL}{
+    \KP{%
+    \draw[color=black,thick] (0.3,-0.3) .. controls (-0.05,0) .. (0.3,0.3);
+  }%
+}
+
+\usepackage{enumitem}
+
+\tikzset{overcross/.style={double, line width=1.5, white, double=#1, double distance=\knotlinewidth},
+    overcross/.default={black},
+    knot/.style={line width=\knotlinewidth, baseline=-.5ex}}
+
+\newcommand{\knotlinewidth}{.7pt}
+\newcommand{\myarrow}{$\quad\longleftrightarrow\quad$}
+\newcommand{\RIa}[1][]{\tikz[knot, #1]{\draw(-.5,.5) to[out=-90,in=-90] (.5,0); \draw[overcross] (.5,0) to[out=90,in=90] (-.5,-.5);}}
+\newcommand{\RIb}[1][]{\tikz[knot, #1]{\draw[looseness=.8] (-.5,-.5) to[out=90, in=-90] (.5,0) to[out=90, in=-90] (-.5,.5);}}
+\newcommand{\RIIa}[1][]{\tikz[knot, #1]{\draw[red, looseness=2.3] (-.5,-.5) to[out=0, in=0] (-.5,.5); \draw[looseness=2.3, overcross=blue] (.5,-.5) to[out=180, in=180] (.5,.5);}}
+\newcommand{\RIIan}[1][]{\tikz[knot, #1]{\draw[black, looseness=2.3] (-.5,-.5) to[out=0, in=0] (-.5,.5); \draw[looseness=2.3, overcross=black] (.5,-.5) to[out=180, in=180] (.5,.5);}}
+\newcommand{\RIIb}[1][]{\tikz[knot, #1]{\draw[red, looseness=1.4] (-.5,-.5) to[out=0, in=0] (-.5,.5);\draw[blue, looseness=1.4] (.5,.5) to[out=180,in=180] (.5,-.5);}}
+\newcommand{\RIIbn}[1][]{\tikz[knot, #1]{\draw[black, looseness=1.4] (-.5,-.5) to[out=0, in=0] (-.5,.5);\draw[black, looseness=1.4] (.5,.5) to[out=180,in=180] (.5,-.5);}}
+\newcommand{\RIIc}[1][]{\tikz[knot, #1]{\draw[blue, looseness=2.3] (.5,-.5) to[out=180, in=180] (.5,.5); \draw[looseness=2.3, overcross=red] (-.5,-.5) to[out=0,in=0] (-.5,.5);}}
+\newcommand{\RIIcn}[1][]{\tikz[knot, #1]{\draw[black, looseness=2.3] (.5,-.5) to[out=180, in=180] (.5,.5); \draw[looseness=2.3, overcross=black] (-.5,-.5) to[out=0,in=0] (-.5,.5);}}
+\newcommand{\RIIIa}[1][]{\tikz[knot, #1]{\draw[red] (-120:.58) to[out=60,in=-120] (150:.2) to[out=60, in=-120] (60:.58); \draw[rotate=-120, overcross=blue] (-120:.58) to[out=60, in=-120] (150:.2) to[out=60, in=-120] (60:.58); \draw[rotate=120, overcross=green!80!black] (-120:.58) to[out=60, in=-120] (150:.2) to[out=60, in=-120] (60:.58);}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \title{Exercises}
 
 \begin{document}
 \maketitle
+\emph{Please note that I do not take credit for all of the Tikz in this document, particularly the knot diagrams. Much of it is taken or templated from online forums such as MathStackExchange}
 
 \section{Categories and Pre-reqs}
 
@@ -800,6 +865,87 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
         (m,x)(-c(x,x')-c(1,1)-m,x^{-1}) &= (m - m - c(x,x^{-1}) - c(1,1) + c(x,x^{-1}),xx^{-1}) \\
         &= (-c(1,1),1) \qed
     \end{align*}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \section{Knots and Cobordisms}
+
+    \textbf{Remark.} In this course on Algebraic Topology the focus has been on studying chain complexes. Homology and Cohomology have been presented as useful invariants to study classes of chain complexes (particularly in their aplications to topological spaces). Going forward we will focus on a stronger notion of equivalence, chain homotopy. Knots are a natural situation to study this equivalence since knots are objects each representing zero homology classes.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{KEx1} Suppose we have knot diagrams \(D \sim D'\), then their Jone's polynomials \(\gen{D}\) and \(\gen{D'}\) agree up to units in \(\mathbb{Z}[q,q^{-1}]\). Recall how the Jones polynomial is formed using local moves:
+    \begin{align*}
+        &\gen{\emptyset} = 1 \\
+        &\gen{D \sqcup \bigcirc} = (q + q^{-1})\gen{D} \\
+        &\left\langle\KPB\right\rangle= \left\langle\KPC\right\rangle - q \left\langle \KPD \right\rangle
+    \end{align*}
+
+    \emph{proof - } We want to show that the Jone's polynomial is Reidemeister invarient. The case of the Reidemesiter 0 move is obvious, consider the other 3 Reidemeister moves,
+    \begin{enumerate}[label=(\Roman*)]
+        \item \RIa\myarrow\RIb\myarrow\RIa[yscale=-1]
+        \item \RIIa\myarrow\RIIb\myarrow\RIIc
+        \item \RIIIa\myarrow\RIIIa[rotate=180]\qquad\RIIIa[xscale=-1]\myarrow\RIIIa[xscale=-1, rotate=180]
+    \end{enumerate}
+    We use the definition to compute as follows,
+    \begin{enumerate}[label=(\Roman*)]
+        \item \(\overset{\RIa[scale=0.5,rotate=90]}{\gen{D}} = \gen{D \sqcup \bigcirc} - q\gen{D} = (q + q^{-1})\gen{D} - q\gen{D} = q^{-1}\gen{D}\), which is equal to \(D\) up to the unit multiple \(q\). The other R1 loop is equal to \(q^2\gen{D}\)
+        \item Here we apply the rules to a single crossing, then invoke the \(q^2\) version of the first Reidemeister move, i.e.
+        \begin{align*}
+            \gen{D_1 \overset{\RIa[xscale=0.5,yscale=-0.5,rotate=90]}{\frac{\quad}{\quad}} D_2} - q\gen{D_1 \reflectbox{\KPB} D_2} = -q^2\gen{D_1 = D_2} - q \gen{D_1 \RIIbn[scale=0.5] D_2} + q^2\gen{D_1 = D_2} = -q\gen{D_1 \RIIbn[scale=0.5] D_2}
+        \end{align*}
+        See pdf.
+        \item This one is quite painful to write out, I am unwilling to subject myself to more than scrap paper for the purposes of these exercises. \qed
+    \end{enumerate}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{KEx2} Recall the definition of a graded vectorspace, i.e. \(W = \bigoplus_\mathbb{Z} W_n\) and \(\rho: W_n \to n\), we define
+    \begin{align*}
+        \text{grdim}\,W := \sum_{n \in \mathbb{Z}} q^n\dim W_n
+    \end{align*}
+    Show that the natural definition of \(W \otimes V\) as a graded vectorspace is such that \[\text{grdim}(W \otimes V) = (\text{grdim}\,W)(\text{grdim}\,V)\]
+
+    \emph{proof - } This exercise requires very little math, but is instead looking for an appropriate definition. Since tensor commutes with direct sum, we find that
+    \begin{align*}
+        \left(\bigoplus_\mathbb{Z} W_n\right) \otimes \left(\bigoplus_\mathbb{Z} V_n\right) \cong \bigoplus_\mathbb{Z} \left(W_n \otimes \bigoplus_\mathbb{Z} V_m\right) \cong \bigoplus_{\mathbb{Z}^2} W_n \otimes V_m
+    \end{align*}
+    So it makes sense to define \((W \otimes V)_n = \varphi^{-1}\bigoplus_{i + j = n} W_i \otimes V_j\), where \(\varphi\) is the composition of the two natural isomorphisms. Since \(\dim(T \otimes S) = (\dim T)(\dim S)\) it is immediate that this is equivalent to the product of the formal power series as suggested in the problem statement. \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - }\label{KEx3} Recall in class we used the state sum formula/hypercube to compute the cochain complex \(\mathcal{C}\left(\KPL\!\RIIcn[scale = 0.6]\!\KPR\right)\), the choices made in this construction where such that the Euler characteristic of the complex was made to be \(\gen{D}\). When recording the hypercube we record the resulting fully simplified knot states with a "height" corresponding to the number of left/right simplifications (this corresponds to the factor of \(q\) in \href{KEx1}{the first exercise of this section}). This is compatible with the
+
+    \textbf{State Sum Formula For The Jone's Polynomial:} let \(\mathcal{S}\) be the set of "states", i.e. vertices of the hypercube, recall the height of a state \(s\) (write \(h(s)\) or \(i(s)\)) is equivalent to the number of left-right crossings taken to get to that state, equivalently the left-right grading of the hypercube when written out. Also, \(\#s\) here is a slight abuse of notation as in it refers to the number of connected components \(\# H_0(s)\).
+    \begin{align*}
+        \gen{D} = \sum_{s \in \mathcal{S}}(-q)^{h(s)}(q^{-1}+q)^{\# s}
+    \end{align*}
+    In order to construct a stronger invarient, we introduced an oriented Jone's polynomial, \[V(\vec{D}):= (-1)^{n_-}q^{n_+-2n_-}\gen{D}\]
+    where \(n_+\) and \(n_-\) respectively refer to the number of positive and negatively oriented crossings in the knot diagram according to the familiar right hand rule.
+
+    We have discussed the hypercube as well as its height grading thus far, however to construct a cochain complex we need a module or vectorspace. In the hypercube each of our knots is reduced to some \(\bigsqcup\bigcirc\), where in the jones poly
+    
+    Let \(D := \KPL\!\KPB\!\KPR\), compute \(\mathcal{C}Kh(\vec{D})\).
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

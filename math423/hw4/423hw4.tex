@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+
+\fancyhf{}
+\lhead{Math 423hw4}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\left\langle #1 \right\rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\falg}{F^{\text{alg}}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\spec}{\text{Spec}}
+\newcommand{\nil}{\text{Nil}}
+\newcommand{\jac}{\text{Jac}}
+\newcommand{\ho}{\text{Hom}}
+
+\begin{document}
+    \begin{pb}
+        I claim that the integral closure of \(A\) is \(A_0 := F[t]\), to do so I will first show that \(A_0\) is integrally closed then reduce the general case to that of \(A_0\). Let \(q(t) \in B\) be integral over \(A_0\), then \(q(t) = \frac{r(t)}{g(t)}\) for \(r,g \in F[t]\) such that \((r,g) = 1\). By assumption we have some monic polynomial
+        \begin{align*}
+            q^n(t) + h_1(t)q^{n-1}(t) + \cdots + h_n(t) = 0
+        \end{align*}
+        which is true if and only if the following identity holds in \(F[t]\):
+        \begin{align*}
+            g^n(t)(q^n(t) + h_1(t)q^{n-1}(t) + \cdots + h_n(t)) = 0
+        \end{align*}
+        since \(0\) is in any ideal of \(F[t]\), this implies in particular that
+        \begin{align*}
+            g^n(t)(q^n(t) + h_1(t)q^{n-1}(t) + \cdots + h_n(t)) \in (g(t)) \implies r^n(t) \in (g(t))
+        \end{align*}
+        (the implication comes from \(g(t)\) dividing each other term), since \(F[t]\) is a PID, we know that \(F[t]/(g(t))\) is a domain, and hence \(r^n \in (g)\) implies that \(r \in (g)\) so that \(g \vert r\), but \((r,g) = 1\) by assumption, so we can conclude that \(g\) is a unit, i.e. \(g \in F^\times\), so that \(q(t) \in A_0\). 
+        
+        Now to reduce the general case of \(A = F[f(t)]\) to that of \(A_0\), note that the integral closure of \(A\) contains \(t\), since if the leading coefficient of \(f(t)\) is \(a\) we find that \(t\) satisfies the monic polynomial
+        \begin{align*}
+            a^{-1}f(X) - a^{-1}f(t)
+        \end{align*}
+        in \(A_0\), it follows that \(A\) is integral over \(A_0\), so that the integral closure of \(A_0\) is the integral closure of \(A\) which is \(A\), since it is integrally closed. \qed
+    \end{pb}
+    \begin{pb}
+        Assume for contradiction there is some \(b \in B \setminus A\), such that \(b\) is integral over \(A\), then there exist \(a_1,\hdots,a_n\), such that
+        \begin{align*}
+            &b^n + a_1 b^{n-1} + \cdots + a_n = 0 \\
+            \iff &b^n + a_1b^{n-1} + \hdots ba_{n-1} = -a_n \in A \\
+            \implies &b^{n-1} + a_1b^{n-2} + \hdots + a_{n-1} = a'_1 \in A \\
+            \implies &b^{n-1} + a_1b^{n-2} + \hdots + (a_{n-1} - a'_1) = 0
+        \end{align*}
+        continuing this process recursively, we find that \(b \in A\) which is the desired contradiction. \qed
+    \end{pb}
+    \begin{pb}
+        The closure of a set is the intersection of all closed sets containing it, thus it will suffice to show that any Zariski closed set containing \(\mathbb{Z}^n\) is the entire space \(\mathbb{A}^n\). Let \(V\) be a zariski closed set containing \(\mathbb{Z}^n\), then by definition, \(V = V(I)\) for some \(I \subset \mathbb{C}[X_1,\hdots,X_n]\). It will suffice to show that any polynomial \(f \in I\) is the zero polynomial. Let \(f \in I\), then \(f\) vanishes on \(\mathbb{Z}^n\), if \(n = 1\), then we are done since any nonzero polynomial in \(\mathbb{C}[X]\) has finitely many roots. Now assume for \(k < n\) that any \(f \in \mathbb{C}[X_1,X_2,\hdots,X_k]\) vanishing on \(\mathbb{Z}^k\) is the zero polynomial. Since \(f(a_1,\hdots,a_{n-1},X_n)\) has infinitely many roots for any \((a_1,\hdots,a_{n-1}) \in \mathbb{Z}^{n-1}\), we find that \(f(a_1,\hdots,a_{n-1},X_n) \equiv 0\) for any such point in \(\mathbb{Z}^{n-1}\), in particular, we may write
+        \begin{align*}
+            f = X^m_ng_0(X_1,\hdots,X_{n-1}) + X_n^{m-1}g_1(X_1,\hdots,X_{n-1}) + \cdots + g_m(X_1,\hdots,X_{n-1})
+        \end{align*}
+        so that each \(g_i\) is zero on \(\mathbb{Z}^{n-1}\), by the inductive hypothesis we find that each \(g_i = 0\), and hence \(f = 0\). \qed
+    \end{pb}
+    \begin{pb}
+        Any finite set of points is compact, since for any open cover we can choose an open set containing each point to furnish a subcover with at most as many open sets as points. Conversely, consider the variety \(X \subset \mathbb{C}^n\) and suppose that \(X\) has infinitely many points, now define \(I = I(X)\). By Noether's normalization we have that \(\mathbb{C}[X_1,\hdots,X_n]/I\) is integral over \(\mathbb{C}[f_1,\hdots,f_r]\) where the \(f_i\) are algebraically independent, there are two cases.
+
+        \textbf{Case \(\mathbf{r \geq 1}\).} Let \(\varphi: X \to \mathbb{A}^r\) be defined as \(\varphi: \mathbf{x} \mapsto (f_1(\mathbf{x}),\hdots,f_r(\mathbf{x}))\), then \(\varphi\) is continuous since each \(f_i\) is a polynomial function, moreover, \(\varphi\) is onto. As proof, let \(\mathbf{a} = (a_1,\hdots,a_r) \in \mathbb{A}^r\), then the ideal \(J_a = (f_1-a_1,\hdots,f_r-a_r)\) is maximal since \(\mathbb{C}[f_1,\hdots,f_r]/J_a \cong \mathbb{C}\) is a field. By the going up theorem, there is some maximal \(\mathfrak{m}_a \in \mathbb{C}[X_1,\hdots,X_n]/I\), such that \(\mathfrak{m_a}\cap \mathbb{C}[f_1,\hdots,f_r] = J_a\). It follows (by maximality) that \(V(\mathfrak{m}_a) = \mathbf{x} \in \mathbb{A}^n\) is a point. Now since \(\mathfrak{m}_a \supset J_a\) we have \(\mathbf{x} = V(\mathfrak{m}_a) \subset V(J_a)\) and hence \(J_a\) vanishes on \(\mathbf{x}\), i.e. \(f_i(\mathbf{x}) - a_i = 0\) for all \(i\), hence \(\varphi(\mathbf{x}) = \mathbf{a}\) proving that \(\varphi\) is onto. Since \(\mathbb{A}^r\) unbounded, by the Heine Borel theorem it is not compact, the continuous image of a compact set is compact (see below) so that \(X\) was not compact.
+
+        \textbf{Case \(\mathbf{r = 0}\).} It will suffice to show this case cannot happen. If \(r = 0\), then \(\mathbb{C}[X_1,\hdots,X_n]/I\) is integral over \(\mathbb{C}\), it follows that for each \(X_i\), there is some monic polynomial \(g_i\) with coefficients in \(\mathbb{C}\), such that \(g_i(X_i) \in I\), since \(\mathbb{C}\) is algebraically closed we may factor each \(g_i = \prod_{1}^{N_i}(X_i - a^i_j)\), it follows that for any \(\mathbf{b} = (b_1,\hdots,b_n) \in \mathbb{A}^n\) we must have \(g_i(\mathbf{b}) = g_i(b_i) = 0\), which is only possible if \(b_i \in \set{a^i_1,\hdots,a^i_{N_i}}\) for each \(i\).
+        Hence \(V(I) = X \subset \prod_{i=1}^n \set{a^i_j}_{j=1}^{N_i}\) so that \(\# X \leq \prod_1^n N_i < \infty\), contradicting \(X\) being an infinite set. \qed
+
+        \textbf{Proof That Continuous Image of A Compact Set is Compact.} Let \(K\) be compact, and \(f\) continuous, assume that \(\set{U_\alpha}_{\alpha\in A}\) is an open cover for \(f(K)\), then \(\set{f^{-1}(U_\alpha)}_{\alpha \in A}\) is an open cover for \(K\), hence admits a finite subcover \(\set{f^{-1}(U_i)}_{i=1}^n\), since \(K \subset \bigcup_1^n f^{-1}(U_i)\) we have \(f(K) \subset f(\bigcup_1^n f^{-1}(U_i)) = \bigcup_1^n U_i\), so that \(\set{U_i}_1^n\) is a finite subcover of \(f(K)\). \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} First suppose that \(a \in X_1 \cup X_2\), then for any \(f \in J_1J_2\), we can write \(f = f_1f_2\), where \(f_i \in J_i\). If \(a \in X_1\), then \(f_1(a) = 0\) and hence \(f(a) = 0\), otherwise, we find that \(a \in X_2\), so that \(0 = f_2(a) = f(a)\),  since \(f\) was arbitrary we find that \(a \in V(J_1J_2)\). 
+
+        Conversely, let \(a \in V(J_1J_2)\), if \(a \in X_1\) then we are done, so assume not. Then there is some \(f \in J_1\), such that \(f(a) \neq 0\), then for any \(g \in J_2\) we have \(fg \in J_1J_2\), implying that \(f(a)g(a) = 0\), since \(f(a)g(a) \in k\) is a field and \(f(a) \neq 0\) we conclude that \(g(a) = 0\), since this holds for any \(g \in J_2\) this proves that \(a \in X_2\). \qed
+
+        \textbf{(b)} Since \(X,Y\) are algebraic varieties, we may write \(X = V(J_X), Y = V(J_Y)\)
+        \begin{align*}
+            V(J_X)\cap V(J_Y) = V(J_X + J_Y) \implies I(V(J_X)\cap V(J_Y)) = IV(J_X + J_Y) = \sqrt{J_X + J_Y}
+        \end{align*}
+        and since \(V(J_X)\cap V(J_Y) = \emptyset\), we find that \(1 \in k[X_1,X_2,\hdots,X_n] = I(V(J_X)\cap V(J_Y))\).
+        \(1 \in \sqrt{J_X + J_Y}\) it is immediate from definition of radical ideal that this implies \(1 \in J_X + J_Y\), so that there is some \(f \in J_X \tand g \in J_Y\), such that \(f + g = 1\), it follows that \(f\) is the desired polynomial, since \(f(x) = 0\) for any \(x \in X\) by assumption and \(f(y) = 1 - g(y) = 1\) for any \(y \in Y\), since \(g \in J_Y\) implies that \(g(y) = 0\). \qed
+    \end{pb}
+    \begin{pb}
+        No, assume it is the case, then \(Y\) satisfies a monic polynomial \(Y^n + \sum_1^{n} f_{n-i}(X)Y^i  = 0\) over \(A\). Consider \begin{align*}
+            \varphi: \mathbb{C}[X,Y] &\to \mathbb{C}[X,\frac{1}{X^2 + 1}] \\
+            X &\mapsto X \\
+            Y &\mapsto \frac{1}{X^2 + 1}
+        \end{align*}
+        such a homomorphism exists by the universal property for polynomial rings, moreover \(I = (X^2Y + Y - 1) \subset \ker \varphi\). By the first isomorphism theorem, this induces a homomorphism \(\overline{\varphi}: B \to \mathbb{C}[X,\frac{1}{X^2 + 1}]\). It follows that
+        \begin{align*}
+            &\overline{\varphi}(Y^n + \sum_1^{n} f_{n-i}(X)Y^i)  = 0 \\
+            \iff &\frac{1}{X^2 + 1} = \sum_0^{n-1} (X^2 + 1)^{i} f_{i}
+        \end{align*}
+        To see this is a contradiction, note that atleast one \(f_i \neq 0\), so that
+        \begin{align*}
+            0 = \deg 1 = \deg (X^2 + 1)\sum_0^{n-1} (X^2 + 1)^{i} f_{i} \geq \deg (X^2 + 1) = 2 \qed
+        \end{align*}
+    \end{pb}
+\end{document}

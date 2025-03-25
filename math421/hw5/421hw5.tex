@@ -1,0 +1,139 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 421hw5}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+
+\begin{document}
+\textbf{Hi Paige, you commented last time that my font size was small - I have increased it. Please let me know before the last homework is due if you want me to make the font on that homework even larger. \newline \(\mathbf{\sim}\) Tighe}
+    \begin{pb}
+        \textbf{(a)} Density is immediate, lemma 2.56 of notes states that simple functions (with finite support) are dense in \(L^p\), any simple function with finite support is in \(L^1 \cap L^\infty\). To see that \(L^1 \cap L^\infty \subset L^p\) for every \(p \geq 1\), we first fix \(p > 1\) and \(f \in L^1 \cap L^\infty\), since \(f \in L^1\) it follows that \(\mu\set{x \in X \vert \abs{f(x)} \geq 1} = m < \infty\), so that
+        \begin{align*}
+            \int_X \abs{f}^p &\leq \int_{\set{x \in X \vert \abs{f(x)} \geq 1}} \norm{f}_\infty^p + \int_{\set{x \in X \mid \abs{f} < 1}} \abs{f}^p \\ &\leq m\abs{f}_\infty^p + \int_{\set{x \in X \mid \abs{f} < 1}} \abs{f} \\ &\leq m\norm{f}_\infty^p + \norm{f}_1 < \infty
+        \end{align*}
+        Implying that \(f \in L^p\). \qed
+        
+        \textbf{(b)} Convergence in \(L^p\) implies that \(\lim_{n\to \infty}\norm{f - f_n}_p^p = 0\). For \(k,n \in \mathbb{Z}_{>0}\) define 
+        \[E_{n,k} := \set{x \in X \vert \mid \abs{f(x) - f_n(x)} > 2^{-k}}\]
+        By \(L^p\) convergence we find that \(\lim_{n\to\infty}\mu(E_{n,k}) = 0\) (\emph{See below}), and hence there exists some \(N_k\) such that for any \(n \geq N_k\), \(\mu(E_{n,k}) < 2^{-k}\). Consider the set \(F := \bigcap_{j = 1}^\infty \bigcup_{k = j}^\infty E_{N_k,k}\), for any point in \(x \in F^c\) there exists some \(j\), such that \(x \not \in \bigcup_{k=j}^\infty E_{N_k,k}\), it follows that \(\abs{f(x) - f_{N_k}(x)} \leq 2^{-k}\)  for any \(k \geq j\) and hence \(f_{N_k}(x) \to f(x)\) on \(F^c\), since for any \(j\) we have
+        \begin{align*}
+            \mu(F) \leq \mu\left(\bigcup_{k = j}^\infty E_{N_k,k}\right) \leq \sum_{k = j}^\infty 2^{-k} = 2^{1-j}
+        \end{align*}
+        it follows that \(\mu(F) = 0\), hence \(f_{N_k} \to f\) almost everywhere. \qed
+
+        \textbf{\(\mathbf{L^p}\) convergence implies \(\mathbf{\lim_{n\to\infty}\mu(E_{n,k}) = 0}\):} Suppose for contradiction that for some \(k\) we have some \(\epsilon > 0\), such that for any \(N \in \mathbb{Z}_{>0}\) there is some \(n > N\) with \(\mu(E_{n,k}) \geq \epsilon\), then we have for any \(N \in \mathbb{Z}_{>0}\) there is some larger \(n\), such that 
+        \begin{align*}
+            \norm{f - f_n}_p^p \geq \int_{E_{n,k}} \abs{f - f_n}^p \geq \mu(E_{n,k})2^{-k} \geq \epsilon 2^{-k}
+        \end{align*}
+        contradicting \(\lim_{n\to\infty}\norm{f - f_n}_p^p = 0\). \qed
+
+        \textbf{(c)} Define the set in the problem description as \(S\), now suppose that \(f \in L^p\), such that a sequence \((f_n)_1^\infty\) in \(S\) converges to \(f\) in \(L^p\), by part (b) there is a subsequence \(f_{n_k}\) converging pointwise almost everywhere. We apply Fatou's lemma to conclude the following,
+        \begin{align*}
+            \int \abs{f}^q = \int \liminf \abs{f_{n_k}}^q \leq \liminf \int \abs{f_{n_k}}^q \leq 1 \implies f \in S \qed
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} By the closed graph theorem, it will suffice to show that the graph of \(T\) is closed. Suppose that \(T(f_n) \to h\) in \(L^q\), where \(f_n \to f\) in \(L^p\), we want to show that \(h = fg\). Since \(f_ng \to h\) in \(L^q\), by 1(b) there is a pointwise almost everywhere convergent subsequence \(f_{n_k}g \to h\), but \(f_{n_k}g \to fg\) pointwise, so that \(fg = h\) a.e. equivalently \([fg] = [h]\) as desired. \qed
+
+        \textbf{(b)} Since \(T\) is bounded, let \(M\) such that \(\norm{T(f)}_q \leq M\norm{f}_p\) for any \(f \in L^p\). First suppose that \(p = \infty\), then \(\norm{g}_q \leq M\norm{1}_\infty = M < \infty\), so that \(g \in L^q\). Now suppose that \(p < \infty\) and \(q < p\), since \(\abs{f}^q\abs{g}^q \in L^1\) for any \(f \in L^p\), it follows that for any \(h \in L^{p/q}\) we have \(\abs{h}^{1/q} \in L^p\), and hence \(\abs{h}\abs{g}^q \in L^1\), where
+        \begin{align*}
+            \phi_g(h)^{1/q} &= \left(\int\abs{h}\abs{g}^q\right)^{1/q} = \left(\int\left(\abs{h}^{1/q}\right)^q \abs{g}^q\right)^{1/q} \leq M \left(\int\abs{h}^{p/q}\right)^{1/p} = M\norm{h}_{p/q}^{1/q} \\
+            \implies \phi_g(h) &\leq M\norm{h}_{p/q}
+        \end{align*}
+        This implies that \(\phi_{\abs{g}^q}(h) \in (L^{p/q})^*\), and hence by theorem 2.57 of notes, \(\abs{g}^q \in L^{(1 - \frac{q}{p})^{-1}}\), so that
+        \begin{align*}
+            \int{\abs{g}^{q(\frac{p}{p-q})}} < \infty \implies g \in L^{\frac{pq}{p-q}}
+        \end{align*}
+        Finally if \(q = p < \infty\), the solution is the same as the previous case up until \(\phi_{\abs{g}^q} \in (L^1)^*\), which implies that (once again by Theorem 2.57) \(\abs{g}^q \in L^\infty\), it follows immediately from this fact that \(g \in L^\infty\). \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} We first show linearity which is clear from limit laws, let \(a \in \mathbb{C}\) and \(x, x' \in \ell^\infty\), then 
+        \begin{align*}
+            \lim_{n\to \infty}ax_n + x_n' = a\lim_{n \to \infty}x_n + \lim_{n\to\infty}x_n'
+        \end{align*}
+        The equality and existence of these limits follows from limit laws (Rudin- Principles of Mathematical Analysis 3.3). To see that it is bounded, note that for any \(n\), \(\abs{x_n} \leq \norm{x_n}_\infty\), and hence \(\abs{f(x)} = \abs{\lim_{n\to\infty} x_n} = \lim_{n\to \infty} \abs{x_n} \leq \norm{x_n}_\infty\). To see that the operator norm is one, it will suffice to show there is some \(x \in \ell^\infty\) with norm \(1\), such that \(\abs{f(x)} = 1\), but this is immediate since \(\mathbf{1} := (1,1,\hdots) \in \ell^\infty\), and \(f(\mathbf{1}) = \lim_{n \to \infty} 1 = 1\). \qed
+
+        \textbf{(b)} Since \(F\) is an extension of \(f\), it will suffice to show that there is no \(a \in \ell^1\), such that \(\phi_a\vert_M = f\). Suppose for contradiction that such an \(a\) exists, if \(a = 0\), then we are done since in that case \(\phi_a(\mathbf{1}) = 0 \neq 1 = f(\mathbf{1})\). If \(a \neq 0\), then there is some \(n \geq 1\), such that \(a_n \neq 0\), then consider \(x \in M\) where \(x_j = \begin{cases}
+            1 & j = n \\
+            0 & \text{else}
+        \end{cases}\) , then \(\phi_a(x) = a_n \neq 0\), but \(f(x) = \lim_{j \to \infty}x_j = 0\), hence \(f(x) \neq \phi_a(x)\). \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Assume that \(R_f \neq \emptyset\), otherwise we are done. Now suppose that \(z \in \mathbb{C}\), such that there is a sequence of points \((x_n)_1^\infty \subset R_f\), such that \(x_n \to z\). Now let \(\epsilon > 0\), then by convergence, there is some \(N\), such that \(\abs{z - x_N} < \epsilon/2\), furthermore, for any \(y \in N_{\epsilon/2}(x_N)\), we have that \(\abs{y - z} \leq \abs{y - x_n} + \abs{x_n - z} < \epsilon\), so we can conclude that 
+        \[\set{w \in X \mid \abs{f(w) - x_N} < \epsilon/2} \subset \set{w \in X \mid \abs{f(w) - z} < \epsilon}\]
+        and hence
+        \begin{align*}
+            \mu\set{w \in X \mid \abs{f(w) - z} < \epsilon} \geq \mu\set{w \in X \mid \abs{f(w) - x_N} < \epsilon/2} > 0
+        \end{align*}
+        since \(\epsilon\) was arbitrary this suffices to show that \(z \in R_f\) implying that the set is closed. \qed
+
+        \textbf{(b)} Suppose that \(\mu\) is a nonzero measure, then \(\mu(X) = m > 0\), let \(S_k := \set{x + iy \in \mathbb{C} \vert -k \leq x,y \leq k}\) denote the rectangle of sidelength \(2k\) centered at the origin in \(\mathbb{C}\), by continuity from above, \(\lim_{k\to\infty}\mu f^{-1}(S_k) = \mu(X)\), hence for some \(k\) we have \(\mu f^{-1}(S_k) \geq m/2 > 0\). Now given a rectangle \(S\) centered at a point \((p_x+ ip_y)\), define rectangles \(S^1,S^2,S^3,S^4\), such that 
+        \begin{align*}
+            S^1 = S \cap \set{x + iy \mid x - p_x \geq 0 \tand y - p_y \geq 0} \\
+            S^2 = S \cap \set{x + iy \mid x - p_x \leq 0 \tand y - p_y \geq 0} \\
+            S^3 = S \cap \set{x + iy \mid x - p_x \leq 0 \tand y - p_y \leq 0} \\
+            S^4 = S \cap \set{x + iy \mid x - p_x \geq 0 \tand y - p_y \leq 0}
+        \end{align*}
+        Now construct a sequence of rectangles as follows, define \(S_1 = S\), for each \(n\), if \(\mu f^{-1}(S_n) > 0\), then
+        \begin{align*}
+            \sum_{i = 1}^4 \mu f^{-1}(S_n^i) \geq \mu(S_n)
+        \end{align*}
+        so that for some \(i\), we once again have \(\mu f^{-1}(S_n^i) > 0\), then define \(S_{n+1} = S_n^i\). Since each \(S_i\) is compact, we may apply the finite intersection property to find that \(\bigcap_1^\infty S_n \neq \emptyset\), and hence we have some \(z \in \bigcap_1^\infty S_n\), I claim that \(z \in R_f\). Let \(\epsilon > 0\), then since \(z \in S_n\) for every \(n\), and \(\lim_{n\to \infty} \text{diam}\, S_n = 0\) there is some \(n\), such that \(S_n \subset N_\epsilon(z)\), so that
+        \begin{align*}
+            \set{w \in X \mid \abs{f(w) - z} < \epsilon} \supset f^{-1}(S_n) \implies \mu\set{w \in X \mid \abs{f(w) - z} < \epsilon} \geq \mu f^{-1}(S_n) > 0
+        \end{align*}
+        since \(\epsilon > 0\) was arbitrary, we know that \(z \in R_f\). \qed
+
+        \textbf{(c)} Since \(R_f\) is closed, it will suffice to show that it is bounded, so we may show that \(R_f \subset F := \set{z \in \mathbb{C} \mid \abs{z} \leq \norm{f}_\infty}\), suppose that \(y \in \mathbb{C}\), such that \(\abs{y} > \norm{f}_\infty\), then since \(F\) is closed, there is some \(\epsilon > 0\), such that \(N_\epsilon(y) \subset F^c\). By definition of \(\norm{\cdot}_\infty\) we have \(\mu f^{-1}(F^c) = 0\), and hence
+        \begin{align*}
+            \mu(\set{w \in X \mid \abs{y - f(w)} < \epsilon}) \leq \mu f^{-1}(F^c) = 0
+        \end{align*}
+        and hence \(y \not \in R_f\) so that \(R_f \subset F\) is bounded. The fact that \(\sup_{R_f}\abs{z} = \max_{R_f}\abs{z}\) is immediate from compactness, so it suffices to show that \(\norm{f}_\infty = \sup_{R_f}\abs{z}\), let \(\epsilon > 0\), then 
+        \[E := f^{-1}\set{z \in \mathbb{C} \mid \norm{f}_\infty - \epsilon \leq \abs{z}}, \quad \mu(E) > 0 \text{ by definition of }\norm{f}_\infty\]
+        Since a measurable subset of a measure space defines a measure space, i.e. \((E, \mathcal{M}\vert_E, \mu\vert_E)\) is a measure space with \(\mu\vert_E(E) = \mu(E) > 0\) we can simply apply part (b) to this second measure space to conclude that \(\emptyset \neq R_{f\vert_E} \subset R_f\) (where the subset relation is obvious by definition of the essential range), and hence there is some \(z \in R_f\) with \(\abs{z} \geq \norm{f}_\infty - \epsilon\), since \(\epsilon\) was arbitrary and the opposite inequality \(\sup_{R_f}\abs{z} \leq \norm{f}_\infty\) was proven above. We conclude that \(\norm{f}_\infty = \sup_{R_f}\abs{z}\), and by compactness we can pass the supremum to the maximum over the set as stated previously. \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Let \(Y\) denote the collection of linear independent subsets of \(X\), such that for any \(e \in Y\) we have \(\norm{e} = 1\) ordered by inclusion. If \(X = 0\), then we can take \(Y = \emptyset\) and we are done trivially so assume not. It follows that there is some nonzero vector \(u \in X\), then \(\set{\frac{u}{\norm{u}}} \in Y \neq \emptyset\). Now suppose that \(C\) is a chain in \(Y\), I claim that \(\bigcup_{E_\alpha \in C}E_\alpha\) is an upper bound for \(C\) in \(Y\). To check this it will suffice to show that indeed \(\bigcup_{E_\alpha \in C}E_\alpha \in Y\). First let \(e \in \bigcup_{E_\alpha \in C}E_\alpha\), then \(e \in E_\alpha\) for some \(\alpha\) implies that \(\norm{e} = 1\), now suppose that for \(\set{a_i}_1^n \subset K, \; \set{e_i}_1^n \subset \bigcup_{E_\alpha \in C}E_\alpha\) we have \(\sum_1^n a_i e_i = 0\), it follows that each \(e_i \in E_{\alpha_i}\), and since \(C\) is a chain we can pick \(E_{\alpha_j} = \max\set{E_{\alpha_i}}_{i=1}^n\), then \(\sum_1^n a_i e_i = 0\) in the linearly independent set \(E_{\alpha_j}\) implying that \(a_i = 0\) for each \(i\), this suffices to show that \(\bigcup_{E_\alpha \in C}E_\alpha \in Y\). Now we may apply Zorn's lemma to conclude that \(Y\) has a maximal element, suppose for contradiction the maximal element \(E \in Y\) is not a basis, then there must be some \(u \in X \setminus \gen{E}\), \(0 \in \gen{E}\) specifies \(u \neq 0\), so we can consider \(E \cup \set{\frac{u}{\norm{u}}}\), it is clear that all elements of this new set have norm \(1\). Since \(E \cup \set{\frac{u}{\norm{u}}} \supset E\) which is maximal, it must not be linearly independent, so there exist \(\set{a_i}_1^n \subset K\) not all zero and \(\set{e_i}_1^{n-1} \subset E\), such that \(a_n \frac{u}{\norm{u}} + \sum_1^{n-1} a_i e_i = 0\), linear independence of \(E\) implies \(a_n \neq 0\), hence
+        \(u = \sum_{1}^{n-1}\norm{u}a_n^{-1}a_i e_i\), so that \(u \in \gen{E}\) a contradiction. Thus we may conclude that \(E\) is an algebraic basis with all elements having norm \(1\). \qed
+
+        \textbf{(b)} Using part (a), let \(\set{e_\alpha}_A\) be an algebraic basis for \(X\) such that for each \(\alpha \in A\) we have \(\norm{e_\alpha} = 1\). Choose some countable subset \(\set{e_i}_1^\infty\). Now we can use the universal property of the basis to define \(f\) on basis elements and extend linearly, define \(f\) as follows:
+        \begin{align*}
+            f: \begin{cases}
+                e \mapsto 0 & e \in \set{e_\alpha}_A \setminus \set{e_i}_1^\infty \\
+                e_i \mapsto i
+            \end{cases}
+        \end{align*}
+        Then it is clear that \(f\) is unbounded since for any \(M \in \mathbb{R}\), we can pick some \(N \in \mathbb{N}\), such that \(N > M\), it follows that
+        \(f(e_N) = N > M\norm{e_N}\) and since \(M\) was arbitrary \(f\) is unbounded and hence not continuous. \qed
+
+        \textbf{(c)} Assume for the contradiction that \(I\) is countable, then by part (b), we have some linear functional \(f\) on \(X\) which is not continuous, hence not bounded. Define \(E_n = \set{x \in X \mid \abs{f(x)} \leq n\norm{x}}\), to see that \(\bigcup_{n=1}^\infty E_n = X\), we first note that \(0 \in E_1\), now let \(x \in X\setminus \set{0}\), then \(\norm{x} = r > 0\), then choosing \(n \geq \frac{\abs{f(x)}}{r}\) we have \(x \in E_n\). Now fix \(M \in \mathbb{Z}_{>0}\), and assume that \(E_M\) contains a non-empty open set \(U\). Let \(x \in U\), since \(U\) is open we know that \(U - x\) is an open set containing the origin, hence there is some \(\epsilon > 0\), such that for any \(w\) with \(\norm{w} = 1\) we have \(\epsilon w \in U - x\). Now let \(v \in X\), then \(\epsilon\frac{v}{\norm{v}} \in U - x\), hence \(x + \epsilon\frac{v}{\norm{v}} \in U\), it follows that \begin{align*}
+            &\frac{\epsilon}{\norm{v}} \abs{f(v)} - \abs{f(x)} \leq \abs{f(x + \epsilon\frac{v}{\norm{v}})} \leq M \norm{x + \epsilon\frac{v}{\norm{v}}} \leq M\norm{x} + \epsilon M \\
+            \implies &\abs{f(v)} \leq \norm{v}\left(M\frac{\norm{x}}{\epsilon} + M + \frac{\abs{f(x)}}{\epsilon}\right)
+        \end{align*}
+        since \(v\) was arbitrary and \(\left(M\frac{\norm{x}}{\epsilon} + M + \frac{\abs{f(x)}}{\epsilon}\right)\) is independent of \(v\), this implies that \(f\) is bounded which is a contradiction, hence \(E_M\) does not contain any non-empty open sets, and since \(M\) was arbitrary this implies that \(E_n\) is nowhere dense for any \(n\). This implies that \(\bigcup_1^\infty E_n\) is a countable union of nowhere dense sets, so that \(\bigcup_1^\infty E_n = X\) contradicts the Baire Category theorem, thus \(I\) cannot be countable. \qed
+    \end{pb}
+\end{document}

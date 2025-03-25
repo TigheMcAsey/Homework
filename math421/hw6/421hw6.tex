@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+
+\fancyhf{}
+\lhead{Math 421hw6}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\re}{\text{Re}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\gen}[1]{\langle #1 \rangle}
+
+\begin{document}
+    \begin{pb}
+        \textbf{(a)} \(\norm{\mathbf{1} - T} < 1\) implies that the power series \(\sum_0^\infty \norm{\mathbf{1}-T}^n\) converges, since \(X\) is Banach this further implies that \(\sum_0^\infty (\mathbf{1}-T)^n\) converges in \(X\). For \(N \in \mathbb{Z}_{>0}\) we find that
+        \begin{align*}
+            T\sum_0^N (\mathbf{1}-T)^n = \sum_0^N(\mathbf{1}-T)^n - \sum_1^{N+1}(\mathbf{1}-T)^n = 1 - (\mathbf{1}-T)^{N+1}
+        \end{align*}
+        and hence
+        \begin{align*}
+            \norm{\mathbf{1} - T\sum_0^N (\mathbf{1}-T)^n} = \norm{\mathbf{1}-T}^{N+1}
+        \end{align*}
+        taking \(N \to \infty\) we find that
+        \begin{align*}
+            \norm{\mathbf{1} - T\sum_0^\infty (\mathbf{1}-T)^n} = 0 \implies T\sum_0^\infty (\mathbf{1}-T)^n = 1 \qed
+        \end{align*}
+        To see that the inverse is bounded, note that for any \(N \in \mathbb{Z}_{>0}\)
+        \begin{align*}
+            \norm{\sum_0^N (\mathbf{1}-T)^n} \leq \sum_0^N\norm{\mathbf{1} - T}^n \implies \norm{\sum_0^\infty (\mathbf{1}-T)^n} \leq \sum_1^\infty\norm{\mathbf{1} - T}^n < \infty
+        \end{align*}
+
+        \textbf{(b)} Applying (a), \(S^{-1}T\) is invertible with bounded inverse, since
+        \begin{align*}
+            \norm{\mathbf{1} - S^{-1}T} = \norm{S^{-1}S - S^{-1}T} \leq \norm{S^{-1}}\norm{S - T} < \norm{S^{-1}}\norm{S^{-1}}^{-1} = 1
+        \end{align*}
+        It is immediate that \(\left(S^{-1}T\right)^{-1}S^{-1} = T^{-1}\), since
+        \begin{align*}
+            \left(S^{-1}T\right)^{-1}S^{-1}T = \mathbf{1} = SS^{-1}T(S^{-1}T)^{-1}S^{-1} = T(S^{-1}T)^{-1}S^{-1}
+        \end{align*}
+        and \(T^{-1}\) is bounded since
+        \begin{align*}
+            \norm{T^{-1}} = \norm{\left(S^{-1}T\right)^{-1}S^{-1}} \leq \norm{\left(S^{-1}T\right)^{-1}}\norm{S^{-1}} < \infty \qed
+        \end{align*}
+
+        \textbf{(c)} Note that 
+        \[\norm{\mathbf{1} - (\mathbf{1} - \lambda^{-1}T)} = \lambda^{-1}\norm{T} < 1 = \norm{1^{-1}}^{-1}\]
+        Hence by (b) we find that \(\mathbf{1} - \lambda^{-1}T\) is invertible with bounded inverse, multiplying by \(-\lambda\) we find that \(T - \lambda\mathbf{1}\) is invertible with bounded inverse. \qed
+
+        \textbf{(d)} Let \(\lambda \in \rho(T)\) and fix \(\delta = \norm{(T - \lambda \mathbf{1})^{-1}}^{-1}\), then let \(\alpha \in N_\delta(\lambda)\), so that \(\alpha = \lambda - \beta\) with \(\norm{\beta} < \delta\). It follows that
+        \begin{align*}
+            \norm{\mathbf{1} - (\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})} = \abs{\beta}\norm{(T - \lambda\mathbf{1})^{-1}} < 1 = \norm{\mathbf{1}^{-1}}^{-1}
+        \end{align*}
+        so that \(\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1}\) is invertible with bounded inverse. It follows that
+        \begin{align*}
+            &(\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})^{-1}(T - \lambda \mathbf{1})^{-1}(T-(\lambda - \beta)\mathbf{1}) = (\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})^{-1}(\mathbf{1} + \beta(T - \lambda \mathbf{1})^{-1}) = \mathbf{1}
+        \end{align*}
+        so that \((\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})^{-1}(T - \lambda \mathbf{1})^{-1}\) is a left sided inverse for \(T - \alpha \mathbf{1} = T - (\lambda - \beta)\mathbf{1}\), it is also a right inverse because
+        \begin{align*}
+            &(T-(\lambda - \beta)\mathbf{1})(\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})^{-1}(T - \lambda \mathbf{1})^{-1} \\
+            = &(T - \lambda \mathbf{1})(T - \lambda \mathbf{1})^{-1}(T-(\lambda - \beta)\mathbf{1})(\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})^{-1}(T - \lambda \mathbf{1})^{-1} \\
+            = &(T - \lambda \mathbf{1})(\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})(\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})^{-1}(T-\lambda \mathbf{1})^{-1} \\
+            = &(T - \lambda \mathbf{1})(T - \lambda \mathbf{1})^{-1} = \mathbf{1}
+        \end{align*}
+        so that \((T - \alpha \mathbf{1})^{-1} = (\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})^{-1}(T - \lambda)^{-1} \in \mathcal{L}(X,X)\) \qed
+
+        \textbf{(e)} \(\sigma(T) \subset \set{\lambda \in K \mid \abs{\lambda} \leq \norm{T}}\) is bounded, and in (d) we showed that \(\sigma(T) = \rho(T)^c\) is closed. By the Heine Borel theorem we conclude that \(\sigma(T)\) is compact. \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} We first check that the operator is bounded,
+        \begin{align*}
+            \norm{M_g(f)} = \norm{fg}_2 = \left(\int_X \abs{fg}^2\right)^{\frac12} \leq \left(\int_X \abs{f}^2\norm{g}^2_\infty\right)^{\frac12} = \sqrt{\norm{g}_\infty^2\norm{f}_2^2} = \norm{g}_\infty\norm{f}_2\\
+        \end{align*}
+        Let \(\epsilon > 0\), then by definition of essential supremum, there is some set \(E\) of positive measure such that \(\norm{g}_\infty - \epsilon \leq \abs{g(x)}\) for any \(x \in E\), consider \(f := \frac{1}{\sqrt{\mu(E)}}\chi_E\), it is clear that \(\norm{f}_2 = 1\), and we have that
+        \begin{align*}
+            \norm{fg}_2 = \left(\int_X \abs{\frac{1}{\sqrt{\mu(E)}}\chi_E g}^2\right)^{\frac12} \geq \left(\int_E\left(\frac{\norm{g}_\infty - \epsilon}{\sqrt{\mu(E)}}\right)^2 \right)^{\frac12} = (\norm{g}_\infty - \epsilon)\left(\int_E \frac{1}{\mu(E)}\right)^{\frac12} = \norm{g}_\infty - \epsilon
+        \end{align*}
+        Since \(\epsilon\) was arbitrary, we may conclude that \(\norm{M_g} \geq \norm{g}_\infty\), where the opposite inequality is provided above, so we conclude that \(\norm{M_g} = \norm{g}_\infty\). \qed
+    \end{pb}
+\end{document}
