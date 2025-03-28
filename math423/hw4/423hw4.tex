@@ -59,7 +59,7 @@
         \begin{align*}
             &b^n + a_1 b^{n-1} + \cdots + a_n = 0 \\
             \iff &b^n + a_1b^{n-1} + \hdots ba_{n-1} = -a_n \in A \\
-            \implies &b^{n-1} + a_1b^{n-2} + \hdots + a_{n-1} = a'_1 \in A \\
+            \implies &b^{n-1} + a_1b^{n-2} + \hdots + a_{n-1} = a'_1 \in A \;(\text{by closure of }B\setminus A)\\
             \implies &b^{n-1} + a_1b^{n-2} + \hdots + (a_{n-1} - a'_1) = 0
         \end{align*}
         continuing this process recursively, we find that \(b \in A\) which is the desired contradiction. \qed

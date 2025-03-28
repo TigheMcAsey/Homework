@@ -93,5 +93,134 @@
             \norm{fg}_2 = \left(\int_X \abs{\frac{1}{\sqrt{\mu(E)}}\chi_E g}^2\right)^{\frac12} \geq \left(\int_E\left(\frac{\norm{g}_\infty - \epsilon}{\sqrt{\mu(E)}}\right)^2 \right)^{\frac12} = (\norm{g}_\infty - \epsilon)\left(\int_E \frac{1}{\mu(E)}\right)^{\frac12} = \norm{g}_\infty - \epsilon
         \end{align*}
         Since \(\epsilon\) was arbitrary, we may conclude that \(\norm{M_g} \geq \norm{g}_\infty\), where the opposite inequality is provided above, so we conclude that \(\norm{M_g} = \norm{g}_\infty\). \qed
+
+        \textbf{(b)} First suppose that \(\lambda \not \in \mathcal{R}_g\), then for some \(\epsilon > 0\) we have \(\mu\set{x \in X \mid \abs{(g - \lambda\mathbf{1})(x)} < \epsilon} = 0\), and hence \(\frac{1}{g - \lambda} \leq \frac{1}{\epsilon}\) almost everywhere. It follows that \(\frac{1}{g - \lambda} \in L^\infty\), and it is immediate that \(M_{g-\lambda} = (M_g - \lambda\mathbf{1})^{-1}\).
+
+        Conversely, let \(\lambda \in \mathcal{R}_g\), and let \(F_n := \set{x \in X \mid \abs{(g-\lambda\mathbf{1})(x)} < \frac{1}{n}}\), by definition of the essential range we have that \(\mu(F_n) > 0\) for infinitely many \(n\), thus we may define a subsequence \(F_{n_k}\) each having positive measure. If any \(F_{n_k}\) have infinite measure, then we replace them with a subset having finite measure (we may do this since we are working in a \(\sigma\)-finite space). Now take \(a_{n_k} := \frac{1}{n_{k}\sqrt{\mu(F_{n_k})}}\), it follows that \(\sum_1^\infty a_{n_k}\chi_{F_{n_k}} \in L^2\), but not in \(\im(M_{g} - \lambda\mathbf{1})\). It is obvious that it is in \(L^2\) (by convergence of \(\sum_1^\infty \frac{1}{n_k^2}\leq\sum_1^\infty \frac{1}{n^2}\)), assume for contradiction it is in the image, then let \(f \in (M_{g} - \lambda\mathbf{1})^{-1}(\sum_1^\infty a_{n_k}\chi_{F_{n_k}})\), then 
+        \[\abs{f}\vert_{F_{n_k}} \geq a_{n_k}\frac{1}{\sup_{F_{n_k}}\abs{g - \lambda\mathbf{1}}} = n_ka_{n_k} = \frac{1}{\sqrt{\mu(F_{n_k})}}\]
+        so that
+        \begin{align*}
+            \norm{f}_2 \geq \left(\int_X \left(\sum_1^\infty \frac{\chi_{F_{n_k}}}{\sqrt{\mu(F_{n_k})}}\right)^2\right)^{\frac12} = \left(\int_X\sum_1^\infty \frac{\chi_{F_{n_k}}}{\mu(F_{n_k})}\right)^{\frac12} \overset{\text{MCT}}{=} \left(\sum_1^\infty 1\right)^{\frac12} = \infty
+        \end{align*}
+        which contradicts \(f \in L^2\), hence \(M_g - \lambda\mathbf{1}\) is not surjective for \(\lambda \in \mathcal{R}_g\). \qed
+
+        \textbf{(c)} \(M_g^\dagger = M_{\overline{g}}\), it is clear that this is in \(L^\infty\) since \(\norm{g}_\infty = \norm{\overline{g}}_\infty\), and \(g = \overline{g}\) in \(L^\infty\) exactly when \(g\) is real almost everywhere. Now to prove the main statement, that \(M_g^\dagger = M_{\overline{g}}\). Let \(f \in L^2\), then \(M_g^* \mathfrak{C}(f) = \phi_f M_g\), so that for any \(k \in L^2\) we have \(M_g^* \mathfrak{C}(f)(k) = \gen{kg,f} = \gen{k,f \overline{g}}\), and thus \(M_g^* \mathfrak{C}(f) = \phi_{f \overline{g}}\), so that
+        \begin{align*}
+            M_g^\dagger(f) \overset{\text{def}}{=} \mathfrak{C}^{-1}M_g^*\mathfrak{C}(f) = \mathfrak{C}^{-1}\phi_{f \overline{g}} = f \overline{g} = M_{\overline{g}}(f)
+        \end{align*}
+        and since \(f\) was arbitrary we conclude that \(M_g^\dagger = M_{\overline{g}}\). \qed
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} Let \(\lambda\) be in the residual spectrum of \(T\), then there is some non-empty open set \(U \subset X\), such that \(\im(T - \lambda\mathbf{1}) \cap U = \emptyset\), since \(\im(T - \lambda\mathbf{1})\) is a subspace of \(X\), it follows that \(\im(T - \lambda\mathbf{1}) \cap t U = \emptyset\), where \(tU := \bigcup_{t \in K^\times}\set{tu \mid u \in U}\). Furthermore, we have \(d_{(tU)^c}: X \to X\) is a seminorm, fixing \(x \in U\), we have that \(d_{(tU)^c}: \gen{x} \to K\) is linear, so that by the Hahn Banach theorem there is some \(f \in \mathcal{L}(X,X)\), such that \(\abs{f}\) is bound above by \(d_{(tU)^c}\). Since \(\im(T - \lambda\mathbf{1}) \subset (tU)^c\) we have \((T^* - \lambda\mathbf{1}^*)f =  f\circ(T - \lambda\mathbf{1}) = 0\), where \(f \neq 0\), and hence \(f \in \ker T^* - \lambda\mathbf{1}^*\) which suffices to show that \(\lambda \in \sigma_p(T^*)\). \qed
+
+        \textbf{(b)} Note that for any \(\lambda \in \rho(T)\cup\sigma_c(T)\) we have \(\im(T-\lambda\mathbf{1})\) is dense in \(X\), so it will suffice to show that if \(\im(T-\lambda\mathbf{1})\) is dense in \(X\), then \(\lambda \not \in \sigma_p(T^*)\). Fix such a \(\lambda\), now suppose \(0 \neq f \in X^*\), so that there is some \(x \in X\) and \(\epsilon > 0\), such that \(\abs{f(x)} = \epsilon > 0\), since \(f\) is continuous, there is some open set \(U\) containing \(x\), such that \(\abs{f}\vert_U > \epsilon/2\). Since \(\im(T - \lambda\mathbf{1})\) is dense in \(X\), it follows that there is some \(y \in X\), such that \((T - \lambda\mathbf{1})(y) = x\), then
+        \begin{align*}
+            \abs{(T^* - \lambda\mathbf{1}^*)f(y)} = \abs{f(T - \lambda\mathbf{1})(y)} = \abs{f(x)} > \frac{\epsilon}{2}
+        \end{align*}
+        this suffices to show that \(f \not \in \ker(T^* - \lambda\mathbf{1}^*)\), and since \(f \neq 0\) was arbitrary we conclude that \(\ker(T^* - \lambda\mathbf{1}^*) = 0\) and hence \(\lambda \not \in \sigma_p(T^*)\). \qed
+        
+        \textbf{(c)} \textbf{Lemma.} \(\mathbf{[\sigma_c(T^*) \cup \sigma_r(T^*) = \overline{\sigma_c(T^\dagger) \cup \sigma_r(T^\dagger)}]}\) Note that conjugation commutes with union. The following completes the proof:
+        \begin{align*}
+            \lambda \in \sigma_c(T^*) \cup \sigma_r(T^*) &\iff \exists f \in \mathcal{H}^*\setminus\set{0}, \text{ such that } f \not \in \im(T^* - \lambda\mathbf{1}^*) \\
+            &\iff \exists x \in \mathcal{H}\setminus\set{0}, \text{ such that } \phi_x \not \in (T^* - \lambda\mathbf{1}^*)\; (\text{Riesz-Frechet Theorem})\\
+            &\iff \exists x \in \mathcal{H}\setminus\set{0}, \forall y, \gen{(T - \lambda)(\cdot),y} \neq \gen{\cdot,x} \\
+            &\iff \exists x \in \mathcal{H}\setminus\set{0}, \forall y, \gen{T(\cdot),y} - \gen{\cdot,\overline{\lambda}y}  \neq \gen{\cdot,x} \\
+            &\iff \exists x \in \mathcal{H}\setminus\set{0}, \forall y, \gen{\cdot,(T^\dagger - \overline{\lambda}\mathbf{1})(y)} \neq \gen{\cdot,x} \\
+            &\iff \exists x \in \mathcal{H}\setminus\set{0}, \text{ such that } x \not \in \im(T^\dagger - \overline{\lambda}\mathbf{1}) \\
+            &\iff \overline{\lambda} \in \overline{\sigma_c(T^\dagger) \cup \sigma_r(T^\dagger)} \qed
+        \end{align*}
+        
+        \(\mathbf{[\sigma_p(T^*) = \overline{\sigma_p(T^\dagger)}]}.\) Suppose that \(\lambda \in \sigma_p(T^*)\), then there is some \(f \in \mathcal{H}^*, f\neq 0\), such that \((T^* - \lambda\mathbf{1}^*)(f) = 0\), by the Riesz-Frechet representation theorem \(f = \phi_x\) for some \(x \in \mathcal{H}\) (note that since \(\phi_x \neq 0\) we know that \(x \neq 0\)).
+        It follows that
+        \begin{align*}
+            (T^* - \lambda\mathbf{1}^*)(\phi_x) = 0 &\iff \gen{T(y)- \lambda y,x} = 0, \; \forall y \in \mathcal{H} \\
+            &\iff \gen{T(y),x} - \gen{y,\overline{\lambda}x} = 0,\; \forall y\in \mathcal{H} \\
+            &\iff \gen{y,T^\dagger(x)} - \gen{y,\overline{\lambda}x} = 0,\; \forall y\in \mathcal{H} \\
+            &\iff \gen{y,T^\dagger(x) - \overline{\lambda}x},\; \forall y\in \mathcal{H} \\
+            &\iff (T^\dagger - \overline{\lambda}\mathbf{1})(x) = 0
+        \end{align*}
+        From which we conclude that \(x \in \ker(T^\dagger - \overline{\lambda}\mathbf{1})\), so that \(\lambda \in \overline{\sigma_p(T^\dagger)}\). Conversely if \(\lambda \in \overline{\sigma_p(T^\dagger)}\), then there is some \(x \neq 0\), such that \((T^\dagger - \overline{\lambda}\mathbf{1})(x) = 0\), tracing backwards throught the if and only ifs we find that \((T^* - \lambda\mathbf{1}^*)(\phi_x) = 0\) for \(\phi_x \neq 0\) since \(x \neq 0\), so we may conclude that \(\lambda \in \sigma_p(T^*)\) \qed
+
+        \(\mathbf{[\sigma_c(T^*) = \overline{\sigma_c(T^\dagger)} \tand \sigma_r(T^*) = \overline{\sigma_r(T^\dagger)}].}\) By the lemma it will suffice to show that \(\sigma_r(T^*) = \overline{\sigma_r(T^\dagger)}\). The proof is as follows (here \(U\) denotes a non-empty open set in \(\mathcal{H}\), since \(x \mapsto \phi_x\) is a homeomorphism this is equivalent to the set \(\phi_U = \set{\phi_x \mid x \in U} \) being non-empty and open in \(\mathcal{H}^*\)).
+        \begin{align*}
+            \lambda \in \sigma_r(T^*) &\iff \exists \phi_U \neq \emptyset, \text{ open, such that } \phi_U \cap \im(T^* - \lambda \mathbf{1}^*) = \emptyset \\
+            &\iff \exists U, \forall x \in U, \forall y, \gen{(T - \lambda)(\cdot),y} \neq \gen{\cdot,x} \\
+            &\iff \exists U, \forall x \in U, \forall y, \gen{T(\cdot),y} - \gen{\cdot,\overline{\lambda}y}  \neq \gen{\cdot,x} \\
+            &\iff \exists U, \forall x \in U, \forall y, \gen{\cdot,(T^\dagger - \overline{\lambda}\mathbf{1})(y)} \neq \gen{\cdot,x} \\
+            &\iff \exists U, \forall x \in U, \text{ such that } x \not \in \im(T^\dagger - \overline{\lambda}\mathbf{1}) \\
+            &\iff \overline{\lambda} \in \overline{\sigma_r(T^\dagger)} \qed
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        \textbf{(a)} \(S_r^\dagger = S_\ell\), and \(S_\ell^\dagger = S_r\). As proof, let \(x,y \in \ell^2\), then
+        \begin{align*}
+            &\gen{S_r(x),y} = \sum_1^\infty x_iy_{i+1} = \gen{x,S_\ell(y)} \\
+            \tand &\gen{S_\ell(x),y} = \sum_1^\infty y_ix_{i+1} = \gen{x,S_r(y)} \qed
+        \end{align*}
+        
+        \textbf{(b)} Let \(\lambda \in \mathbb{C}\), and let \(x \in \ell^2\), such that \(x \in \ker(S_r - \lambda\mathbf{1})\), it follows that (denoting \(x_0 := 0\))
+        \begin{align*}
+            0 = \norm{(S_r - \lambda\mathbf{1})(x)}^2 = \sum_1^\infty \abs{x_{i-1} - \lambda x_i}^2 = 0 \implies \abs{x_{i-1} - \lambda x_i}^2 = 0, \; \forall i
+        \end{align*}
+        Since \(x_0 \overset{\text{def}}{=} 0\), we may show by induction that for each \(n\), \(x_n = 0\). Suppose for \(i < n\) we have \(x_i = 0\), then \(\abs{x_{n-1} - \lambda x_n}^2\) and hence \(\abs{\lambda x_n}^2 = 0\), if \(\lambda \neq 0\), then \(x_n = 0\) and we are done by induction, if \(\lambda = 0\), then \(0 = \abs{x_n - \lambda x_{n+1}}^2 = \abs{x_n}^2\) implies that \(x_n = 0\). Hence \(x_n = 0\) for all \(n\) thus \(x = 0\). \qed
+
+        \textbf{(c)} fix \(\lambda\), such that \(\abs{\lambda} \leq 1\), it will suffice to show that \((1,0,0,\hdots) \not \in \im(S_r - \lambda\mathbf{1})\) to conclude that \(S_r - \lambda\mathbf{1}\) is not invertible and hence \(\lambda \in \sigma(S_r)\), this is immediate for \(\lambda = 0\), since the first coordinate of \(S_r(x)\) is zero for any \(x\), so take \(\lambda \neq 0\). Suppose for contradiction that we have \(x \in \ell^2\), such that
+        \begin{align*}
+            (1,0,0,\hdots) = (S_r - \lambda\mathbf{1})(x) = (-\lambda x_1,x_1 - \lambda x_2, x_2 - \lambda x_3, \hdots)
+        \end{align*}
+        Then, \(x_1 = \frac{1}{-\lambda}\), so that \(x_2 = \frac{x_1}{\lambda} = \frac{-1}{\lambda^2}\), we can continue inductively to find that \(x_n = \frac{-1}{\lambda^n}\), \(x\) in \(\ell^2\) implies that \(\lim_{n \to \infty}\abs{x_n} = 0\), but \(\abs{x_n} = \frac{1}{\abs{\lambda}^n} \geq 1\) which is a contradicton, implying that \(\set{\lambda \in \mathbb{C} \mid \abs{\lambda} \leq 1} \subset \sigma(S_r)\).
+
+        To show the converse inclusion, suppose that \(\lambda \in \mathbb{C} \tand \abs{\lambda} > 1\), since \(\norm{S_r(x)} = \norm{x}\), it is immediate that \(S_r\) has operator norm \(1\). We apply the criterion of 1(b), namely \(\lambda\mathbf{1}\) is invertible, and
+        \begin{align*}
+            \norm{\lambda\mathbf{1} - (\lambda\mathbf{1} - S_r)} = \norm{S_r} = 1 < \abs{\lambda} = \norm{\lambda\mathbf{1}^{-1}}^{-1}
+        \end{align*}
+        so that \(\lambda\mathbf{1} - S_r\) is invertible, which suffices to show that \(S_r - \lambda\mathbf{1}\) is invertible. \qed
+
+        \textbf{(d)} The point spectrum is \(\set{\lambda \in \mathbb{C} \mid \abs{\lambda} < 1}\). It is immediate that \(0\) is in the point spectrum since \(S_\ell(1,0,0,\hdots) = 0\). Suppose that \(0 \neq \lambda \in \sigma_p(S_\ell)\), then there is some \(0 \neq x \in \ell^2\), such that 
+        \[0 = (S_\ell - \lambda\mathbf{1})(x) = (x_2 - \lambda x_1, x_3 - \lambda x_2, \hdots)\]
+        It follows that \(x_{i+1} = \lambda x_i\) for each \(i\). If \(x_1 = 0\), then \(x = 0\), so this cannot be the case, this necessitates that \(\abs{\lambda} < 1\), since \(x \in \ell^2\) implies that \(\lim_{n\to\infty}x_n = 0\). Now suppose \(0 < \abs{\lambda} < 1\), then \(x := (\lambda,\lambda^2,\lambda^3, \hdots) \in \ell^1 \subset \ell^2\), and \((S_\ell - \lambda\mathbf{1})(x) = 0\), hence \(\lambda \in \sigma_p(S_\ell)\).
+
+        The eigenspaces are determined by \((S_\ell - \lambda\mathbf{1})(x) = (x_2 - \lambda x_1, x_3 - \lambda x_2, \hdots)\), this says that for \(\lambda \in \mathbb{C}, \; \abs{\lambda} < 1\) we have \((S_{\ell} - \lambda\mathbf{1})(x) = 0\) when \(x_{n+1} = \lambda x_n\) for each \(n\), since this is also a sufficient condition for \(x \in\ell^2\) everything of this form is in the eigenspace, in other words:
+        \begin{align*}
+            \ker(S_{\ell} - \lambda\mathbf{1}) = \set{(a,\lambda a, \lambda^2 a,\hdots) \mid a \in \mathbb{C}} \qed
+        \end{align*}
+
+        \textbf{(e)} 
+        \textbf{Lemma.} \(\sigma_p(S_\ell) = \sigma_p(S_r^*)\), let \(\lambda \in \sigma_p(S_\ell)\), then there is \(x \neq 0\) (and hence \(\phi_x \neq 0\)), such that \((S_\ell - \lambda\mathbf{1})(x) = 0\) it follows that for any \(y \in \mathcal{H}\) we have
+        \begin{align*}
+            0 &= \gen{y,(S_\ell - \lambda\mathbf{1})x} = \sum_1^\infty y_ix_{i+1} - \lambda\sum_1^\infty y_ix_i \\ 
+            &= \gen{(S_r - \lambda)(y),x} = (S_r^* - \lambda\mathbf{1}^*)\gen{y,x} = (S_r^* - \lambda\mathbf{1}^*)(\phi_x)(y)
+        \end{align*}
+        since \(y\) was aribtrary, this implies that \((S_r^* - \lambda\mathbf{1}^*)(\phi_x) = 0\) and hence \(\lambda \in \sigma_p(S_r^*)\), to show the converse inequality, assume that \(\lambda \in \sigma_p(S_r^*)\), then by the Riesz-Frechet representation theorem there is some \(x \in \mathcal{H}\), such that \((S_r^* - \lambda\mathbf{1}^*)(\phi_x) = 0\), this implies that for any \(y \in \mathcal{H}\) we have \((S_r^* - \lambda\mathbf{1}^*)(\phi_x)(y) = 0\), by the computation above this implies that \(\gen{(S_\ell - \lambda\mathbf{1})x,(S_\ell - \lambda\mathbf{1})x} = 0\) so that \((S_\ell - \lambda\mathbf{1})x = 0\) implying that \(\lambda \in \sigma_p(S_\ell)\). \qed
+
+        \textbf{Lemma.} \(\sigma_p(S_r) = \sigma_p(S_\ell^*)\). Let \(\lambda \in \sigma_p(S_r)\), then for some \(0 \neq x \in \mathcal{H}\) (and hence \(\phi_x \neq 0\)) we have \((S_r - \lambda\mathbf{1})(x) = 0\), so that for any \(y \in \mathcal{H}\) we have
+        \begin{align*}
+            0 = \gen{y,(S_r - \lambda\mathbf{1})(x)} = \sum_1^\infty y_{i+1}x_i - \lambda y_ix_i = \gen{(S_\ell - \lambda\mathbf{1})(y),x} = (S_\ell^* - \lambda\mathbf{1}^*)(\phi_x)(y)
+        \end{align*}
+        since this identity holds for any \(y\) we find that \((S_\ell^* - \lambda\mathbf{1}^*)(\phi_x) = 0\), so that \(\lambda \in \sigma_p(S_\ell^*)\). To show the converse inequality, let \(\lambda \in \sigma_p(S_\ell^*)\), then by the Riesz-Frechet representation theorem there is some \(0 \neq x \in \mathcal{H}\), such that \((S_\ell^* - \lambda\mathbf{1}^*)(\phi_x) = 0\), hence \((S_\ell^* - \lambda\mathbf{1}^*)(\phi_x)((S_r - \lambda\mathbf{1})(x)) = 0\), by the above computation this implies that \(\gen{(S_r - \lambda\mathbf{1})(x),(S_r - \lambda\mathbf{1})(x)} = 0\), so that \((S_r - \lambda\mathbf{1})(x) = 0\), this implies that \(\lambda \in \sigma_p(S_r)\) as desired. \qed
+        
+        Now proceeding with the proof, \(\sigma_r(S_r) = \set{\lambda \in \mathbb{C} \mid \abs{\lambda} < 1}\). As proof first take \(\lambda \in \mathbb{C}\), such that \(\abs{\lambda} < 1\). Now take \(\epsilon := \frac{1}{2\sum_0^\infty\abs{\lambda^{2i}}}\), I claim that \(\im(S_r - \lambda\mathbf{1}) \cap N_{\epsilon^2}(1,0,\hdots) = \emptyset\) so that \(\lambda \in \sigma_r(S_r)\). Let \(y \in N_{\epsilon^2}(1,0,0,\hdots)\), then \(y = (1 + \delta_1,\delta_2,\delta_3,\hdots)\) for \(\sum_1^\infty \abs{\delta_i}^2 < \epsilon\). Suppose for contradiction there is \(x \in \ell^2\), such that \((S_r - \lambda\mathbf{1})(x) = y\). We can compute \(x_1 = -\frac{1 + \delta_1}{\lambda}\), then by induction if \(x_n = -\frac{1 + \sum_0^{n-1} \delta_{i+1}\lambda^i}{\lambda^n}\), then
+        \begin{align*}
+            x_{n+1} = \frac{x_n - \delta_{n+1}}{\lambda} = \frac{-\frac{1 + \sum_0^{n-1} \delta_{i+1}\lambda^i}{\lambda^n} - \delta_{n+1}}{\lambda} = -\frac{1 + \sum_0^n \delta_{i+1}\lambda^i}{\lambda^{n+1}}
+        \end{align*}
+        Using this closed form of \(x_n\), we find that
+        \begin{align*}
+            \abs{x_n} &\geq \frac{1 - \abs{\sum_0^{n-1}\delta_{i+1}\lambda^i}}{\abs{\lambda}^n} \geq \frac{1 - \sum_0^{n-1}\abs{\delta_{i+1}\lambda^i}}{\abs{\lambda}^n} \overset{\text{Cauchy-Schwartz}}{\geq} \frac{1 - \sqrt{(\sum_1^n \abs{\delta_i}^2)(\sum_0^{n-1}\abs{\lambda^i}^2)}}{\abs{\lambda}^n} \\
+            &\geq \frac{1 - \sqrt{(\sum_0^\infty \abs{\lambda^{2i}})(\sum_1^\infty \abs{\delta_i}^2)}}{\abs{\lambda}^n} = \frac{1 - \sqrt{\frac{1}{2 \epsilon}(\sum_1^\infty \abs{\delta_i}^2)}}{\abs{\lambda}^n} > \frac{1 - \sqrt{\frac12}}{\abs{\lambda}^n} > 1 - \frac{1}{\sqrt{2}}
+        \end{align*}
+        and hence \(\lim_{n \to \infty} x_n \neq 0\), so that \(x \not \in \ell^2\) a contradiction, this suffices to show that \(\lambda \in \sigma_r(S_r)\). To show the converse inclusion, by 3(a) we have \(\sigma_r(S_r) \subset \sigma_p(S_r^*)\) which by the lemma is equal to \(\sigma_p(S_\ell) = \set{\lambda \in \mathbb{C} \mid \abs{\lambda} < 1}\). This suffices to show that \(\sigma_r(S_r) = \set{\lambda \in \mathbb{C} \mid \abs{\lambda} < 1}\).
+        To classify the residual spectrum of \(S_\ell\), I claim that \(\sigma_r(S_\ell) = \emptyset\), by 3(a) \(\sigma_r(S_\ell) \subset \sigma_p(S_\ell^*)\), which by the lemma is equal to \(\sigma_p(S_r)\), in part (b) we proved this is empty. \qed
+
+        \textbf{(f)} In part (c) we showed \(\sigma(S_r) = \set{\lambda \in \mathbb{C} \mid \abs{\lambda} \leq 1}\) , in the previous subparts we also showed that \(\sigma_r(S_r) = \set{\lambda \in \mathbb{C} \mid \abs{\lambda} < 1}\), and that the point spectrum is empty, so we may compute
+        \begin{align*}
+            \sigma_c(S_r) = \sigma(S_r) \setminus (\sigma_r(S_r)\cup \sigma_p(S_r)) = \set{\lambda \in \mathbb{C} \mid \abs{\lambda} = 1}
+        \end{align*}
+        It remains to show the continuous spectrum of \(S_\ell\). First notice that \(\norm{S_\ell(x)} \leq \norm{x}\), and \(\norm{S_\ell(0,1,0,0,\hdots)} = 1\), so that \(\norm{S_\ell} = 1\), it follows that if \(\lambda \in \mathbb{C}\) with \(\abs{\lambda} > 1\), then \[\norm{\lambda\mathbf{1} - (\lambda\mathbf{1} - S_\ell)} = \norm{S_\ell} = 1 < \abs{\lambda} = \norm{\lambda\mathbf{1}^{-1}}^{-1}\]
+        so by 1(b) \(\lambda\mathbf{1} - S_\ell\) is invertible, which implies that \(S_\ell - \lambda\mathbf{1}\) is invertible and \(\lambda \in \rho(S_\ell)\). Furthermore by problem \(1\), we know that \(\sigma(S_\ell)\) is compact, so in particular \(\set{\lambda \in \mathbb{C} \mid \abs{\lambda} \leq 1} = \overline{\sigma_p(S_\ell)} \subset \sigma(S_\ell)\), but then by the above computation of the resolvent set this is the entire spectrum, in the previous subpart we showed that \(\sigma_r(S_\ell) = \emptyset\), so we may compute
+        \begin{align*}
+            \sigma_c(S_\ell) = \sigma(S_\ell) \setminus (\sigma_r(S_\ell) \cup \sigma_p(S_\ell)) = \set{\lambda \in \mathbb{C} \mid \abs{\lambda} = 1} \qed
+        \end{align*}
+
+        \textbf{(g)} \(\sigma(S_r)= \overline{N_1(0)} \tand \sigma(S_\ell) = \overline{N_1(0)}\) , in particular they both have infinitely many limit points. By theorem 4.17 of the notes this implies that neither are compact. \qed
     \end{pb}
 \end{document}

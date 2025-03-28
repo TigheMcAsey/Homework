@@ -40,6 +40,23 @@
 \newcommand{\ext}{\text{Ext}}
 
 %KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS KNOTS
+\newcommand{\link}[1]{
+    \scalebox{#1}{
+        \begin{tikzpicture}
+        \path[spath/save=right] (1,0) circle[radius=2cm];
+        \path[spath/save=left] (-1,0) circle[radius=2cm];
+        \tikzset{
+          spath/remove empty components/.list={left,right},
+          spath/split at intersections={left}{right},
+          spath/insert gaps after components={left}{15pt}{1},
+          spath/insert gaps after components={right}{15pt}{2},
+          spath/spot weld/.list={left,right},
+        }
+        \draw[spath/use={left}];
+        \draw[black,spath/use={right}];
+    \end{tikzpicture}
+    }
+}
 \newcommand{\KP}[1]{%
   \begin{tikzpicture}[baseline=-\dimexpr\fontdimen22\textfont2\relax]
   #1
@@ -917,7 +934,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \emph{exercise - }\label{KEx3} Recall in class we used the state sum formula/hypercube to compute the cochain complex \(\mathcal{C}\left(\KPL\!\RIIcn[scale = 0.6]\!\KPR\right)\), the choices made in this construction where such that the Euler characteristic of the complex was made to be \(\gen{D}\). When recording the hypercube we record the resulting fully simplified knot states with a "height" corresponding to the number of left/right simplifications (this corresponds to the factor of \(q\) in \href{KEx1}{the first exercise of this section}). This is compatible with the
+    \emph{exercise - }\label{KEx3} Recall in class we used the state sum formula/hypercube to compute the cochain complex \(\mathcal{C}\left(\link{0.1}\right)\), the choices made in this construction where such that the Euler characteristic of the complex was made to be \(\gen{D}\). When recording the hypercube we record the resulting fully simplified knot states with a "height" corresponding to the number of left/right simplifications (this corresponds to the factor of \(q\) in \href{KEx1}{the first exercise of this section}). This is compatible with the
 
     \textbf{State Sum Formula For The Jone's Polynomial:} let \(\mathcal{S}\) be the set of "states", i.e. vertices of the hypercube, recall the height of a state \(s\) (write \(h(s)\) or \(i(s)\)) is equivalent to the number of left-right crossings taken to get to that state, equivalently the left-right grading of the hypercube when written out. Also, \(\#s\) here is a slight abuse of notation as in it refers to the number of connected components \(\# H_0(s)\).
     \begin{align*}
@@ -926,10 +943,50 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     In order to construct a stronger invarient, we introduced an oriented Jone's polynomial, \[V(\vec{D}):= (-1)^{n_-}q^{n_+-2n_-}\gen{D}\]
     where \(n_+\) and \(n_-\) respectively refer to the number of positive and negatively oriented crossings in the knot diagram according to the familiar right hand rule.
 
-    We have discussed the hypercube as well as its height grading thus far, however to construct a cochain complex we need a module or vectorspace. In the hypercube each of our knots is reduced to some \(\bigsqcup\bigcirc\), where in the jones poly
-    
-    Let \(D := \KPL\!\KPB\!\KPR\), compute \(\mathcal{C}Kh(\vec{D})\).
+    We have discussed the hypercube as well as its height grading thus far, however to construct a cochain complex we need a module or vectorspace. In the hypercube each of our knots is reduced to some \(\bigsqcup\bigcirc\), where in the jones polynomial we associate \(\bigcirc\) to \(q + q^{-1}\), as such we define \(\gen{\bigcirc} = \gen{v_+} \oplus \gen{v_-}\), with \(\rho(\gen{v_{\pm}}) := \pm1\), it follows that \(\text{grdim}\,\bigotimes_1^n V = \gen{\bigsqcup_1^n \bigcirc}\). We define a shift operator for \(\ell \in \mathbb{Z}\), \((W\set{\ell})_m := W_{m-\ell}\), or equivalently \(\text{grdim}\,W\set{\ell} = q^\ell\text{grdim}\,W\), we apply the shift operator \(\set{i}\) to the vectorspaces corresponding to the states at height \(i\) of the hypercube. [e.g. Applying this to our example of \(\link{0.1}\), we get \(V \otimes V\) at height 0, \(V\set{1}\oplus V\set{1}\) at height 1, and \((V\otimes V) \set{2}\) at height 2.]. 
 
+    We are ready to define \[\mathcal{C}(D) := \bigoplus_{s \in \mathcal{S}}\left(\bigotimes_1^{\# s}V\right)[h(s)]\set{h(s)}\] (where \(\mathcal{S}\) is the set of states). We similarly define \[CKh(\vec{D}) = \mathcal{C}(D)[-n_-]{n_+-2n_-}\]
+    For each height \(i\), we define \(W^i = \mathcal{C}^i(D)\), which is the vectorspace generated by the components of \(\mathcal{C}(D)\) at height \(i\), similarly \(W_j = \mathcal{C}_j(D)\) is the \(\rho^{-1}(j)\), by taking the euler characterisic we obtain 
+    \[\sum_{i \in \mathbb{Z}}(-1)^i\text{grdim}\,W^i = \sum_{i \in \mathbb{Z}}(-1)^i\sum_{j \in \mathbb{Z}}q^j\dim W_j^h = \sum_{j \in \mathbb{Z}}q^j \sum_{i \in \mathbb{Z}}(-1)^i\dim W_j^h\]
+    This recovers the jones polynomial, via \(\chi_{\rho}: \mathcal{C}(D) \to \mathbb{Z}[q,q^{-1}]\) via taking \(q^j\chi \mathcal{C}_j\), where the Euler characteristic is taken with respect to the height \(i\).
+    
+    Let \(D := \KPL\!\KPB\!\KPR\) (with orientation), compute \(\mathcal{C}Kh(\vec{D})\).
+
+    \emph{proof - } We first note that \(n_- = 1, n_+ = 0\), so that \[\mathcal{C}Kh(\vec{D}) = \mathcal{C}(D)[-1]\set{-2} = (V \oplus (V\otimes V)[1]\set{1})[-1]\set{-2} = V[-1]\set{-2} \oplus (V\otimes V)\set{-1} \qed\]
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \emph{exercise - } Consider the monoid \(\mathfrak{m} = (\mathbb{Z}_{\geq 0},+,0)\), we define the (monoidal) cobordism category (cob) to have objects in correspondence
+    \(n \longleftrightarrow \bigsqcup_1^n S^1, \; 0 \longleftrightarrow \emptyset, \; + \longleftrightarrow \bigsqcup\). Then \(\mor(X,Y)\) are surfaces with boundarie \(X \sqcup Y\). A TQFT is a monoidal functor from cob to \(\text{Vect}_k\) (or \(\text{mod}_R\)). We define the following functor (note that \(m\) is a "pair of pants with leg holes one the left", i.e. \(2 \mapsto 1\), and \(\Delta\) is a "pair of pants with leg holes on the right", i.e. \(1\mapsto 2\))
+    \begin{align*}
+        &\mathcal{F}: \bigsqcup_1^n S_1 \mapsto \bigotimes_1^n V \\
+        &m \rightsquigarrow \begin{cases}
+            v_+\otimes v_+ \mapsto v_+ \\
+            v_-\otimes v_+ \mapsto v_- \\
+            v_+\otimes v_- \mapsto v_- \\
+            v_-\otimes v_- \mapsto 0 
+        \end{cases}
+        &\Delta \rightsquigarrow \begin{cases}
+            v_+ \mapsto v_+\otimes v_- + v_- \otimes v_+ \\
+            v_- \mapsto v_- \otimes v_-
+        \end{cases}
+    \end{align*}
+    \(\mathcal{F}\) has unit \((0 \mapsto 1), 1 \mapsto v_+\) and co-unit \((1 \mapsto 0), v_+ \mapsto 0, v_- \mapsto 1\). \emph{Evaluate} \(\mathcal{F}(T^2)\) \emph{as a map} \(\mathbb{Q} \to \mathbb{Q}\).
+
+    \emph{proof - }
+    \begin{align*}
+        \mathcal{F}(T^2) &= \mathcal{F}((1\mapsto 0) \circ m \circ \Delta \circ (0 \mapsto 1)) \\
+        \mathcal{F}(T^2)(1) &= \mathcal{F}(1\mapsto 0) \circ \mathcal{F}(m) \circ \mathcal{F}(\Delta)(v_+) \\
+        &= \mathcal{F}(1\mapsto 0) \circ \mathcal{F}(m)(v_+\otimes v_- + v_- \otimes v_+)\\
+        &= \mathcal{F}(1\mapsto 0)(2v_-) = 2
+    \end{align*}
+    Hence \(F(T^2) = \cdot2: \mathbb{Q} \to \mathbb{Q}\). \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    
     
 
 
@@ -1062,7 +1119,8 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \textbf{Example from Hatcher.} If \(U \subset R^n\) and \(V \subset R^m\), then \(U \cong V\) implies that \(n = m\).
 
-    \emph{proof - } 
+    \emph{proof - }
+    
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
