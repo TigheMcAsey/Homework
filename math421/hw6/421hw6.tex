@@ -64,7 +64,7 @@
         \[\norm{\mathbf{1} - (\mathbf{1} - \lambda^{-1}T)} = \lambda^{-1}\norm{T} < 1 = \norm{1^{-1}}^{-1}\]
         Hence by (b) we find that \(\mathbf{1} - \lambda^{-1}T\) is invertible with bounded inverse, multiplying by \(-\lambda\) we find that \(T - \lambda\mathbf{1}\) is invertible with bounded inverse. \qed
 
-        \textbf{(d)} Let \(\lambda \in \rho(T)\) and fix \(\delta = \norm{(T - \lambda \mathbf{1})^{-1}}^{-1}\), then let \(\alpha \in N_\delta(\lambda)\), so that \(\alpha = \lambda - \beta\) with \(\norm{\beta} < \delta\). It follows that
+        \textbf{(d)} Let \(\lambda \in \rho(T)\) and fix \(\delta = \norm{(T - \lambda \mathbf{1})^{-1}}^{-1}\), then let \(\alpha \in N_\delta(\lambda)\), so that \(\alpha = \lambda - \beta\) with \(\abs{\beta} < \delta\). It follows that
         \begin{align*}
             \norm{\mathbf{1} - (\mathbf{1} + \beta(T - \lambda\mathbf{1})^{-1})} = \abs{\beta}\norm{(T - \lambda\mathbf{1})^{-1}} < 1 = \norm{\mathbf{1}^{-1}}^{-1}
         \end{align*}
@@ -94,10 +94,10 @@
         \end{align*}
         Since \(\epsilon\) was arbitrary, we may conclude that \(\norm{M_g} \geq \norm{g}_\infty\), where the opposite inequality is provided above, so we conclude that \(\norm{M_g} = \norm{g}_\infty\). \qed
 
-        \textbf{(b)} First suppose that \(\lambda \not \in \mathcal{R}_g\), then for some \(\epsilon > 0\) we have \(\mu\set{x \in X \mid \abs{(g - \lambda\mathbf{1})(x)} < \epsilon} = 0\), and hence \(\frac{1}{g - \lambda} \leq \frac{1}{\epsilon}\) almost everywhere. It follows that \(\frac{1}{g - \lambda} \in L^\infty\), and it is immediate that \(M_{g-\lambda} = (M_g - \lambda\mathbf{1})^{-1}\).
+        \textbf{(b)} First suppose that \(\lambda \not \in \mathcal{R}_g\), then for some \(\epsilon > 0\) we have \(\mu\set{x \in X \mid \abs{g(x) - \lambda} < \epsilon} = 0\), and hence \(\frac{1}{g(x) - \lambda} \leq \frac{1}{\epsilon}\) almost everywhere. It follows that \(\frac{1}{g(x) - \lambda} \in L^\infty\), and it is immediate that \(M_{\frac{1}{g-\lambda}} = (M_g - \lambda\mathbf{1})^{-1}\).
 
-        Conversely, let \(\lambda \in \mathcal{R}_g\), and let \(F_n := \set{x \in X \mid \abs{(g-\lambda\mathbf{1})(x)} < \frac{1}{n}}\), by definition of the essential range we have that \(\mu(F_n) > 0\) for infinitely many \(n\), thus we may define a subsequence \(F_{n_k}\) each having positive measure. If any \(F_{n_k}\) have infinite measure, then we replace them with a subset having finite measure (we may do this since we are working in a \(\sigma\)-finite space). Now take \(a_{n_k} := \frac{1}{n_{k}\sqrt{\mu(F_{n_k})}}\), it follows that \(\sum_1^\infty a_{n_k}\chi_{F_{n_k}} \in L^2\), but not in \(\im(M_{g} - \lambda\mathbf{1})\). It is obvious that it is in \(L^2\) (by convergence of \(\sum_1^\infty \frac{1}{n_k^2}\leq\sum_1^\infty \frac{1}{n^2}\)), assume for contradiction it is in the image, then let \(f \in (M_{g} - \lambda\mathbf{1})^{-1}(\sum_1^\infty a_{n_k}\chi_{F_{n_k}})\), then 
-        \[\abs{f}\vert_{F_{n_k}} \geq a_{n_k}\frac{1}{\sup_{F_{n_k}}\abs{g - \lambda\mathbf{1}}} = n_ka_{n_k} = \frac{1}{\sqrt{\mu(F_{n_k})}}\]
+        Conversely, let \(\lambda \in \mathcal{R}_g\), and let \(F_n := \set{x \in X \mid \abs{g(x) - \lambda} < \frac{1}{n}}\), by definition of the essential range we have that \(\mu(F_n) > 0\) for infinitely many \(n\), thus we may define a subsequence \(F_{n_k}\) each having positive measure. If any \(F_{n_k}\) have infinite measure, then we replace them with a subset having finite measure (we may do this since we are working in a \(\sigma\)-finite space). Now take \(a_{n_k} := \frac{1}{n_{k}\sqrt{\mu(F_{n_k})}}\), it follows that \(\sum_1^\infty a_{n_k}\chi_{F_{n_k}} \in L^2\), but not in \(\im(M_{g} - \lambda\mathbf{1})\). It is obvious that it is in \(L^2\) (by convergence of \(\sum_1^\infty \frac{1}{n_k^2}\leq\sum_1^\infty \frac{1}{n^2}\)), assume for contradiction it is in the image, then let \(f \in (M_{g} - \lambda\mathbf{1})^{-1}(\sum_1^\infty a_{n_k}\chi_{F_{n_k}})\), then 
+        \[\abs{f}\vert_{F_{n_k}} \geq a_{n_k}\frac{1}{\sup_{F_{n_k}}\abs{g - \lambda}} = n_ka_{n_k} = \frac{1}{\sqrt{\mu(F_{n_k})}}\]
         so that
         \begin{align*}
             \norm{f}_2 \geq \left(\int_X \left(\sum_1^\infty \frac{\chi_{F_{n_k}}}{\sqrt{\mu(F_{n_k})}}\right)^2\right)^{\frac12} = \left(\int_X\sum_1^\infty \frac{\chi_{F_{n_k}}}{\mu(F_{n_k})}\right)^{\frac12} \overset{\text{MCT}}{=} \left(\sum_1^\infty 1\right)^{\frac12} = \infty
@@ -113,9 +113,9 @@
     \begin{pb}
         \textbf{(a)} Let \(\lambda\) be in the residual spectrum of \(T\), then there is some non-empty open set \(U \subset X\), such that \(\im(T - \lambda\mathbf{1}) \cap U = \emptyset\), since \(\im(T - \lambda\mathbf{1})\) is a subspace of \(X\), it follows that \(\im(T - \lambda\mathbf{1}) \cap t U = \emptyset\), where \(tU := \bigcup_{t \in K^\times}\set{tu \mid u \in U}\). Furthermore, we have \(d_{(tU)^c}: X \to X\) is a seminorm, fixing \(x \in U\), we have that \(d_{(tU)^c}: \gen{x} \to K\) is linear, so that by the Hahn Banach theorem there is some \(f \in \mathcal{L}(X,X)\), such that \(\abs{f}\) is bound above by \(d_{(tU)^c}\). Since \(\im(T - \lambda\mathbf{1}) \subset (tU)^c\) we have \((T^* - \lambda\mathbf{1}^*)f =  f\circ(T - \lambda\mathbf{1}) = 0\), where \(f \neq 0\), and hence \(f \in \ker T^* - \lambda\mathbf{1}^*\) which suffices to show that \(\lambda \in \sigma_p(T^*)\). \qed
 
-        \textbf{(b)} Note that for any \(\lambda \in \rho(T)\cup\sigma_c(T)\) we have \(\im(T-\lambda\mathbf{1})\) is dense in \(X\), so it will suffice to show that if \(\im(T-\lambda\mathbf{1})\) is dense in \(X\), then \(\lambda \not \in \sigma_p(T^*)\). Fix such a \(\lambda\), now suppose \(0 \neq f \in X^*\), so that there is some \(x \in X\) and \(\epsilon > 0\), such that \(\abs{f(x)} = \epsilon > 0\), since \(f\) is continuous, there is some open set \(U\) containing \(x\), such that \(\abs{f}\vert_U > \epsilon/2\). Since \(\im(T - \lambda\mathbf{1})\) is dense in \(X\), it follows that there is some \(y \in X\), such that \((T - \lambda\mathbf{1})(y) = x\), then
+        \textbf{(b)} Note that for any \(\lambda \in \rho(T)\cup\sigma_c(T)\) we have \(\im(T-\lambda\mathbf{1})\) is dense in \(X\), so it will suffice to show that if \(\im(T-\lambda\mathbf{1})\) is dense in \(X\), then \(\lambda \not \in \sigma_p(T^*)\). Fix such a \(\lambda\), now suppose \(0 \neq f \in X^*\), so that there is some \(x \in X\) and \(\epsilon > 0\), such that \(\abs{f(x)} = \epsilon > 0\), since \(f\) is continuous, there is some open set \(U\) containing \(x\), such that \(\abs{f}\vert_U > \epsilon/2\). Since \(\im(T - \lambda\mathbf{1})\) is dense in \(X\), it follows that there is some \(y \in X\), such that \((T - \lambda\mathbf{1})(y) \in U\), then
         \begin{align*}
-            \abs{(T^* - \lambda\mathbf{1}^*)f(y)} = \abs{f(T - \lambda\mathbf{1})(y)} = \abs{f(x)} > \frac{\epsilon}{2}
+            \abs{(T^* - \lambda\mathbf{1}^*)f(y)} = \abs{f(T - \lambda\mathbf{1})(y)} > \frac{\epsilon}{2}
         \end{align*}
         this suffices to show that \(f \not \in \ker(T^* - \lambda\mathbf{1}^*)\), and since \(f \neq 0\) was arbitrary we conclude that \(\ker(T^* - \lambda\mathbf{1}^*) = 0\) and hence \(\lambda \not \in \sigma_p(T^*)\). \qed
         
@@ -147,7 +147,7 @@
             &\iff \exists U, \forall x \in U, \forall y, \gen{(T - \lambda)(\cdot),y} \neq \gen{\cdot,x} \\
             &\iff \exists U, \forall x \in U, \forall y, \gen{T(\cdot),y} - \gen{\cdot,\overline{\lambda}y}  \neq \gen{\cdot,x} \\
             &\iff \exists U, \forall x \in U, \forall y, \gen{\cdot,(T^\dagger - \overline{\lambda}\mathbf{1})(y)} \neq \gen{\cdot,x} \\
-            &\iff \exists U, \forall x \in U, \text{ such that } x \not \in \im(T^\dagger - \overline{\lambda}\mathbf{1}) \\
+            &\iff \exists U, \text{ such that } \forall x \in U, x \not \in \im(T^\dagger - \overline{\lambda}\mathbf{1}) \\
             &\iff \overline{\lambda} \in \overline{\sigma_r(T^\dagger)} \qed
         \end{align*}
     \end{pb}
