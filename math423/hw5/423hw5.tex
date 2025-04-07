@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amssymb,amsthm}
+\usepackage[includeheadfoot]{geometry} % For page dimensions
+\usepackage{fancyhdr}
+\usepackage{enumerate} % For custom lists
+\usepackage{tikz-cd}
+
+\fancyhf{}
+\lhead{Math 423hw4}
+\rhead{Tighe McAsey - 37499480}
+\pagestyle{fancy}
+
+% Page dimensions
+\geometry{a4paper, margin=1in}
+
+\theoremstyle{definition}
+\newtheorem{pb}{}
+
+% Commands:
+
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lvert\lvert#1\rvert\rvert}
+\newcommand{\gen}[1]{\left\langle #1 \right\rangle}
+\newcommand{\tand}{\text{ and }}
+\newcommand{\tor}{\text{ or }}
+\newcommand{\falg}{F^{\text{alg}}}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\spec}{\text{Spec}}
+\newcommand{\nil}{\text{Nil}}
+\newcommand{\jac}{\text{Jac}}
+\newcommand{\ho}{\text{Hom}}
+
+\begin{document}
+    \textbf{Notation:} Define the following notation for problem 1. Write for \(f \in A[[X]]\), \(\sum_0^\infty a_iX^i\)
+    \begin{align*}
+        &\deg: A[[X]] \to \mathbb{Z}_{\geq 0}\cup\set{\infty} \\
+        &f \mapsto \min\set{n \in \mathbb{N} \mid a_n \neq 0} \\
+        &TC: A[[X]] \setminus 0 \to A \\
+        &f \mapsto a_{\deg f}
+    \end{align*}
+    finally, if \(a \vert b\) in \(A\), then we can write \(b = as\), where we denote \(s\) as \(\frac{b}{a}\) or \(a^{-1}b\), even when \(a\) is not invertible.
+
+    \begin{pb}
+        Let \(I\) be any ideal in \(A[[X]]\), I will show that \(I\) is finitely generated. First define \(J = \bigcup_I TC(f)\), closure of tail coefficients under addition and multiplication is clear, so that \(J\) is an ideal in \(A\). By the Noetherian assumption on \(A\), we may assume that \(J\) is finitely generated, and fix generators \(\set{TC(f_1),\hdots,TC(f_r)}\).
+        
+        Now define \[L_k = \set{a \in A \mid \exists f \in I, \text{ such that } \deg f = k \tand a = TC(f)}\]
+        once again it is clear that \(L_k\) is an ideal in \(A\), so that it is finitely generated, we may fix generators \(\set{TC(g^k_1),\hdots,TC(g^k_{N_k})}\) where each \(g_i\) has degree \(k\). Let \(m = \max_i\deg f_i\), to make the notation easier later on, replace each \(f_i\) with \(X^{m - \deg f_i}f_i\), so that each has the same degree.
+        \begin{align*}
+            L := (g_1^1,g_2^1,\hdots,g_{N_1}^1,g_1^2,\hdots,g_{N_m}^m) \subset A[[X]]
+        \end{align*}
+
+        I claim that \(I = L + (f_1,\hdots,f_r)\), which suffices to show that \(I\) is finitely generated. As proof, let \(\varphi \in I\), \(\deg \varphi = 0\) means we are done, so assume not. If \(\deg \varphi < m\), then there is some \(g \in L\), such that \(\deg g \leq \deg \varphi\) and \(TC(g) \mid TC(\varphi)\), then \(\varphi - TC(g)^{-1}TC(\varphi)X^{\deg \varphi - \deg g}g\) is in \(I\) with degree strictly larger than \(\varphi\), thus y repeating this process we may assume \(\varphi\) has degree at least \(m\). Now I claim there are \(h_1,\hdots,h_r \in A[[X]]\), such that \(\varphi - \sum_1^n h_if_i = 0\) completing the proof. Construct the \(h^i\) as follows, since \(\varphi \in I\), we know that \(TC(\varphi) \in J\), so that there is some \(\set{c_i}_1^r \subset A\), such that \(\sum_1^r c_i TC(f_i) = TC(\varphi)\), then take \(h_i^1 = c_i X^{\deg \varphi - m}\) for each \(i\). If at any point we have \(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i = 0\), then take \(h_i = \sum_{j=1}^n h_i^j\), otherwise we can define \(h_i^{n+1}\) for each \(1 \leq i \leq r\) as follows, since \(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i \in I\) we know that \(TC\left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right) \in J\), so that there are some \(\set{c_i}_1^r \subset A\), such that \(\sum_1^r c_iTC(f_i) = TC\left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right)\), then take \(h_i^{n+1} = X^{\deg \left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right) - m}c_i\), it is important to note that for each \(n\) we have \(\deg h_i^n < \deg h_i^{n+1}\), and since they consist only as a single term, \(h_i := \sum_{j=1}^\infty h_i^j\) defines an element of \(A[[X]]\) for each \(i\). Finally, by construction we get that \(\varphi - \sum_{i=1}^r h_if_i = 0\), so that \(\varphi \in L + (f_1,\hdots,f_r) = I\), and since the ideal \(I\) was arbitrary, we conclude that \(A[[X]]\) is Noetherian.
+    \end{pb}
+    \begin{pb}
+        Let \(h_1,\hdots,h_m\) be the rows of \(A\) in RREF, it is immediate that \((h_1,\hdots,h_m) \subset J\), and that
+        \begin{align*}
+            (LM(g_1),\hdots,LM(g_m)) = (LM(h_1),\hdots,LM(h_m))
+        \end{align*}
+        so it will suffice to show the result for the reduced matrix. Here we denote \(LM(h_i) = x_{p_i} \tand P := \set{p_1,\hdots,p_m}\). By Buchburger's criterion, it will suffice to show that for any \(i < j\) we have \(\overline{S(h_i,h_j)}^{\set{h_1,\hdots,h_m}} = 0\). Let \(i < j\), then
+        \begin{align*}
+            S(h_i,h_j) = x_{p_j}h_i - x_{p_i}h_j = \sum_{\substack{k > p_i \\ k \not \in P}} a_{ik}x_{p_j}x_k - \sum_{\substack{k > p_j \\ k \not \in P}} a_{jk}x_{p_i}x_k
+        \end{align*}
+        This is not divisible by \(x_{p_k}\) for any \(k < i\), so the division algorithm first divides by \(h_i\) to produce
+        \begin{align*}
+            \sum_{\substack{k > p_i \\ k \not \in P}} a_{ik}x_{p_j}x_k - \sum_{\substack{k > p_j \\ k \not \in P}} a_{jk}x_{p_i}x_k + \left(\sum_{\substack{k > p_j \\ k \not \in P}} a_{jk}x_k\right)h_i
+            &= \sum_{\substack{k > p_i \\ k \not \in P}} a_{ik}x_{p_j}x_k + \sum_{\substack{k > p_j \\ k \not \in P}}\left(a_{jk}x_k\sum_{\substack{\ell > p_i \\ \ell \not \in P}} a_{i\ell}x_\ell\right) \\
+            &= \sum_{\substack{k > p_i \\ k \not \in P}} a_{ik}x_{p_j}x_k + \sum_{k,\ell \in \set{1,\hdots,m} \setminus P}c_{k\ell} x_kx_\ell
+        \end{align*}
+        For \(c_{k\ell} \in \mathbb{C}\). It follows once again that no monomial is divisible by \(x_{p_k}\) for any \(k < j\), so we divide by \(h_j\)to reduce to
+        \begin{align*}
+            \sum_{k,\ell \in \set{1,\hdots,m} \setminus P}c_{k\ell} x_kx_\ell + \sum_{\substack{k > p_i \\ k \not \in P}} a_{ik}x_{p_j}x_k - \left(\sum_{\substack{k > p_i \\ k \not \in P}} a_{ik}x_k\right)h_j &= \sum_{k,\ell \in \set{1,\hdots,m} \setminus P}c_{k\ell} x_kx_\ell + \sum_{\substack{k > p_i \\ k \not \in P}}\left(a_{ik}x_k\sum_{\substack{\ell > p_j \\ \ell \not \in P}} a_{j\ell}x_\ell\right) \\
+            &= \sum_{k,\ell \in \set{1,\hdots,m}\setminus P} d_{kl}x_kx_\ell
+        \end{align*}
+        for \(d_{kl} \in \mathbb{C}\). Let \(F := \sum_{k,\ell \in \set{1,\hdots,m}\setminus P} d_{kl}x_kx_\ell\), this is the remainder of \(S(h_i,h_j)\) by division from \(\set{h_1,\hdots,h_m}\) since none of the monomial terms are divisible by \(x_k\) for \(k \in p\). If \(F = 0\), then we are done, so assume not for the sake of contradiction.
+
+        We know that \(F \in J\) by construction (equivalently \((F) \subset J\)), by corollary of Hilbert's Nullstellensatz we know that \(V((F)) \supset V(J)\), to get the desired contradiction it will suffice to show there is some \(\mathbf{x} \in V(J) \setminus V((F))\). Since \(F \neq 0\), there is some \(d_{k,\ell} \neq 0\), if this is true for some \(d_{k,k}\), then take \(\mathbf{y} = e_k\), otherwise if all \(d_{kk} = 0\), then there is some \(k \neq \ell\), such that \(d_{kl} = 0\), and we take \(\mathbf{y} = e_k + e_\ell\), note that in either case \(\mathbf{y}\) has the property that \(F(\mathbf{y} + \sum_{s=1}^m c_se_{p_s}) \neq 0\), for any \(\set{c_1,\hdots,c_m} \subset \mathbb{C}\). Now we can define \(\mathbf{x}\) as follows:
+        \begin{align*}
+            &k = \ell: \quad\quad\quad\quad \mathbf{x} = \mathbf{y} + \sum_{s = 1}^m -a_{sk} e_{p_s} \\
+            &k \neq \ell: \quad\quad\quad\quad \mathbf{x} = \mathbf{y} + \sum_{s = 1}^m (-a_{sk} - a_{s\ell}) e_{p_s}
+        \end{align*}
+        since \(s,k\) are not pivots, this always defines a solution to the system of equations given by \(A\), hence \(\mathbf{x} \in V(J)\), but \(\mathbf{x}\) is of the form \(\mathbf{y} + \sum_1^m c_s e_{p_s}\), implying that \(\mathbf{x} \in V(J) \setminus V((F))\) which is a contradiction. \qed
+    \end{pb}
+    \newpage
+    \begin{pb}
+        Denote \(A = k[X_1,\hdots,X_n]\). \(LT(I) \overset{\text{def.}}{=} \left(\bigcup_{f \in I}LT(f)\right)\), since for each \(f \in I\), we have \(LT(f)\) is in \(LT(I)\), and \(LT(LT(f)) = LT(f)\), we find that \(LT(f) \in LT(LT(I))\) for each \(f \in I\), hence \(\bigcup_{f \in I}LT(f) \subset LT(LT(I))\), implying that \(LT(I) \subset LT(LT(I))\).
+
+        Conversely, let \(f \in LT(LT(I))\), then \(f = \sum_1^r c_iLT(h_i)\), for \(c_i \in A \tand h_i \in LT(I)\), to show that \(f \in LT(I)\) it will suffice to show that each \(LT(h_i)\) is in \(LT(I)\). Let \(h \in \set{h_1,\hdots,h_r}\), then \(h = \sum_1^m d_iLT(g_i)\) for \(d_i \in A \tand g_i \in I\), then each monomial term in \(h\) is divisible by \(LT(g_i)\) for some \(i\), so in particular, there is some \(i \in \set{1,\hdots,m}\), such that \(LT(g_i) \vert LT(h)\), but this implies that \(LT(h) \in LT(I)\), and hence so is \(f\), since \(f\) was arbitrary this gives the desired equality of sets. \qed
+    \end{pb}
+    \begin{pb}
+        define \(g := xy-y^2\), \(h := y^3 + y^2\), then \((f_1,f_2,g,h)\) is a Grobner basis.  We first need show that \(g,h \in I\), this is straightforward since
+        \begin{align*}
+            &g = xy-y^2 = (x-1)f_2 - f_1  \in I\\
+            &h = y^3 + y^2 = -((xy^2 - y^3 + xy - y^2) - (x^2y^2 + xy^2) + (x^2y^2 - xy)) =  -((y+1)g - xf_2 + f_1) \in I
+        \end{align*}
+        Now it will suffice to check Buchburger's criterion for each pair,
+        \begin{align*}
+            S(f_1,f_2) = f_1 - xf_2 = -xy^2 - xy 
+        \end{align*}
+        long division furnishes  \(-xy^2 - xy + f_2 = -xy+y^2\), then \(-xy+y^2 + g = 0\).
+        \begin{align*}
+            S(f_1,g) = f_1 - xyg = xy^3 - xy
+        \end{align*}
+        Dividing by \(f_2\) gives \(xy^3 - xy - yf_2 = -xy - y^3\), dividing by \(g\) we get \(-xy - y^3 + g = -y^3 - y^2\), dividing by \(h\) gives \(-y^3 - y^2 + h = 0\).
+        \begin{align*}
+            S(f_1,h) = yf_1 - x^2h = -x^2y^2 - xy^2
+        \end{align*}
+        dividing by \(f_1\) gives \(-x^2y^2 - xy^2 + f_1 = -xy^2 - xy\), dividing by \(f_2\) gives \(-xy^2 - xy + f_2 = -xy + y^2\), dividing by \(g\) gives \(-xy + y^2 + g = 0\).
+        \begin{align*}
+            S(f_2,g) = f_2 - yg = y^3 + y^2
+        \end{align*}
+        we cannot divide any of the monomials by \(f_1,f_2 \tor g\), dividing by \(h\) gives \(y^3 + y^2 - h = 0\).
+        \begin{align*}
+            S(f_2,h) = -xy^2 + y^3
+        \end{align*}
+        dividing by \(f_2\) gives \(-xy^2 + y^3 + f_2 = y^3 + y^2\), dividing by \(h\) gives \(y^3 + y^2 - h = 0\).
+        \begin{align*}
+            S(g,h) = y^2g - xh = xy^2 - y^4
+        \end{align*}
+        dividing by \(f_2\) we get \(xy^2 - y^4 - f_2 = y^4 - y^2\), dividing by \(h\) gives \(y^4 - y^2 - (y + 1)h = 0\). \qed
+    \end{pb}
+    \begin{pb}
+        I claim that \(g_1,g_2,g_3,g_4\) form a Grobner basis, where the \(g_i\) are defined as follows,
+        \begin{align*}
+            g_1 &:= x^2 - y \\
+            g_2 &:= xy - z \\
+            g_3 &:= xz - y^2 \\
+            g_4 &:= y^3 - z^2 
+        \end{align*}
+        Note that \((g_i)_1^6 \supset I\), since \(f_1 = g_1\) and \(f_2 = xg_1 + g_2\). To see the reverse inclusion of ideals,
+        \begin{align*}
+            g_2 = f_2 - xf_1 \in I \\
+            g_3 = yg_1 - xg_2 \in I \\
+            g_4 = zg_2 - yg_3 \in I
+        \end{align*}
+        To check that \(g_1,g_2,g_3,g_4\) form a Grobner basis, we use the Buchburger criterion, (I will do the division algorithm in-line for brevity)
+        \begin{align*}
+            S(g_1,g_2) &= x^2y-y^2-x^2y+xz = -y^2 + xz \overset{-g_3}{\rightsquigarrow} 0 \\
+            S(g_1,g_3) &= zx^2 - zy -x^2z + xy^2 = xy^2 - zy \overset{-yg_2}{\rightsquigarrow} 0 \\
+            S(g_1,g_4) &= y^3(x^2 - y) - x^2(y^3 - z^2) = x^2z^2 - y^4 \overset{-z^2g_1}{\rightsquigarrow} -y^4 + yz^2 \overset{+yg_4}{\rightsquigarrow} 0 \\
+            S(g_2,g_3) &= xyz - z^2 - xyz + y^3 = y^3 - z^2 \overset{-g_4}{\rightsquigarrow} 0 \\
+            S(g_2,g_4) &= xy^3 - zy^2 - xy^3 + xz^2 = xz^2 - zy^2 \overset{-zg_3}{\rightsquigarrow} 0 \\
+            S(g_3,g_4) &= xzy^3 - y^5 - xzy^3 + xz^3 = xz^3 - y^5 \overset{-z^2g_3}{\rightsquigarrow} -y^5 + y^2z^2 \overset{+y^2g_4}{\rightsquigarrow} 0 \qed
+        \end{align*}
+    \end{pb}
+    \begin{pb}
+        First identify \(LM(A) = \set{x_1^{d_1}x_2^{d_2}x_3^{d_3}x_4^{d_4} \mid d_1 \geq d_2 \tand d_3 \geq d_4} \cong \set{(d_1,d_2,d_3,d_4) \in \mathbb{Z}_{\geq 0}^4 \mid d_1 \geq d_2 \tand d_3 \geq d_4}\). As proof if \((d_1,d_2,d_3,d_4)\) in \(LM(A)\), then if \(d_2 > d_1\) or \(d_4 > d_3\) we can apply \((1\,2)\) or \((3\,4)\) respectively to obtain another term in the polynomial which is strictly larger, contradicting starting with the leading term. Conversely if \(d_1 \geq d_2 \tand d_3 \geq d_4\), then we can form the polynomial \(f \in A\),
+        \begin{align*}
+            f = x_1^{d_1}x_2^{d_2}x_3^{d_3}x_4^{d_4} + x_1^{d_3}x_2^{d_2}x_3^{d_1}x_4^{d_4} + x_1^{d_1}x_2^{d_4}x_3^{d_3}x_4^{d_2} + x_1^{d_3}x_2^{d_4}x_3^{d_1}x_4^{d_2}
+        \end{align*}
+        so that \(LM(f) = x_1^{d_1}x_2^{d_2}x_3^{d_3}x_4^{d_4}\).
+
+        Now it remains to show that \(\gen{(1,0,0,0),(1,1,0,0),(0,0,1,0),(0,0,1,1)} = \set{(d_1,d_2,d_3,d_4) \in \mathbb{Z}_{\geq 0}^4 \mid d_1 \geq d_2 \tand d_3 \geq d_4}\) as a monoid. So let \((d_1,d_2,d_3,d_4) \in LM(A)\), then
+        \begin{align*}
+            (d_1 - d_2)(1,0,0,0) + d_2(1,1,0,0) + (d_3 - d_4)(0,0,0,1) + d_4(0,0,1,1) = (d_1,d_2,d_3,d_4)
+        \end{align*}
+        as desired. \qed
+    \end{pb}
+\end{document}

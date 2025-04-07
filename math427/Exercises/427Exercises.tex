@@ -986,7 +986,172 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    \emph{exercise - } Let \(D\) as in the previous question, compute the Khovanov cohomology of \(kh(D)\).
+
+    \emph{proof - } From the cube of resolutions we get (where \(a,b\) are used for labelling)
+    \begin{equation*}
+        \begin{tikzcd}
+            &V^a\set{1} \arrow[rd,"{- \Delta}"]\\
+            V\otimes V \arrow[ru,"{m}"] \arrow[rd,"{m}"] &\bigoplus &V\otimes V\set{2} \\
+            &V^b\set{1} \arrow[ru,"{\Delta}"]
+        \end{tikzcd}
+    \end{equation*}
+    Then, we decompose our cohomology with respect to the grading.
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        & 0 & 1 & 2 \\
+        \hline
+        4 & & & \(\gen{v_+\otimes v_+}\) \\
+        \hline
+        2 & \(\gen{v_+\otimes v_+}\) & \(\gen{v_+^a, v_+^b}\) & \(\gen{v_+\otimes v_-,v_- \otimes v_+}\) \\
+        \hline
+        0 & \(\gen{v_+\otimes v_-,v_- \otimes v_+}\) & \(\gen{v_-^a,v_-^b}\) & \(\gen{v_-\otimes v_-}\) \\
+        \hline
+        -2 & \(\gen{v_-\otimes v_-}\) & & \\
+        \hline
+    \end{tabular}
+    \end{center}
+    the vertical grading is \(j\), and horizontal is \(i\), then \(d_j^i:C_j^i \to C_j^{i+1}\), and use the basis \(v^a_\pm = \begin{bmatrix} 1 \\ 0\end{bmatrix}, v^b_\pm = \begin{bmatrix} 0 \\ 1\end{bmatrix}\).
+    \begin{align*}
+        &d_2^0 = \begin{bmatrix} 1 \ 1 \end{bmatrix} & d_2^1 =\begin{bmatrix} -1 & 1 \\ -1 & 1 \end{bmatrix} \\
+        &d_0^0 = \begin{bmatrix} 1&1\\1&1 \end{bmatrix} &d_0^1 = \begin{bmatrix} -1&1 \end{bmatrix} \\
+        &d_{-2}
+    \end{align*}
+    and all other maps are zero. Now we can compute cohomologies (indexing before \(H\) to avoid confusion):
+    \begin{align*}
+        &{}^{-2}H^0(D) \cong \mathbb{Q} \\
+        &{}^0H^0(D) \cong \mathbb{Q}, \quad {}^0H^1(D) \cong 0, \quad {}^0H^2(D) \cong 0 \\
+        &{}^2H^0(D) \cong 0, \quad {}^2H^1(D) \cong 0, \quad {}^2H^2(D) \cong \mathbb{Q} \\
+        &{}^4H^2 \cong \mathbb{Q}
+    \end{align*}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
+    \emph{exercise - } Note that \(H(D)\) is defined by taking the homology with respect to the \(i\)-grading on \(\mathcal{C}(D)\). Then, we define \(kh(\vec{D}) = H(D)[n_-]\set{n_+-2n_-}\)
+    Show that \(\chi_\rho(\mathcal{C}(D)) = \chi_\rho(H(D))\) and \(\chi_\rho(Ckh(D)) = \chi_\rho(kh(D))\)
+
+    \emph{proof - } The second result follows directly from the first, since both \(i\) and \(j\) gradings are shifted by the same amount. Now to compute the main exercise, it will suffice to show equivalence for each \(j\), so fix \(j \in \mathbb{Z}\), then if \(d_j^i = 0\) for each \(i\) the result is trivial since in that case \(H_j^i = C_j^i\), then if \(\text{rank}d_j^i\) is \(k \in \mathbb{Z}_{>0}\) we have that by the rank nullity theorem \(\dim H_j^i = \dim C_j^i - k\) and \(\dim H_j^{i+1} = \dim C_j^{i + 1} - k\), these terms cancel in the graded Euler characteristic. \qed
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \emph{exercise - } Compute the Khovanov homology for the trefoil over \(\mathbb{Z}\).
+
+    \emph{Proof - } Here I will use the Knot Space diagram taken from Bar Natan's paper
+    \begin{center}
+        \includegraphics[width=\textwidth]{additional pdfs/Trefoil knot diagram.png}
+    \end{center}
+
+    Applying our TQFT functor to this knot diagram gives the following:
+    \begin{equation*}
+        \begin{tikzcd}
+            &V^a\set{1} \arrow[r,"{-\Delta}"] \arrow[rd,"{-\Delta}"] &V\otimes V^a\set{2} \arrow[rd,"{1 \otimes \Delta}"] \\
+            V\otimes V \arrow[ru,"{m}"] \arrow[r,"{m}"] \arrow[rd,"{m}"] &V^b\set{1} \arrow[ru,"{\Delta}"] \arrow[rd,"{-\Delta}"] &V\otimes V^b\set{2} \arrow[r,"{-\Delta \otimes 1}"] &V\otimes V\otimes V\set{3} \\
+            &V^c\set{1} \arrow[ru,"{\Delta}"] \arrow[r,"{\Delta}"] &V\otimes V^c\set{2} \arrow[ru,"{1 \otimes\Delta}"]
+        \end{tikzcd}
+    \end{equation*}
+
+    We first compute the Khovanov chain complex,
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+            &0&1&2&3 \\
+            \hline
+            9&& & &\(\gen{v_+\otimes v_+\otimes v_+}\)\\
+            \hline
+            7& &&\(\gen{(v_+\otimes v_+)^a,(v_+\otimes v_+)^b,(v_+\otimes v_+)^c}\)&\(\gen{\substack{v_-\otimes v_+\otimes v_+, v_+\otimes v_-\otimes v_+, \\ v_+\otimes v_+\otimes v_-}}\)\\
+            \hline
+            5&\(\gen{v_+\otimes v_+}\)&\(\gen{v_+^a,v_+^b,v_+^c}\)&\(\gen{\substack{(v_-\otimes v_+)^a,(v_-\otimes v_+)^b,(v_-\otimes v_+)^c, \\(v_+\otimes v_-)^a,(v_+\otimes v_-)^b,(v_+\otimes v_-)^c}}\)&\(\gen{\substack{v_+\otimes v_-\otimes v_-, v_-\otimes v_+\otimes v_-, \\ v_-\otimes v_-\otimes v_+}}\)\\
+            \hline
+            3&\(\gen{v_+\otimes v_-, v_- \otimes v_+}\)&\(\gen{v_-^a,v_-^b,v_-^c}\)&\(\gen{(v_-\otimes v_-)^a,(v_-\otimes v_-)^b,(v_-\otimes v_-)^c}\)&\(\gen{v_-\otimes v_-\otimes v_-}\)\\
+            \hline
+            1&\(\gen{v_-\otimes v_-}\)& & & \\
+            \hline
+        \end{tabular}
+    \end{center}
+        \begin{align*}
+            &d_3^0 = \begin{bmatrix} 1&1\\1&1\\1&1 \end{bmatrix} &d_3^1 = \begin{bmatrix} -1 & 1 & 0\\ -1 & 0 & 1\\ 0 & -1 & 1 \end{bmatrix}\\
+            &d_3^2 = \begin{bmatrix} 1&-1&1 \end{bmatrix}\\
+            &d_5^0 = \begin{bmatrix} 1\\1\\1 \end{bmatrix} &d_5^1 =  \begin{bmatrix} -1&1&0\\-1&1&0\\-1&0&1\\-1&0&1\\0&-1&1\\0&-1&1 \end{bmatrix}\\
+            &d_5^2 = \begin{bmatrix} 0&1&0&-1&0&1\\1&0&0&-1&1&0\\1&0&-1&0&1&0 \end{bmatrix}\\
+            &d_7^2 = \begin{bmatrix}0&-1&1\\1&0&1\\1&-1&0\end{bmatrix}
+        \end{align*}
+        Now we compute the homologies:
+        \begin{align*}
+            &{}^1H^0(D) \cong \mathbb{Z} \\
+            &{}^3H^0(D) \cong \mathbb{Z}, \quad {}^3H^1(D) = \frac{\gen{(1,1,1)}}{\gen{(1,1,1)}} = 0, \quad {}^3H^2(D) = \frac{(1,-1,1)}{(1,-1,1)} = 0, \quad {}^3H^3(D) = 0 \\
+            &{}^5H^0(D) = 0, \quad {}^5H^1(D) = \frac{\gen{(1,1,1)}}{\gen{(1,1,1)}} = 0, \quad {}^5H^2(D) = \frac{\gen{\substack{(1,1,1,1,0,0),\\(1,1,0,0,-1,-1),\\(1,0,0,0,-1,0)}}}{\gen{\substack{(1,1,1,1,0,0),\\(1,1,0,0,-1,-1)}}} \cong \mathbb{Z}, \quad {}^5H^3(D) = 0\\
+            &{}^7H^2(D) = 0, \quad {}^7H^3(D) \cong \frac{\mathbb{Z}^3}{\begin{bmatrix} 1&0&0\\0&1&0\\0&0&2 \end{bmatrix}} \cong \mathbb{Z}/(2)\\
+            &{}^9H^3(D) \cong \mathbb{Z}
+        \end{align*}
+        Here to compute \({}^7H^3(D)\) I simply took the smith normal form of \(d^2_7 = e_{11} + e_{22} + 2e_{33}\), in tabular form this gives us the Khovanov Homology \(kh(\vec{D})\):
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+                &0&1&2&3 \\
+                \hline
+                9&& & &\(\mathbb{Z}\)\\
+                \hline
+                7& &&\(\mathbb{Z}/(2)\)\\
+                \hline
+                5&&\(\mathbb{Z}\)&\\
+                \hline
+                3&\(\mathbb{Z}\)&&\\
+                \hline
+                1&\(\mathbb{Z}\)& & & \\
+                \hline
+            \end{tabular}
+        \end{center} \qed
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \emph{exercise - } We define a chain complex \(\mathcal{C}\) to be acyclic, when it is an exact sequence \textcolor{red}{CHECK THIS DEFN!!!}. Show that if
+    \(\mathcal{C}' \subset \mathcal{C}\) is an acyclic subcomplex, then \(\mathcal{C}\) has the same homology as \(\mathcal{C}/\mathcal{C}'\).
+
+    \emph{proof - } It will suffice to show the result for each \(H_i\), so fix \(i \in \mathbb{Z}\) and let \(B_i \subset C_i, B_{i+1} \subset C_{i+1}\) be submodules, such that \(d_i(B_{i+1}) \subset B_i\) and \(\ker d_i\vert_{B_i} = \im d_i\vert_{B_{i+1}}\). Since \(d_i(B_{i+1}) \subset B_i\) there is an induced map \(\overline{d_{i+1}}:C_{i+1}/B_{i+1} \to C_i/B_i\) \textcolor{red}{I suspect that \(B_i\) need be complimented}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \emph{exercise - } Show that in \(\text{cob}/\ell(B)\) the relation \(T\) is determined by \(S\) and \(4\text{Tu}\) when \(B \neq \emptyset\).
+
+    \emph{proof - } Proof by picture:
+    \begin{center}
+        \includegraphics[width=\linewidth]{additional pdfs/4Tu and S relation imply.pdf}
+    \end{center}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Show the following chain complexes in \(C_X(\text{Mat}\,\mathcal{C})\) are isomorphic, given that \(\varphi: b_1 \to b_2\) is an isomorphism.
+    \begin{equation*}
+        \begin{tikzcd}
+            \cdots C \arrow[r,"{\begin{bmatrix} \alpha\\ \beta \end{bmatrix}}"] &\substack{b_1\\ \bigoplus \\ D} \arrow[r,"{\begin{bmatrix} \varphi \;\;\; \delta \\ \gamma \;\;\; \epsilon \end{bmatrix}}"] &\substack{b_2\\ \bigoplus \\ E} \arrow[r,"{\begin{bmatrix} \mu\;\;\;\nu \end{bmatrix}}"] &F \cdots
+        \end{tikzcd}
+    \end{equation*}
+    and
+    \begin{equation*}
+        \begin{tikzcd}
+            \cdots C \arrow[r,"{\begin{bmatrix} 0\\ \beta \end{bmatrix}}"] &\substack{b_1\\ \bigoplus \\ D} \arrow[rr,"{\begin{bmatrix} \varphi \quad\quad 0 \\ 0 \;\;\; \epsilon-\gamma \varphi \delta \end{bmatrix}}"] &&\substack{b_2\\ \bigoplus \\ E} \arrow[r,"{\begin{bmatrix} 0\;\;\;\nu \end{bmatrix}}"] &F \cdots
+        \end{tikzcd}
+    \end{equation*}
+
+    \emph{proof - }
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Compute \(f\) in the following delooping of a diagram in \(\text{Cob}/\ell(4)\)
+
+
+
+
+    
+
+
+
     
 
 
@@ -1003,7 +1168,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
 
 
-
+    \newpage
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
