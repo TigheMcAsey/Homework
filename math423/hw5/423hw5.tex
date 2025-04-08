@@ -6,7 +6,7 @@
 \usepackage{tikz-cd}
 
 \fancyhf{}
-\lhead{Math 423hw4}
+\lhead{Math 423hw5}
 \rhead{Tighe McAsey - 37499480}
 \pagestyle{fancy}
 
@@ -33,25 +33,25 @@
 \newcommand{\ho}{\text{Hom}}
 
 \begin{document}
-    \textbf{Notation:} Define the following notation for problem 1. Write for \(f \in A[[X]]\), \(\sum_0^\infty a_iX^i\)
+    \textbf{Notation:} Define the following notation. Write for \(f \in A[[X]]\), \(f = \sum_0^\infty a_iX^i\)
     \begin{align*}
         &\deg: A[[X]] \to \mathbb{Z}_{\geq 0}\cup\set{\infty} \\
-        &f \mapsto \min\set{n \in \mathbb{N} \mid a_n \neq 0} \\
+        &f \mapsto \min\set{n \in \mathbb{Z}_{\geq 0} \mid a_n \neq 0} \\
         &TC: A[[X]] \setminus 0 \to A \\
         &f \mapsto a_{\deg f}
     \end{align*}
-    finally, if \(a \vert b\) in \(A\), then we can write \(b = as\), where we denote \(s\) as \(\frac{b}{a}\) or \(a^{-1}b\), even when \(a\) is not invertible.
+    finally, if \(a \vert b\) in \(A\), then we can write \(b = as\), where we denote \(s\) as \(a^{-1}b\), even when \(a\) is not invertible.
 
     \begin{pb}
-        Let \(I\) be any ideal in \(A[[X]]\), I will show that \(I\) is finitely generated. First define \(J = \bigcup_I TC(f)\), closure of tail coefficients under addition and multiplication is clear, so that \(J\) is an ideal in \(A\). By the Noetherian assumption on \(A\), we may assume that \(J\) is finitely generated, and fix generators \(\set{TC(f_1),\hdots,TC(f_r)}\).
+        Let \(I\) be any ideal in \(A[[X]]\), I will show that \(I\) is finitely generated. First define \(J = \bigcup_I TC(f)\), closure of tail coefficients under addition and multiplication by \(A\) is clear, so that \(J\) is an ideal in \(A\). By the Noetherian assumption on \(A\), we may assume that \(J\) is finitely generated, and fix generators \(\set{TC(f_1),\hdots,TC(f_r)}\).
         
         Now define \[L_k = \set{a \in A \mid \exists f \in I, \text{ such that } \deg f = k \tand a = TC(f)}\]
         once again it is clear that \(L_k\) is an ideal in \(A\), so that it is finitely generated, we may fix generators \(\set{TC(g^k_1),\hdots,TC(g^k_{N_k})}\) where each \(g_i\) has degree \(k\). Let \(m = \max_i\deg f_i\), to make the notation easier later on, replace each \(f_i\) with \(X^{m - \deg f_i}f_i\), so that each has the same degree.
         \begin{align*}
-            L := (g_1^1,g_2^1,\hdots,g_{N_1}^1,g_1^2,\hdots,g_{N_m}^m) \subset A[[X]]
+            L := (g_1^0,g_2^0,\hdots,g_{N_0}^0,g_1^1,\hdots,g_{N_m}^m) \subset A[[X]]
         \end{align*}
 
-        I claim that \(I = L + (f_1,\hdots,f_r)\), which suffices to show that \(I\) is finitely generated. As proof, let \(\varphi \in I\), \(\deg \varphi = 0\) means we are done, so assume not. If \(\deg \varphi < m\), then there is some \(g \in L\), such that \(\deg g \leq \deg \varphi\) and \(TC(g) \mid TC(\varphi)\), then \(\varphi - TC(g)^{-1}TC(\varphi)X^{\deg \varphi - \deg g}g\) is in \(I\) with degree strictly larger than \(\varphi\), thus y repeating this process we may assume \(\varphi\) has degree at least \(m\). Now I claim there are \(h_1,\hdots,h_r \in A[[X]]\), such that \(\varphi - \sum_1^n h_if_i = 0\) completing the proof. Construct the \(h^i\) as follows, since \(\varphi \in I\), we know that \(TC(\varphi) \in J\), so that there is some \(\set{c_i}_1^r \subset A\), such that \(\sum_1^r c_i TC(f_i) = TC(\varphi)\), then take \(h_i^1 = c_i X^{\deg \varphi - m}\) for each \(i\). If at any point we have \(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i = 0\), then take \(h_i = \sum_{j=1}^n h_i^j\), otherwise we can define \(h_i^{n+1}\) for each \(1 \leq i \leq r\) as follows, since \(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i \in I\) we know that \(TC\left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right) \in J\), so that there are some \(\set{c_i}_1^r \subset A\), such that \(\sum_1^r c_iTC(f_i) = TC\left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right)\), then take \(h_i^{n+1} = X^{\deg \left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right) - m}c_i\), it is important to note that for each \(n\) we have \(\deg h_i^n < \deg h_i^{n+1}\), and since they consist only as a single term, \(h_i := \sum_{j=1}^\infty h_i^j\) defines an element of \(A[[X]]\) for each \(i\). Finally, by construction we get that \(\varphi - \sum_{i=1}^r h_if_i = 0\), so that \(\varphi \in L + (f_1,\hdots,f_r) = I\), and since the ideal \(I\) was arbitrary, we conclude that \(A[[X]]\) is Noetherian.
+        I claim that \(I = L + (f_1,\hdots,f_r)\), which suffices to show that \(I\) is finitely generated. As proof, let \(\varphi \in I\), \(\deg \varphi = \infty\) means we are done, so assume not. If \(\deg \varphi < m\), then there is some \(g \in L\), such that \(\deg g \leq \deg \varphi\) and \(TC(g) \mid TC(\varphi)\), then \(\varphi - TC(g)^{-1}TC(\varphi)X^{\deg \varphi - \deg g}g\) is in \(I\) with degree strictly larger than \(\varphi\), thus repeating this process we may assume \(\varphi\) has degree at least \(m\). Now I claim there are \(h_1,\hdots,h_r \in A[[X]]\), such that \(\varphi - \sum_1^n h_if_i = 0\) completing the proof. Construct the \(h_i\) as follows, since \(\varphi \in I\), we know that \(TC(\varphi) \in J\), so that there is some \(\set{c_i}_1^r \subset A\), such that \(\sum_1^r c_i TC(f_i) = TC(\varphi)\), then take \(h_i^1 = c_i X^{\deg \varphi - m}\) for each \(i\). If at any point we have \(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i = 0\), then take \(h_i = \sum_{j=1}^n h_i^j\), otherwise we can define \(h_i^{n+1}\) for each \(1 \leq i \leq r\) as follows, since \(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i \in I\) we know that \(TC\left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right) \in J\), so that there are some \(\set{c_i}_1^r \subset A\), such that \(\sum_1^r c_iTC(f_i) = TC\left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right)\), then take \(h_i^{n+1} = X^{\deg \left(\varphi - \sum_{i = 1}^r \left(\sum_{j=1}^n h_i^j\right)f_i\right) - m}c_i\), it is important to note that for each \(n\) we have \(\deg h_i^n < \deg h_i^{n+1}\), and since they consist only as a single term, \(h_i := \sum_{j=1}^\infty h_i^j\) defines an element of \(A[[X]]\) for each \(i\). Finally, by construction we get that \(\varphi - \sum_{i=1}^r h_if_i = 0\) since inductively \(\deg \varphi - \sum_{i=1}^r h_if_i > n\) for any \(n \in \mathbb{Z}_{\geq 0}\) implies it has degree infinity and is thus zero, so that \(\varphi \in L + (f_1,\hdots,f_r) = I\), and since the ideal \(I\) was arbitrary, we conclude that \(A[[X]]\) is Noetherian. \qed
     \end{pb}
     \begin{pb}
         Let \(h_1,\hdots,h_m\) be the rows of \(A\) in RREF, it is immediate that \((h_1,\hdots,h_m) \subset J\), and that
@@ -75,10 +75,15 @@
         \end{align*}
         for \(d_{kl} \in \mathbb{C}\). Let \(F := \sum_{k,\ell \in \set{1,\hdots,m}\setminus P} d_{kl}x_kx_\ell\), this is the remainder of \(S(h_i,h_j)\) by division from \(\set{h_1,\hdots,h_m}\) since none of the monomial terms are divisible by \(x_k\) for \(k \in p\). If \(F = 0\), then we are done, so assume not for the sake of contradiction.
 
-        We know that \(F \in J\) by construction (equivalently \((F) \subset J\)), by corollary of Hilbert's Nullstellensatz we know that \(V((F)) \supset V(J)\), to get the desired contradiction it will suffice to show there is some \(\mathbf{x} \in V(J) \setminus V((F))\). Since \(F \neq 0\), there is some \(d_{k,\ell} \neq 0\), if this is true for some \(d_{k,k}\), then take \(\mathbf{y} = e_k\), otherwise if all \(d_{kk} = 0\), then there is some \(k \neq \ell\), such that \(d_{kl} = 0\), and we take \(\mathbf{y} = e_k + e_\ell\), note that in either case \(\mathbf{y}\) has the property that \(F(\mathbf{y} + \sum_{s=1}^m c_se_{p_s}) \neq 0\), for any \(\set{c_1,\hdots,c_m} \subset \mathbb{C}\). Now we can define \(\mathbf{x}\) as follows:
+        We know that \(F \in J\) by construction (equivalently \((F) \subset J\)), by corollary of Hilbert's Nullstellensatz we know that \(V((F)) \supset V(J)\), to get the desired contradiction it will suffice to show there is some \(\mathbf{x} \in V(J) \setminus V((F))\). Since \(F \neq 0\), there is some \(d_{k,\ell} \neq 0\), if this is true for some \(d_{k,k}\), then take \(\mathbf{y} = e_k\) (here \(e_k \in \mathbb{C}^n\) has \(k\)-th coordinate \(1\) and other coordinates \(0\)), otherwise if all \(d_{kk} = 0\), then there is some \(k \neq \ell\), such that \(d_{kl} \neq 0\), and we take \(\mathbf{y} = e_k + e_\ell\), note that in either case \(\mathbf{y}\) has the property that \(F(\mathbf{y} + \sum_{s=1}^m c_se_{p_s}) \neq 0\), for any \(\set{c_1,\hdots,c_m} \subset \mathbb{C}\). Now we can define \(\mathbf{x}\)
         \begin{align*}
-            &k = \ell: \quad\quad\quad\quad \mathbf{x} = \mathbf{y} + \sum_{s = 1}^m -a_{sk} e_{p_s} \\
-            &k \neq \ell: \quad\quad\quad\quad \mathbf{x} = \mathbf{y} + \sum_{s = 1}^m (-a_{sk} - a_{s\ell}) e_{p_s}
+            &k = \ell: \quad\quad\quad\quad \mathbf{x} = \mathbf{y} + \sum_{s = 1}^m c_i e_{p_s} \\
+            &k \neq \ell: \quad\quad\quad\quad \mathbf{x} = \mathbf{y} + \sum_{s = 1}^m d_i e_{p_s}
+        \end{align*}
+        Where in either case \(c_i, d_i\) are defined recursively (note since we are in RREF \(a_{ip_i} = 1\) for \(1 \leq i \leq m\)), the definition for \(c_i, d_i\) ensuring that \(\mathbf{x} \in V(J)\) is as follows:
+        \begin{align*}
+            &c_m = -a_{mk} &c_i = -\left(a_{ik} + \sum_{j = i+1}^m c_j a_{ip_j}\right)\\
+            &d_m = -(a_{mk} + a_{m\ell}) & d_i = -\left(a_{ik}+a_{i\ell} + \sum_{j = i+1}^m d_ja_{ip_j}\right)
         \end{align*}
         since \(s,k\) are not pivots, this always defines a solution to the system of equations given by \(A\), hence \(\mathbf{x} \in V(J)\), but \(\mathbf{x}\) is of the form \(\mathbf{y} + \sum_1^m c_s e_{p_s}\), implying that \(\mathbf{x} \in V(J) \setminus V((F))\) which is a contradiction. \qed
     \end{pb}
@@ -110,7 +115,7 @@
         \begin{align*}
             S(f_2,g) = f_2 - yg = y^3 + y^2
         \end{align*}
-        we cannot divide any of the monomials by \(f_1,f_2 \tor g\), dividing by \(h\) gives \(y^3 + y^2 - h = 0\).
+        We cannot divide the leading monomial by the leading monomials of \(f_1,f_2 \tor g\), dividing by \(h\) gives \(y^3 + y^2 - h = 0\).
         \begin{align*}
             S(f_2,h) = -xy^2 + y^3
         \end{align*}
@@ -128,7 +133,7 @@
             g_3 &:= xz - y^2 \\
             g_4 &:= y^3 - z^2 
         \end{align*}
-        Note that \((g_i)_1^6 \supset I\), since \(f_1 = g_1\) and \(f_2 = xg_1 + g_2\). To see the reverse inclusion of ideals,
+        Note that \((g_i)_1^4 \supset I\), since \(f_1 = g_1\) and \(f_2 = xg_1 + g_2\). To see the reverse inclusion of ideals,
         \begin{align*}
             g_2 = f_2 - xf_1 \in I \\
             g_3 = yg_1 - xg_2 \in I \\
