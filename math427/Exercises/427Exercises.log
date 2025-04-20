@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.15)  7 APR 2025 14:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.15)  19 APR 2025 19:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -567,43 +567,66 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip65
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen293
+\captionmargin=\dimen294
+\caption@leftmargin=\dimen295
+\caption@rightmargin=\dimen296
+\caption@width=\dimen297
+\caption@indent=\dimen298
+\caption@parindent=\dimen299
+\caption@hangindent=\dimen300
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count323
+\c@continuedfloat=\count324
+Package caption Info: hyperref package is loaded.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count325
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count326
 )
 
 Package xr Warning: 
 No file 427Notes.aux
 LABELS NOT IMPORTED.
- on input line 13.
+ on input line 15.
 
-\c@pb=\count323
+\c@pb=\count327
 (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip66
-\enit@outerparindent=\dimen293
+\enit@outerparindent=\dimen301
 \enit@toks=\toks43
 \enit@inbox=\box86
-\enit@count@id=\count324
-\enitdp@description=\count325
+\enit@count@id=\count328
+\enitdp@description=\count329
 ) (./427Exercises.aux)
 \openout1 = `427Exercises.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -641,16 +664,16 @@ LaTeX Font Info:    ... okay on input line 120.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count326
-\scratchdimen=\dimen294
+\scratchcounter=\count330
+\scratchdimen=\dimen302
 \scratchbox=\box87
-\nofMPsegments=\count327
-\nofMParguments=\count328
+\nofMPsegments=\count331
+\nofMParguments=\count332
 \everyMPshowfont=\toks44
-\MPscratchCnt=\count329
-\MPscratchDim=\dimen295
-\MPnumerator=\count330
-\makeMPintoPDFobject=\count331
+\MPscratchCnt=\count333
+\MPscratchDim=\dimen303
+\MPnumerator=\count334
+\makeMPintoPDFobject=\count335
 \everyMPtoPDFconversion=\toks45
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -658,16 +681,18 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 120.
+Package hyperref Info: Link coloring OFF on input line 122.
  (./427Exercises.out) (./427Exercises.out)
 \@outlinefile=\write4
 \openout4 = `427Exercises.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 124.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 124.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -675,7 +700,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: No \author given.
 
 
-LaTeX Warning: Reference `CCNotes' on page 1 undefined on input line 144.
+LaTeX Warning: Reference `CCNotes' on page 1 undefined on input line 146.
 
 [1
 
@@ -744,12 +769,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [9]
-Overfull \hbox (31.93161pt too wide) detected at line 627
+Overfull \hbox (31.93161pt too wide) detected at line 629
 []
  []
 
 
-Overfull \hbox (2.42303pt too wide) detected at line 665
+Overfull \hbox (2.42303pt too wide) detected at line 667
 []
  []
 
@@ -793,7 +818,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [14]
-Overfull \hbox (63.01686pt too wide) detected at line 864
+Overfull \hbox (63.01686pt too wide) detected at line 866
 \OML/cmm/m/it/10.95 df\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 g[]; g[]; [] ; g[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 g[]; g[]; [] ; g[]\OT1/cmr/m/n/10.95 ) + (\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 1)[]\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 g[]; g[]; [] ; g[]\OT1/cmr/m/n/10.95 ) + [](\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 1)[]\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 g[]; [] ; g[]; g[]g[]; g[]; [] ; g[]\OT1/cmr/m/n/10.95 )
  []
 
@@ -805,7 +830,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [15]
-Overfull \hbox (40.3985pt too wide) detected at line 914
+Overfull \hbox (40.3985pt too wide) detected at line 916
 []
  []
 
@@ -825,7 +850,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [17]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 960.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 962.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
@@ -840,7 +865,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <additional pdfs/Trefoil knot diagram.png, id=143, 576.1525pt x 453.695pt>
 File: additional pdfs/Trefoil knot diagram.png Graphic file (type png)
 <use additional pdfs/Trefoil knot diagram.png>
-Package pdftex.def Info: additional pdfs/Trefoil knot diagram.png  used on input line 1043.
+Package pdftex.def Info: additional pdfs/Trefoil knot diagram.png  used on input line 1045.
 (pdftex.def)             Requested size: 452.9679pt x 356.70518pt.
 
 
@@ -851,7 +876,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [19]
-Overfull \hbox (36.96109pt too wide) in paragraph at lines 1057--1071
+Overfull \hbox (36.96109pt too wide) in paragraph at lines 1059--1073
  [] 
  []
 
@@ -874,7 +899,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <additional pdfs/4Tu and S relation imply.pdf, id=159, 612.8447pt x 438.72859pt>
 File: additional pdfs/4Tu and S relation imply.pdf Graphic file (type pdf)
 <use additional pdfs/4Tu and S relation imply.pdf>
-Package pdftex.def Info: additional pdfs/4Tu and S relation imply.pdf  used on input line 1121.
+Package pdftex.def Info: additional pdfs/4Tu and S relation imply.pdf  used on input line 1136.
 (pdftex.def)             Requested size: 452.9679pt x 324.28587pt.
 
 
@@ -885,6 +910,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [22 <./additional pdfs/4Tu and S relation imply.pdf>]
+<additional pdfs/Cob4Delooping1.png, id=169, 599.23875pt x 271.0125pt>
+File: additional pdfs/Cob4Delooping1.png Graphic file (type png)
+<use additional pdfs/Cob4Delooping1.png>
+Package pdftex.def Info: additional pdfs/Cob4Delooping1.png  used on input line 1149.
+(pdftex.def)             Requested size: 226.48395pt x 102.42754pt.
+<additional pdfs/Cob4Delooping2.png, id=170, 611.28375pt x 233.87375pt>
+File: additional pdfs/Cob4Delooping2.png Graphic file (type png)
+<use additional pdfs/Cob4Delooping2.png>
+Package pdftex.def Info: additional pdfs/Cob4Delooping2.png  used on input line 1153.
+(pdftex.def)             Requested size: 226.48395pt x 86.64969pt.
+<additional pdfs/Cob4 delooping computation.pdf, id=171, 614.295pt x 794.97pt>
+File: additional pdfs/Cob4 delooping computation.pdf Graphic file (type pdf)
+<use additional pdfs/Cob4 delooping computation.pdf>
+Package pdftex.def Info: additional pdfs/Cob4 delooping computation.pdf  used on input line 1160.
+(pdftex.def)             Requested size: 362.37569pt x 468.95546pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -892,7 +933,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[23]
+[23 <./additional pdfs/Cob4Delooping1.png> <./additional pdfs/Cob4Delooping2.png> <./additional pdfs/Cob4 delooping computation.pdf>]
+<additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf, id=183, 614.295pt x 794.97pt>
+File: additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf Graphic file (type pdf)
+<use additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf>
+Package pdftex.def Info: additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf  used on input line 1251.
+(pdftex.def)             Requested size: 452.9679pt x 586.19432pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -908,7 +955,39 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[25] (./427Exercises.aux)
+[25 <./additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[26]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[27]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[28]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[29] (./427Exercises.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -921,18 +1000,18 @@ Package rerunfilecheck Info: File `427Exercises.out' has not changed.
 (rerunfilecheck)             Checksum: E10DB3161FAA2E012B4641C1F284C3C0;855.
  ) 
 Here is how much of TeX's memory you used:
- 29944 strings out of 474116
- 636674 string characters out of 5743682
+ 31629 strings out of 474116
+ 671577 string characters out of 5743682
  1976187 words of memory out of 5000000
- 51798 multiletter control sequences out of 15000+600000
+ 53470 multiletter control sequences out of 15000+600000
  567490 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,18n,376p,1349b,1117s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on 427Exercises.pdf (25 pages, 797170 bytes).
+Output written on 427Exercises.pdf (29 pages, 3901884 bytes).
 PDF statistics:
- 284 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 316 PDF objects out of 1000 (max. 8388607)
+ 225 compressed objects within 3 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

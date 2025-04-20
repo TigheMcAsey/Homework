@@ -284,6 +284,12 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT ./427Exercises.aux
@@ -361,6 +367,25 @@ INPUT ./additional pdfs/4Tu and S relation imply.pdf
 INPUT ./additional pdfs/4Tu and S relation imply.pdf
 INPUT ./additional pdfs/4Tu and S relation imply.pdf
 INPUT ./additional pdfs/4Tu and S relation imply.pdf
+INPUT ./additional pdfs/Cob4Delooping1.png
+INPUT ./additional pdfs/Cob4Delooping1.png
+INPUT ./additional pdfs/Cob4Delooping1.png
+INPUT ./additional pdfs/Cob4Delooping1.png
+INPUT ./additional pdfs/Cob4Delooping1.png
+INPUT ./additional pdfs/Cob4Delooping2.png
+INPUT ./additional pdfs/Cob4Delooping2.png
+INPUT ./additional pdfs/Cob4Delooping2.png
+INPUT ./additional pdfs/Cob4Delooping2.png
+INPUT ./additional pdfs/Cob4Delooping2.png
+INPUT ./additional pdfs/Cob4 delooping computation.pdf
+INPUT ./additional pdfs/Cob4 delooping computation.pdf
+INPUT ./additional pdfs/Cob4 delooping computation.pdf
+INPUT ./additional pdfs/Cob4 delooping computation.pdf
+INPUT ./additional pdfs/Cob4 delooping computation.pdf
+INPUT ./additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf
+INPUT ./additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf
+INPUT ./additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf
+INPUT ./additional pdfs/surjectivity of ring homomorphism to Cob.pdf.pdf
 INPUT 427Exercises.aux
 INPUT ./427Exercises.out
 INPUT ./427Exercises.out

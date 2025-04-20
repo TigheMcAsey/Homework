@@ -9,6 +9,8 @@
 \usetikzlibrary{shapes,snakes}
 \usepackage{xr}
 \usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \externaldocument{427Notes}
 
@@ -1106,10 +1108,23 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    \emph{exercise - } We define a chain complex \(\mathcal{C}\) to be acyclic, when it is an exact sequence \textcolor{red}{CHECK THIS DEFN!!!}. Show that if
+    \emph{exercise - } We define a chain complex \(\mathcal{C}\) to be acyclic, when it is an exact sequence. Show that if
     \(\mathcal{C}' \subset \mathcal{C}\) is an acyclic subcomplex, then \(\mathcal{C}\) has the same homology as \(\mathcal{C}/\mathcal{C}'\).
 
-    \emph{proof - } It will suffice to show the result for each \(H_i\), so fix \(i \in \mathbb{Z}\) and let \(B_i \subset C_i, B_{i+1} \subset C_{i+1}\) be submodules, such that \(d_i(B_{i+1}) \subset B_i\) and \(\ker d_i\vert_{B_i} = \im d_i\vert_{B_{i+1}}\). Since \(d_i(B_{i+1}) \subset B_i\) there is an induced map \(\overline{d_{i+1}}:C_{i+1}/B_{i+1} \to C_i/B_i\) \textcolor{red}{I suspect that \(B_i\) need be complimented}
+    \emph{proof - } We use from Hatcher (equiv snake lemma) that if
+    \begin{equation*}
+        \begin{tikzcd}
+            C' \arrow[r,"{}"] &C \arrow[r,"{}"] &C/C'
+        \end{tikzcd}
+    \end{equation*}
+    is a short exact sequence of chain complexes, then we get the short exact sequence on homology (\textcolor{red}{TODO : Prove this}):
+    \begin{equation*}
+        \begin{tikzcd}
+            \cdots H_{n+1}(C/C') \arrow[r,"{}"] &H_n(C') \arrow[r,"{}"] &H_n(C) \arrow[r,"{}"] &H_n(C/C') \arrow[r,"{}"] &H_{n-1}(C') \cdots
+        \end{tikzcd}
+    \end{equation*}
+    Since this sequence is exact and \(H_i(C') = 0\) for each \(i\), we conclude that \(H_n(C) \cong H_n(C/C')\) for each \(i\). This is also sufficient to show \(H_n(C) \cong H_n(C')\) when \(C/C'\) is acyclic. \qed
+
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1120,6 +1135,32 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \begin{center}
         \includegraphics[width=\linewidth]{additional pdfs/4Tu and S relation imply.pdf}
     \end{center}
+    \newpage
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Find \textcolor{red}{\(f\)} in the following diagram after delooping:
+
+    \begin{figure}[htbp]
+        \centering
+        \begin{subfigure}{.5\textwidth}
+          \centering
+          \includegraphics[width=\linewidth]{additional pdfs/Cob4Delooping1.png}
+        \end{subfigure}%
+        \begin{subfigure}{.5\textwidth}
+          \centering
+          \includegraphics[width=\linewidth]{additional pdfs/Cob4Delooping2.png}
+        \end{subfigure}
+    \end{figure}
+    
+    \emph{proof - } \(f = 0\), see picture
+
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{additional pdfs/Cob4 delooping computation.pdf}
+    \end{center}
+    \newpage
+    
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1133,9 +1174,49 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     and
     \begin{equation*}
         \begin{tikzcd}
-            \cdots C \arrow[r,"{\begin{bmatrix} 0\\ \beta \end{bmatrix}}"] &\substack{b_1\\ \bigoplus \\ D} \arrow[rr,"{\begin{bmatrix} \varphi \quad\quad 0 \\ 0 \;\;\; \epsilon-\gamma \varphi \delta \end{bmatrix}}"] &&\substack{b_2\\ \bigoplus \\ E} \arrow[r,"{\begin{bmatrix} 0\;\;\;\nu \end{bmatrix}}"] &F \cdots
+            \cdots C \arrow[r,"{\begin{bmatrix} 0\\ \beta \end{bmatrix}}"] &\substack{b_1\\ \bigoplus \\ D} \arrow[rr,"{\begin{bmatrix} \varphi \quad\quad 0 \\ 0 \;\;\; \epsilon-\gamma \varphi^{-1} \delta \end{bmatrix}}"] &&\substack{b_2\\ \bigoplus \\ E} \arrow[r,"{\begin{bmatrix} 0\;\;\;\nu \end{bmatrix}}"] &F \cdots
         \end{tikzcd}
     \end{equation*}
+
+    \emph{proof - } 
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Check \(4Tu, T \tand S\) are grading homogenous, this in particular applies that since \(\text{Cob}(B)\) is graded we also have \(\text{Cob}/\ell(B)\) is graded.
+
+    \emph{proof - } \textcolor{red}{TODO ... }
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Suppose that \(\varphi: C_i \to C_i'\), show that the following are isomorphic chain complexes
+    \begin{equation*}
+        \begin{tikzcd}
+            \mathcal{C} = \quad \cdots C_{i+1} \arrow[r,"{d_{i+1}}"] &C_i \arrow[r,"{d_i}"] &C_{i-1}\cdots  \\
+            \hat{\mathcal{C}} = \quad \cdots C_{i+1} \arrow[r,"{\varphi d_{i+1}}"] &C_i' \arrow[r,"{d_i \varphi^{-1}}"] &C_{i-1}\cdots
+        \end{tikzcd}
+    \end{equation*}
+
+    \emph{proof - } Here we define chain maps \(f_j: \mathcal{C} \to \hat{\mathcal{C}}\), \(g: \hat{\mathcal{C}} \to \mathcal{C}\) so that \(fg = 1\).
+    \begin{align*}
+        &f_j = \begin{cases}
+            1_{C_j} & j \neq i \\
+            \varphi & j = i
+        \end{cases} &g_j = \begin{cases}
+            1_{C_j} & j\neq i\\
+            \varphi^{-1} &j=i
+        \end{cases}
+    \end{align*}
+    It is immediate that \(f,g\) are chain maps and that they compose to the identity. \qed
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Write the diagram for the following knot in \(\mathcal{C}_X(\text{Mat}(\text{Cob}/\ell(B)))\). Compute an equivalent diagram in \(\mathcal{C}_X(k[H])\)
 
     \emph{proof - } \textcolor{red}{TODO}
 
@@ -1143,8 +1224,74 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \emph{exercise - } Compute \(f\) in the following delooping of a diagram in \(\text{Cob}/\ell(4)\)
+    \emph{exercise - } Show that when \(\#B\) is odd, that \(\text{Cob}(B)\) is the empty category
 
+    \emph{proof - } An object in \(\text{Cob}(B)\) is of the form \(\mathcal{K} = \bigsqcup_A S^1 \bigsqcup_C I\), so that \(\# B = \# \partial \mathcal{K} = 2 \# C + 0\#A\), so there is no such \(\mathcal{K}\) when \(\# B\) is odd. \qed
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Check the new relations in \(\text{Cob}/\ell(3,*)\)
+
+    \emph{proof - } \textcolor{red}{TODO}
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Let \(\mathcal{C}\) be the \(k\)-linear category given by the following quiver: \(\begin{tikzcd}
+        \diamond\arrow[loop right,"{H}"]
+    \end{tikzcd}\), then \(\mor(\mathcal{C}) = \text{End}\,\diamond\), show that \(\mor(\mathcal{C}) \cong k[H]\).
+
+    \emph{proof - } 
+    \begin{center}
+        \includegraphics[width=\linewidth]{additional pdfs/surjectivity of ring homomorphism to Cob.pdf}
+    \end{center}
+    
+    We define the map \(F: k[H] \to \mor\,\mathcal{C}\), \(F: \sum_0^n a_i H^i \mapsto \sum_0^n a_i H^i\), since \(\mathcal{C}\) is \(k\)-linear the right hand side is a well defined morphism. It is immediate that the composition of morphisms agrees with the product in \(k[H]\), and \(F\) preserving sums of morphisms is trivial by \(k\)-linearity. Injectivity is also an immediate consequence of the structure of \(\mathcal{C}\) being formal combinations so it will suffice to show surjectivity. To see surjectivity we need to show any summand in \(\mathcal{C}\) is of the form \(cH^n,\; c \in k\), so let \(M\) be a summand in \(\text{Cob}/\ell(2)\), then \(M\) is of the form \(H^n \sqcup_{i=1}^N g_i(j_i)\) where each \(g_i(j_i)\) is a closed surface of genus \(j_i\), if any one of the \(j_i = 0\) then \(M = 0\) and we are done, so assume not. Notice that \(4Tu\) with a surface of genus \(j\) and \(H^n\) is [applying (\(*\)) once and (\(**\)) recursively] \(H^{n}\sqcup g(j) = H^{n+1}\sqcup g(j-1) + 2H^{n+j - 2}\), so that we can repeat this with \(H^{n+1} \sqcup g(j-1)\), eventually \(j\) will be reduced to \(1\), so it can be eliminated with the \(T\) relation. This gives us
+    \begin{align*}
+        H^n \sqcup_1^N g_i(j_i) = \sum \left(a_kH^k\sqcup_1^{N-1} g_i(j_i)\right)
+    \end{align*}
+    applying this simplification recursively gives an expression of the form \(\sum a_kH^k\). \qed
+
+
+
+    
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Let \(\mathcal{C}\) be as in the previous exercise. Show that that we can identify \(C_X(\text{Mat}(\mathcal{C}))\) with \(\text{Com}_{k[H]}\)
+
+    \emph{proof - } 
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Compute \(G\) in the following delooping on \(\text{Cob}/\ell(4)\)
+
+    \emph{proof - }
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Consider the \(k\)-algebra \(\mathcal{B}\) specified by the following quiver, with relations \[S_aD_a = D_bS_a = 0, \tand S_bD_b = D_aS_b = 0\]
+    \begin{equation*}
+        \begin{tikzcd}
+            a \arrow[loop left, "{D_a}"] \arrow[r,bend right=315,"{S_a}"] & b\arrow[l,bend left=45,"{S_b}"] \arrow[loop right, "{D_b}"]
+        \end{tikzcd}
+    \end{equation*}
+    Show that \(\text{End}((=) \oplus (\abs{}))\) is finitely generated over \(K[H]\), and that \(\text{End}((=) \oplus (\abs{})) \cong \mathcal{B}\)
+
+    \emph{proof - }
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
