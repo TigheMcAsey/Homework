@@ -1178,7 +1178,7 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
         \end{tikzcd}
     \end{equation*}
 
-    \emph{proof - } 
+    \emph{proof - } Very tedious, completed by hand on blackboard. Idea is - need to first get the conditions chain homotopy equivalence puts on the maps in order to define the chain maps. Then define chain maps based on \(f_C = g_C = 1_C, f_F = g_F = 1_F\). This is doable using the equation chain homotopy gives, writing maps that satisfy the chain map conditions is sufficient to provide the homotopy as afterwards the homotopy maps are straightforward with the chain maps in place. \qed
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1187,6 +1187,18 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \emph{exercise - } Check \(4Tu, T \tand S\) are grading homogenous, this in particular applies that since \(\text{Cob}(B)\) is graded we also have \(\text{Cob}/\ell(B)\) is graded.
 
     \emph{proof - } \textcolor{red}{TODO ... }
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Recall that in \(\text{Cob}/\ell(B)\) that \(\rho(f) = \deg f := \chi(f) - \frac{\#B}{2}\). Show that \(\deg f\circ g = \deg f + \deg g\).
+
+    \emph{proof - } Denote \(L(f)\) to be the "left" boundary of \(f\), i.e. the boundary shared with \(g\), then \(\partial_L(f) = \bigsqcup S^1 \bigsqcup_{1}^{\frac{\#B}{2}}I\)
+    \begin{align*}
+        \chi(f\circ g) &= \chi(f \cup_{\partial_L(f)} g) = \chi(f) + \chi(g) - \chi(\partial_L(f)) = \deg(f) + \deg(b) - \#B + \chi(\bigsqcup S^1 \bigsqcup_{1}^{\frac{\#B}{2}}I) \\ &= \deg(f) + \deg(g) - \frac{\# B}{2}
+    \end{align*}
+    Replacing \(\chi(f\circ g)\) by the degree completes the proof by cancelling out the \(\#B/2\) term. \qed
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1216,9 +1228,9 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \emph{exercise - } Write the diagram for the following knot in \(\mathcal{C}_X(\text{Mat}(\text{Cob}/\ell(B)))\). Compute an equivalent diagram in \(\mathcal{C}_X(k[H])\)
+    \emph{exercise - } Compute a diagram for a 3 crossing knot in \(\mathcal{C}_X(\text{Mat}(\text{Cob}/\ell(2)))\). Compute an equivalent diagram in \(\mathcal{C}_X(k[H])\)
 
-    \emph{proof - } \textcolor{red}{TODO}
+    \emph{proof - } Computed by hand - took a few pages and is not very nice to read so proof is not included. \qed
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1235,9 +1247,18 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - } Check the new relations in \(\text{Cob}/\ell(3,*)\)
 
-    \emph{proof - } \textcolor{red}{TODO}
+    \emph{proof - } \includegraphics[width=\linewidth]{additional pdfs/new relations in Cob:l(4).pdf}
 
 
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \emph{exercise - } Recall that in \(\text{Cob}/\ell(B)\) we have that \(\deg f = \chi(f) - \frac{\# B}{2}\). Show that in \(\text{Cob}/\ell(4)\) we have \(\rho(H^if) = \chi(\tilde{f})-2i-2\#\text{dots} - \frac{\#B}{2}\)
+
+    \emph{proof - } We can do induction on the number of dots. First if there are zero dots, \(H\) reduces the Euler characteristic by \(2\), so we are done since \(H^if = H(1 \circ H^{i-1}f) = \cdots (H(1))^{n}\circ f\) which has euler characteristic \(\chi(f) - 2i\).
+
+    Now if we assume the formula holds for \(n-1\)-dots, adding the \(n\)-th dot will give us \(\cdot1 \circ \tilde{f}\) where each summand in \(\cdot 1 \circ \tilde{f}\) has euler characteristic \(\chi(\tilde{f}) - 2\), so we are done. \qed
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1266,14 +1287,18 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \emph{exercise - } Let \(\mathcal{C}\) be as in the previous exercise. Show that that we can identify \(C_X(\text{Mat}(\mathcal{C}))\) with \(\text{Com}_{k[H]}\)
 
-    \emph{proof - } 
+    \emph{proof - } Consider a morphism in \(C_X(\text{Mat}(\mathcal{C}))\), then this is an \(m\times n\) matrix with entries in \(\text{End}(-)\), so we can identify all the entries of the matrix under the isomorphism to \(k[H]\). Because this is an isomorphism, this ensures that the chain map condition is still met. Any morphism of chain complexes is still a matrix with entries in \(\text{End}(-)\), so can be identified with the same matrix with entries having image under the isomorphism, since the isomorphism preserves products and the matrix product rule is the same this preserves the composition laws. \qed
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \emph{exercise - } Compute \(G\) in the following delooping on \(\text{Cob}/\ell(4)\)
+    \emph{exercise - } Compute a representative in \(\text{End}((=) \oplus (\abs{}))\) of the knot diagram for the reidemeister 2 move.
 
     \emph{proof - }
+
+    \begin{center}
+        \includegraphics[width=\linewidth]{additional pdfs/Deloop in Cob4.pdf}
+    \end{center}
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1287,7 +1312,11 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
     \end{equation*}
     Show that \(\text{End}((=) \oplus (\abs{}))\) is finitely generated over \(K[H]\), and that \(\text{End}((=) \oplus (\abs{})) \cong \mathcal{B}\)
 
-    \emph{proof - }
+    \emph{proof - } Here identify \(S_a\) with the saddle going from \(= \text{ to } \abs{}\), and \(S_b\) the saddle in the opposite direction. \(D\) is the dot relation wrt. The given orientation. To see that this is a ring isomorphism, first note that both are \(k\)-linear categories so we only need to check that the relations hold.
+
+    To see the relations, note that resolving the dot on \(D_{a/b}\) in its composition with a saddle gives a saddle with a handle minus a saddle with a handle up to isotopy, so it is equal to zero and we are done.
+
+    Finally, surjectivity follows in the same way as for \(k[H] \longleftrightarrow \text{End}(-)\) where we can resolve closed surfaces to handles on \(S_{a/b}\) and \(D_{a/b}\), finally to see injectivity note that the only morphisms remaining are \(H^iD_{a/b}^N\), or \(H^i(S_aS_b)^N\) or \(H^i(S_bS_a)^N\), none of which are killed by relations since we are taking formal \(k[H]\) linear combinations. Thus this defines an isomorphism, a very nice way to cap off the course as now a full subcategory of \(\text{Cob}/\ell(4)\) can be identified with the simple ring given by this quiver. \qed
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
