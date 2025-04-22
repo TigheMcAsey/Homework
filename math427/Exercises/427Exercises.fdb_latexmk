@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1745306935.38154 "/Users/tighe/School:Work/Homework/math427/Exercises/427Exercises.tex" "427Exercises.pdf" "427Exercises" 1745306938.95917 0
-  "/Users/tighe/School:Work/Homework/math427/Exercises/427Exercises.tex" 1745306935.18734 106942 a54784b968d0afa734096800ae022de5 ""
+["pdflatex"] 1745307062.77828 "/Users/tighe/School:Work/Homework/math427/Exercises/427Exercises.tex" "427Exercises.pdf" "427Exercises" 1745307066.3457 0
+  "/Users/tighe/School:Work/Homework/math427/Exercises/427Exercises.tex" 1745307059.20253 106898 feb2939786052de9ce8de84910cd6a72 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -215,9 +215,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1739668623.84621 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1739668619 8221421 65c51ee59c8e6121ca7ef37059414766 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "427Exercises.aux" 1745306938.8609 3341 94a64b625b37e1bf4273a06ff697d686 "pdflatex"
-  "427Exercises.out" 1745306938.86145 855 e10db3161faa2e012b4641c1f284c3c0 "pdflatex"
-  "427Exercises.tex" 1745306935.18734 106942 a54784b968d0afa734096800ae022de5 ""
+  "427Exercises.aux" 1745307066.24835 3341 6ac5f0164968e5a35837066cc965febf "pdflatex"
+  "427Exercises.out" 1745307066.24929 855 e10db3161faa2e012b4641c1f284c3c0 "pdflatex"
+  "427Exercises.tex" 1745307059.20253 106898 feb2939786052de9ce8de84910cd6a72 ""
   "427Notes.aux" 0 -1 0 ""
   "additional pdfs/4Tu and S relation imply.pdf" 1743918110.74658 313319 550876a7ab14d2b6faa4bd49f0724e07 ""
   "additional pdfs/Cob4 delooping computation.pdf" 1745099829.58989 154148 c5837707513f15ebea65914f11d71b5e ""
