@@ -806,9 +806,9 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
             \cdots \arrow[r,"{}"] & Z^{n-1} \arrow[r,"{\partial}"] & B^{n-1} \arrow[r,"{}"] & H^n(\mathbf{C^*}) \arrow[r,"{}"] & Z^n \arrow[r,"{\partial}"] & B^n\cdots
         \end{tikzcd}
     \end{equation*}
-    \emph{Trace through the snake lemma to show that} \(\partial = \iota_{n-1}^*\)
+    \emph{What is \(\partial\)?} 
 
-    \emph{proof - } \textcolor{red}{TODO}
+    \emph{proof - } By tracing through snake lemma we find that \(\partial = \iota_{n-1}^*\). \qed
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1494,9 +1494,9 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \textbf{Example from Hatcher.} If \(U \subset R^n\) and \(V \subset R^m\), then \(U \cong V\) implies that \(n = m\).
+    \textbf{Example from Hatcher.} If \(U \subset R^n\) and \(V \subset R^m\) are open, then \(U \cong V\) implies that \(n = m\).
 
-    \emph{proof - }
+    \emph{proof - } let \(B^n(x)\) be an open ball in \(U\), then if \(f\) is a witness to the homeomorphism we have \(f(B^n \setminus \set{x})\) is an open set in \(V\), by excision we may consider an open ball containing \(y = f(x)\) in \(V\) on homology. It follows that since \(f\) is a homeomorphism it is an isomorphism on homology, hence \(H_n(B^n \setminus \set{x}) \cong H_n(B^m \setminus \set{y})\), but after removing the point both of these spaces are homotopy equivalent to \(S^n, S^m\) respectively by a rectract. This means that \(H_n(S^n) \cong H_n(S^m)\) if \(n \neq m\), then the right hand side is zero and the left hand side \(\mathbb{Z}\), which is a contradiction, hence \(n=m\). \qed
     
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
