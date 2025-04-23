@@ -1198,7 +1198,14 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
         \end{tikzcd}
     \end{equation*}
 
-    \emph{proof - } Very tedious, completed by hand on blackboard. Idea is - need to first get the conditions chain homotopy equivalence puts on the maps in order to define the chain maps. Then define chain maps based on \(f_C = g_C = 1_C, f_F = g_F = 1_F\). This is doable using the equation chain homotopy gives, writing maps that satisfy the chain map conditions is sufficient to provide the homotopy as afterwards the homotopy maps are straightforward with the chain maps in place. \qed
+    \emph{proof - } The following maps induce a homotopy of chain complexes, here we are using the relations given by \(d^2 = 0\) to ensure that these are chain maps.
+
+    \begin{align*}
+        &f_C = g_C = 1_C \\
+        &f_D = \begin{bmatrix} 1 & \varphi^{-1}\delta \\ 0 & 1\end{bmatrix}, \quad g_D = \begin{bmatrix} 1 & -\varphi^{-1}\delta \\ 0 & 1\end{bmatrix} \\
+        &f_E = \begin{bmatrix} 1 & 0\\ \gamma \varphi^{-1} & 1 \end{bmatrix}, \quad g_E = \begin{bmatrix} 1 & 0\\ -\gamma \varphi^{-1} & 1 \end{bmatrix} \\
+        &f_F = g_F = 1_F
+    \end{align*}
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1474,7 +1481,16 @@ Now let the homotopy be given by \(\mathbf{f}:C \to C', \mathbf{g}:C' \to C\), t
 
     \textbf{Hatcher prop. 0.17.} We say \((X,A)\) has the homotopy extension property, when for any \(f_0 : X \to Y\), the homotopy \(f_t : A \to Y\) of \(f_0\vert_A\) can be extended to a homotopy \(f_t: X \to Y\). Suppose that \((X,A)\) satisfies the HEP and \(A \simeq \set{*}\), show that \(q: X \to X/A\) is a homotopy equivalence. 
     
-    \emph{proof - } Let \(f_0\) be the one map, and \(f_t\) be a homotopy extending the contraction of \(A\). \textcolor{red}{TODO}
+    \emph{proof - } Let \(f_0\) be the one map, and \(f_t\) be a homotopy extending the contraction of \(A\), with \(q: X \to X/A\) being the quotient map, quotienting the subspace \(A\). It follows that we get
+
+    \begin{equation*}
+        \begin{tikzcd}
+            X \arrow[r,"{f_1}"] \arrow[d,"{q}"] &X \arrow[d,"{q}"] \\
+            X/A \arrow[r,"{\overline{f_1}}"] &X/A
+        \end{tikzcd}
+    \end{equation*}
+
+    Now since \(f_1(A)\) is equal to a point, we can define a map \(g: X/A \to X\) as the upper diagonal of the above square with \(gq = f_1\), it follows that \(g,q\) are the desired homotopy equivalences, since \(gq = f_1 \simeq f_0 = 1_X\) and \(qg(\overline{x}) = qgq(x) = qf_1(x) = \overline{f_1} \simeq \overline{f_0} = 1_A\). \qed
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
